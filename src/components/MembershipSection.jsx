@@ -36,13 +36,13 @@ const MembershipSection = () => {
   ];
 
   const priorities = [
-    { title: 'EDUCATION & STUDENTS\' RIGHTS', img: '/education-768x180.webp' },
-    { title: 'GENDER EQUITY & SOCIAL INCLUSION', img: '/gender-768x180.webp' },
-    { title: 'DEMOCRACY, GOOD GOVERNANCE, PEACE & SECURITY', img: '/Democracy-768x180.webp' },
-    { title: 'CAPACITY BUILDING, SKILLS DEVELOPMENT & EMPLOYABILITY', img: '/capacity building-768x180.webp' },
-    { title: 'MIGRATION, MOBILITY & EXCHANGES', img: '/migration-768x180.webp' },
-    { title: 'CLIMATE ACTION AND ENVIRONMENTAL SUSTAINABILITY', img: '/environment -768x180.webp' },
-    { title: 'PAN-AFRICANISM & AFRICAN CULTURE', img: '/pan-africanism-768x180.webp' },
+    { title: "EDUCATION & STUDENTS' RIGHTS", icon: '/EDUCATION AND STUDENT RIGHTS.png' },
+    { title: 'GENDER EQUITY & SOCIAL INCLUSION', icon: '/GENDER ADVOCACY.png' },
+    { title: 'DEMOCRACY, GOOD GOVERNANCE, PEACE & SECURITY', icon: '/DEMOCRACY AND GOOD GOVERNANCE.png' },
+    { title: 'CAPACITY BUILDING, SKILLS DEVELOPMENT & EMPLOYABILITY', icon: '/CAPACITY BUILDING.png' },
+    { title: 'MIGRATION, MOBILITY & EXCHANGES', icon: '/MIGRATION & MOBILITY.png' },
+    { title: 'CLIMATE ACTION AND ENVIRONMENTAL SUSTAINABILITY', icon: '/ENVIRONMENT.png' },
+    { title: 'PAN-AFRICANISM & AFRICAN CULTURE', icon: '/PAN-AFRICANISM AND AFRICAN CULTURE.png' },
   ];
 
   return (
@@ -119,10 +119,11 @@ const MembershipSection = () => {
                 key={i} 
                 className="priority-item"
                 whileHover={{ x: 10, scale: 1.02 }}
-                style={{ backgroundImage: `url('${p.img}')` }}
               >
-                <div className="priority-overlay" />
-                <span className="priority-text">{p.title}</span>
+                <div className="priority-content">
+                  <img src={p.icon} alt={p.title} className="priority-icon" />
+                  <span className="priority-text">{p.title}</span>
+                </div>
                 <div className="priority-dot" />
               </motion.div>
             ))}
@@ -291,14 +292,13 @@ const MembershipSection = () => {
         .priorities-list {
           display: flex;
           flex-direction: column;
-          gap: 0.75rem;
+          gap: 1rem;
         }
 
         .priority-item {
-          height: 55px;
-          background-size: cover;
-          background-position: center;
-          border-radius: 30px;
+          min-height: 65px;
+          background: white;
+          border-radius: 40px;
           display: flex;
           align-items: center;
           justify-content: space-between;
@@ -307,31 +307,39 @@ const MembershipSection = () => {
           overflow: hidden;
           cursor: pointer;
           border: 1px solid rgba(255,255,255,0.2);
+          transition: all 0.3s ease;
         }
 
-        .priority-overlay {
-          position: absolute;
-          inset: 0;
-          background: rgba(0, 0, 0, 0.4);
-          transition: background 0.3s;
+        .priority-item:hover {
+          background: #f8f8f8;
+          box-shadow: 0 5px 15px rgba(0,0,0,0.1);
         }
 
-        .priority-item:hover .priority-overlay {
-          background: rgba(0, 0, 0, 0.2);
+        .priority-content {
+          display: flex;
+          align-items: center;
+          gap: 1.25rem;
+          z-index: 2;
+        }
+
+        .priority-icon {
+          width: 38px;
+          height: 38px;
+          object-fit: contain;
         }
 
         .priority-text {
-          position: relative;
-          z-index: 2;
           font-weight: 800;
-          font-size: 0.8rem;
-          letter-spacing: 0.5px;
+          font-size: 0.85rem;
+          letter-spacing: 0.2px;
+          color: #1a1a1a;
+          line-height: 1.3;
         }
 
         .priority-dot {
           width: 10px;
           height: 10px;
-          background: white;
+          background: var(--primary-red);
           border-radius: 50%;
           position: relative;
           z-index: 2;
