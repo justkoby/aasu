@@ -1,0 +1,52 @@
+:root {
+  --primary-red: #cb3631;
+  --primary-red-hover: #992d29;
+  --bg-dark: #000000;
+  --text-white: #ffffff;
+  --text-gray: #9ca3af;
+  --font-headings: 'Geologica', sans-serif;
+  --font-body: 'Inter', sans-serif;
+  --navbar-height: 80px;
+  --topbar-height: 48px;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: var(--font-body);
+  background-color: var(--bg-dark);
+  color: var(--text-white);
+  overflow-x: hidden;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: var(--font-headings);
+}
+
+.container {
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 0 2rem;
+}
+
+/* Utilities */
+.flex-center {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.glass {
+  background: rgba(255, 255, 255, 0.05);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.transition-all-custom {
+  transition: all 0.3s ease;
+}
