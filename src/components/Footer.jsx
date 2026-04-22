@@ -1,6 +1,7 @@
 import React from 'react';
 import { Facebook, Twitter, Linkedin, Instagram, MapPin, Phone, Mail } from 'lucide-react';
 import { motion } from 'framer-motion';
+import { Link } from 'react-router-dom';
 
 const Footer = () => {
   return (
@@ -23,11 +24,9 @@ const Footer = () => {
           <div className="footer-links">
             <h3 className="footer-title">Quick Links</h3>
             <ul className="footer-list">
-              <li><a href="#">About Us</a></li>
-              <li><a href="#">Governance</a></li>
-              <li><a href="#">Membership</a></li>
-              <li><a href="#">Programs</a></li>
-              <li><a href="#">News & Media</a></li>
+              <li><Link to="/history">History</Link></li>
+              <li><Link to="/membership">Membership (list of members)</Link></li>
+              <li><Link to="/news">News & Media</Link></li>
             </ul>
           </div>
 

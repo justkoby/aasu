@@ -56,11 +56,20 @@ const Navbar = () => {
         columns: [
           {
             title: 'Strategic Priorities',
-            links: ['Education & Students Rights', 'Environment & Climate Action', 'Gender Advocacy', 'Capacity Building']
+            links: [
+              "EDUCATION & STUDENTS' RIGHTS", 
+              'GENDER EQUITY & SOCIAL INCLUSION', 
+              'DEMOCRACY, GOOD GOVERNANCE, PEACE & SECURITY', 
+              'CAPACITY BUILDING, SKILLS DEVELOPMENT & EMPLOYABILITY'
+            ]
           },
           {
             title: '',
-            links: ['Pan-Africanism & African Culture', 'Migration & Mobility', 'Democracy & Good Governance']
+            links: [
+              'MIGRATION, MOBILITY & EXCHANGES', 
+              'CLIMATE ACTION AND ENVIRONMENTAL SUSTAINABILITY', 
+              'PAN-AFRICANISM & AFRICAN CULTURE'
+            ]
           }
         ],
         image: '/education-768x180.webp',
