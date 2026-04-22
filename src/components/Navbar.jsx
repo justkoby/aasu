@@ -57,18 +57,18 @@ const Navbar = () => {
           {
             title: 'Strategic Priorities',
             links: [
-              "EDUCATION & STUDENTS' RIGHTS", 
-              'GENDER EQUITY & SOCIAL INCLUSION', 
-              'DEMOCRACY, GOOD GOVERNANCE, PEACE & SECURITY', 
-              'CAPACITY BUILDING, SKILLS DEVELOPMENT & EMPLOYABILITY'
+              "Education & Students' Rights", 
+              'Gender Equity & Social Inclusion', 
+              'Democracy, Good Governance, Peace & Security', 
+              'Capacity Building, Skills Development & Employability'
             ]
           },
           {
             title: '',
             links: [
-              'MIGRATION, MOBILITY & EXCHANGES', 
-              'CLIMATE ACTION AND ENVIRONMENTAL SUSTAINABILITY', 
-              'PAN-AFRICANISM & AFRICAN CULTURE'
+              'Migration, Mobility & Exchanges', 
+              'Climate Action and Environmental Sustainability', 
+              'Pan-Africanism & African Culture'
             ]
           }
         ],
