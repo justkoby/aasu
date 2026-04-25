@@ -136,6 +136,11 @@ const TopBar = () => {
           padding-left: 1rem;
           border-left: 1px solid rgba(255, 255, 255, 0.1);
         }
+        @media (max-width: 1024px) {
+          .top-bar {
+            display: none;
+          }
+        }
       `}} />
     </div>
   );
