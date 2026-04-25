@@ -72,13 +72,25 @@ const EducationPage = () => {
                 Aligned with global and continental frameworks such as Sustainable Development Goal 4 (SDG 4) and the Continental Education Strategy for Africa (CESA), this priority area positions students not just as participants—but as key drivers of education reform and innovation.
               </p>
             </motion.div>
-            <motion.div 
-              initial={{ opacity: 0, scale: 0.9 }}
-              whileInView={{ opacity: 1, scale: 1 }}
-              viewport={{ once: true }}
-              className="overview-image-container"
-            >
-              <img src="/education-hero.jpg" alt="Education Overview" className="overview-image" />
+            <motion.div initial={{ opacity: 0, scale: 0.9 }} whileInView={{ opacity: 1, scale: 1 }} viewport={{ once: true }} className="overview-image-container dual-carousel">
+              <div className="carousel-column col-1">
+                <div className="carousel-track vertical reverse">
+                  {[1, 2, 3, 4, 1, 2, 3, 4].map((num, idx) => (
+                    <div key={idx} className="carousel-item">
+                      <img src={`/img-edu-carousel-${num}.jpg`} alt={`Educational Project ${num}`} />
+                    </div>
+                  ))}
+                </div>
+              </div>
+              <div className="carousel-column col-2">
+                <div className="carousel-track vertical">
+                  {[5, 6, 7, 8, 5, 6, 7, 8].map((num, idx) => (
+                    <div key={idx} className="carousel-item">
+                      <img src={`/img-edu-carousel-${num}.jpg`} alt={`Educational Project ${num}`} />
+                    </div>
+                  ))}
+                </div>
+              </div>
               <div className="accent-box" style={{ borderColor: accentColor }}></div>
             </motion.div>
           </div>
@@ -397,26 +409,53 @@ const EducationPage = () => {
           font-weight: 400;
         }
 
-        .overview-image-container {
-          position: relative;
+        .overview-image-container.dual-carousel { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; height: 600px; overflow: hidden; border-radius: 20px; box-shadow: 0 20px 50px rgba(0,0,0,0.1); }
+        .carousel-column { height: 100%; overflow: hidden; position: relative; }
+        .carousel-track.vertical { display: flex; flex-direction: column; gap: 1rem; animation: scroll-vertical 30s linear infinite; }
+        .carousel-track.vertical.reverse { animation: scroll-vertical-reverse 30s linear infinite; }
+        .carousel-item { width: 100%; flex-shrink: 0; }
+        .carousel-item img { width: 100%; height: 250px; object-fit: cover; border-radius: 12px; }
+        
+        @keyframes scroll-vertical {
+          0% { transform: translateY(0); }
+          100% { transform: translateY(-50%); }
+        }
+        
+        @keyframes scroll-vertical-reverse {
+          0% { transform: translateY(-50%); }
+          100% { transform: translateY(0); }
         }
 
-        .overview-image {
-          width: 100%;
-          border-radius: 20px;
-          box-shadow: 0 20px 50px rgba(0,0,0,0.1);
+        @media (max-width: 1024px) {
+          .section-grid { grid-template-columns: 1fr; gap: 2rem; }
+          .overview-image-container.dual-carousel { 
+            grid-template-columns: 1fr; 
+            height: 200px; 
+            overflow: hidden; 
+            width: 100vw; 
+            margin-left: -2rem; 
+            margin-right: -2rem; 
+            border-radius: 0;
+            box-shadow: none;
+          }
+          .carousel-column.col-2 { display: none; }
+          .carousel-column.col-1 { width: 100%; }
+          .carousel-track.vertical.reverse { 
+            flex-direction: row; 
+            width: max-content; 
+            animation: scroll-horizontal 20s linear infinite; 
+            height: 100%;
+          }
+          .carousel-item { width: 300px; height: 100%; }
+          .carousel-item img { width: 100%; height: 100%; border-radius: 10px; }
+          
+          @keyframes scroll-horizontal {
+            0% { transform: translateX(0); }
+            100% { transform: translateX(-50%); }
+          }
         }
 
-        .accent-box {
-          position: absolute;
-          top: -20px;
-          right: -20px;
-          width: 100px;
-          height: 100px;
-          border: 10px solid;
-          z-index: -1;
-          border-radius: 10px;
-        }
+        .accent-box { position: absolute; top: -20px; right: -20px; width: 100px; height: 100px; border: 10px solid; z-index: -1; border-radius: 10px; }
 
         /* Focus Areas Grid */
         .focus-grid {

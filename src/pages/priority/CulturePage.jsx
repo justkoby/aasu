@@ -36,8 +36,25 @@ const CulturePage = () => {
               <p>Through cultural engagement, policy advocacy, and continental collaboration, AASU is fostering a generation of students who are not only globally aware—but deeply connected to what it means to be African.</p>
               <p>Aligned with the aspirations of the African Union Agenda 2063, this priority area reinforces the role of culture and identity as drivers of unity, development, and global influence.</p>
             </motion.div>
-            <motion.div initial={{ opacity: 0, scale: 0.9 }} whileInView={{ opacity: 1, scale: 1 }} viewport={{ once: true }} className="overview-image-container">
-              <img src="/header-5.jpg" alt="Pan-Africanism Overview" className="overview-image" />
+            <motion.div initial={{ opacity: 0, scale: 0.9 }} whileInView={{ opacity: 1, scale: 1 }} viewport={{ once: true }} className="overview-image-container dual-carousel">
+              <div className="carousel-column col-1">
+                <div className="carousel-track vertical reverse">
+                  {[1, 2, 3, 4, 5, 6, 7, 8, 1, 2, 3, 4, 5, 6, 7, 8].map((num, idx) => (
+                    <div key={idx} className="carousel-item">
+                      <img src={`/img-pan-carousel-${num}.jpg`} alt={`Pan-Africanism Project ${num}`} />
+                    </div>
+                  ))}
+                </div>
+              </div>
+              <div className="carousel-column col-2">
+                <div className="carousel-track vertical">
+                  {[9, 10, 11, 12, 13, 14, 15, 9, 10, 11, 12, 13, 14, 15].map((num, idx) => (
+                    <div key={idx} className="carousel-item">
+                      <img src={`/img-pan-carousel-${num}.jpg`} alt={`Pan-Africanism Project ${num}`} />
+                    </div>
+                  ))}
+                </div>
+              </div>
               <div className="accent-box" style={{ borderColor: accentColor }}></div>
             </motion.div>
           </div>
@@ -175,8 +192,23 @@ const CulturePage = () => {
         .initiatives-section .section-subtitle { color: rgba(255, 255, 255, 0.8); }
         .section-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 4rem; align-items: center; }
         .overview-text p { font-size: 1.15rem; line-height: 1.8; color: #222; margin-bottom: 1.5rem; font-weight: 400; }
-        .overview-image-container { position: relative; }
-        .overview-image { width: 100%; border-radius: 20px; box-shadow: 0 20px 50px rgba(0,0,0,0.1); }
+        .overview-image-container.dual-carousel { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; height: 600px; overflow: hidden; border-radius: 20px; box-shadow: 0 20px 50px rgba(0,0,0,0.1); position: relative; }
+        .carousel-column { height: 100%; overflow: hidden; position: relative; }
+        .carousel-track.vertical { display: flex; flex-direction: column; gap: 1rem; animation: scroll-vertical 42s linear infinite; }
+        .carousel-track.vertical.reverse { animation: scroll-vertical-reverse 42s linear infinite; }
+        .carousel-item { width: 100%; flex-shrink: 0; }
+        .carousel-item img { width: 100%; height: 210px; object-fit: cover; border-radius: 12px; }
+        
+        @keyframes scroll-vertical {
+          0% { transform: translateY(0); }
+          100% { transform: translateY(-50%); }
+        }
+        
+        @keyframes scroll-vertical-reverse {
+          0% { transform: translateY(-50%); }
+          100% { transform: translateY(0); }
+        }
+
         .accent-box { position: absolute; top: -20px; right: -20px; width: 100px; height: 100px; border: 10px solid; z-index: -1; border-radius: 10px; }
         .focus-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); gap: 2rem; }
         .focus-card { background: white; padding: 3rem 2rem; border-radius: 20px; box-shadow: 0 10px 30px rgba(0,0,0,0.03); transition: all 0.3s ease; border: 1px solid #f0f0f0; }
@@ -219,6 +251,29 @@ const CulturePage = () => {
           .hero-title { font-size: 3rem; }
           .cta-links { flex-direction: column; }
           .vision-card { padding: 3rem 1.5rem; }
+          .overview-image-container.dual-carousel { 
+            grid-template-columns: 1fr; 
+            height: 200px; 
+            width: 100vw; 
+            margin-left: -2rem; 
+            margin-right: -2rem; 
+            border-radius: 0;
+            box-shadow: none;
+          }
+          .carousel-column.col-2 { display: none; }
+          .carousel-track.vertical.reverse { 
+            flex-direction: row; 
+            width: max-content; 
+            animation: scroll-horizontal 32s linear infinite; 
+            height: 100%;
+          }
+          .carousel-item { width: 300px; height: 100%; }
+          .carousel-item img { width: 100%; height: 100%; border-radius: 10px; }
+          
+          @keyframes scroll-horizontal {
+            0% { transform: translateX(0); }
+            100% { transform: translateX(-50%); }
+          }
         }
       `}} />
     </div>

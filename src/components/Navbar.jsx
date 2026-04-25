@@ -254,7 +254,7 @@ const Navbar = () => {
                                         if (link === 'Democracy, Good Governance, Peace & Security') routePath = '/priority/democracy';
                                         if (link === 'Capacity Building, Skills Development & Employability') routePath = '/priority/capacity';
                                         if (link === 'Migration, Mobility & Exchanges') routePath = '/priority/migration';
-                                        if (link === 'Climate Action and Environmental Sustainability') routePath = '/priority/environment';
+                                        if (link === 'Climate Action and Environmental Sustainability') routePath = '/priority/climate';
                                         if (link === 'Pan-Africanism & African Culture') routePath = '/priority/culture';
                                         if (link === '13th Congress Resolutions (EN)') routePath = '/13th Congress Resolutions.pdf';
                                         if (link === '13th Congress Resolutions (FR)') routePath = '/13th Congress Resolutions(FR).pdf';
@@ -364,7 +364,7 @@ const Navbar = () => {
                                   if (link === 'Democracy, Good Governance, Peace & Security') routePath = '/priority/democracy';
                                   if (link === 'Capacity Building, Skills Development & Employability') routePath = '/priority/capacity';
                                   if (link === 'Migration, Mobility & Exchanges') routePath = '/priority/migration';
-                                  if (link === 'Climate Action and Environmental Sustainability') routePath = '/priority/environment';
+                                  if (link === 'Climate Action and Environmental Sustainability') routePath = '/priority/climate';
                                   if (link === 'Pan-Africanism & African Culture') routePath = '/priority/culture';
                                   if (link === '13th Congress Resolutions (EN)') routePath = '/13th Congress Resolutions.pdf';
                                   if (link === '13th Congress Resolutions (FR)') routePath = '/13th Congress Resolutions(FR).pdf';

@@ -62,7 +62,7 @@ function App() {
           <Route path="/priority/democracy" element={<DemocracyPage />} />
           <Route path="/priority/capacity" element={<CapacityPage />} />
           <Route path="/priority/migration" element={<MigrationPage />} />
-          <Route path="/priority/environment" element={<ClimatePage />} />
+          <Route path="/priority/climate" element={<ClimatePage />} />
           <Route path="/priority/culture" element={<CulturePage />} />
           {/* Catch-all */}
           <Route path="*" element={<div style={{ minHeight: '60vh', display: 'flex', alignItems: 'center', justifyContent: 'center', fontSize: '2rem' }}>404 - Page Not Found</div>} />

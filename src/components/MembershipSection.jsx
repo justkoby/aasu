@@ -37,13 +37,13 @@ const MembershipSection = () => {
   ];
 
   const priorities = [
-    { title: "EDUCATION & STUDENTS' RIGHTS", icon: '/EDUCATION AND STUDENT RIGHTS.png' },
-    { title: 'GENDER EQUITY & SOCIAL INCLUSION', icon: '/GENDER ADVOCACY.png' },
-    { title: 'DEMOCRACY, GOOD GOVERNANCE, PEACE & SECURITY', icon: '/DEMOCRACY AND GOOD GOVERNANCE.png' },
-    { title: 'CAPACITY BUILDING, SKILLS DEVELOPMENT & EMPLOYABILITY', icon: '/CAPACITY BUILDING.png' },
-    { title: 'MIGRATION, MOBILITY & EXCHANGES', icon: '/MIGRATION & MOBILITY.png' },
-    { title: 'CLIMATE ACTION AND ENVIRONMENTAL SUSTAINABILITY', icon: '/ENVIRONMENT.png' },
-    { title: 'PAN-AFRICANISM & AFRICAN CULTURE', icon: '/PAN-AFRICANISM AND AFRICAN CULTURE.png' },
+    { title: "EDUCATION & STUDENTS' RIGHTS", icon: '/EDUCATION AND STUDENT RIGHTS.png', link: '/priority/education' },
+    { title: 'GENDER EQUITY & SOCIAL INCLUSION', icon: '/GENDER ADVOCACY.png', link: '/priority/gender' },
+    { title: 'DEMOCRACY, GOOD GOVERNANCE, PEACE & SECURITY', icon: '/DEMOCRACY AND GOOD GOVERNANCE.png', link: '/priority/democracy' },
+    { title: 'CAPACITY BUILDING, SKILLS DEVELOPMENT & EMPLOYABILITY', icon: '/CAPACITY BUILDING.png', link: '/priority/capacity' },
+    { title: 'MIGRATION, MOBILITY & EXCHANGES', icon: '/MIGRATION & MOBILITY.png', link: '/priority/migration' },
+    { title: 'CLIMATE ACTION AND ENVIRONMENTAL SUSTAINABILITY', icon: '/ENVIRONMENT.png', link: '/priority/climate' },
+    { title: 'PAN-AFRICANISM & AFRICAN CULTURE', icon: '/PAN-AFRICANISM AND AFRICAN CULTURE.png', link: '/priority/culture' },
   ];
 
   return (
@@ -118,14 +118,16 @@ const MembershipSection = () => {
             {priorities.map((p, i) => (
               <motion.div 
                 key={i} 
-                className="priority-item"
+                className="priority-item-wrapper"
                 whileHover={{ x: 10, scale: 1.02 }}
               >
-                <div className="priority-content">
-                  <img src={p.icon} alt={p.title} className="priority-icon" />
-                  <span className="priority-text">{p.title}</span>
-                </div>
-                <div className="priority-dot" />
+                <Link to={p.link} className="priority-item">
+                  <div className="priority-content">
+                    <img src={p.icon} alt={p.title} className="priority-icon" />
+                    <span className="priority-text">{p.title}</span>
+                  </div>
+                  <div className="priority-dot" />
+                </Link>
               </motion.div>
             ))}
           </div>
@@ -296,7 +298,9 @@ const MembershipSection = () => {
           gap: 1rem;
         }
 
+        .priority-item-wrapper { width: 100%; }
         .priority-item {
+          text-decoration: none;
           min-height: 65px;
           background: white;
           border-radius: 40px;
