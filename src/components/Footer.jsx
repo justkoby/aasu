@@ -60,17 +60,19 @@ const Footer = () => {
 
           {/* Connect / Newsletter */}
           <div className="footer-connect">
-            <h3 className="footer-title">Email Us</h3>
-            <form className="footer-form">
-              <input type="email" placeholder="Email Address" required className="footer-input" />
-              <button type="submit" className="footer-btn">Send</button>
-            </form>
+            <div className="footer-email-section">
+              <h3 className="footer-title">Email Us</h3>
+              <form className="footer-form">
+                <input type="email" placeholder="Email Address" required className="footer-input" />
+                <button type="submit" className="footer-btn">Send</button>
+              </form>
+            </div>
             
             <div className="social-links">
-              <motion.a whileHover={{ y: -3 }} href="#" aria-label="Facebook"><Facebook size={20} /></motion.a>
-              <motion.a whileHover={{ y: -3 }} href="#" aria-label="Twitter"><Twitter size={20} /></motion.a>
-              <motion.a whileHover={{ y: -3 }} href="#" aria-label="LinkedIn"><Linkedin size={20} /></motion.a>
-              <motion.a whileHover={{ y: -3 }} href="#" aria-label="Instagram"><Instagram size={20} /></motion.a>
+              <motion.a whileHover={{ y: -3 }} href="https://www.facebook.com/AASU1972" target="_blank" rel="noopener noreferrer" aria-label="Facebook"><Facebook size={20} /></motion.a>
+              <motion.a whileHover={{ y: -3 }} href="https://x.com/aasu_72" target="_blank" rel="noopener noreferrer" aria-label="Twitter"><Twitter size={20} /></motion.a>
+              <motion.a whileHover={{ y: -3 }} href="https://www.linkedin.com/company/aasu1972/" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn"><Linkedin size={20} /></motion.a>
+              <motion.a whileHover={{ y: -3 }} href="https://www.instagram.com/aasu_1972/" target="_blank" rel="noopener noreferrer" aria-label="Instagram"><Instagram size={20} /></motion.a>
             </div>
           </div>
         </div>
@@ -258,8 +260,29 @@ const Footer = () => {
         }
 
         @media (max-width: 640px) {
+          .footer-section {
+            padding: 50px 0 30px;
+          }
           .footer-grid {
             grid-template-columns: 1fr;
+            gap: 2rem;
+            text-align: center;
+          }
+          .footer-brand {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+          }
+          .footer-links, .footer-email-section {
+            display: none;
+          }
+          .footer-connect {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+          }
+          .social-links {
+            justify-content: center;
           }
         }
       `}} />

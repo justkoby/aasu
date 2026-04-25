@@ -220,12 +220,25 @@ const ReportsSection = () => {
 
         @media (max-width: 600px) {
           .reports-grid {
-            grid-template-columns: 1fr;
+            display: flex;
+            overflow-x: auto;
+            scroll-snap-type: x mandatory;
+            gap: 1.5rem;
+            padding: 0 1rem 1rem;
+            margin: 0 -1rem;
+            scrollbar-width: none; /* Hide scrollbar for Firefox */
+          }
+          .reports-grid::-webkit-scrollbar {
+            display: none; /* Hide scrollbar for Chrome/Safari */
+          }
+          .report-card {
+            min-width: 280px;
+            scroll-snap-align: start;
           }
           .reports-header {
-            flex-direction: column;
-            align-items: flex-start;
-            gap: 1rem;
+            flex-direction: row;
+            align-items: center;
+            justify-content: space-between;
           }
         }
       `}} />

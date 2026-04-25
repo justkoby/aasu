@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
+import { Link } from 'react-router-dom';
 
 const MembershipSection = () => {
   const [hoveredDot, setHoveredDot] = useState(null);
@@ -107,7 +108,7 @@ const MembershipSection = () => {
             </div>
           </div>
 
-          <a href="#" className="list-link">For full membership list, see here..</a>
+          <Link to="/membership" className="list-link">For full membership list, see here..</Link>
         </div>
 
         {/* Right Column: Strategic Priorities */}
