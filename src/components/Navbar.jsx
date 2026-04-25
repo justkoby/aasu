@@ -73,6 +73,12 @@ const Navbar = () => {
       megaContent: {
         columns: [
           {
+            title: 'Initiatives',
+            links: [
+              'Programs & Impact'
+            ]
+          },
+          {
             title: 'Strategic Priorities',
             links: [
               "Education & Students' Rights", 
@@ -236,19 +242,19 @@ const Navbar = () => {
                                       {col.links.map((link, lIdx) => {
                                         let routePath = '#';
                                         if (link === 'History of AASU') routePath = '/history';
-                                        if (link === 'Membership List') routePath = '/membership';
+                                        if (link === 'Membership List' || link === 'Board of Members') routePath = '/membership';
                                         if (link === 'Partners') routePath = '/partners';
                                         if (link === 'Executive Committee') routePath = '/executives';
                                         if (link === 'Profile of AASU') routePath = '/profile';
-                                        if (link === 'Technical Team') routePath = '/technical-team';
+                                        if (link === 'Technical Team' || link === 'Secretariat') routePath = '/technical-team';
                                         if (link === 'Volunteer with us') routePath = '/volunteer';
                                         if (link === 'Become a Member') routePath = '/become-a-member';
                                         if (link === 'Internship Opportunities') routePath = '/internship';
                                         if (link === 'Vacancies' || link === 'Careers in AASU') routePath = 'mailto:info@aasuonline.org';
-                                        if (link === 'News') routePath = '/news';
+                                        if (link === 'News' || link === 'Gallery') routePath = '/news';
                                         if (link === 'Upcoming Events') routePath = '/events';
                                         if (link === 'Press Statements') routePath = '/news';
-                                        if (link === 'Reports') routePath = '/reports';
+                                        if (link === 'Reports' || link === 'Policy Papers' || link === 'Newsletters' || link === 'Archive' || link === 'AASU Strategic Plan' || link === 'AASU Constitution' || link === '11th Congress Resolutions' || link === '12th Congress Resolutions') routePath = '/reports';
                                         if (link === "Education & Students' Rights") routePath = '/priority/education';
                                         if (link === 'Gender Equity & Social Inclusion') routePath = '/priority/gender';
                                         if (link === 'Democracy, Good Governance, Peace & Security') routePath = '/priority/democracy';
@@ -256,6 +262,7 @@ const Navbar = () => {
                                         if (link === 'Migration, Mobility & Exchanges') routePath = '/priority/migration';
                                         if (link === 'Climate Action and Environmental Sustainability') routePath = '/priority/climate';
                                         if (link === 'Pan-Africanism & African Culture') routePath = '/priority/culture';
+                                        if (link === 'Programs & Impact') routePath = '/programs';
                                         if (link === '13th Congress Resolutions (EN)') routePath = '/13th Congress Resolutions.pdf';
                                         if (link === '13th Congress Resolutions (FR)') routePath = '/13th Congress Resolutions(FR).pdf';
 
@@ -346,19 +353,19 @@ const Navbar = () => {
                                 {col.links.map((link, lIdx) => {
                                   let routePath = '#';
                                   if (link === 'History of AASU') routePath = '/history';
-                                  if (link === 'Membership List') routePath = '/membership';
+                                  if (link === 'Membership List' || link === 'Board of Members') routePath = '/membership';
                                   if (link === 'Partners') routePath = '/partners';
                                   if (link === 'Executive Committee') routePath = '/executives';
                                   if (link === 'Profile of AASU') routePath = '/profile';
-                                  if (link === 'Technical Team') routePath = '/technical-team';
+                                  if (link === 'Technical Team' || link === 'Secretariat') routePath = '/technical-team';
                                   if (link === 'Volunteer with us') routePath = '/volunteer';
                                   if (link === 'Become a Member') routePath = '/become-a-member';
                                   if (link === 'Internship Opportunities') routePath = '/internship';
                                   if (link === 'Vacancies' || link === 'Careers in AASU') routePath = 'mailto:info@aasuonline.org';
-                                  if (link === 'News') routePath = '/news';
+                                  if (link === 'News' || link === 'Gallery') routePath = '/news';
                                   if (link === 'Upcoming Events') routePath = '/events';
                                   if (link === 'Press Statements') routePath = '/news';
-                                  if (link === 'Reports') routePath = '/reports';
+                                  if (link === 'Reports' || link === 'Policy Papers' || link === 'Newsletters' || link === 'Archive' || link === 'AASU Strategic Plan' || link === 'AASU Constitution' || link === '11th Congress Resolutions' || link === '12th Congress Resolutions') routePath = '/reports';
                                   if (link === "Education & Students' Rights") routePath = '/priority/education';
                                   if (link === 'Gender Equity & Social Inclusion') routePath = '/priority/gender';
                                   if (link === 'Democracy, Good Governance, Peace & Security') routePath = '/priority/democracy';
@@ -366,6 +373,7 @@ const Navbar = () => {
                                   if (link === 'Migration, Mobility & Exchanges') routePath = '/priority/migration';
                                   if (link === 'Climate Action and Environmental Sustainability') routePath = '/priority/climate';
                                   if (link === 'Pan-Africanism & African Culture') routePath = '/priority/culture';
+                                  if (link === 'Programs & Impact') routePath = '/programs';
                                   if (link === '13th Congress Resolutions (EN)') routePath = '/13th Congress Resolutions.pdf';
                                   if (link === '13th Congress Resolutions (FR)') routePath = '/13th Congress Resolutions(FR).pdf';
 

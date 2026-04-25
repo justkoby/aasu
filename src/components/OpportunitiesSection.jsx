@@ -12,13 +12,13 @@ const OpportunitiesSection = () => {
   ];
 
   const opportunity = [
-    { icon: <Headphones size={28} />, title: "Help Desk" },
-    { icon: <Search size={28} />, title: "Opportunity Portal", sub: "Apply for Fellowships & Conferences" }
+    { icon: <Headphones size={28} />, title: "Help Desk", link: "mailto:info@aasuonline.org" },
+    { icon: <Search size={28} />, title: "Opportunity Portal", sub: "Apply for Fellowships & Conferences", link: "/internship" }
   ];
 
   const reachOut = [
-    { icon: <AlertCircle size={28} />, title: "Report a Case" },
-    { icon: <GraduationCap size={28} />, title: "Scholarships" }
+    { icon: <AlertCircle size={28} />, title: "Report a Case", link: "/contact" },
+    { icon: <GraduationCap size={28} />, title: "Scholarships", link: "/reports" }
   ];
 
   return (
@@ -59,21 +59,30 @@ const OpportunitiesSection = () => {
           <div className="opp-sub-col">
             <h2 className="opp-title">Opportunity</h2>
             <div className="opp-list">
-              {opportunity.map((item, i) => (
-                <motion.a 
-                  href="#"
-                  className="opp-item" 
-                  key={i}
-                  whileHover={{ x: 8 }}
-                  transition={{ type: "spring", stiffness: 300 }}
-                >
-                  <div className="opp-icon">{item.icon}</div>
-                  <div className="opp-text-wrapper">
-                    <h4 className="opp-item-title">{item.title}</h4>
-                    {item.sub && <span className="opp-item-sub">{item.sub}</span>}
-                  </div>
-                </motion.a>
-              ))}
+              {opportunity.map((item, i) => {
+                const isExternal = item.link?.startsWith('mailto:');
+                const Component = isExternal ? 'a' : Link;
+                const props = isExternal ? { href: item.link } : { to: item.link };
+
+                return (
+                  <motion.div
+                    key={i}
+                    whileHover={{ x: 8 }}
+                    transition={{ type: "spring", stiffness: 300 }}
+                  >
+                    <Component 
+                      {...props}
+                      className="opp-item" 
+                    >
+                      <div className="opp-icon">{item.icon}</div>
+                      <div className="opp-text-wrapper">
+                        <h4 className="opp-item-title">{item.title}</h4>
+                        {item.sub && <span className="opp-item-sub">{item.sub}</span>}
+                      </div>
+                    </Component>
+                  </motion.div>
+                );
+              })}
             </div>
           </div>
 
@@ -81,18 +90,21 @@ const OpportunitiesSection = () => {
             <h2 className="opp-title">Reach Out</h2>
             <div className="opp-list">
               {reachOut.map((item, i) => (
-                <motion.a 
-                  href="#"
-                  className="opp-item" 
+                <motion.div
                   key={i}
                   whileHover={{ x: 8 }}
                   transition={{ type: "spring", stiffness: 300 }}
                 >
-                  <div className="opp-icon">{item.icon}</div>
-                  <div className="opp-text-wrapper">
-                    <h4 className="opp-item-title">{item.title}</h4>
-                  </div>
-                </motion.a>
+                  <Link 
+                    to={item.link}
+                    className="opp-item" 
+                  >
+                    <div className="opp-icon">{item.icon}</div>
+                    <div className="opp-text-wrapper">
+                      <h4 className="opp-item-title">{item.title}</h4>
+                    </div>
+                  </Link>
+                </motion.div>
               ))}
             </div>
           </div>

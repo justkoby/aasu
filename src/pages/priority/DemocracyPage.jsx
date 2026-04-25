@@ -1,6 +1,8 @@
 import React, { useEffect } from 'react';
 import { motion } from 'framer-motion';
-import { Compass, Landmark, Target, Rocket, Globe, Shield, Scale, ArrowRight, Gavel, Users, BarChart3, MessageSquare } from 'lucide-react';
+import { Compass, Landmark, Target, Rocket, Globe, Shield, Scale, ArrowRight, Gavel, Users, BarChart3, MessageSquare, CheckCircle2 } from 'lucide-react';
+import ProjectExplorer from '../../components/ProjectExplorer';
+import { flagshipPrograms, priorityProjects } from '../../data/programsData';
 
 const DemocracyPage = () => {
   useEffect(() => {
@@ -8,6 +10,9 @@ const DemocracyPage = () => {
   }, []);
 
   const accentColor = "#C9A227"; // Gold for Democracy & Governance
+  const areaData = priorityProjects.find(a => a.area === "Democracy & Peace building");
+  const democracyProjects = areaData ? areaData.projects : [];
+  const flagship = flagshipPrograms.find(f => f.area === "Democracy & Peace building");
 
   return (
     <div className="priority-area-page democracy-page">
@@ -95,39 +100,134 @@ const DemocracyPage = () => {
         </div>
       </section>
 
-      {/* What this area is about */}
-      <section className="focus-areas-section" style={{ backgroundColor: '#ffffff', color: '#222' }}>
-        <div className="container">
-          <div className="section-header centered">
-            <Landmark className="section-icon" style={{ color: accentColor }} />
-            <h2 className="section-title">WHAT THIS AREA IS ABOUT</h2>
-            <p className="section-subtitle">Strengthening democratic values through student engagement</p>
-          </div>
+      {/* Continental Program Ecosystem (Bento Grid) */}
+      {flagship && (
+        <section className="continental-ecosystem-section" style={{ backgroundColor: '#fdfdfd', padding: '100px 0' }}>
+          <div className="container">
+            <div className="section-header" style={{ marginBottom: '4rem' }}>
+              <Rocket className="header-icon" style={{ color: accentColor, width: '40px', height: '40px' }} />
+              <div className="header-text">
+                <span className="section-tag" style={{ color: accentColor, fontWeight: 800, fontSize: '0.85rem', textTransform: 'uppercase', letterSpacing: '1px' }}>Continental Program Ecosystem</span>
+                <h2 className="section-title" style={{ fontFamily: 'var(--font-headings)', fontSize: '2.5rem', fontWeight: 900, color: '#111' }}>Key Initiatives</h2>
+              </div>
+            </div>
 
-          <div className="focus-grid">
-            {[
-              { icon: <Users />, title: 'Democratic Participation', desc: 'Encouraging students to actively engage in political and civic processes at all levels.' },
-              { icon: <Shield />, title: 'Governance & Accountability', desc: 'Promoting transparency, rule of law, and responsible leadership in institutions.' },
-              { icon: <Gavel />, title: 'Peacebuilding', desc: 'Supporting initiatives that foster dialogue, tolerance, and peaceful coexistence across communities.' },
-              { icon: <Scale />, title: 'Youth Leadership', desc: 'Building the capacity of students to understand governance systems and take on leadership roles.' },
-              { icon: <MessageSquare />, title: 'Policy Advocacy', desc: 'Creating platforms for students to influence governance policies and reforms.' }
-            ].map((item, idx) => (
+            <div className="flagship-bento-grid">
+              {/* Card 01: The Flagship (Wide) */}
               <motion.div 
-                key={idx}
+                className="flagship-card wide theme-forest"
+                initial={{ opacity: 0, scale: 0.95 }}
+                whileInView={{ opacity: 1, scale: 1 }}
+                viewport={{ once: true }}
+              >
+                <div className="wide-content">
+                  <span className="card-number" style={{ color: '#ffc107' }}>01. {flagship.title}</span>
+                  <p className="card-desc">{flagship.overview}</p>
+                  <ul style={{ listStyle: 'none', padding: 0, marginBottom: '2rem', display: 'flex', gap: '1.5rem', flexWrap: 'wrap' }}>
+                    {flagship.focusPoints.slice(0, 2).map((p, i) => (
+                      <li key={i} style={{ display: 'flex', alignItems: 'center', gap: '0.5rem', fontWeight: 700, fontSize: '0.9rem' }}>
+                        <div style={{ width: '8px', height: '8px', borderRadius: '50%', background: '#ffc107' }}></div>
+                        {p}
+                      </li>
+                    ))}
+                  </ul>
+                  <div className="card-footer">
+                    <a href="/contact" className="cta-btn" style={{ background: '#ffc107', color: '#1a3a3a', border: 'none', textDecoration: 'none', padding: '1rem 2rem', borderRadius: '50px', fontWeight: 800, display: 'inline-flex', alignItems: 'center', gap: '0.5rem' }}>
+                      Engage AU <ArrowRight size={18} />
+                    </a>
+                  </div>
+                </div>
+                <div className="wide-visual" style={{ background: "url('/university_campus_drawing.png') center/cover no-repeat", position: 'relative' }}>
+                  <div style={{ position: 'absolute', top: '2rem', left: '2rem', zIndex: 5 }}>
+                     <Shield className="card-icon" style={{ color: '#ffc107', width: '40px', height: '40px' }} />
+                  </div>
+                  <div style={{ position: 'absolute', inset: 0, background: 'rgba(26, 58, 58, 0.6)' }}></div>
+                </div>
+              </motion.div>
+
+              {/* Card 02: Democracy Conv */}
+              <motion.div 
+                className="flagship-card theme-peach"
                 initial={{ opacity: 0, y: 20 }}
                 whileInView={{ opacity: 1, y: 0 }}
-                transition={{ delay: idx * 0.1 }}
                 viewport={{ once: true }}
-                className="focus-card"
               >
-                <div className="card-icon-wrap" style={{ color: accentColor }}>{item.icon}</div>
-                <h3 className="card-title">{item.title}</h3>
-                <p className="card-desc">{item.desc}</p>
+                <div>
+                  <Users className="card-icon" style={{ color: '#4a2a1a', marginBottom: '1.5rem' }} />
+                  <span className="card-number">02. Democracy Conversations</span>
+                  <p className="card-desc" style={{ fontSize: '0.95rem' }}>Promoting civic awareness and democratic participation through national-level student forums.</p>
+                </div>
+                <div className="card-footer">
+                   <a href="#" className="explore-link" style={{ color: '#4a2a1a', textDecoration: 'none', fontWeight: 800, display: 'flex', alignItems: 'center', gap: '0.5rem' }}>
+                     Explore Strategy <ArrowRight size={16} />
+                   </a>
+                </div>
               </motion.div>
-            ))}
+
+              {/* Card 03: YPS */}
+              <motion.div 
+                className="flagship-card theme-cream"
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+              >
+                <div>
+                  <Shield className="card-icon" style={{ color: '#333', marginBottom: '1.5rem' }} />
+                  <span className="card-number">03. Youth, Peace & Security</span>
+                  <p className="card-desc" style={{ fontSize: '0.95rem' }}>Empowering students to lead in peacebuilding and conflict prevention efforts across African regions.</p>
+                  <span className="card-badge" style={{ background: '#e0e0e0', padding: '0.3rem 0.8rem', borderRadius: '50px', fontSize: '0.7rem', fontWeight: 800 }}>VITAL</span>
+                </div>
+                <div className="card-footer">
+                   <a href="#" className="explore-link" style={{ color: '#333', textDecoration: 'none', fontWeight: 800, display: 'flex', alignItems: 'center', gap: '0.5rem' }}>
+                     Explore Strategy <ArrowRight size={16} />
+                   </a>
+                </div>
+              </motion.div>
+
+              {/* Card 04: YouLead */}
+              <motion.div 
+                className="flagship-card theme-tan"
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+              >
+                <div>
+                  <Rocket className="card-icon" style={{ color: '#4a3a2a', marginBottom: '1.5rem' }} />
+                  <span className="card-number">04. YouLead Summit</span>
+                  <p className="card-desc" style={{ fontSize: '0.95rem' }}>Connecting young African leaders to discuss policy, governance, and development frameworks.</p>
+                </div>
+                <div className="card-footer">
+                   <a href="#" className="explore-link" style={{ color: '#4a3a2a', textDecoration: 'none', fontWeight: 800, display: 'flex', alignItems: 'center', gap: '0.5rem' }}>
+                     Explore Strategy <ArrowRight size={16} />
+                   </a>
+                </div>
+              </motion.div>
+
+              {/* Card 05: Policy Participation */}
+              <motion.div 
+                className="flagship-card theme-peach"
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+              >
+                <div>
+                  <Target className="card-icon" style={{ color: '#4a2a1a', marginBottom: '1.5rem' }} />
+                  <span className="card-number">05. Policy Participation</span>
+                  <p className="card-desc" style={{ fontSize: '0.95rem' }}>Positioning students as key stakeholders in CESA and AU policy implementation processes.</p>
+                </div>
+                <div className="card-footer">
+                   <a href="#" className="explore-link" style={{ color: '#4a2a1a', textDecoration: 'none', fontWeight: 800, display: 'flex', alignItems: 'center', gap: '0.5rem' }}>
+                     Explore Strategy <ArrowRight size={16} />
+                   </a>
+                </div>
+              </motion.div>
+            </div>
           </div>
-        </div>
-      </section>
+        </section>
+      )}
+
+      {/* Localized Project Explorer */}
+      <ProjectExplorer pillarIndex={4} hideTabs={true} />
 
       {/* Current Focus */}
       <section className="current-focus-section" style={{ backgroundColor: '#f9f9f9', borderTop: '1px solid #eee', borderBottom: '1px solid #eee', color: '#222' }}>
@@ -201,49 +301,7 @@ const DemocracyPage = () => {
         </div>
       </section>
 
-      {/* Initiatives */}
-      <section className="initiatives-section" style={{ backgroundColor: '#111', color: 'white' }}>
-        <div className="container">
-          <div className="section-header centered">
-            <Rocket className="section-icon" style={{ color: accentColor }} />
-            <h2 className="section-title">KEY PROJECTS & INITIATIVES</h2>
-          </div>
-
-          <div className="initiatives-grid">
-            {[
-              { 
-                title: 'Africa Students Dialogue Series', 
-                desc: 'A flagship platform bringing students together to discuss governance issues and promote youth-led solutions.',
-                features: ['Policy Dialogue', 'Pan-Africanism', 'Exchange']
-              },
-              { 
-                title: 'Governance Assessment', 
-                desc: 'Assessing governance practices within student bodies and advocating for improved transparency.',
-                features: ['Accountability', 'Reform', 'Transparency']
-              },
-              { 
-                title: 'Youth Leadership Programs', 
-                desc: 'Workshops and forums building leadership capacity and encouraging participation in democratic processes.',
-                features: ['Training', 'Empowerment', 'Civic Action']
-              }
-            ].map((init, idx) => (
-              <motion.div 
-                key={idx}
-                initial={{ opacity: 0, scale: 0.95 }}
-                whileInView={{ opacity: 1, scale: 1 }}
-                viewport={{ once: true }}
-                className="initiative-card"
-              >
-                <h3 className="init-title">{init.title}</h3>
-                <p className="init-desc">{init.desc}</p>
-                <div className="init-tags">
-                  {init.features.map((f, fIdx) => <span key={fIdx} className="init-tag" style={{ color: accentColor }}>#{f}</span>)}
-                </div>
-              </motion.div>
-            ))}
-          </div>
-        </div>
-      </section>
+      {/* Replaced by Project Explorer above */}
 
       {/* Vision & Impact Statement */}
       <section className="vision-section" style={{ backgroundColor: '#ffffff', color: '#222' }}>
@@ -359,10 +417,15 @@ const DemocracyPage = () => {
         .cta-btn.outline { border: 2px solid white; color: white; }
         .cta-btn:hover { transform: translateY(-5px); box-shadow: 0 10px 20px rgba(0,0,0,0.2); }
         @media (max-width: 1024px) {
-          .section-grid, .initiatives-grid, .vision-grid { grid-template-columns: 1fr; }
+          .section-grid, .initiatives-grid, .vision-grid {
+            grid-template-columns: 1fr;
+          }
           .hero-title { font-size: 3rem; }
           .cta-links { flex-direction: column; }
           .vision-card { padding: 3rem 1.5rem; }
+          .flagship-card { grid-template-columns: 1fr !important; padding: 2rem !important; }
+          .flagship-visual { order: -1; }
+          .flagship-title { font-size: 2rem !important; }
           .overview-image-container.dual-carousel { 
             grid-template-columns: 1fr; 
             height: 200px; 

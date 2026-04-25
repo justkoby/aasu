@@ -1,6 +1,7 @@
 import React from 'react';
 import { motion } from 'framer-motion';
 import { ArrowRight } from 'lucide-react';
+import { Link } from 'react-router-dom';
 
 const ReportsSection = () => {
   const reports = [
@@ -36,15 +37,15 @@ const ReportsSection = () => {
       <div className="container">
         <div className="reports-header">
           <h2 className="reports-main-title">Reports & Statements</h2>
-          <a href="#" className="reports-view-all">
+          <Link to="/reports" className="reports-view-all">
             View Statements <ArrowRight size={16} />
-          </a>
+          </Link>
         </div>
 
         <div className="reports-grid">
           {reports.map((report, i) => (
-            <motion.a 
-              href="#" 
+            <Link 
+              to="/reports" 
               key={i} 
               className="report-card"
               whileHover={{ y: -8 }}
@@ -72,7 +73,7 @@ const ReportsSection = () => {
                 <h4 className="report-title">{report.title}</h4>
                 <span className="report-date">{report.date}</span>
               </div>
-            </motion.a>
+            </Link>
           ))}
         </div>
       </div>

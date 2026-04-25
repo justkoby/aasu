@@ -5,6 +5,7 @@ import ReportsSection from '../components/ReportsSection';
 import NewsSection from '../components/NewsSection';
 import EventsSection from '../components/EventsSection';
 import OpportunitiesSection from '../components/OpportunitiesSection';
+import StrategicPriorities from '../components/StrategicPriorities';
 
 const Home = () => {
   return (
@@ -61,6 +62,8 @@ const Home = () => {
           </div>
         </div>
       </section>
+
+      <StrategicPriorities />
 
       <MembershipSection />
       <ReportsSection />

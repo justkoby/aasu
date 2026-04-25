@@ -1,6 +1,8 @@
 import React, { useEffect } from 'react';
 import { motion } from 'framer-motion';
-import { Compass, BookOpen, Target, Rocket, Globe, MessageSquare, ArrowRight, Shield, Accessibility, Layers, Users, FileText } from 'lucide-react';
+import { Compass, BookOpen, Target, Rocket, Globe, MessageSquare, ArrowRight, Shield, Accessibility, Layers, Users, FileText, CheckCircle2, BarChart3 } from 'lucide-react';
+import ProjectExplorer from '../../components/ProjectExplorer';
+import { flagshipPrograms, priorityProjects } from '../../data/programsData';
 
 const EducationPage = () => {
   useEffect(() => {
@@ -8,6 +10,9 @@ const EducationPage = () => {
   }, []);
 
   const accentColor = "#E53935"; // Red for Education
+  const areaData = priorityProjects.find(a => a.area === "Education & Students' Rights");
+  const educationProjects = areaData ? areaData.projects : [];
+  const flagship = flagshipPrograms.find(f => f.area === "Education & Students' Rights");
 
   return (
     <div className="priority-area-page education-page">
@@ -97,15 +102,139 @@ const EducationPage = () => {
         </div>
       </section>
 
-      {/* Focus Area Cards (📘 WHAT THIS AREA IS ABOUT) */}
-      <section className="focus-areas-section" style={{ backgroundColor: '#ffffff' }}>
+      {/* Continental Program Ecosystem (Bento Grid) */}
+      {flagship && (
+        <section className="continental-ecosystem-section" style={{ backgroundColor: '#fdfdfd', padding: '100px 0' }}>
+          <div className="container">
+            <div className="section-header" style={{ marginBottom: '4rem' }}>
+              <Rocket className="header-icon" style={{ color: accentColor, width: '40px', height: '40px' }} />
+              <div className="header-text">
+                <span className="section-tag" style={{ color: accentColor, fontWeight: 800, fontSize: '0.85rem', textTransform: 'uppercase', letterSpacing: '1px' }}>Continental Program Ecosystem</span>
+                <h2 className="section-title" style={{ fontFamily: 'var(--font-headings)', fontSize: '2.5rem', fontWeight: 900, color: '#111' }}>Key Initiatives</h2>
+              </div>
+            </div>
+
+            <div className="flagship-bento-grid">
+              {/* Card 01: The Flagship (Wide) */}
+              <motion.div 
+                className="flagship-card wide theme-forest"
+                initial={{ opacity: 0, scale: 0.95 }}
+                whileInView={{ opacity: 1, scale: 1 }}
+                viewport={{ once: true }}
+              >
+                <div className="wide-content">
+                  <span className="card-number" style={{ color: '#ffc107' }}>01. {flagship.title}</span>
+                  <p className="card-desc">{flagship.overview}</p>
+                  <ul style={{ listStyle: 'none', padding: 0, marginBottom: '2rem', display: 'flex', gap: '1.5rem', flexWrap: 'wrap' }}>
+                    {flagship.focusPoints.slice(0, 2).map((p, i) => (
+                      <li key={i} style={{ display: 'flex', alignItems: 'center', gap: '0.5rem', fontWeight: 700, fontSize: '0.9rem' }}>
+                        <div style={{ width: '8px', height: '8px', borderRadius: '50%', background: '#ffc107' }}></div>
+                        {p}
+                      </li>
+                    ))}
+                  </ul>
+                  <div className="card-footer">
+                    <a href="/contact" className="cta-btn" style={{ background: '#ffc107', color: '#1a3a3a', border: 'none', textDecoration: 'none', padding: '1rem 2rem', borderRadius: '50px', fontWeight: 800, display: 'inline-flex', alignItems: 'center', gap: '0.5rem' }}>
+                      Join Campaign <ArrowRight size={18} />
+                    </a>
+                  </div>
+                </div>
+                <div className="wide-visual" style={{ background: "url('/university_campus_drawing.png') center/cover no-repeat", position: 'relative' }}>
+                  <div style={{ position: 'absolute', top: '2rem', left: '2rem', zIndex: 5 }}>
+                     <Shield className="card-icon" style={{ color: '#ffc107', width: '40px', height: '40px' }} />
+                  </div>
+                  <div style={{ position: 'absolute', inset: 0, background: 'rgba(26, 58, 58, 0.6)' }}></div>
+                </div>
+              </motion.div>
+
+              {/* Card 02: Research & Monitoring (SDG 4) */}
+              <motion.div 
+                className="flagship-card theme-peach"
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+              >
+                <div>
+                  <BarChart3 className="card-icon" style={{ color: '#4a2a1a', marginBottom: '1.5rem' }} />
+                  <span className="card-number">02. SDG 4 Monitoring</span>
+                  <p className="card-desc" style={{ fontSize: '0.95rem' }}>Continental research project tracking progress toward quality education via student-led data collection.</p>
+                </div>
+                <div className="card-footer">
+                   <a href="/programs" className="explore-link" style={{ color: '#4a2a1a', textDecoration: 'none', fontWeight: 800, display: 'flex', alignItems: 'center', gap: '0.5rem' }}>
+                     Explore Strategy <ArrowRight size={16} />
+                   </a>
+                </div>
+              </motion.div>
+
+              {/* Card 03: Advocacy (1 in 5) */}
+              <motion.div 
+                className="flagship-card theme-cream"
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+              >
+                <div>
+                  <Users className="card-icon" style={{ color: '#333', marginBottom: '1.5rem' }} />
+                  <span className="card-number">03. 1 in 5 Campaign</span>
+                  <p className="card-desc" style={{ fontSize: '0.95rem' }}>Advocating for increased domestic financing for education, ensuring every child has access to schooling.</p>
+                  <span className="card-badge" style={{ background: '#e0e0e0', padding: '0.3rem 0.8rem', borderRadius: '50px', fontSize: '0.7rem', fontWeight: 800 }}>ACTIVE</span>
+                </div>
+                <div className="card-footer">
+                   <a href="/programs" className="explore-link" style={{ color: '#333', textDecoration: 'none', fontWeight: 800, display: 'flex', alignItems: 'center', gap: '0.5rem' }}>
+                     Explore Strategy <ArrowRight size={16} />
+                   </a>
+                </div>
+              </motion.div>
+
+              {/* Card 04: Quality Assurance */}
+              <motion.div 
+                className="flagship-card theme-tan"
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+              >
+                <div>
+                  <CheckCircle2 className="card-icon" style={{ color: '#4a3a2a', marginBottom: '1.5rem' }} />
+                  <span className="card-number">04. Quality Assurance</span>
+                  <p className="card-desc" style={{ fontSize: '0.95rem' }}>Collaborating with AU bodies to harmonize quality standards and mobility of qualifications across Africa.</p>
+                </div>
+                <div className="card-footer">
+                   <a href="/programs" className="explore-link" style={{ color: '#4a3a2a', textDecoration: 'none', fontWeight: 800, display: 'flex', alignItems: 'center', gap: '0.5rem' }}>
+                     Explore Strategy <ArrowRight size={16} />
+                   </a>
+                </div>
+              </motion.div>
+
+              {/* Card 05: Literacy */}
+              <motion.div 
+                className="flagship-card theme-peach"
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+              >
+                <div>
+                  <BookOpen className="card-icon" style={{ color: '#4a2a1a', marginBottom: '1.5rem' }} />
+                  <span className="card-number">05. Story Book Bank</span>
+                  <p className="card-desc" style={{ fontSize: '0.95rem' }}>Scaling literacy by providing inclusive learning resources to underserved communities across 20+ countries.</p>
+                </div>
+                <div className="card-footer">
+                   <a href="/programs" className="explore-link" style={{ color: '#4a2a1a', textDecoration: 'none', fontWeight: 800, display: 'flex', alignItems: 'center', gap: '0.5rem' }}>
+                     Explore Strategy <ArrowRight size={16} />
+                   </a>
+                </div>
+              </motion.div>
+            </div>
+          </div>
+        </section>
+      )}
+
+      <section className="focus-areas-section">
         <div className="container">
           <div className="section-header centered">
             <BookOpen className="section-icon" style={{ color: accentColor }} />
             <h2 className="section-title">WHAT THIS AREA IS ABOUT</h2>
-            <p className="section-subtitle">Focusing on protecting and advancing the core rights of students</p>
+            <p className="section-subtitle">Promoting rights, access, and excellence in African education</p>
           </div>
-
           <div className="focus-grid">
             {[
               { icon: <Shield />, title: 'Academic Freedom', desc: 'Ensuring that students and institutions can operate in environments that promote open inquiry, critical thinking, and intellectual independence.' },
@@ -212,23 +341,7 @@ const EducationPage = () => {
           </div>
 
           <div className="initiatives-grid">
-            {[
-              { 
-                title: 'SDG 4 Monitoring Project', 
-                desc: 'Tracks progress on education across African countries, providing a student-led perspective and generating data for advocacy.',
-                features: ['Policy Impact', 'Student Data', 'Accountability']
-              },
-              { 
-                title: 'Student Consultations & Policy Dialogues', 
-                desc: 'Organizing regional consultations and roundtables to ensure student lived experiences directly influence decision-making.',
-                features: ['Dialogue', 'Representation', 'Influence']
-              },
-              { 
-                title: 'Learning Planet Festival Participation', 
-                desc: 'Showcasing African student perspectives on global education platforms and building international partnerships.',
-                features: ['Global Reach', 'Partnerships', 'Innovation']
-              }
-            ].map((init, idx) => (
+            {educationProjects.map((init, idx) => (
               <motion.div 
                 key={idx}
                 initial={{ opacity: 0, scale: 0.95 }}
@@ -236,10 +349,11 @@ const EducationPage = () => {
                 viewport={{ once: true }}
                 className="initiative-card"
               >
-                <h3 className="init-title">{init.title}</h3>
+                <h3 className="init-title">{init.name}</h3>
                 <p className="init-desc">{init.desc}</p>
                 <div className="init-tags">
-                  {init.features.map((f, fIdx) => <span key={fIdx} className="init-tag" style={{ color: accentColor }}>#{f}</span>)}
+                  <span className="init-tag" style={{ color: accentColor }}>#EducationReform</span>
+                  <span className="init-tag" style={{ color: accentColor }}>#StudentVoice</span>
                 </div>
               </motion.div>
             ))}
@@ -717,7 +831,67 @@ const EducationPage = () => {
           box-shadow: 0 10px 20px rgba(0,0,0,0.2);
         }
 
+        /* Bento Grid */
+        .flagship-bento-grid {
+          display: grid;
+          grid-template-columns: repeat(3, 1fr);
+          grid-auto-rows: minmax(350px, auto);
+          gap: 2rem;
+        }
+
+        .flagship-card {
+          background: white;
+          border-radius: 30px;
+          padding: 3rem;
+          position: relative;
+          overflow: hidden;
+          transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+          display: flex;
+          flex-direction: column;
+          justify-content: space-between;
+          border: 1px solid rgba(0,0,0,0.05);
+          text-decoration: none;
+        }
+
+        .flagship-card.wide {
+          grid-column: span 2;
+          display: grid;
+          grid-template-columns: 1fr 1fr;
+          padding: 0;
+        }
+
+        .wide-content {
+          padding: 4rem;
+          display: flex;
+          flex-direction: column;
+          justify-content: center;
+        }
+
+        .card-number {
+          font-family: var(--font-headings);
+          font-size: 1.5rem;
+          font-weight: 900;
+          margin-bottom: 1rem;
+          display: block;
+        }
+
+        .card-desc {
+          font-size: 1rem;
+          line-height: 1.6;
+          opacity: 0.8;
+          margin-bottom: 2rem;
+        }
+
+        .theme-forest { background: #1a3a3a; color: white; }
+        .theme-forest .card-desc { opacity: 0.7; }
+        .theme-peach { background: #fde2d2; color: #4a2a1a; }
+        .theme-cream { background: #f9f5f0; color: #333; }
+        .theme-tan { background: #f5e6d3; color: #4a3a2a; }
+
         @media (max-width: 1024px) {
+          .flagship-bento-grid { grid-template-columns: 1fr; }
+          .flagship-card.wide { grid-column: span 1; grid-template-columns: 1fr; }
+          .wide-visual { height: 200px; }
           .section-grid, .initiatives-grid, .vision-grid {
             grid-template-columns: 1fr;
           }

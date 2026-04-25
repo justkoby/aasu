@@ -1,6 +1,8 @@
 import React, { useEffect } from 'react';
 import { motion } from 'framer-motion';
-import { Compass, Cpu, Target, Rocket, Globe, Briefcase, Lightbulb, Monitor, TrendingUp, Users, ArrowRight, BookOpen } from 'lucide-react';
+import { Compass, Cpu, Target, Rocket, Globe, Briefcase, Lightbulb, Monitor, TrendingUp, Users, ArrowRight, BookOpen, CheckCircle2, BarChart3, Zap } from 'lucide-react';
+import ProjectExplorer from '../../components/ProjectExplorer';
+import { flagshipPrograms, priorityProjects } from '../../data/programsData';
 
 const CapacityPage = () => {
   useEffect(() => {
@@ -8,6 +10,9 @@ const CapacityPage = () => {
   }, []);
 
   const accentColor = "#1E88E5"; // Blue for Capacity Building
+  const areaData = priorityProjects.find(a => a.area === "Capacity Building & Employability");
+  const capacityProjects = areaData ? areaData.projects : [];
+  const flagship = flagshipPrograms.find(f => f.area === "Capacity Building & Employability");
 
   return (
     <div className="priority-area-page capacity-page">
@@ -61,7 +66,87 @@ const CapacityPage = () => {
         </div>
       </section>
 
-      <section className="focus-areas-section" style={{ backgroundColor: '#ffffff', color: '#222' }}>
+      {/* Flagship Program Section */}
+      {flagship && (
+        <section className="featured-flagship-section" style={{ backgroundColor: '#fdfdfd', borderBottom: '1px solid #eee', padding: '80px 0' }}>
+          <div className="container">
+            <div className="flagship-container">
+              <div className="flagship-header" style={{ display: 'flex', alignItems: 'center', gap: '1.5rem', marginBottom: '3rem' }}>
+                <Rocket className="header-icon" style={{ color: accentColor, width: '40px', height: '40px' }} />
+                <div className="header-text">
+                  <span className="flagship-label" style={{ color: accentColor, fontWeight: 800, fontSize: '0.85rem', textTransform: 'uppercase', letterSpacing: '1px' }}>Flagship Program</span>
+                  <h2 className="flagship-title" style={{ fontFamily: 'var(--font-headings)', fontSize: '2.5rem', fontWeight: 900, color: '#111' }}>{flagship.title}</h2>
+                </div>
+              </div>
+              
+              <div className="flagship-card" style={{ 
+                display: 'grid', 
+                gridTemplateColumns: '1.2fr 0.8fr', 
+                gap: '3rem', 
+                backgroundColor: 'white', 
+                padding: '4rem', 
+                borderRadius: '30px', 
+                boxShadow: '0 20px 50px rgba(0,0,0,0.05)',
+                border: '1px solid #f0f0f0',
+                borderLeft: `8px solid ${accentColor}`
+              }}>
+                <div className="flagship-content">
+                  <p className="flagship-overview" style={{ fontSize: '1.2rem', lineHeight: '1.8', color: '#444', marginBottom: '2.5rem' }}>{flagship.overview}</p>
+                  
+                  <div className="flagship-focus">
+                    <h4 style={{ color: accentColor, fontFamily: 'var(--font-headings)', fontSize: '1.1rem', fontWeight: 800, marginBottom: '1.5rem', textTransform: 'uppercase' }}>Key Objectives:</h4>
+                    <ul className="focus-list" style={{ listStyle: 'none', padding: 0, display: 'grid', gap: '1rem' }}>
+                      {flagship.focusPoints.map((point, idx) => (
+                        <li key={idx} style={{ display: 'flex', alignItems: 'flex-start', gap: '1rem', fontSize: '1.1rem', color: '#333', fontWeight: 500 }}>
+                          <CheckCircle2 size={20} style={{ color: accentColor, marginTop: '2px', flexShrink: 0 }} />
+                          <span>{point}</span>
+                        </li>
+                      ))}
+                    </ul>
+                  </div>
+
+                  <div className="flagship-impact-stat" style={{ 
+                    marginTop: '3rem', 
+                    display: 'flex', 
+                    alignItems: 'center', 
+                    gap: '1.5rem', 
+                    padding: '1.5rem 2rem', 
+                    backgroundColor: `${accentColor}08`, 
+                    borderRadius: '15px',
+                    border: `1px dashed ${accentColor}44`
+                  }}>
+                    <BarChart3 size={28} style={{ color: accentColor }} />
+                    <p style={{ margin: 0, fontWeight: 700, fontSize: '1.1rem', color: '#111' }}>{flagship.impact}</p>
+                  </div>
+                </div>
+                
+                <div className="flagship-visual" style={{ display: 'flex', flexDirection: 'column', gap: '2rem' }}>
+                  <div className="visual-box" style={{ 
+                    flex: 1, 
+                    minHeight: '250px',
+                    background: `linear-gradient(135deg, ${accentColor}11, ${accentColor}33)`, 
+                    borderRadius: '20px',
+                    display: 'flex',
+                    alignItems: 'center',
+                    justifyContent: 'center'
+                  }}>
+                    <Zap size={120} style={{ color: accentColor, opacity: 0.8 }} />
+                  </div>
+                  <div className="tagline-box" style={{ 
+                    padding: '2rem', 
+                    borderLeft: `4px solid ${accentColor}`,
+                    backgroundColor: '#fafafa',
+                    borderRadius: '0 15px 15px 0'
+                  }}>
+                    <p style={{ margin: 0, fontStyle: 'italic', fontSize: '1.2rem', color: '#555', fontWeight: 500 }}>"{flagship.tagline}"</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+      )}
+      <section className="focus-areas-section">
         <div className="container">
           <div className="section-header centered">
             <TrendingUp className="section-icon" style={{ color: accentColor }} />
@@ -115,28 +200,8 @@ const CapacityPage = () => {
         </div>
       </section>
 
-      <section className="initiatives-section" style={{ backgroundColor: '#111', color: 'white' }}>
-        <div className="container">
-          <div className="section-header centered">
-            <Rocket className="section-icon" style={{ color: accentColor }} />
-            <h2 className="section-title">KEY PROJECTS & INITIATIVES</h2>
-          </div>
-          <div className="initiatives-grid">
-            {[
-              { title: 'Training Workshops', desc: 'Workshops and skill-based programs tailored to student needs across multiple disciplines.', features: ['Hands-on', 'Practical', 'Technical'] },
-              { title: 'ICT & AI Initiatives', desc: 'Promoting digital literacy and introducing students to emerging technologies for the digital economy.', features: ['Innovation', 'Tech-driven', 'Digital Skills'] },
-              { title: 'Leadership Development', desc: 'Leadership bootcamps and forums cultivating a generation of visionary and responsible leaders.', features: ['Mentorship', 'Networking', 'Impact'] },
-              { title: 'Entrepreneurship Platforms', desc: 'Supporting student-led startups and innovation challenges to foster self-reliance.', features: ['Startups', 'Creativity', 'Enterprise'] }
-            ].map((init, idx) => (
-              <motion.div key={idx} initial={{ opacity: 0, scale: 0.95 }} whileInView={{ opacity: 1, scale: 1 }} viewport={{ once: true }} className="initiative-card">
-                <h3 className="init-title">{init.title}</h3>
-                <p className="init-desc">{init.desc}</p>
-                <div className="init-tags">{init.features.map((f, fIdx) => <span key={fIdx} className="init-tag" style={{ color: accentColor }}>#{f}</span>)}</div>
-              </motion.div>
-            ))}
-          </div>
-        </div>
-      </section>
+      {/* Localized Project Explorer */}
+      <ProjectExplorer pillarIndex={3} hideTabs={true} />
 
       <section className="vision-section" style={{ backgroundColor: '#ffffff', color: '#222' }}>
         <div className="container">
@@ -247,10 +312,15 @@ const CapacityPage = () => {
         .cta-btn.outline { border: 2px solid white; color: white; }
         .cta-btn:hover { transform: translateY(-5px); box-shadow: 0 10px 20px rgba(0,0,0,0.2); }
         @media (max-width: 1024px) {
-          .section-grid, .initiatives-grid, .vision-grid { grid-template-columns: 1fr; }
+          .section-grid, .initiatives-grid, .vision-grid {
+            grid-template-columns: 1fr;
+          }
           .hero-title { font-size: 3rem; }
           .cta-links { flex-direction: column; }
           .vision-card { padding: 3rem 1.5rem; }
+          .flagship-card { grid-template-columns: 1fr !important; padding: 2rem !important; }
+          .flagship-visual { order: -1; }
+          .flagship-title { font-size: 2rem !important; }
           .overview-image-container.dual-carousel { 
             grid-template-columns: 1fr; 
             height: 200px; 

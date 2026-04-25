@@ -1,6 +1,8 @@
 import React, { useEffect } from 'react';
 import { motion } from 'framer-motion';
-import { Compass, Leaf, Target, Rocket, Globe, Wind, Sun, Droplets, CloudRain, ArrowRight, BookOpen, Shield } from 'lucide-react';
+import { Compass, Target, ArrowRight, Rocket, Shield, Leaf, Zap, Users, Globe } from 'lucide-react';
+import ProjectExplorer from '../../components/ProjectExplorer';
+import { flagshipPrograms, priorityProjects } from '../../data/programsData';
 
 const ClimatePage = () => {
   useEffect(() => {
@@ -8,6 +10,9 @@ const ClimatePage = () => {
   }, []);
 
   const accentColor = "#2E7D32"; // Green for Climate & Environment
+  const areaData = priorityProjects.find(a => a.area === "Climate Action & Sustainability");
+  const climateProjects = areaData ? areaData.projects : [];
+  const flagship = flagshipPrograms.find(f => f.area === "Climate Action & Sustainability");
 
   return (
     <div className="priority-area-page climate-page">
@@ -61,30 +66,133 @@ const ClimatePage = () => {
         </div>
       </section>
 
-      <section className="focus-areas-section" style={{ backgroundColor: '#ffffff', color: '#222' }}>
-        <div className="container">
-          <div className="section-header centered">
-            <Leaf className="section-icon" style={{ color: accentColor }} />
-            <h2 className="section-title">WHAT THIS AREA IS ABOUT</h2>
-            <p className="section-subtitle">Empowering students to understand and lead environmental solutions</p>
-          </div>
-          <div className="focus-grid">
-            {[
-              { icon: <Sun />, title: 'Climate Awareness', desc: 'Promoting understanding of climate change, its causes, and its impact on communities and education.' },
-              { icon: <Droplets />, title: 'Environmental Sustainability', desc: 'Encouraging responsible practices that protect natural resources and promote ecological balance.' },
-              { icon: <Shield />, title: 'Climate-Resilient Education', desc: 'Advocating for education systems that can withstand and adapt to environmental disruptions.' },
-              { icon: <Wind />, title: 'Student-Led Advocacy', desc: 'Mobilizing students to engage in climate action at local, national, and global levels.' },
-              { icon: <CloudRain />, title: 'Linking Climate to Peace', desc: 'Highlighting how environmental issues intersect with livelihoods, stability, and peace across Africa.' }
-            ].map((item, idx) => (
-              <motion.div key={idx} initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} transition={{ delay: idx * 0.1 }} viewport={{ once: true }} className="focus-card">
-                <div className="card-icon-wrap" style={{ color: accentColor }}>{item.icon}</div>
-                <h3 className="card-title">{item.title}</h3>
-                <p className="card-desc">{item.desc}</p>
+      {/* Continental Program Ecosystem (Bento Grid) */}
+      {flagship && (
+        <section className="continental-ecosystem-section" style={{ backgroundColor: '#fdfdfd', padding: '100px 0' }}>
+          <div className="container">
+            <div className="section-header" style={{ marginBottom: '4rem' }}>
+              <Rocket className="header-icon" style={{ color: accentColor, width: '40px', height: '40px' }} />
+              <div className="header-text">
+                <span className="section-tag" style={{ color: accentColor, fontWeight: 800, fontSize: '0.85rem', textTransform: 'uppercase', letterSpacing: '1px' }}>Continental Program Ecosystem</span>
+                <h2 className="section-title" style={{ fontFamily: 'var(--font-headings)', fontSize: '2.5rem', fontWeight: 900, color: '#111' }}>Key Initiatives</h2>
+              </div>
+            </div>
+
+            <div className="flagship-bento-grid">
+              {/* Card 01: The Flagship (Wide) */}
+              <motion.div 
+                className="flagship-card wide theme-forest"
+                initial={{ opacity: 0, scale: 0.95 }}
+                whileInView={{ opacity: 1, scale: 1 }}
+                viewport={{ once: true }}
+              >
+                <div className="wide-content">
+                  <span className="card-number" style={{ color: '#ffc107' }}>01. {flagship.title}</span>
+                  <p className="card-desc">{flagship.overview}</p>
+                  <ul style={{ listStyle: 'none', padding: 0, marginBottom: '2rem', display: 'flex', gap: '1.5rem', flexWrap: 'wrap' }}>
+                    {flagship.focusPoints.slice(0, 2).map((p, i) => (
+                      <li key={i} style={{ display: 'flex', alignItems: 'center', gap: '0.5rem', fontWeight: 700, fontSize: '0.9rem' }}>
+                        <div style={{ width: '8px', height: '8px', borderRadius: '50%', background: '#ffc107' }}></div>
+                        {p}
+                      </li>
+                    ))}
+                  </ul>
+                  <div className="card-footer">
+                    <a href="/contact" className="cta-btn" style={{ background: '#ffc107', color: '#1a3a3a', border: 'none', textDecoration: 'none', padding: '1rem 2rem', borderRadius: '50px', fontWeight: 800, display: 'inline-flex', alignItems: 'center', gap: '0.5rem' }}>
+                      Go Green <ArrowRight size={18} />
+                    </a>
+                  </div>
+                </div>
+                <div className="wide-visual" style={{ background: "url('/university_campus_drawing.png') center/cover no-repeat", position: 'relative' }}>
+                  <div style={{ position: 'absolute', top: '2rem', left: '2rem', zIndex: 5 }}>
+                     <Shield className="card-icon" style={{ color: '#ffc107', width: '40px', height: '40px' }} />
+                  </div>
+                  <div style={{ position: 'absolute', inset: 0, background: 'rgba(26, 58, 58, 0.6)' }}></div>
+                </div>
               </motion.div>
-            ))}
+
+              {/* Card 02: Green Ghana */}
+              <motion.div 
+                className="flagship-card theme-peach"
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+              >
+                <div>
+                  <Leaf className="card-icon" style={{ color: '#4a2a1a', marginBottom: '1.5rem' }} />
+                  <span className="card-number">02. Green Ghana Project</span>
+                  <p className="card-desc" style={{ fontSize: '0.95rem' }}>Mobilizing students for massive tree-planting and environmental restoration efforts across institutions.</p>
+                </div>
+                <div className="card-footer">
+                   <a href="#" className="explore-link" style={{ color: '#4a2a1a', textDecoration: 'none', fontWeight: 800, display: 'flex', alignItems: 'center', gap: '0.5rem' }}>
+                     Explore Strategy <ArrowRight size={16} />
+                   </a>
+                </div>
+              </motion.div>
+
+              {/* Card 03: Oxfam Advocacy */}
+              <motion.div 
+                className="flagship-card theme-cream"
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+              >
+                <div>
+                  <Zap className="card-icon" style={{ color: '#333', marginBottom: '1.5rem' }} />
+                  <span className="card-number">03. Climate Advocacy</span>
+                  <p className="card-desc" style={{ fontSize: '0.95rem' }}>Building capacity for climate awareness and advocacy through strategic global partnerships.</p>
+                  <span className="card-badge" style={{ background: '#e0e0e0', padding: '0.3rem 0.8rem', borderRadius: '50px', fontSize: '0.7rem', fontWeight: 800 }}>IMPACTFUL</span>
+                </div>
+                <div className="card-footer">
+                   <a href="#" className="explore-link" style={{ color: '#333', textDecoration: 'none', fontWeight: 800, display: 'flex', alignItems: 'center', gap: '0.5rem' }}>
+                     Explore Strategy <ArrowRight size={16} />
+                   </a>
+                </div>
+              </motion.div>
+
+              {/* Card 04: World Clean-up */}
+              <motion.div 
+                className="flagship-card theme-tan"
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+              >
+                <div>
+                  <Shield className="card-icon" style={{ color: '#4a3a2a', marginBottom: '1.5rem' }} />
+                  <span className="card-number">04. Clean-up Day</span>
+                  <p className="card-desc" style={{ fontSize: '0.95rem' }}>Tackling waste and pollution through student-led community action and circular economy programs.</p>
+                </div>
+                <div className="card-footer">
+                   <a href="#" className="explore-link" style={{ color: '#4a3a2a', textDecoration: 'none', fontWeight: 800, display: 'flex', alignItems: 'center', gap: '0.5rem' }}>
+                     Explore Strategy <ArrowRight size={16} />
+                   </a>
+                </div>
+              </motion.div>
+
+              {/* Card 05: Campus Campaigns */}
+              <motion.div 
+                className="flagship-card theme-peach"
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+              >
+                <div>
+                  <Users className="card-icon" style={{ color: '#4a2a1a', marginBottom: '1.5rem' }} />
+                  <span className="card-number">05. Campus Campaigns</span>
+                  <p className="card-desc" style={{ fontSize: '0.95rem' }}>Driving grassroots awareness and sustainability practices within educational institutions.</p>
+                </div>
+                <div className="card-footer">
+                   <a href="#" className="explore-link" style={{ color: '#4a2a1a', textDecoration: 'none', fontWeight: 800, display: 'flex', alignItems: 'center', gap: '0.5rem' }}>
+                     Explore Strategy <ArrowRight size={16} />
+                   </a>
+                </div>
+              </motion.div>
+            </div>
           </div>
-        </div>
-      </section>
+        </section>
+      )}
+      {/* Localized Project Explorer */}
+      <ProjectExplorer pillarIndex={5} hideTabs={true} />
 
       <section className="current-focus-section" style={{ backgroundColor: '#f9f9f9', borderTop: '1px solid #eee', borderBottom: '1px solid #eee', color: '#222' }}>
         <div className="container">
@@ -115,28 +223,7 @@ const ClimatePage = () => {
         </div>
       </section>
 
-      <section className="initiatives-section" style={{ backgroundColor: '#111', color: 'white' }}>
-        <div className="container">
-          <div className="section-header centered">
-            <Rocket className="section-icon" style={{ color: accentColor }} />
-            <h2 className="section-title">KEY PROJECTS & INITIATIVES</h2>
-          </div>
-          <div className="initiatives-grid">
-            {[
-              { title: 'Climate Awareness Campaigns', desc: 'Workshops and discussions across campuses to build a foundation of knowledge and action.', features: ['Education', 'Engagement', 'Awareness'] },
-              { title: 'Environmental Advocacy', desc: 'Promoting policies that support sustainability and engaging students in environmental decision-making.', features: ['Policy', 'Decision-making', 'Change'] },
-              { title: 'Climate & Peace Dialogues', desc: 'Exploring the impact of environmental issues on peace and livelihoods through collaborative solutions.', features: ['Security', 'Stability', 'Dialogue'] },
-              { title: 'Global Climate Platforms', desc: 'Ensuring African students contribute to global climate solutions through international representation.', features: ['Global Reach', 'Representation', 'Collaboration'] }
-            ].map((init, idx) => (
-              <motion.div key={idx} initial={{ opacity: 0, scale: 0.95 }} whileInView={{ opacity: 1, scale: 1 }} viewport={{ once: true }} className="initiative-card">
-                <h3 className="init-title">{init.title}</h3>
-                <p className="init-desc">{init.desc}</p>
-                <div className="init-tags">{init.features.map((f, fIdx) => <span key={fIdx} className="init-tag" style={{ color: accentColor }}>#{f}</span>)}</div>
-              </motion.div>
-            ))}
-          </div>
-        </div>
-      </section>
+      {/* Replaced by Project Explorer above */}
 
       <section className="vision-section" style={{ backgroundColor: '#ffffff', color: '#222' }}>
         <div className="container">
@@ -247,10 +334,15 @@ const ClimatePage = () => {
         .cta-btn.outline { border: 2px solid white; color: white; }
         .cta-btn:hover { transform: translateY(-5px); box-shadow: 0 10px 20px rgba(0,0,0,0.2); }
         @media (max-width: 1024px) {
-          .section-grid, .initiatives-grid, .vision-grid { grid-template-columns: 1fr; }
+          .section-grid, .initiatives-grid, .vision-grid {
+            grid-template-columns: 1fr;
+          }
           .hero-title { font-size: 3rem; }
           .cta-links { flex-direction: column; }
           .vision-card { padding: 3rem 1.5rem; }
+          .flagship-card { grid-template-columns: 1fr !important; padding: 2rem !important; }
+          .flagship-visual { order: -1; }
+          .flagship-title { font-size: 2rem !important; }
           .overview-image-container.dual-carousel { 
             grid-template-columns: 1fr; 
             height: 200px; 

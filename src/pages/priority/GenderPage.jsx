@@ -1,6 +1,8 @@
 import React, { useEffect } from 'react';
 import { motion } from 'framer-motion';
-import { Compass, Users, Target, Rocket, Globe, Heart, Shield, Scale, ArrowRight, UserPlus, Handshake, Landmark } from 'lucide-react';
+import { Compass, Users, Target, Rocket, Globe, Heart, Shield, Scale, ArrowRight, UserPlus, Handshake, Landmark, CheckCircle2, BarChart3, Cpu } from 'lucide-react';
+import ProjectExplorer from '../../components/ProjectExplorer';
+import { priorityProjects, flagshipPrograms } from '../../data/programsData';
 
 const GenderPage = () => {
   useEffect(() => {
@@ -8,6 +10,9 @@ const GenderPage = () => {
   }, []);
 
   const accentColor = "#FB8C00"; // Orange for Gender Equity
+  const areaData = priorityProjects.find(a => a.area === "Gender Equity & Social Inclusion");
+  const genderProjects = areaData ? areaData.projects : [];
+  const flagship = flagshipPrograms.find(f => f.area === "Gender Equity & Social Inclusion");
 
   return (
     <div className="priority-area-page gender-page">
@@ -91,6 +96,132 @@ const GenderPage = () => {
           </div>
         </div>
       </section>
+
+      {/* Continental Program Ecosystem (Bento Grid) */}
+      {flagship && (
+        <section className="continental-ecosystem-section" style={{ backgroundColor: '#fdfdfd', padding: '100px 0' }}>
+          <div className="container">
+            <div className="section-header" style={{ marginBottom: '4rem' }}>
+              <Rocket className="header-icon" style={{ color: accentColor, width: '40px', height: '40px' }} />
+              <div className="header-text">
+                <span className="section-tag" style={{ color: accentColor, fontWeight: 800, fontSize: '0.85rem', textTransform: 'uppercase', letterSpacing: '1px' }}>Continental Program Ecosystem</span>
+                <h2 className="section-title" style={{ fontFamily: 'var(--font-headings)', fontSize: '2.5rem', fontWeight: 900, color: '#111' }}>Key Initiatives</h2>
+              </div>
+            </div>
+
+            <div className="flagship-bento-grid">
+              {/* Card 01: The Flagship (Wide) */}
+              <motion.div 
+                className="flagship-card wide theme-forest"
+                initial={{ opacity: 0, scale: 0.95 }}
+                whileInView={{ opacity: 1, scale: 1 }}
+                viewport={{ once: true }}
+              >
+                <div className="wide-content">
+                  <span className="card-number" style={{ color: '#ffc107' }}>01. {flagship.title}</span>
+                  <p className="card-desc">{flagship.overview}</p>
+                  <ul style={{ listStyle: 'none', padding: 0, marginBottom: '2rem', display: 'flex', gap: '1.5rem', flexWrap: 'wrap' }}>
+                    {flagship.focusPoints.slice(0, 2).map((p, i) => (
+                      <li key={i} style={{ display: 'flex', alignItems: 'center', gap: '0.5rem', fontWeight: 700, fontSize: '0.9rem' }}>
+                        <div style={{ width: '8px', height: '8px', borderRadius: '50%', background: '#ffc107' }}></div>
+                        {p}
+                      </li>
+                    ))}
+                  </ul>
+                  <div className="card-footer">
+                    <a href="/contact" className="cta-btn" style={{ background: '#ffc107', color: '#1a3a3a', border: 'none', textDecoration: 'none', padding: '1rem 2rem', borderRadius: '50px', fontWeight: 800, display: 'inline-flex', alignItems: 'center', gap: '0.5rem' }}>
+                      Join Initiative <ArrowRight size={18} />
+                    </a>
+                  </div>
+                </div>
+                <div className="wide-visual" style={{ background: "url('/university_campus_drawing.png') center/cover no-repeat", position: 'relative' }}>
+                  <div style={{ position: 'absolute', top: '2rem', left: '2rem', zIndex: 5 }}>
+                     <Shield className="card-icon" style={{ color: '#ffc107', width: '40px', height: '40px' }} />
+                  </div>
+                  <div style={{ position: 'absolute', inset: 0, background: 'rgba(26, 58, 58, 0.6)' }}></div>
+                </div>
+              </motion.div>
+
+              {/* Card 02: STEM */}
+              <motion.div 
+                className="flagship-card theme-peach"
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+              >
+                <div>
+                  <Cpu className="card-icon" style={{ color: '#4a2a1a', marginBottom: '1.5rem' }} />
+                  <span className="card-number">02. {genderProjects[1]?.name || "Girls in STEM 2.0"}</span>
+                  <p className="card-desc" style={{ fontSize: '0.95rem' }}>{genderProjects[1]?.desc || "Empowering girls to lead in science, technology, and innovation through mentorship and training."}</p>
+                </div>
+                <div className="card-footer">
+                   <a href="#" className="explore-link" style={{ color: '#4a2a1a', textDecoration: 'none', fontWeight: 800, display: 'flex', alignItems: 'center', gap: '0.5rem' }}>
+                     Explore Strategy <ArrowRight size={16} />
+                   </a>
+                </div>
+              </motion.div>
+
+              {/* Card 03: Pad a Girl */}
+              <motion.div 
+                className="flagship-card theme-cream"
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+              >
+                <div>
+                  <Heart className="card-icon" style={{ color: '#333', marginBottom: '1.5rem' }} />
+                  <span className="card-number">03. {genderProjects[0]?.name || "Pad a Girl Initiative"}</span>
+                  <p className="card-desc" style={{ fontSize: '0.95rem' }}>{genderProjects[0]?.desc || "Eliminating period poverty and ensuring girls stay in school with dignity."}</p>
+                  <span className="card-badge" style={{ background: '#e0e0e0', padding: '0.3rem 0.8rem', borderRadius: '50px', fontSize: '0.7rem', fontWeight: 800 }}>ACTIVE</span>
+                </div>
+                <div className="card-footer">
+                   <a href="#" className="explore-link" style={{ color: '#333', textDecoration: 'none', fontWeight: 800, display: 'flex', alignItems: 'center', gap: '0.5rem' }}>
+                     Explore Strategy <ArrowRight size={16} />
+                   </a>
+                </div>
+              </motion.div>
+
+              {/* Card 04: SGBV */}
+              <motion.div 
+                className="flagship-card theme-tan"
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+              >
+                <div>
+                  <Shield className="card-icon" style={{ color: '#4a3a2a', marginBottom: '1.5rem' }} />
+                  <span className="card-number">04. {genderProjects[2]?.name || "SGBV Campus Tour"}</span>
+                  <p className="card-desc" style={{ fontSize: '0.95rem' }}>{genderProjects[2]?.desc || "Promoting safe and inclusive learning environments across campuses through awareness."}</p>
+                </div>
+                <div className="card-footer">
+                   <a href="#" className="explore-link" style={{ color: '#4a3a2a', textDecoration: 'none', fontWeight: 800, display: 'flex', alignItems: 'center', gap: '0.5rem' }}>
+                     Explore Strategy <ArrowRight size={16} />
+                   </a>
+                </div>
+              </motion.div>
+
+              {/* Card 05: Leadership */}
+              <motion.div 
+                className="flagship-card theme-peach"
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+              >
+                <div>
+                  <Users className="card-icon" style={{ color: '#4a2a1a', marginBottom: '1.5rem' }} />
+                  <span className="card-number">05. {genderProjects[4]?.name || "Girl-Child Empowerment"}</span>
+                  <p className="card-desc" style={{ fontSize: '0.95rem' }}>{genderProjects[4]?.desc || "Supporting girls’ access to education, mentorship, and leadership opportunities."}</p>
+                </div>
+                <div className="card-footer">
+                   <a href="#" className="explore-link" style={{ color: '#4a2a1a', textDecoration: 'none', fontWeight: 800, display: 'flex', alignItems: 'center', gap: '0.5rem' }}>
+                     Explore Strategy <ArrowRight size={16} />
+                   </a>
+                </div>
+              </motion.div>
+            </div>
+          </div>
+        </section>
+      )}
 
       {/* What this area is about */}
       <section className="focus-areas-section" style={{ backgroundColor: '#ffffff', color: '#222' }}>
@@ -207,23 +338,7 @@ const GenderPage = () => {
           </div>
 
           <div className="initiatives-grid">
-            {[
-              { 
-                title: '16 Days of Activism', 
-                desc: 'A continent-wide campaign engaging students to raise awareness on GBV and promote behavioral change.',
-                features: ['Advocacy', 'Student Engagement', 'Policy Action']
-              },
-              { 
-                title: 'Girl-Child Empowerment Programs', 
-                desc: 'Targeted outreach supporting girls in marginalized communities with education access and mentorship.',
-                features: ['Leadership', 'Outreach', 'Mentorship']
-              },
-              { 
-                title: 'Community Awareness Campaigns', 
-                desc: 'Working at the grassroots level to educate communities on rights, equality, and social justice.',
-                features: ['Grassroots', 'Civil Society', 'Rights']
-              }
-            ].map((init, idx) => (
+            {genderProjects.map((init, idx) => (
               <motion.div 
                 key={idx}
                 initial={{ opacity: 0, scale: 0.95 }}
@@ -231,10 +346,11 @@ const GenderPage = () => {
                 viewport={{ once: true }}
                 className="initiative-card"
               >
-                <h3 className="init-title">{init.title}</h3>
+                <h3 className="init-title">{init.name}</h3>
                 <p className="init-desc">{init.desc}</p>
                 <div className="init-tags">
-                  {init.features.map((f, fIdx) => <span key={fIdx} className="init-tag" style={{ color: accentColor }}>#{f}</span>)}
+                  <span className="init-tag" style={{ color: accentColor }}>#GenderEquity</span>
+                  <span className="init-tag" style={{ color: accentColor }}>#Inclusion</span>
                 </div>
               </motion.div>
             ))}
@@ -355,8 +471,71 @@ const GenderPage = () => {
         .cta-btn:not(.outline) { background: white; color: #000; }
         .cta-btn.outline { border: 2px solid white; color: white; }
         .cta-btn:hover { transform: translateY(-5px); box-shadow: 0 10px 20px rgba(0,0,0,0.2); }
+        
+        /* Bento Grid */
+        .flagship-bento-grid {
+          display: grid;
+          grid-template-columns: repeat(3, 1fr);
+          grid-auto-rows: minmax(350px, auto);
+          gap: 2rem;
+        }
+
+        .flagship-card {
+          background: white;
+          border-radius: 30px;
+          padding: 3rem;
+          position: relative;
+          overflow: hidden;
+          transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+          display: flex;
+          flex-direction: column;
+          justify-content: space-between;
+          border: 1px solid rgba(0,0,0,0.05);
+          text-decoration: none;
+        }
+
+        .flagship-card.wide {
+          grid-column: span 2;
+          display: grid;
+          grid-template-columns: 1fr 1fr;
+          padding: 0;
+        }
+
+        .wide-content {
+          padding: 4rem;
+          display: flex;
+          flex-direction: column;
+          justify-content: center;
+        }
+
+        .card-number {
+          font-family: var(--font-headings);
+          font-size: 1.5rem;
+          font-weight: 900;
+          margin-bottom: 1rem;
+          display: block;
+        }
+
+        .card-desc {
+          font-size: 1rem;
+          line-height: 1.6;
+          opacity: 0.8;
+          margin-bottom: 2rem;
+        }
+
+        .theme-forest { background: #1a3a3a; color: white; }
+        .theme-forest .card-desc { opacity: 0.7; }
+        .theme-peach { background: #fde2d2; color: #4a2a1a; }
+        .theme-cream { background: #f9f5f0; color: #333; }
+        .theme-tan { background: #f5e6d3; color: #4a3a2a; }
+
         @media (max-width: 1024px) {
-          .section-grid, .initiatives-grid, .vision-grid { grid-template-columns: 1fr; }
+          .flagship-bento-grid { grid-template-columns: 1fr; }
+          .flagship-card.wide { grid-column: span 1; grid-template-columns: 1fr; }
+          .wide-visual { height: 200px; }
+          .section-grid, .initiatives-grid, .vision-grid {
+            grid-template-columns: 1fr;
+          }
           .hero-title { font-size: 3rem; }
           .cta-links { flex-direction: column; }
           .vision-card { padding: 3rem 1.5rem; }

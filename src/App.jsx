@@ -3,7 +3,6 @@ import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import TopBar from './components/TopBar';
 import Navbar from './components/Navbar';
 import Footer from './components/Footer';
-import WhatsAppButton from './components/WhatsAppButton';
 import Home from './pages/Home';
 import HistoryPage from './pages/HistoryPage';
 import MembershipPage from './pages/MembershipPage';
@@ -21,6 +20,7 @@ import NewsPage from './pages/NewsPage';
 import EventsPage from './pages/EventsPage';
 import ReportsPage from './pages/ReportsPage';
 import ContentDetailPage from './pages/ContentDetailPage';
+import ProgramsPage from './pages/ProgramsPage';
 import EducationPage from './pages/priority/EducationPage';
 import GenderPage from './pages/priority/GenderPage';
 import DemocracyPage from './pages/priority/DemocracyPage';
@@ -29,6 +29,7 @@ import MigrationPage from './pages/priority/MigrationPage';
 import ClimatePage from './pages/priority/ClimatePage';
 import CulturePage from './pages/priority/CulturePage';
 import LanguageToggle from './components/LanguageToggle';
+import SmartAssistant from './components/SmartAssistant';
 
 function App() {
   return (
@@ -39,6 +40,7 @@ function App() {
         
         <Routes>
           <Route path="/" element={<Home />} />
+          <Route path="/programs" element={<ProgramsPage />} />
           <Route path="/history" element={<HistoryPage />} />
           <Route path="/membership" element={<MembershipPage />} />
           <Route path="/partners" element={<PartnersPage />} />
@@ -69,8 +71,8 @@ function App() {
         </Routes>
         
         <Footer />
-        <WhatsAppButton />
         <LanguageToggle />
+        <SmartAssistant />
       </div>
     </BrowserRouter>
   );
