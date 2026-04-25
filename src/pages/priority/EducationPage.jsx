@@ -46,7 +46,7 @@ const EducationPage = () => {
       </section>
 
       {/* Overview Section */}
-      <section className="overview-section">
+      <section className="overview-section" style={{ backgroundColor: '#ffffff', color: '#222' }}>
         <div className="container">
           <div className="section-grid">
             <motion.div 
@@ -120,7 +120,7 @@ const EducationPage = () => {
       </section>
 
       {/* Current Focus Section (🎯 CURRENT FOCUS) */}
-      <section className="current-focus-section" style={{ backgroundColor: '#f9f9f9', borderTop: '1px solid #eee', borderBottom: '1px solid #eee' }}>
+      <section className="current-focus-section" style={{ backgroundColor: '#f9f9f9', borderTop: '1px solid #eee', borderBottom: '1px solid #eee', color: '#222' }}>
         <div className="container">
           <div className="section-header">
             <Target className="section-icon" style={{ color: accentColor }} />
@@ -236,7 +236,7 @@ const EducationPage = () => {
       </section>
 
       {/* Vision & Impact Statement */}
-      <section className="vision-section">
+      <section className="vision-section" style={{ backgroundColor: '#ffffff', color: '#222' }}>
         <div className="container">
           <div className="vision-card" style={{ borderColor: accentColor }}>
             <div className="section-header centered">
@@ -357,10 +357,17 @@ const EducationPage = () => {
           color: #111;
         }
 
+        .overview-section .section-title,
+        .focus-areas-section .section-title,
+        .current-focus-section .section-title,
+        .vision-section .section-title {
+          color: #111 !important;
+        }
+
         section[style*="background-color: #111"] .section-title,
         section[style*="background-color: #111"] .section-subtitle,
         .initiatives-section .section-title {
-          color: white;
+          color: white !important;
         }
 
         .section-subtitle {

@@ -22,7 +22,7 @@ const CulturePage = () => {
         </div>
       </section>
 
-      <section className="overview-section">
+      <section className="overview-section" style={{ backgroundColor: '#ffffff', color: '#222' }}>
         <div className="container">
           <div className="section-grid">
             <motion.div initial={{ opacity: 0, x: -30 }} whileInView={{ opacity: 1, x: 0 }} viewport={{ once: true }} className="overview-text">
@@ -44,7 +44,7 @@ const CulturePage = () => {
         </div>
       </section>
 
-      <section className="focus-areas-section" style={{ backgroundColor: '#ffffff' }}>
+      <section className="focus-areas-section" style={{ backgroundColor: '#ffffff', color: '#222' }}>
         <div className="container">
           <div className="section-header centered">
             <Palette className="section-icon" style={{ color: accentColor }} />
@@ -69,7 +69,7 @@ const CulturePage = () => {
         </div>
       </section>
 
-      <section className="current-focus-section" style={{ backgroundColor: '#f9f9f9', borderTop: '1px solid #eee', borderBottom: '1px solid #eee' }}>
+      <section className="current-focus-section" style={{ backgroundColor: '#f9f9f9', borderTop: '1px solid #eee', borderBottom: '1px solid #eee', color: '#222' }}>
         <div className="container">
           <div className="section-header">
             <Target className="section-icon" style={{ color: accentColor }} />
@@ -121,7 +121,7 @@ const CulturePage = () => {
         </div>
       </section>
 
-      <section className="vision-section">
+      <section className="vision-section" style={{ backgroundColor: '#ffffff', color: '#222' }}>
         <div className="container">
           <div className="vision-card" style={{ borderColor: accentColor }}>
             <div className="section-header centered">
@@ -168,8 +168,8 @@ const CulturePage = () => {
         .section-header.centered { flex-direction: column; text-align: center; gap: 0.5rem; }
         .section-icon { width: 40px; height: 40px; }
         .section-title { font-family: var(--font-headings); font-size: 2.25rem; font-weight: 900; color: #111; }
-        section[style*="background-color: #111"] .section-title,
-        .initiatives-section .section-title { color: white; }
+        .overview-section .section-title, .focus-areas-section .section-title, .current-focus-section .section-title, .vision-section .section-title { color: #111 !important; }
+        section[style*="background-color: #111"] .section-title, .initiatives-section .section-title { color: white !important; }
         .section-subtitle { font-size: 1.1rem; color: #555; margin-top: 0.5rem; }
         section[style*="background-color: #111"] .section-subtitle,
         .initiatives-section .section-subtitle { color: rgba(255, 255, 255, 0.8); }
