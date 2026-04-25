@@ -571,10 +571,34 @@ const ReportsPage = () => {
         }
 
         @media (max-width: 768px) {
-          .page-title { font-size: 2.5rem; }
+          .page-title { font-size: 2.2rem; }
+          .page-subtitle { font-size: 1rem; }
+          .reports-hero { padding: 200px 0 100px; }
           .filters-grid { grid-template-columns: 1fr; }
-          .filter-card { padding: 1.5rem; }
+          .filter-card { 
+            padding: 1.5rem; 
+            margin: 0 1rem;
+            width: auto;
+            overflow: hidden;
+          }
+          .filter-group select {
+            width: 100%;
+            max-width: 100%;
+            box-sizing: border-box;
+          }
+          .search-box input {
+            box-sizing: border-box;
+          }
           .reports-grid { grid-template-columns: 1fr; }
+          .report-card { 
+            flex-direction: column; 
+            padding: 1.5rem;
+            gap: 1rem;
+          }
+          .report-icon {
+            width: 60px;
+            height: 60px;
+          }
         }
       `}} />
     </div>
