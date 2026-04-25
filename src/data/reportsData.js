@@ -536,6 +536,196 @@ export const reportsData = [
     description: 'Archive of AASU\'s activities and reports from 2017.',
     fileUrl: '/2017 annual report.pdf',
     thumbnail: '/report-thumb-placeholder.jpg'
+  },
+  {
+    id: 'report-visit-kapaia-2025',
+    title: 'Visit of Ms. Augusta Maravilha Kapaia',
+    type: DOCUMENT_TYPES.PROGRAM_REPORT,
+    year: '2025',
+    priorityArea: 'General',
+    description: 'Official report on the visit of Ms. Augusta Maravilha Kapaia.',
+    fileUrl: '/VISIT OF MS. AUGUSTA MARAVILHA KAPAIA.pdf',
+    thumbnail: '/report-thumb-placeholder.jpg'
+  },
+  {
+    id: 'other-travel-advisory-ghana-2026',
+    title: 'Travel Advisory - UB Trip to Ghana',
+    type: DOCUMENT_TYPES.OTHER,
+    year: '2026',
+    priorityArea: 'General',
+    description: 'Travel advisory information for the UB Trip to Ghana in 2026.',
+    fileUrl: '/Travel_Advisory_-_UB_Trip_to_Ghana_(2026).pdf',
+    thumbnail: '/report-thumb-placeholder.jpg'
+  },
+  {
+    id: 'other-ub-trip-ghana-2026',
+    title: 'UB Trip to Ghana',
+    type: DOCUMENT_TYPES.OTHER,
+    year: '2026',
+    priorityArea: 'General',
+    description: 'Information regarding the UB Trip to Ghana in 2026.',
+    fileUrl: '/UB Trip to Ghana - 2026.pdf',
+    thumbnail: '/report-thumb-placeholder.jpg'
+  },
+  {
+    id: 'other-aasu-workplan-2021',
+    title: 'AASU Workplan',
+    type: DOCUMENT_TYPES.OTHER,
+    year: '2021',
+    priorityArea: 'General',
+    description: 'Official AASU Workplan for the 2021 period.',
+    fileUrl: '/AASU WORKPLAN.pdf',
+    thumbnail: '/report-thumb-placeholder.jpg'
+  },
+  {
+    id: 'other-workplan-2026',
+    title: '2026 Work Plan',
+    type: DOCUMENT_TYPES.OTHER,
+    year: '2026',
+    priorityArea: 'General',
+    description: 'Operational work plan for the year 2026.',
+    fileUrl: '/2026 WORK PLAN.pdf',
+    thumbnail: '/report-thumb-placeholder.jpg'
+  },
+  {
+    id: 'other-workplan-2025',
+    title: 'Work Plan 2025',
+    type: DOCUMENT_TYPES.OTHER,
+    year: '2025',
+    priorityArea: 'General',
+    description: 'Operational work plan for the year 2025.',
+    fileUrl: '/WORK PLAN 2025.pdf',
+    thumbnail: '/report-thumb-placeholder.jpg'
+  },
+  {
+    id: 'report-impact-2023',
+    title: 'Impact Report AASU 2023',
+    type: DOCUMENT_TYPES.PROGRAM_REPORT,
+    year: '2023',
+    priorityArea: 'General',
+    description: 'Comprehensive impact report detailing AASU\'s achievements in 2023.',
+    fileUrl: '/Impact Report AASU 2023.pdf',
+    thumbnail: '/report-thumb-placeholder.jpg'
+  },
+  {
+    id: 'report-impact-2024',
+    title: 'AASU Impact Report 2024',
+    type: DOCUMENT_TYPES.PROGRAM_REPORT,
+    year: '2024',
+    priorityArea: 'General',
+    description: 'Comprehensive impact report detailing AASU\'s achievements in 2024.',
+    fileUrl: '/AASU IMPACT REPORT 2024.pdf',
+    thumbnail: '/report-thumb-placeholder.jpg'
+  },
+  {
+    id: 'report-congress-2026',
+    title: '2026 Congress Report',
+    type: DOCUMENT_TYPES.PROGRAM_REPORT,
+    year: '2026',
+    priorityArea: 'Democracy, Good Governance, Peace & Security',
+    description: 'Official report on the 2026 AASU Congress proceedings.',
+    fileUrl: '/CONGRESS REPORT.pdf',
+    thumbnail: '/report-thumb-placeholder.jpg'
+  },
+  {
+    id: 'report-annual-2023',
+    title: 'AASU Annual Report 2023',
+    type: DOCUMENT_TYPES.ANNUAL_REPORT,
+    year: '2023',
+    priorityArea: 'General',
+    description: 'Comprehensive annual report for the year 2023.',
+    fileUrl: '/Annual REPORT 2023.pdf',
+    thumbnail: '/report-thumb-placeholder.jpg'
+  },
+  {
+    id: 'report-green-skills-2024',
+    title: 'Green skills green jobs report',
+    type: DOCUMENT_TYPES.PROGRAM_REPORT,
+    year: '2024',
+    priorityArea: 'Capacity Building, Skills Development & Employability',
+    description: 'Report on green skills and employment opportunities for African youth.',
+    fileUrl: '/REPORT_GREEN SKILLS GREEN JOBS.pdf',
+    thumbnail: '/report-thumb-placeholder.jpg'
+  },
+  {
+    id: 'report-cultural-day-2024',
+    title: 'AASU cultural day report',
+    type: DOCUMENT_TYPES.PROGRAM_REPORT,
+    year: '2024',
+    priorityArea: 'Pan-Africanism & African Culture',
+    description: 'Report on the AASU Cultural Day celebrations.',
+    fileUrl: '/cultural day report.pdf',
+    thumbnail: '/report-thumb-placeholder.jpg'
+  },
+  {
+    id: 'report-tree-planting-2024',
+    title: 'AASU tree planting report',
+    type: DOCUMENT_TYPES.PROGRAM_REPORT,
+    year: '2024',
+    priorityArea: 'Climate Action and Environmental Sustainability',
+    description: 'Progress report on AASU\'s continent-wide tree planting initiatives in 2024.',
+    fileUrl: '/tree planting report.pdf',
+    thumbnail: '/report-thumb-placeholder.jpg'
+  },
+  {
+    id: 'report-world-cleanup-2024',
+    title: 'World clean up report',
+    type: DOCUMENT_TYPES.PROGRAM_REPORT,
+    year: '2024',
+    priorityArea: 'Climate Action and Environmental Sustainability',
+    description: 'Summary of AASU\'s participation and impact in World Cleanup Day activities.',
+    fileUrl: '/world clean up report.pdf',
+    thumbnail: '/report-thumb-placeholder.jpg'
+  },
+  {
+    id: 'report-breast-cancer-screening-2024',
+    title: 'Report on breast cancer screening and awareness talk',
+    type: DOCUMENT_TYPES.PROGRAM_REPORT,
+    year: '2024',
+    priorityArea: 'Gender Equity & Social Inclusion',
+    description: 'Detailed report on the breast cancer screening and awareness session organized by AASU.',
+    fileUrl: '/Report-BREAST CANCER.pdf',
+    thumbnail: '/report-thumb-placeholder.jpg'
+  },
+  {
+    id: 'report-girl-child-day-2024',
+    title: 'Report on international day of the girl child',
+    type: DOCUMENT_TYPES.PROGRAM_REPORT,
+    year: '2024',
+    priorityArea: 'Gender Equity & Social Inclusion',
+    description: 'Outcomes and highlights from the International Day of the Girl Child commemoration.',
+    fileUrl: '/Report on intenational day of the girl child.pdf',
+    thumbnail: '/report-thumb-placeholder.jpg'
+  },
+  {
+    id: 'report-financial-literacy-2024',
+    title: 'Report on the financial literacy conference',
+    type: DOCUMENT_TYPES.PROGRAM_REPORT,
+    year: '2024',
+    priorityArea: 'Capacity Building, Skills Development & Employability',
+    description: 'Report summarizing the discussions and outcomes of the Financial Literacy Conference.',
+    fileUrl: '/report on the FINANCIAL LITERACY CONFERENCE.pdf',
+    thumbnail: '/report-thumb-placeholder.jpg'
+  },
+  {
+    id: 'report-green-ghana-day-2024',
+    title: 'Green Ghana Day Report',
+    type: DOCUMENT_TYPES.PROGRAM_REPORT,
+    year: '2024',
+    priorityArea: 'Climate Action and Environmental Sustainability',
+    description: 'Report on AASU\'s involvement in Green Ghana Day activities.',
+    fileUrl: '/Green Ghana Day, Report.pdf',
+    thumbnail: '/report-thumb-placeholder.jpg'
+  },
+  {
+    id: 'report-au-summit-engagement-2024',
+    title: 'AASU engagement at the AU heads of state summit',
+    type: DOCUMENT_TYPES.PROGRAM_REPORT,
+    year: '2024',
+    priorityArea: 'Democracy, Good Governance, Peace & Security',
+    description: 'Report on AASU\'s advocacy and engagement during the African Union Heads of State Summit.',
+    fileUrl: '/AASU ENGAGEMENT AT THE AU HEADS OF STATE SUMMIT.pdf',
+    thumbnail: '/report-thumb-placeholder.jpg'
   }
 ];
 
