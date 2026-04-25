@@ -186,10 +186,10 @@ const ContactPage = () => {
 
         .contact-hero {
           background: linear-gradient(90deg, #020202 0%, rgba(2, 2, 2, 0.9) 35%, rgba(2, 2, 2, 0.4) 100%), url('/header-1.jpg') center/cover no-repeat;
-          min-height: 50vh;
+          min-height: 60vh;
           display: flex;
           align-items: center;
-          padding-top: 80px; 
+          padding-top: 240px; 
         }
 
         .h-full {

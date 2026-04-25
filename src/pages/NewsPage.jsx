@@ -1,14 +1,19 @@
 import React, { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Link } from 'react-router-dom';
-import { Filter, RotateCcw, ChevronRight, Calendar } from 'lucide-react';
+import { Filter, RotateCcw, ChevronRight, ChevronLeft, Calendar } from 'lucide-react';
 import { newsEventsData, CONTENT_TYPES } from '../data/newsEventsData';
 
 const NewsPage = () => {
-  const [filteredData, setFilteredData] = useState(newsEventsData);
+  const sortedData = [...newsEventsData].sort((a, b) => new Date(b.date) - new Date(a.date));
+  const [filteredData, setFilteredData] = useState(sortedData);
   const [activeTheme, setActiveTheme] = useState('All');
   const [activeType, setActiveType] = useState('All');
   const [activeRegion, setActiveRegion] = useState('All');
+  
+  // Pagination State
+  const [currentPage, setCurrentPage] = useState(1);
+  const itemsPerPage = 9;
 
   useEffect(() => {
     window.scrollTo(0, 0);
@@ -19,21 +24,33 @@ const NewsPage = () => {
   const regions = ['All', 'North Africa', 'East Africa', 'West Africa', 'Central Africa', 'Southern Africa', 'International'];
 
   const handleApply = () => {
-    let result = newsEventsData;
+    let result = sortedData;
     if (activeTheme !== 'All') result = result.filter(item => item.category === activeTheme);
     if (activeType !== 'All') result = result.filter(item => item.type === activeType);
-    // Note: Regions not fully mapped in data yet, using as visual filter
     if (activeRegion !== 'All' && activeRegion !== 'International') {
         // Placeholder filter logic for region
     }
     setFilteredData(result);
+    setCurrentPage(1); // Reset to first page on filter
   };
 
   const handleReset = () => {
     setActiveTheme('All');
     setActiveType('All');
     setActiveRegion('All');
-    setFilteredData(newsEventsData);
+    setFilteredData(sortedData);
+    setCurrentPage(1);
+  };
+
+  // Pagination Logic
+  const indexOfLastItem = currentPage * itemsPerPage;
+  const indexOfFirstItem = indexOfLastItem - itemsPerPage;
+  const currentItems = filteredData.slice(indexOfFirstItem, indexOfLastItem);
+  const totalPages = Math.ceil(filteredData.length / itemsPerPage);
+
+  const paginate = (pageNumber) => {
+    setCurrentPage(pageNumber);
+    window.scrollTo({ top: 400, behavior: 'smooth' });
   };
 
   return (
@@ -84,7 +101,7 @@ const NewsPage = () => {
         {/* Content Grid */}
         <div className="news-results-grid">
           <AnimatePresence mode='popLayout'>
-            {filteredData.map((item, idx) => (
+            {currentItems.map((item, idx) => (
               <Link 
                 key={item.id}
                 to={item.redirectUrl || `/news/${item.id}`}
@@ -95,7 +112,7 @@ const NewsPage = () => {
                   initial={{ opacity: 0, scale: 0.9 }}
                   animate={{ opacity: 1, scale: 1 }}
                   exit={{ opacity: 0, scale: 0.9 }}
-                  transition={{ duration: 0.3, delay: idx * 0.05 }}
+                  transition={{ duration: 0.3, delay: (idx % itemsPerPage) * 0.05 }}
                   className="news-item-card"
                 >
                   <div className="card-media">
@@ -121,6 +138,37 @@ const NewsPage = () => {
           </AnimatePresence>
         </div>
 
+        {/* Pagination UI */}
+        {totalPages > 1 && (
+          <div className="pagination">
+            <button 
+              onClick={() => paginate(currentPage - 1)} 
+              disabled={currentPage === 1}
+              className="page-btn prev-next"
+            >
+              <ChevronLeft size={20} />
+            </button>
+            
+            {Array.from({ length: totalPages }, (_, i) => i + 1).map(number => (
+              <button
+                key={number}
+                onClick={() => paginate(number)}
+                className={`page-btn ${currentPage === number ? 'active' : ''}`}
+              >
+                {number}
+              </button>
+            ))}
+
+            <button 
+              onClick={() => paginate(currentPage + 1)} 
+              disabled={currentPage === totalPages}
+              className="page-btn prev-next"
+            >
+              <ChevronRight size={20} />
+            </button>
+          </div>
+        )}
+
         {filteredData.length === 0 && (
           <div className="no-results">
             <p>No content matches your selected filters.</p>
@@ -139,7 +187,7 @@ const NewsPage = () => {
         }
 
         .news-header-spacer {
-          height: 380px;
+          height: 420px;
           background: #111;
           display: flex;
           align-items: flex-end;
@@ -388,6 +436,51 @@ const NewsPage = () => {
           .news-results-grid { grid-template-columns: 1fr; }
           .filters-wrapper { grid-template-columns: 1fr; }
           .filter-actions { grid-column: span 1; flex-direction: column; }
+        }
+
+        /* ── PAGINATION ─────────────────────── */
+        .pagination {
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          gap: 0.5rem;
+          margin-top: 5rem;
+        }
+
+        .page-btn {
+          width: 45px;
+          height: 45px;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          border: 1px solid #ddd;
+          background: white;
+          color: #333;
+          font-weight: 700;
+          border-radius: 8px;
+          cursor: pointer;
+          transition: all 0.3s ease;
+        }
+
+        .page-btn:hover:not(:disabled) {
+          border-color: var(--primary-red);
+          color: var(--primary-red);
+          transform: translateY(-2px);
+        }
+
+        .page-btn.active {
+          background: var(--primary-red);
+          color: white;
+          border-color: var(--primary-red);
+        }
+
+        .page-btn:disabled {
+          opacity: 0.4;
+          cursor: not-allowed;
+        }
+
+        .page-btn.prev-next {
+          background: #f8fafc;
         }
       `}} />
     </div>

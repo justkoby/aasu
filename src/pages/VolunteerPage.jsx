@@ -411,7 +411,7 @@ const VolunteerPage = () => {
         .vol-hero-content {
           position: relative;
           z-index: 2;
-          padding-top: 100px;
+          padding-top: 240px;
           padding-bottom: 60px;
         }
 

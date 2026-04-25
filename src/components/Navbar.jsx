@@ -72,8 +72,8 @@ const Navbar = () => {
             ]
           }
         ],
-        image: '/education-768x180.webp',
-        imageLabel: 'SUMMIT 2019'
+        image: '/IMG_1048 copy 2.jpg',
+        imageLabel: 'AASU Story Book Bank Project'
       }
     },
     { 
@@ -86,8 +86,8 @@ const Navbar = () => {
             links: ['Vacancies', 'Volunteer with us', 'Internship Opportunities', 'Careers in AASU', 'Become a Member']
           }
         ],
-        image: '/gender-768x180.webp',
-        imageLabel: 'CAMEROON 2018'
+        image: '/kids-sdg.jpg',
+        imageLabel: ''
       }
     },
     { 
@@ -100,8 +100,8 @@ const Navbar = () => {
             links: ['News', 'Upcoming Events', 'Gallery']
           }
         ],
-        image: '/news-1.png',
-        imageLabel: 'OOPL 2019'
+        image: '/donation-laptops.jpg',
+        imageLabel: ''
       }
     },
     { 
@@ -115,15 +115,15 @@ const Navbar = () => {
           },
           {
             title: 'Congress Resolutions',
-            links: ['11th Congress Resolutions', '12th Congress Resolutions']
+            links: ['11th Congress Resolutions', '12th Congress Resolutions', '13th Congress Resolutions (EN)', '13th Congress Resolutions (FR)']
           },
           {
             title: 'Publications',
             links: ['Reports', 'Policy Papers', 'Newsletters', 'Press Statements', 'Archive']
           }
         ],
-        image: '/capacity building-768x180.webp',
-        imageLabel: 'OOPL 2019'
+        image: '/women.jpg',
+        imageLabel: ''
       }
     },
     { label: 'STUDENTS VOICES', hasDropdown: false },
@@ -229,11 +229,16 @@ const Navbar = () => {
                                       if (link === 'News') routePath = '/news';
                                       if (link === 'Upcoming Events') routePath = '/events';
                                       if (link === 'Press Statements') routePath = '/news';
+                                      if (link === 'Reports') routePath = '/reports';
+                                      if (link === '13th Congress Resolutions (EN)') routePath = '/13th Congress Resolutions.pdf';
+                                      if (link === '13th Congress Resolutions (FR)') routePath = '/13th Congress Resolutions(FR).pdf';
 
                                       return (
                                         <li key={lIdx}>
-                                          {routePath.startsWith('mailto:') ? (
-                                            <a href={routePath}>{link}</a>
+                                          {routePath.startsWith('mailto:') || routePath.endsWith('.pdf') ? (
+                                            <a href={routePath} target={routePath.endsWith('.pdf') ? "_blank" : undefined} rel={routePath.endsWith('.pdf') ? "noopener noreferrer" : undefined}>
+                                              {link}
+                                            </a>
                                           ) : (
                                             <Link to={routePath}>{link}</Link>
                                           )}

@@ -251,7 +251,7 @@ const TechnicalTeamPage = () => {
           min-height: 52vh;
           display: flex;
           align-items: center;
-          padding: 140px 0 80px;
+          padding: 240px 0 100px;
         }
 
         .tt-hero-title {

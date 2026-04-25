@@ -11,6 +11,7 @@ const CATEGORY_COLORS = {
   'Membership': '#7C3AED',
   'Contact': '#cb3631',
   'Resources': '#0891B2',
+  'News & Events': '#E11D48',
 };
 
 const SearchPage = () => {

@@ -343,7 +343,7 @@ const PartnersPage = () => {
 
         .partners-hero {
           background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url('/history-bg.png') center/cover no-repeat;
-          height: 450px;
+          height: 550px;
           border-bottom: 5px solid var(--primary-red);
         }
 

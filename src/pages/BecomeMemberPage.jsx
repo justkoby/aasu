@@ -488,7 +488,7 @@ const BecomeMemberPage = () => {
         .bm-hero-content {
           position: relative;
           z-index: 2;
-          padding-top: 120px;
+          padding-top: 240px;
           padding-bottom: 80px;
         }
 

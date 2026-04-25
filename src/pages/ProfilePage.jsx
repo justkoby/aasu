@@ -304,7 +304,7 @@ const ProfilePage = () => {
           min-height: 55vh;
           display: flex;
           align-items: center;
-          padding-top: 80px;
+          padding-top: 240px;
         }
 
         .h-full {

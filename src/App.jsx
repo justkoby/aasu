@@ -19,6 +19,7 @@ import BecomeMemberPage from './pages/BecomeMemberPage';
 import InternshipPage from './pages/InternshipPage';
 import NewsPage from './pages/NewsPage';
 import EventsPage from './pages/EventsPage';
+import ReportsPage from './pages/ReportsPage';
 import ContentDetailPage from './pages/ContentDetailPage';
 
 function App() {
@@ -47,6 +48,7 @@ function App() {
           <Route path="/news/:id" element={<ContentDetailPage />} />
           <Route path="/events" element={<EventsPage />} />
           <Route path="/events/:id" element={<ContentDetailPage />} />
+          <Route path="/reports" element={<ReportsPage />} />
           {/* Catch-all */}
           <Route path="*" element={<div style={{ minHeight: '60vh', display: 'flex', alignItems: 'center', justifyContent: 'center', fontSize: '2rem' }}>404 - Page Not Found</div>} />
         </Routes>

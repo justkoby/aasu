@@ -83,12 +83,39 @@ const ContentDetailPage = () => {
             )}
           </motion.div>
 
+          {/* Additional Images Gallery */}
+          {content.images && content.images.length > 0 && (
+            <div className="additional-images-grid">
+              {content.images.map((img, idx) => (
+                <motion.div 
+                  key={idx}
+                  className="gallery-img-wrapper"
+                  initial={{ opacity: 0, y: 20 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true }}
+                  transition={{ delay: idx * 0.1 }}
+                >
+                  <img src={img} alt={`${content.title} gallery ${idx + 1}`} />
+                </motion.div>
+              ))}
+            </div>
+          )}
+
           <div className="article-body">
-             <div className="article-main-text">
+              <div className="article-main-text">
                 {content.description?.split('\n').map((para, i) => (
                   para.trim() ? <p key={i}>{para}</p> : <br key={i} />
                 ))}
-             </div>
+
+                {/* Share Box for News (Non-Event) */}
+                {content.type !== 'Event' && (
+                  <div className="share-box news-share">
+                    <button onClick={() => navigator.share?.({ title: content.title, url: window.location.href })}>
+                      <Share2 size={18} /> Share Article
+                    </button>
+                  </div>
+                )}
+              </div>
 
              {/* Sidebar Info for Events */}
              {content.type === 'Event' && (
@@ -150,7 +177,7 @@ const ContentDetailPage = () => {
         }
 
         .detail-header-spacer {
-          height: 380px;
+          height: 420px;
           background: #111;
           display: flex;
           align-items: flex-end;
@@ -282,6 +309,32 @@ const ContentDetailPage = () => {
           margin-bottom: 1.5rem;
         }
 
+        /* ── GALLERY ────────────────────────── */
+        .additional-images-grid {
+          display: grid;
+          grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+          gap: 1.5rem;
+          margin-bottom: 3rem;
+        }
+
+        .gallery-img-wrapper {
+          height: 250px;
+          border-radius: 8px;
+          overflow: hidden;
+          box-shadow: 0 10px 20px rgba(0,0,0,0.05);
+        }
+
+        .gallery-img-wrapper img {
+          width: 100%;
+          height: 100%;
+          object-fit: cover;
+          transition: transform 0.5s ease;
+        }
+
+        .gallery-img-wrapper:hover img {
+          transform: scale(1.05);
+        }
+
         /* ── SIDEBAR ─────────────────────────── */
         .sidebar-card {
           background: white;
@@ -354,6 +407,18 @@ const ContentDetailPage = () => {
           align-items: center;
           gap: 0.5rem;
           cursor: pointer;
+          transition: all 0.3s ease;
+        }
+
+        .share-box button:hover {
+          background: #e0e0e0;
+          color: var(--primary-red);
+        }
+
+        .share-box.news-share {
+          margin-top: 4rem;
+          padding-top: 2rem;
+          border-top: 1px solid #eee;
         }
 
         @media (max-width: 900px) {

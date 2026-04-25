@@ -134,7 +134,7 @@ const EventsPage = () => {
         }
 
         .events-header-spacer {
-          height: 380px;
+          height: 420px;
           background: #111;
           display: flex;
           align-items: flex-end;

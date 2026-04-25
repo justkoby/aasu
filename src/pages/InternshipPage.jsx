@@ -348,10 +348,10 @@ const InternshipPage = () => {
         .int-hero {
           position: relative;
           background: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)), url('/header-2.jpg') center / cover no-repeat;
-          min-height: 80vh;
+          min-height: 90vh;
           display: flex;
           align-items: center;
-          padding-top: 80px;
+          padding-top: 240px;
         }
 
         .int-hero-overlay {

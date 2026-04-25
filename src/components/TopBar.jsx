@@ -1,8 +1,14 @@
 import React, { useState, useEffect } from 'react';
 import { ChevronLeft, ChevronRight } from 'lucide-react';
+import { newsEventsData } from '../data/newsEventsData';
 
 const TopBar = () => {
   const [isScrolled, setIsScrolled] = useState(false);
+
+  // Get the latest 3 news/events sorted by date
+  const latestNews = [...newsEventsData]
+    .sort((a, b) => new Date(b.date) - new Date(a.date))
+    .slice(0, 3);
 
   useEffect(() => {
     const handleScroll = () => {
@@ -23,11 +29,20 @@ const TopBar = () => {
           </div>
           <div className="marquee-outer">
             <div className="marquee-inner">
-              <p>AASU ANNOUNCES RESULTS OF THE SECOND AND FINAL PHASE OF ELECTIONS FOR THE 14TH ELECTIVE CONGRESS</p>
+              {latestNews.map((news, idx) => (
+                <React.Fragment key={news.id}>
+                  <p>{news.title.toUpperCase()}</p>
+                  {idx < latestNews.length - 1 && <p> | </p>}
+                </React.Fragment>
+              ))}
+              {/* Duplicate for seamless loop if needed, but marquee animation here uses translateX(-50%) which implies doubling for seamlessness */}
               <p> | </p>
-              <p>ALL-AFRICA STUDENTS UNION (AASU) CONDEMNS THE ATTACK ON STUDENTS IN KHARTOUM</p>
-              <p> | </p>
-              <p>AASU ANNOUNCES RESULTS OF THE SECOND AND FINAL PHASE OF ELECTIONS FOR THE 14TH ELECTIVE CONGRESS</p>
+              {latestNews.map((news, idx) => (
+                <React.Fragment key={`${news.id}-dup`}>
+                  <p>{news.title.toUpperCase()}</p>
+                  {idx < latestNews.length - 1 && <p> | </p>}
+                </React.Fragment>
+              ))}
             </div>
           </div>
           <div className="marquee-nav">
