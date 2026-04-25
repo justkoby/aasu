@@ -319,10 +319,33 @@ const ExecutiveCommitteePage = () => {
 
         @media (max-width: 768px) {
           .hero-title {
-            font-size: 3.5rem;
+            font-size: 3rem;
           }
           .intro-card {
             padding: 2rem;
+          }
+          .exec-grid {
+            grid-template-columns: repeat(2, 1fr);
+            gap: 1rem;
+          }
+          .member-info {
+            padding: 1rem 0.5rem;
+          }
+          .member-name {
+            font-size: 0.85rem;
+          }
+          .member-position {
+            font-size: 0.75rem;
+          }
+          .member-country {
+            padding: 0.3rem 0.6rem;
+            gap: 0.3rem;
+          }
+          .member-flag {
+            font-size: 1rem;
+          }
+          .member-country-name {
+            font-size: 0.65rem;
           }
         }
       `}} />

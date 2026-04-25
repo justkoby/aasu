@@ -392,8 +392,20 @@ const TechnicalTeamPage = () => {
         @media (max-width: 768px) {
           .tt-hero-title { font-size: 3rem; }
           .tt-grid {
-            grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
-            gap: 1.25rem;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 1rem;
+          }
+          .tt-info {
+            padding: 1rem 0.75rem;
+          }
+          .tt-name {
+            font-size: 0.8rem;
+          }
+          .tt-position {
+            font-size: 0.7rem;
+          }
+          .tt-initials {
+            font-size: 2rem;
           }
         }
       `}} />
