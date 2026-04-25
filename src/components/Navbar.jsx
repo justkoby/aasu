@@ -249,6 +249,13 @@ const Navbar = () => {
                                         if (link === 'Upcoming Events') routePath = '/events';
                                         if (link === 'Press Statements') routePath = '/news';
                                         if (link === 'Reports') routePath = '/reports';
+                                        if (link === "Education & Students' Rights") routePath = '/priority/education';
+                                        if (link === 'Gender Equity & Social Inclusion') routePath = '/priority/gender';
+                                        if (link === 'Democracy, Good Governance, Peace & Security') routePath = '/priority/democracy';
+                                        if (link === 'Capacity Building, Skills Development & Employability') routePath = '/priority/capacity';
+                                        if (link === 'Migration, Mobility & Exchanges') routePath = '/priority/migration';
+                                        if (link === 'Climate Action and Environmental Sustainability') routePath = '/priority/environment';
+                                        if (link === 'Pan-Africanism & African Culture') routePath = '/priority/culture';
                                         if (link === '13th Congress Resolutions (EN)') routePath = '/13th Congress Resolutions.pdf';
                                         if (link === '13th Congress Resolutions (FR)') routePath = '/13th Congress Resolutions(FR).pdf';
 
@@ -352,6 +359,13 @@ const Navbar = () => {
                                   if (link === 'Upcoming Events') routePath = '/events';
                                   if (link === 'Press Statements') routePath = '/news';
                                   if (link === 'Reports') routePath = '/reports';
+                                  if (link === "Education & Students' Rights") routePath = '/priority/education';
+                                  if (link === 'Gender Equity & Social Inclusion') routePath = '/priority/gender';
+                                  if (link === 'Democracy, Good Governance, Peace & Security') routePath = '/priority/democracy';
+                                  if (link === 'Capacity Building, Skills Development & Employability') routePath = '/priority/capacity';
+                                  if (link === 'Migration, Mobility & Exchanges') routePath = '/priority/migration';
+                                  if (link === 'Climate Action and Environmental Sustainability') routePath = '/priority/environment';
+                                  if (link === 'Pan-Africanism & African Culture') routePath = '/priority/culture';
                                   if (link === '13th Congress Resolutions (EN)') routePath = '/13th Congress Resolutions.pdf';
                                   if (link === '13th Congress Resolutions (FR)') routePath = '/13th Congress Resolutions(FR).pdf';
 

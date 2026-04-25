@@ -21,6 +21,14 @@ import NewsPage from './pages/NewsPage';
 import EventsPage from './pages/EventsPage';
 import ReportsPage from './pages/ReportsPage';
 import ContentDetailPage from './pages/ContentDetailPage';
+import EducationPage from './pages/priority/EducationPage';
+import GenderPage from './pages/priority/GenderPage';
+import DemocracyPage from './pages/priority/DemocracyPage';
+import CapacityPage from './pages/priority/CapacityPage';
+import MigrationPage from './pages/priority/MigrationPage';
+import ClimatePage from './pages/priority/ClimatePage';
+import CulturePage from './pages/priority/CulturePage';
+import LanguageToggle from './components/LanguageToggle';
 
 function App() {
   return (
@@ -49,12 +57,20 @@ function App() {
           <Route path="/events" element={<EventsPage />} />
           <Route path="/events/:id" element={<ContentDetailPage />} />
           <Route path="/reports" element={<ReportsPage />} />
+          <Route path="/priority/education" element={<EducationPage />} />
+          <Route path="/priority/gender" element={<GenderPage />} />
+          <Route path="/priority/democracy" element={<DemocracyPage />} />
+          <Route path="/priority/capacity" element={<CapacityPage />} />
+          <Route path="/priority/migration" element={<MigrationPage />} />
+          <Route path="/priority/environment" element={<ClimatePage />} />
+          <Route path="/priority/culture" element={<CulturePage />} />
           {/* Catch-all */}
           <Route path="*" element={<div style={{ minHeight: '60vh', display: 'flex', alignItems: 'center', justifyContent: 'center', fontSize: '2rem' }}>404 - Page Not Found</div>} />
         </Routes>
         
         <Footer />
         <WhatsAppButton />
+        <LanguageToggle />
       </div>
     </BrowserRouter>
   );
