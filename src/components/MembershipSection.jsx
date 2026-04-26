@@ -6,34 +6,87 @@ const MembershipSection = () => {
   const [hoveredDot, setHoveredDot] = useState(null);
 
   const memberData = [
-    { id: 'ghana', x: '30%', y: '43%', country: 'Ghana', unions: [
+    { id: 'ghana', x: '22.71%', y: '41.74%', country: 'Ghana', unions: [
       { name: 'National Union Of Ghana Students (NUGS)', type: 'Full Member' },
       { name: 'Graduate Students Association Of Ghana (GRASAG)', type: 'Associate Member' }
     ]},
-    { id: 'nigeria', x: '35%', y: '45%', country: 'Nigeria', unions: [
+    { id: 'nigeria', x: '35.94%', y: '40.27%', country: 'Nigeria', unions: [
       { name: 'National Association of Nigerian Students (NANS)', type: 'Full Member' }
     ]},
-    { id: 'kenya', x: '73%', y: '55%', country: 'Kenya', unions: [
+    { id: 'kenya', x: '75.84%', y: '51.51%', country: 'Kenya', unions: [
       { name: 'Kenya University Students\' Organization (KUSO)', type: 'Full Member' }
     ]},
-    { id: 'south-africa', x: '58%', y: '88%', country: 'South Africa', unions: [
+    { id: 'south-africa', x: '57.79%', y: '90.60%', country: 'South Africa', unions: [
       { name: 'South African Union of Students (SAUS)', type: 'Full Member' }
     ]},
-    { id: 'egypt', x: '68%', y: '20%', country: 'Egypt', unions: [
+    { id: 'egypt', x: '66.15%', y: '16.00%', country: 'Egypt', unions: [
       { name: 'Egyptian Students Union', type: 'Full Member' }
     ]},
-    { id: 'senegal', x: '10%', y: '35%', country: 'Senegal', unions: [
+    { id: 'senegal', x: '4.38%', y: '33.15%', country: 'Senegal', unions: [
       { name: 'Senegal National Students Union', type: 'Full Member' }
     ]},
-    { id: 'ethiopia', x: '78%', y: '45%', country: 'Ethiopia', unions: [
+    { id: 'ethiopia', x: '79.40%', y: '40.14%', country: 'Ethiopia', unions: [
       { name: 'Ethiopian Students Union', type: 'Full Member' }
     ]},
-    { id: 'tanzania', x: '70%', y: '62%', country: 'Tanzania', unions: [
+    { id: 'tanzania', x: '71.76%', y: '60.28%', country: 'Tanzania', unions: [
         { name: 'Tanzania Higher Learning Institutions Students\' Organization (TAHLISO)', type: 'Full Member' }
     ]},
-    { id: 'zimbabwe', x: '62%', y: '76%', country: 'Zimbabwe', unions: [
+    { id: 'zimbabwe', x: '63.87%', y: '77.05%', country: 'Zimbabwe', unions: [
         { name: 'Zimbabwe National Students Union (ZINASU)', type: 'Full Member' }
-    ]}
+    ]},
+    // North Africa
+    { id: 'morocco', x: '14.40%', y: '8.67%', country: 'Morocco', unions: [{ name: 'Moroccan National Students Union', type: 'Full Member' }] },
+    { id: 'algeria', x: '26.37%', y: '13.81%', country: 'Algeria', unions: [{ name: 'Algerian Students Union', type: 'Full Member' }] },
+    { id: 'libya', x: '47.64%', y: '16.56%', country: 'Libya', unions: [{ name: 'Libyan National Students Union', type: 'Full Member' }] },
+    { id: 'tunisia', x: '37.11%', y: '5.63%', country: 'Tunisia', unions: [{ name: 'Tunisian Students Union', type: 'Full Member' }] },
+    
+    // West Africa
+    { id: 'mali', x: '18.64%', y: '28.85%', country: 'Mali', unions: [{ name: 'Malian National Students Union', type: 'Full Member' }] },
+    { id: 'niger', x: '35.13%', y: '28.88%', country: 'Niger', unions: [{ name: 'Nigerien National Students Union', type: 'Full Member' }] },
+    { id: 'burkina', x: '21.98%', y: '36.12%', country: 'Burkina Faso', unions: [{ name: 'Burkinabe National Students Union', type: 'Full Member' }] },
+    { id: 'cote-ivoire', x: '16.54%', y: '42.29%', country: 'Ivory Coast', unions: [{ name: 'Ivorian National Students Union', type: 'Full Member' }] },
+    { id: 'liberia', x: '11.22%', y: '43.72%', country: 'Liberia', unions: [{ name: 'Liberian National Students Union', type: 'Full Member' }] },
+    { id: 'sierra-leone', x: '8.03%', y: '41.11%', country: 'Sierra Leone', unions: [{ name: 'Sierra Leonean National Students Union', type: 'Full Member' }] },
+    { id: 'guinea', x: '8.60%', y: '39.16%', country: 'Guinea', unions: [{ name: 'Guinean National Students Union', type: 'Full Member' }] },
+    { id: 'gambia', x: '3.20%', y: '34.58%', country: 'Gambia', unions: [{ name: 'Gambian National Students Union', type: 'Full Member' }] },
+    { id: 'mauritania', x: '9.18%', y: '24.17%', country: 'Mauritania', unions: [{ name: 'Mauritanian National Students Union', type: 'Full Member' }] },
+    { id: 'togo', x: '25.27%', y: '40.91%', country: 'Togo', unions: [{ name: 'Togolese National Students Union', type: 'Full Member' }] },
+    { id: 'benin', x: '27.26%', y: '40.00%', country: 'Benin', unions: [{ name: 'Beninese National Students Union', type: 'Full Member' }] },
+    { id: 'guinea-bissau', x: '3.38%', y: '36.72%', country: 'Guinea-Bissau', unions: [{ name: 'Guinea-Bissau National Students Union', type: 'Full Member' }] },
+
+    // Central Africa
+    { id: 'chad', x: '49.67%', y: '31.68%', country: 'Chad', unions: [{ name: 'Chadian National Students Union', type: 'Full Member' }] },
+    { id: 'cameroon', x: '40.99%', y: '42.46%', country: 'Cameroon', unions: [{ name: 'Cameroonian National Students Union', type: 'Full Member' }] },
+    { id: 'car', x: '52.68%', y: '43.46%', country: 'Central African Republic', unions: [{ name: 'Central African National Students Union', type: 'Full Member' }] },
+    { id: 'gabon', x: '39.95%', y: '53.08%', country: 'Gabon', unions: [{ name: 'Gabonese National Students Union', type: 'Full Member' }] },
+    { id: 'congo', x: '44.43%', y: '52.89%', country: 'Congo (Brazzaville)', unions: [{ name: 'Congolese National Students Union', type: 'Full Member' }] },
+    { id: 'drc', x: '53.80%', y: '57.35%', country: 'DRC', unions: [{ name: 'National Union of Congolese Students', type: 'Full Member' }] },
+    { id: 'equatorial-guinea', x: '37.61%', y: '49.00%', country: 'Equatorial Guinea', unions: [{ name: 'Equatorial Guinean Students Union', type: 'Full Member' }] },
+    { id: 'sao-tome', x: '33.62%', y: '50.92%', country: 'Sao Tome and Principe', unions: [{ name: 'Sao Tomean Students Union', type: 'Full Member' }] },
+
+    // East Africa
+    { id: 'sudan', x: '65.37%', y: '31.77%', country: 'Sudan', unions: [{ name: 'Sudanese National Students Union', type: 'Full Member' }] },
+    { id: 'south-sudan', x: '64.67%', y: '41.87%', country: 'South Sudan', unions: [{ name: 'South Sudanese National Students Union', type: 'Full Member' }] },
+    { id: 'uganda', x: '68.18%', y: '50.26%', country: 'Uganda', unions: [{ name: 'Ugandan National Students Union', type: 'Full Member' }] },
+    { id: 'rwanda', x: '64.89%', y: '54.53%', country: 'Rwanda', unions: [{ name: 'Rwandan National Students Union', type: 'Full Member' }] },
+    { id: 'burundi', x: '64.96%', y: '56.40%', country: 'Burundi', unions: [{ name: 'Burundian National Students Union', type: 'Full Member' }] },
+    { id: 'somalia', x: '87.16%', y: '45.36%', country: 'Somalia', unions: [{ name: 'Somali National Students Union', type: 'Full Member' }] },
+    { id: 'eritrea', x: '78.42%', y: '32.22%', country: 'Eritrea', unions: [{ name: 'Eritrean National Students Union', type: 'Full Member' }] },
+    { id: 'djibouti', x: '82.26%', y: '36.70%', country: 'Djibouti', unions: [{ name: 'Djiboutian National Students Union', type: 'Full Member' }] },
+    { id: 'seychelles', x: '99.84%', y: '58.06%', country: 'Seychelles', unions: [{ name: 'Seychellois Students Union', type: 'Full Member' }] },
+
+    // Southern Africa
+    { id: 'angola', x: '48.54%', y: '66.69%', country: 'Angola', unions: [{ name: 'Angolan National Students Union', type: 'Full Member' }] },
+    { id: 'namibia', x: '49.36%', y: '82.62%', country: 'Namibia', unions: [{ name: 'Namibian National Students Union', type: 'Full Member' }] },
+    { id: 'botswana', x: '57.80%', y: '81.65%', country: 'Botswana', unions: [{ name: 'Botswanan National Students Union', type: 'Full Member' }] },
+    { id: 'zambia', x: '62.10%', y: '69.14%', country: 'Zambia', unions: [{ name: 'Zambian National Students Union', type: 'Full Member' }] },
+    { id: 'malawi', x: '70.92%', y: '69.31%', country: 'Malawi', unions: [{ name: 'Malawian National Students Union', type: 'Full Member' }] },
+    { id: 'mozambique', x: '72.64%', y: '76.78%', country: 'Mozambique', unions: [{ name: 'Mozambican National Students Union', type: 'Full Member' }] },
+    { id: 'madagascar', x: '88.10%', y: '76.92%', country: 'Madagascar', unions: [{ name: 'Madagascan National Students Union', type: 'Full Member' }] },
+    { id: 'lesotho', x: '62.65%', y: '92.02%', country: 'Lesotho', unions: [{ name: 'Lesotho National Students Union', type: 'Full Member' }] },
+    { id: 'eswatini', x: '67.06%', y: '87.50%', country: 'Eswatini', unions: [{ name: 'Eswatini National Students Union', type: 'Full Member' }] },
+    { id: 'comoros', x: '84.02%', y: '67.43%', country: 'Comoros', unions: [{ name: 'Comorian Students Union', type: 'Full Member' }] },
+    { id: 'mauritius', x: '98.50%', y: '85.00%', country: 'Mauritius', unions: [{ name: 'Mauritian Students Union', type: 'Full Member' }] }
   ];
 
   const priorities = [

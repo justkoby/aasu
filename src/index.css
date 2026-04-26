@@ -153,4 +153,13 @@ h1, h2, h3, h4, h5, h6 {
   .flagship-card.wide { grid-column: span 1; grid-template-columns: 1fr; }
   .wide-content { padding: 2rem; }
   .wide-visual { height: 200px; }
+  
+  .priority-area-page .priority-hero {
+    height: auto !important;
+    padding: 160px 0 80px !important;
+  }
+  
+  .priority-area-page .hero-title {
+    font-size: 2.5rem !important;
+  }
 }

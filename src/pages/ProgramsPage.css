@@ -180,12 +180,14 @@ section { padding: 100px 0; }
 .btn-primary:hover { transform: scale(1.05); box-shadow: 0 10px 30px rgba(227,30,36,0.4); }
 
 @media (max-width: 1024px) {
+  .programs-page { padding-top: 80px; }
   .stats-grid { grid-template-columns: repeat(2, 1fr); }
   .flagship-bento-grid { grid-template-columns: 1fr; }
   .flagship-card.wide { grid-column: span 1; grid-template-columns: 1fr; }
   .wide-visual { height: 200px; }
   .priority-grid { grid-template-columns: 1fr; }
   .cta-grid { grid-template-columns: 1fr; }
-  .hero-content h1 { font-size: 3rem; }
+  .hero-content h1 { font-size: 2.5rem; }
+  .programs-hero { height: auto; padding: 120px 0 60px; }
   .cta-banner { padding: 3rem 1.5rem; }
 }

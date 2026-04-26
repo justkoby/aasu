@@ -381,16 +381,16 @@ const ProjectExplorer = ({ hideTabs = false, pillarIndex = 0 }) => {
         }
         @media (max-width: 1024px) {
           .explorer-body {
-            grid-template-columns: 1fr;
+            grid-template-columns: 1fr !important;
           }
           .project-list-panel {
             position: relative;
             top: 0;
-            order: 2;
-          }
-          .project-detail-panel {
             order: 1;
             margin-bottom: 3rem;
+          }
+          .project-detail-panel {
+            order: 2;
           }
           .project-detail-panel > div {
             padding: 2rem !important;
