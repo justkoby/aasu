@@ -1,6 +1,7 @@
 import React, { useEffect } from 'react';
 import { motion } from 'framer-motion';
 import { Download, FileText, CheckCircle2, FileCheck, ArrowRight, Globe } from 'lucide-react';
+import SEO from '../components/SEO';
 
 const CongressPage = () => {
   useEffect(() => {
@@ -41,6 +42,10 @@ const CongressPage = () => {
 
   return (
     <div className="congress-page">
+      <SEO 
+        title="14th Elective Congress Portal" 
+        description="Official portal for the AASU 14th Elective Congress. Download nomination forms, election guidelines, and official announcements in English, French, and Portuguese." 
+      />
       {/* Hero Section */}
       <section className="congress-hero">
         <div className="hero-overlay"></div>

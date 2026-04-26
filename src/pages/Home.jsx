@@ -7,9 +7,15 @@ import EventsSection from '../components/EventsSection';
 import OpportunitiesSection from '../components/OpportunitiesSection';
 
 
+import SEO from '../components/SEO';
+
 const Home = () => {
   return (
     <main>
+      <SEO 
+        title="Home" 
+        description="The All-Africa Students Union (AASU) represents over 170 million students across 54 countries. Join us in advocating for education as a right, not a privilege." 
+      />
       <Hero />
       
       {/* Mission Section */}

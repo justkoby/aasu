@@ -4,6 +4,8 @@ import { motion } from 'framer-motion';
 import { Calendar, Tag, ChevronLeft, Clock, MapPin, ExternalLink, Share2 } from 'lucide-react';
 import { newsEventsData, isEventEnded } from '../data/newsEventsData';
 
+import SEO from '../components/SEO';
+
 const ContentDetailPage = () => {
   const { id } = useParams();
   const navigate = useNavigate();
@@ -37,6 +39,10 @@ const ContentDetailPage = () => {
 
   return (
     <div className="content-detail-page">
+      <SEO 
+        title={content.title} 
+        description={content.excerpt || content.description?.substring(0, 160)} 
+      />
       <div className="detail-header-spacer">
         <div className="container">
           <p className="detail-section-label">{content.type === 'Event' ? 'Events' : 'News & Events'}</p>

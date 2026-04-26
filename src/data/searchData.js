@@ -41,7 +41,7 @@ const searchData = [
     description: "AASU works closely with governmental, intergovernmental, and non-governmental partners to advance education, youth empowerment, and sustainable development.",
     path: "/partners",
     category: "Who We Are",
-    keywords: ["partners", "partnership", "collaboration", "sponsors", "organizations", "ngo", "igbo", "united nations", "au", "collaborators"]
+    keywords: ["partners", "partnership", "collaboration", "sponsors", "organizations", "ngo", "united nations", "au", "collaborators", "ghana", "ministry of foreign affairs"]
   },
 
   // WHAT WE DO — Strategic Priorities
@@ -872,6 +872,70 @@ const searchData = [
     path: "/news/news-winta-coaching-switzerland",
     category: "News & Events",
     keywords: ["winta coaching", "switzerland", "women leadership", "news", "gender advocacy", "empowerment"]
+  },
+  {
+    id: 107,
+    title: "14th Elective Congress Portal",
+    description: "Access official documents, election guidelines, and nomination forms for the 14th Elective Congress.",
+    path: "/14th-congress",
+    category: "Resources",
+    keywords: ["14th congress", "portal", "nomination", "guidelines", "election", "documents", "announcement"]
+  },
+  {
+    id: 108,
+    title: "Africa Music, Art & Cultural Exhibition (AMACE) 2023",
+    description: "A vibrant celebration of African culture held in Lusaka, Zambia, promoting youth art and heritage.",
+    path: "/news/amace-2023-lusaka",
+    category: "News & Events",
+    keywords: ["amace", "culture", "art", "zambia", "lusaka", "exhibition", "heritage", "pan-africanism"]
+  },
+  {
+    id: 109,
+    title: "Fifth Young Scientists Congress — Russia 2025",
+    description: "AASU participates in global scientific cooperation dialogues at the Sirius University of Science and Technology.",
+    path: "/news/russia-scientific-cooperation-2025",
+    category: "News & Events",
+    keywords: ["russia", "scientists", "congress", "scientific cooperation", "sirius", "innovation", "technology"]
+  },
+  {
+    id: 110,
+    title: "Call for Bid to Host the 14th Elective Congress",
+    description: "Inquiry and template for member unions interested in hosting the landmark 14th Elective Congress in 2025.",
+    path: "/news/call-for-bid-14th-congress",
+    category: "News & Events",
+    keywords: ["bid", "host", "14th congress", "bidding template", "hosting", "congress venue"]
+  },
+  {
+    id: 111,
+    title: "Privacy Policy",
+    description: "Learn how AASU protects your personal information and ensures data transparency.",
+    path: "/privacy",
+    category: "Other",
+    keywords: ["privacy", "policy", "data protection", "security", "terms", "transparency"]
+  },
+  {
+    id: 112,
+    title: "NELS – Spring 2026 Programme Registration",
+    description: "Registration is open for the Next Level Skills for Student Leaders Spring 2026 programme.",
+    path: "/news/nels-spring-2026",
+    category: "News & Events",
+    keywords: ["nels", "leadership", "spring 2026", "registration", "skills", "training", "statement", "programme"]
+  },
+  {
+    id: 113,
+    title: "Commemoration of the 1994 Genocide Against the Tutsi",
+    description: "Official statement on the 2026 remembrance of the tragic chapter in Rwanda's history.",
+    path: "/news/rwanda-genocide-remembrance-2026",
+    category: "News & Events",
+    keywords: ["rwanda", "genocide", "remembrance", "tutsi", "statement", "solidarity"]
+  },
+  {
+    id: 114,
+    title: "14th Elective Congress Election Results",
+    description: "Official declaration of results for the second and final phase of AASU's 14th Elective Congress.",
+    path: "/news/elections-results-final-phase",
+    category: "News & Events",
+    keywords: ["election results", "winners", "14th congress", "secretariat", "executive committee", "statement", "official results"]
   }
 ];
 

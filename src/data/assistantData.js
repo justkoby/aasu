@@ -26,6 +26,9 @@ export const documents = [
   { title: "14th Congress Announcement", year: "Congress", type: "Document", link: "/14th-congress" },
   { title: "14th Congress Election Guidelines", year: "Congress", type: "Document", link: "/14th-congress" },
   { title: "14th Congress Nomination Form", year: "Congress", type: "Document", link: "/14th-congress" },
+  { title: "14th Congress Bidding Template", year: "Congress", type: "Document", link: "/English-TEMPLATE-LETTER-TO-BID-TO-HOST-14TH-ELECTIVE-CONGRESS.docx" },
+  { title: "AMACE 2023 Report", year: "2023", type: "Report", link: "/AMACE-REPORT-2023.pdf" },
+  { title: "AMACE 2023 Exhibition Info", year: "2023", type: "News", link: "/news/amace-2023-lusaka" },
 ];
 
 export const programs = [
@@ -112,6 +115,26 @@ export const intents = [
     keywords: ["14th congress", "nomination", "election guidelines", "candidate form", "how to run"],
     answer: "The 14th Elective Congress portal is open. You can download the Call for Nominations, Election Guidelines, and the Nomination Form in English, French, and Portuguese.",
     links: [{ label: "Congress Portal", url: "/14th-congress" }]
+  },
+  {
+    keywords: ["amace", "culture exhibition", "zambia", "art exhibition"],
+    answer: "The Africa Music, Art & Cultural Exhibition (AMACE) 2023 was held in Lusaka, Zambia. It celebrated African heritage through music, art, and youth-led cultural preservation.",
+    links: [{ label: "AMACE News", url: "/news/amace-2023-lusaka" }, { label: "Download Report", url: "/AMACE-REPORT-2023.pdf" }]
+  },
+  {
+    keywords: ["russia", "scientific congress", "young scientists", "scientific cooperation"],
+    answer: "AASU participated in the Fifth Young Scientists Congress in Russia (November 2025), calling for a new era of equal partnership and co-creation in Africa-Russia scientific collaboration.",
+    links: [{ label: "Read Statement", url: "/news/russia-scientific-cooperation-2025" }]
+  },
+  {
+    keywords: ["bid to host", "host congress", "hosting 14th congress", "bidding"],
+    answer: "Member Unions can bid to host the 14th Elective Congress scheduled for late 2025. A template letter for expression of interest is available for download.",
+    links: [{ label: "View Call for Bid", url: "/news/call-for-bid-14th-congress" }, { label: "Bidding Template", url: "/English-TEMPLATE-LETTER-TO-BID-TO-HOST-14TH-ELECTIVE-CONGRESS.docx" }]
+  },
+  {
+    keywords: ["privacy", "data protection", "privacy policy"],
+    answer: "AASU is committed to protecting your privacy. Our Privacy Policy explains how we collect, use, and safeguard your personal information when you interact with our platform.",
+    links: [{ label: "Read Privacy Policy", url: "/privacy" }]
   }
 ];
 

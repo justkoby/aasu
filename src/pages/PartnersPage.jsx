@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { ChevronDown, ChevronUp, Link as LinkIcon } from 'lucide-react';
+import SEO from '../components/SEO';
 
 const PartnersPage = () => {
   useEffect(() => {
@@ -249,8 +250,12 @@ const PartnersPage = () => {
   ];
 
   return (
-    <div className="partners-page">
-      {/* Page Header Image */}
+    <main className="partners-page">
+      <SEO 
+        title="Our Partners" 
+        description="AASU collaborates with continental and global institutions, including the African Union, United Nations, and various governmental bodies to advance African education." 
+      />
+      <div className="spacer-header"></div>
       <section className="partners-hero">
       </section>
 

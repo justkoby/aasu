@@ -1227,6 +1227,26 @@ The insights and networks gained through this programme are set to contribute si
     
     All documents are available in English, French, and Portuguese to ensure full accessibility across the continent. We encourage all eligible unions to review the materials and participate in this landmark democratic process.`,
     linkOverride: '/14th-congress'
+  },
+  {
+    id: 'call-for-bid-14th-congress',
+    type: CONTENT_TYPES.NEWS,
+    category: 'Executive Committee',
+    title: 'Call for Bid to Host the 14th Elective Congress',
+    img: '/call-for-bid-congress.png',
+    date: '2025-01-20',
+    excerpt: 'AASU invites bids from interested Member Unions to host the landmark 14th Elective Congress scheduled for 2025.',
+    description: `The Secretariat of the All-Africa Students Union (AASU) invites bids from interested Member Unions to host the 14th Elective Congress—scheduled for late 3rd quarter or early last quarter of 2025.
+    
+    This two-day Congress aims to bring together student leaders from across Africa to chart the future of our Union. Interested Member Organisations are requested to submit an expression of interest letter covering:
+    - Proposed city and potential hotel/conference venues.
+    - Identification of principal government agencies or sponsors.
+    - Potential co-hosts or partners for the event.
+    
+    A template letter is provided below to assist member unions in preparing their formal bids.
+    
+    Download Template Letter:
+    [Download English Template](/English-TEMPLATE-LETTER-TO-BID-TO-HOST-14TH-ELECTIVE-CONGRESS.docx)`
   }
 ];
 

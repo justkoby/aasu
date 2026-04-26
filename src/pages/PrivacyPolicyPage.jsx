@@ -1,5 +1,6 @@
 import React, { useEffect } from 'react';
 import { motion } from 'framer-motion';
+import SEO from '../components/SEO';
 
 const PrivacyPolicyPage = () => {
   useEffect(() => {
@@ -8,6 +9,10 @@ const PrivacyPolicyPage = () => {
 
   return (
     <div className="privacy-policy-page">
+      <SEO 
+        title="Privacy Policy" 
+        description="Learn about how the All-Africa Students Union (AASU) protects your personal information and ensures data transparency in accordance with global standards." 
+      />
       <section className="privacy-hero">
         <div className="container">
           <motion.h1 
