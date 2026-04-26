@@ -227,7 +227,7 @@ const DemocracyPage = () => {
       )}
 
       {/* Localized Project Explorer */}
-      <ProjectExplorer pillarIndex={4} hideTabs={true} />
+      <ProjectExplorer key={4} pillarIndex={4} hideTabs={true} />
 
       {/* Current Focus */}
       <section className="current-focus-section" style={{ backgroundColor: '#f9f9f9', borderTop: '1px solid #eee', borderBottom: '1px solid #eee', color: '#222' }}>

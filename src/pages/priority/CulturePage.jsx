@@ -187,7 +187,7 @@ const CulturePage = () => {
       )}
 
       {/* Localized Project Explorer */}
-      <ProjectExplorer pillarIndex={6} hideTabs={true} />
+      <ProjectExplorer key={6} pillarIndex={6} hideTabs={true} />
 
       <section className="current-focus-section" style={{ backgroundColor: '#f9f9f9', borderTop: '1px solid #eee', borderBottom: '1px solid #eee', color: '#222' }}>
         <div className="container">

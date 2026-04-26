@@ -193,7 +193,7 @@ const MigrationPage = () => {
       )}
 
       {/* Localized Project Explorer */}
-      <ProjectExplorer pillarIndex={2} hideTabs={true} />
+      <ProjectExplorer key={2} pillarIndex={2} hideTabs={true} />
 
       <section className="current-focus-section" style={{ backgroundColor: '#f9f9f9', borderTop: '1px solid #eee', borderBottom: '1px solid #eee', color: '#222' }}>
         <div className="container">

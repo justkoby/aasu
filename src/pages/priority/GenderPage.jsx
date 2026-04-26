@@ -329,34 +329,8 @@ const GenderPage = () => {
         </div>
       </section>
 
-      {/* Initiatives */}
-      <section className="initiatives-section" style={{ backgroundColor: '#111', color: 'white' }}>
-        <div className="container">
-          <div className="section-header centered">
-            <Rocket className="section-icon" style={{ color: accentColor }} />
-            <h2 className="section-title">KEY PROJECTS & INITIATIVES</h2>
-          </div>
-
-          <div className="initiatives-grid">
-            {genderProjects.map((init, idx) => (
-              <motion.div 
-                key={idx}
-                initial={{ opacity: 0, scale: 0.95 }}
-                whileInView={{ opacity: 1, scale: 1 }}
-                viewport={{ once: true }}
-                className="initiative-card"
-              >
-                <h3 className="init-title">{init.name}</h3>
-                <p className="init-desc">{init.desc}</p>
-                <div className="init-tags">
-                  <span className="init-tag" style={{ color: accentColor }}>#GenderEquity</span>
-                  <span className="init-tag" style={{ color: accentColor }}>#Inclusion</span>
-                </div>
-              </motion.div>
-            ))}
-          </div>
-        </div>
-      </section>
+      {/* Interactive Project Explorer */}
+      <ProjectExplorer pillarIndex={1} hideTabs={true} />
 
       {/* Vision & Impact Statement */}
       <section className="vision-section" style={{ backgroundColor: '#ffffff', color: '#222' }}>

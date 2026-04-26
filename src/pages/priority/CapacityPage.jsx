@@ -201,7 +201,7 @@ const CapacityPage = () => {
       </section>
 
       {/* Localized Project Explorer */}
-      <ProjectExplorer pillarIndex={3} hideTabs={true} />
+      <ProjectExplorer key={3} pillarIndex={3} hideTabs={true} />
 
       <section className="vision-section" style={{ backgroundColor: '#ffffff', color: '#222' }}>
         <div className="container">

@@ -355,34 +355,8 @@ const EducationPage = () => {
         </div>
       </section>
 
-      {/* Initiatives (🚀 KEY PROJECTS) */}
-      <section className="initiatives-section" style={{ backgroundColor: '#111', color: 'white' }}>
-        <div className="container">
-          <div className="section-header centered">
-            <Rocket className="section-icon" style={{ color: accentColor }} />
-            <h2 className="section-title">KEY PROJECTS & INITIATIVES</h2>
-          </div>
-
-          <div className="initiatives-grid">
-            {educationProjects.map((init, idx) => (
-              <motion.div 
-                key={idx}
-                initial={{ opacity: 0, scale: 0.95 }}
-                whileInView={{ opacity: 1, scale: 1 }}
-                viewport={{ once: true }}
-                className="initiative-card"
-              >
-                <h3 className="init-title">{init.name}</h3>
-                <p className="init-desc">{init.desc}</p>
-                <div className="init-tags">
-                  <span className="init-tag" style={{ color: accentColor }}>#EducationReform</span>
-                  <span className="init-tag" style={{ color: accentColor }}>#StudentVoice</span>
-                </div>
-              </motion.div>
-            ))}
-          </div>
-        </div>
-      </section>
+      {/* Interactive Project Explorer */}
+      <ProjectExplorer pillarIndex={0} hideTabs={true} />
 
       {/* Vision & Impact Statement */}
       <section className="vision-section" style={{ backgroundColor: '#ffffff', color: '#222' }}>

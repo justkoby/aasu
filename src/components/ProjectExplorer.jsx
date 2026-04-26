@@ -15,24 +15,31 @@ import {
 import { priorityProjects } from '../data/programsData';
 
 const ProjectExplorer = ({ hideTabs = false, pillarIndex = 0 }) => {
-  const [activePillar, setActivePillar] = useState(pillarIndex);
+  const [activePillarState, setActivePillarState] = useState(pillarIndex);
   const [activeProject, setActiveProject] = useState(0);
   const detailRef = useRef(null);
 
   // Sync with pillarIndex prop if it changes
   useEffect(() => {
-    setActivePillar(pillarIndex);
+    setActivePillarState(pillarIndex);
+    setActiveProject(0); // Reset project when pillar index prop changes
   }, [pillarIndex]);
 
-  // Reset active project when pillar changes
+  // Reset active project when internal pillar state changes (from tabs)
   useEffect(() => {
     setActiveProject(0);
-  }, [activePillar]);
+  }, [activePillarState]);
 
-  const currentPillar = priorityProjects[activePillar];
+  // Use prop if tabs are hidden (forced view), otherwise use local state
+  const activePillar = hideTabs ? pillarIndex : activePillarState;
+  
+  const currentPillar = priorityProjects[activePillar] || priorityProjects[0];
   const currentProject = currentPillar?.projects[activeProject] || currentPillar?.projects[0];
 
-  if (!currentPillar || !currentProject) return null;
+  if (!currentPillar || !currentProject) {
+    console.error("ProjectExplorer: Missing data for pillar", activePillar);
+    return null;
+  }
 
   return (
     <section className="project-explorer-section" style={{ padding: '100px 0', backgroundColor: '#fff' }}>
@@ -57,7 +64,7 @@ const ProjectExplorer = ({ hideTabs = false, pillarIndex = 0 }) => {
             {priorityProjects.map((pillar, idx) => (
               <button
                 key={pillar.area}
-                onClick={() => setActivePillar(idx)}
+                onClick={() => setActivePillarState(idx)}
                 style={{
                   padding: '1rem 2rem',
                   borderRadius: '50px',
@@ -96,6 +103,15 @@ const ProjectExplorer = ({ hideTabs = false, pillarIndex = 0 }) => {
             position: 'sticky',
             top: '120px'
           }}>
+            <h5 style={{ 
+              fontSize: '0.75rem', 
+              textTransform: 'uppercase', 
+              letterSpacing: '2px', 
+              color: '#999', 
+              fontWeight: 800,
+              marginBottom: '1.5rem',
+              paddingLeft: '1rem'
+            }}>Projects</h5>
             <AnimatePresence mode="wait">
               <motion.div
                 key={activePillar}
