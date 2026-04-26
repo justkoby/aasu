@@ -18,234 +18,270 @@ const PartnersPage = () => {
     }
   };
 
-  const partnersData = [
+  const partnersByCategory = [
     {
-      name: "Oxfam",
-      description: "A global nonprofit focused on poverty alleviation, inequality, and humanitarian response.",
-      withAasu: "Partners on youth advocacy, inequality campaigns, and student-led social justice initiatives.",
-      link: "https://www.oxfam.org"
+      category: "Strategic Partners",
+      description: "AASU maintains high-level consultative and strategic relationships with continental and global intergovernmental bodies to influence policy and represent African students.",
+      partners: [
+        {
+          name: "African Union (AU)",
+          description: "The primary continental body for Africa's integration and development.",
+          withAasu: "AASU serves as a key youth stakeholder, contributing to Agenda 2063 and the AU's educational and youth development frameworks.",
+          link: "https://au.int"
+        },
+        {
+          name: "African Union Commission (AUC)",
+          description: "The executive arm of the African Union responsible for implementing policies.",
+          withAasu: "Collaborates on the Continental Education Strategy for Africa (CESA) and youth mobility initiatives.",
+          link: "https://au.int"
+        },
+        {
+          name: "UNESCO",
+          description: "United Nations Educational, Scientific and Cultural Organization.",
+          withAasu: "Strategic collaboration on Education 2030, Global Convention on Recognition of Qualifications, and youth inclusion in science and culture.",
+          link: "https://www.unesco.org"
+        },
+        {
+          name: "ECOWAS",
+          description: "Economic Community of West African States.",
+          withAasu: "Partners on regional educational integration, student rights advocacy, and peacebuilding in West Africa.",
+          link: "https://ecowas.int"
+        },
+        {
+          name: "SADC",
+          description: "Southern African Development Community.",
+          withAasu: "Engages in regional policy dialogues on student mobility and harmonisation of qualifications in Southern Africa.",
+          link: "https://www.sadc.int"
+        },
+        {
+          name: "Global Student Forum (GSF)",
+          description: "The worldwide umbrella body for democratic student unions.",
+          withAasu: "AASU is a founding member, coordinating global advocacy for student rights and education funding.",
+          link: "https://globalstudentforum.org"
+        },
+        {
+          name: "European Union (EU)",
+          description: "Political and economic union of European countries.",
+          withAasu: "Supports education funding, Africa-EU student exchanges, and youth policy development programs.",
+          link: "https://europa.eu"
+        },
+        {
+          name: "Ministry of Foreign Affairs - Republic of Ghana",
+          description: "Ghana’s principal diplomatic body.",
+          withAasu: "Supports student diplomacy, international mobility coordination, and diplomatic protocol for continental events.",
+          link: "https://mfa.gov.gh"
+        },
+        {
+          name: "Organisation of Southern Cooperation (OSC)",
+          description: "Intergovernmental organization advancing South-South cooperation.",
+          withAasu: "Supports South–South student mobility, research collaboration, and balanced education systems.",
+          link: "https://osc.ngo"
+        }
+      ]
     },
     {
-      name: "African Union",
-      description: "A continental body promoting unity, development, and integration across Africa.",
-      withAasu: "Engages student voices in policy dialogues, youth development, and Agenda 2063 initiatives.",
-      link: "https://au.int"
+      category: "Academic & Education Partners",
+      description: "Our academic network includes leading universities and education quality agencies focused on excellence, mobility, and academic freedom.",
+      partners: [
+        {
+          name: "Association of African Universities (AAU)",
+          description: "The voice of higher education in Africa.",
+          withAasu: "Collaborates on the Quality Assurance Ambassadors Project and student-led case studies for intra-Africa mobility.",
+          link: "https://www.aau.org"
+        },
+        {
+          name: "University at Buffalo (UB)",
+          description: "A premier public research university in the United States.",
+          withAasu: "Partners on graduate information sessions, academic exchanges, and leadership development for African students.",
+          link: "https://www.buffalo.edu"
+        },
+        {
+          name: "University of Warwick",
+          description: "A top-tier global university based in the UK.",
+          withAasu: "Collaborates on research, leadership training, and student mobility initiatives.",
+          link: "https://warwick.ac.uk"
+        },
+        {
+          name: "University of Professional Studies, Accra (UPSA)",
+          description: "A leading public university in Ghana.",
+          withAasu: "Host institution for major strategic meetings, including the NELS project and student leadership summits.",
+          link: "https://upsa.edu.gh"
+        },
+        {
+          name: "International Association of Universities (IAU)",
+          description: "Global association of higher education institutions under UNESCO.",
+          withAasu: "Works on global higher education policy and the inclusion of student voices in institutional governance.",
+          link: "https://www.iau-aiu.net"
+        },
+        {
+          name: "Bologna Follow-Up Group (BFUG)",
+          description: "Oversees the European Higher Education Area (EHEA) reforms.",
+          withAasu: "Engages in cross-continental dialogue on student-centered learning and mobility frameworks.",
+          link: "https://www.ehea.info"
+        },
+        {
+          name: "Scholars at Risk Network",
+          description: "An international network protecting threatened scholars and academic freedom.",
+          withAasu: "Jointly advocates for the protection of student activists and the preservation of academic freedom in Africa.",
+          link: "https://www.scholarsatrisk.org"
+        },
+        {
+          name: "Magna Charta Universitatum Observatory",
+          description: "Global body promoting university values and autonomy.",
+          withAasu: "Ensures students are recognized as equal partners in the governance and social responsibility of universities.",
+          link: "https://www.magna-charta.org"
+        },
+        {
+          name: "Education International (EI)",
+          description: "Global federation representing teachers and education employees.",
+          withAasu: "Strengthens student-teacher solidarity and advocates for quality public education as a human right.",
+          link: "https://www.ei-ie.org"
+        },
+        {
+          name: "University of Ghana (UG)",
+          description: "The premier and largest university in Ghana.",
+          withAasu: "Key academic partner for research, student advocacy, and hosting continental student forums.",
+          link: "https://www.ug.edu.gh"
+        },
+        {
+          name: "University of Cape Coast (UCC)",
+          description: "A leading research and teaching university in Ghana.",
+          withAasu: "Partners on teacher education standards and student-led academic excellence initiatives.",
+          link: "https://www.ucc.edu.gh"
+        },
+        {
+          name: "University of Education, Winneba (UEW)",
+          description: "Specialized university for teacher education and professional development.",
+          withAasu: "Collaborates on education policy and teacher-trainee rights advocacy.",
+          link: "https://www.uew.edu.gh"
+        },
+        {
+          name: "ACQF",
+          description: "African Continental Qualifications Framework.",
+          withAasu: "Strategic collaboration on harmonizing qualifications and improving student mobility across Africa.",
+          link: "https://acqf.africa"
+        }
+      ]
     },
     {
-      name: "Organisation of Southern Cooperation",
-      description: "A platform advancing collaboration among Global South countries.",
-      withAasu: "Supports South–South cooperation, youth leadership, and academic exchange.",
-      link: "https://osc.ngo"
+      category: "Development & NGO Partners",
+      description: "AASU partners with leading NGOs and development agencies to deliver impact on the ground across the African continent.",
+      partners: [
+        {
+          name: "UNICEF",
+          description: "United Nations Children's Fund.",
+          withAasu: "Focuses on the rights of children and young people, particularly on the 'International Day of the Girl Child' campaigns.",
+          link: "https://www.unicef.org"
+        },
+        {
+          name: "UNHCR",
+          description: "United Nations High Commissioner for Refugees.",
+          withAasu: "Collaborates on the inclusion of refugee students in higher education and the protection of displaced youth.",
+          link: "https://www.unhcr.org"
+        },
+        {
+          name: "Oxfam",
+          description: "Global movement fighting inequality to end poverty.",
+          withAasu: "Partners on climate justice, youth advocacy, and campaigns against inequality across Africa.",
+          link: "https://www.oxfam.org"
+        },
+        {
+          name: "GIZ",
+          description: "German Agency for International Cooperation.",
+          withAasu: "Supports technical and vocational education (TVET), entrepreneurship, and youth employment projects.",
+          link: "https://www.giz.de"
+        },
+        {
+          name: "Open Society Foundations (OSF)",
+          description: "International grantmaking network promoting justice and governance.",
+          withAasu: "Funds student-led initiatives in democracy, civic engagement, and human rights advocacy.",
+          link: "https://www.opensocietyfoundations.org"
+        },
+        {
+          name: "ActionAid",
+          description: "International NGO working for social justice and human rights.",
+          withAasu: "Mobilizes youth activists for policy change and economic justice campaigns.",
+          link: "https://www.actionaid.org"
+        },
+        {
+          name: "Amnesty International",
+          description: "Global movement for human rights protection.",
+          withAasu: "Collaborates on student human rights training and rapid response for threatened student leaders.",
+          link: "https://www.amnesty.org"
+        },
+        {
+          name: "Forum for African Women Educationalists (FAWE)",
+          description: "Pan-African NGO promoting girls' education.",
+          withAasu: "Works on gender-transformative education and the empowerment of women in student leadership.",
+          link: "https://fawe.org"
+        },
+        {
+          name: "Pure Earth",
+          description: "International non-profit organization dedicated to solving toxic pollution problems.",
+          withAasu: "Collaborates on environmental health awareness and student-led pollution prevention campaigns.",
+          link: "https://www.pureearth.org"
+        },
+        {
+          name: "Obaasima Campaign",
+          description: "Women-led initiative promoting menstrual hygiene and girl-child empowerment.",
+          withAasu: "Partners on the 'Pad A Girl' campaign and sexual reproductive health education for students.",
+          link: null
+        }
+      ]
     },
     {
-      name: "Natural Justice",
-      description: "Focuses on environmental and community rights, especially in Africa.",
-      withAasu: "Works on climate justice awareness and student engagement in environmental governance.",
-      link: "https://naturaljustice.org"
-    },
-    {
-      name: "Bologna Follow-Up Group",
-      description: "Oversees the European Higher Education Area (EHEA) reforms.",
-      withAasu: "Collaborates on higher education policy dialogue and student mobility frameworks.",
-      link: "https://www.ehea.info"
-    },
-    {
-      name: "Global Student Forum",
-      description: "A global umbrella body for democratic student unions representing millions of students.",
-      withAasu: "Strategic partner amplifying African student voices globally.",
-      link: "https://globalstudentforum.org"
-    },
-    {
-      name: "100 Million Campaign",
-      description: "Advocates for the rights of marginalized children and youth worldwide.",
-      withAasu: "Mobilizes African students for advocacy and grassroots campaigns.",
-      link: "https://100million.org"
-    },
-    {
-      name: "Open Society Initiative for Southern Africa",
-      description: "Supports democracy, governance, and human rights in Southern Africa.",
-      withAasu: "Funds and supports student-led civic engagement initiatives.",
-      link: "https://osisa.org"
-    },
-    {
-      name: "National Union of Ghana Students",
-      description: "The main student representative body in Ghana.",
-      withAasu: "National member organization contributing to continental student representation.",
-      link: "https://nugs.org.gh"
-    },
-    {
-      name: "Ministry of Foreign Affairs - The Republic of Ghana",
-      description: "Handles Ghana’s diplomacy and international relations.",
-      withAasu: "Supports student diplomacy, visas, and international engagements.",
-      link: "https://mfa.gov.gh"
-    },
-    {
-      name: "ActionAid",
-      description: "Works on human rights, poverty, and social justice.",
-      withAasu: "Collaborates on youth activism and policy advocacy campaigns.",
-      link: "https://www.actionaid.org"
-    },
-    {
-      name: "Danske Studerendes Fællesråd",
-      description: "Denmark’s national student union.",
-      withAasu: "Engages in North–South student solidarity and exchange programs.",
-      link: "https://dsfnet.dk"
-    },
-    {
-      name: "Amnesty International",
-      description: "Global movement advocating for human rights.",
-      withAasu: "Partners on student human rights campaigns and awareness.",
-      link: "https://www.amnesty.org"
-    },
-    {
-      name: "Anijie Global Foundation",
-      description: "Focuses on youth empowerment and development initiatives.",
-      withAasu: "Supports student leadership and capacity-building programs.",
-      link: null
-    },
-    {
-      name: "British Council",
-      description: "Promotes education, culture, and international opportunities.",
-      withAasu: "Supports scholarships, exchanges, and student capacity development.",
-      link: "https://www.britishcouncil.org"
-    },
-    {
-      name: "University of Professional Studies, Accra",
-      description: "A public university in Ghana focused on professional education.",
-      withAasu: "Institutional partner for student programs, research, and events.",
-      link: "https://upsa.edu.gh"
-    },
-    {
-      name: "UNESCO",
-      description: "Promotes education, science, and culture globally.",
-      withAasu: "Collaborates on education policy, youth inclusion, and SDGs.",
-      link: "https://www.unesco.org"
-    },
-    {
-      name: "European Students' Union",
-      description: "Represents students across Europe.",
-      withAasu: "Works on global student advocacy and higher education reforms.",
-      link: "https://esu-online.org"
-    },
-    {
-      name: "Students Organizing for Sustainability International",
-      description: "Global student network for sustainability advocacy.",
-      withAasu: "Supports African student climate action initiatives.",
-      link: "https://sosi.world"
-    },
-    {
-      name: "United Nations Environment Programme",
-      description: "Leads global environmental efforts within the UN system.",
-      withAasu: "Engages students in environmental awareness and policy advocacy.",
-      link: "https://www.unep.org"
-    },
-    {
-      name: "Equip Ghana Beyond Success",
-      description: "Focuses on youth empowerment and skills development in Ghana.",
-      withAasu: "Collaborates on leadership training and student development programs.",
-      link: null
-    },
-    {
-      name: "International Labour Organization",
-      description: "UN agency promoting decent work and labor rights.",
-      withAasu: "Works on youth employment and student transition to work programs.",
-      link: "https://www.ilo.org"
-    },
-    {
-      name: "UNHCR",
-      description: "Protects refugees and displaced persons globally.",
-      withAasu: "Supports inclusion of refugee students in education systems.",
-      link: "https://www.unhcr.org"
-    },
-    {
-      name: "UNICEF",
-      description: "Advocates for children’s rights and wellbeing.",
-      withAasu: "Collaborates on youth education and student welfare initiatives.",
-      link: "https://www.unicef.org"
-    },
-    {
-      name: "Africa's Campus Battle",
-      description: "A youth-focused competition and engagement platform across African campuses.",
-      withAasu: "Engages students in leadership, innovation, and advocacy activities.",
-      link: null
-    },
-    {
-      name: "Kofi Annan International Peacekeeping Training Centre",
-      description: "Provides training and research on peace and security.",
-      withAasu: "Supports student education on peacebuilding and security studies.",
-      link: "https://www.kaiptc.org"
-    },
-    {
-      name: "Pan African Youth Union",
-      description: "Represents youth organizations across Africa.",
-      withAasu: "Works closely on youth policy advocacy and continental representation.",
-      link: "https://payu.org"
-    },
-    {
-      name: "Deutsche Gesellschaft für Internationale Zusammenarbeit",
-      description: "German agency for international development cooperation.",
-      withAasu: "Funds and supports youth empowerment and education projects.",
-      link: "https://www.giz.de"
-    },
-    {
-      name: "Africa Center for Strategic Studies",
-      description: "Promotes security studies and leadership in Africa.",
-      withAasu: "Engages students in governance and security discourse.",
-      link: "https://africacenter.org"
-    },
-    {
-      name: "European Union",
-      description: "Political and economic union of European countries.",
-      withAasu: "Supports education funding, exchanges, and youth policy programs.",
-      link: "https://europa.eu"
-    },
-    {
-      name: "Forum for African Women Educationalists",
-      description: "Promotes girls’ and women’s education in Africa.",
-      withAasu: "Works on gender equity and inclusion in student leadership.",
-      link: "https://fawe.org"
-    },
-    {
-      name: "Globe Educational Center",
-      description: "Provides educational support and development programs.",
-      withAasu: "Collaborates on training and student capacity building.",
-      link: null
-    },
-    {
-      name: "Open Society Foundations",
-      description: "Funds initiatives promoting democracy, rights, and education.",
-      withAasu: "Supports student-led advocacy and governance programs.",
-      link: "https://www.opensocietyfoundations.org"
-    },
-    {
-      name: "Scholars at Risk Network",
-      description: "Protects academic freedom and threatened scholars.",
-      withAasu: "Supports student rights and academic freedom advocacy.",
-      link: "https://www.scholarsatrisk.org"
-    },
-    {
-      name: "International Association of Universities",
-      description: "Global association of higher education institutions.",
-      withAasu: "Collaborates on higher education policy and student engagement.",
-      link: "https://www.iau-aiu.net"
-    },
-    {
-      name: "Global Campaign for Education",
-      description: "Advocates for education as a basic human right.",
-      withAasu: "Joint campaigns for inclusive and equitable education.",
-      link: "https://campaignforeducation.org"
-    },
-    {
-      name: "Magna Charta Universitatum Observatory",
-      description: "Promotes academic freedom and institutional autonomy.",
-      withAasu: "Supports student engagement in university governance discussions.",
-      link: "https://www.magna-charta.org"
-    },
-    {
-      name: "Education International",
-      description: "Global federation of teachers’ unions.",
-      withAasu: "Collaborates on education policy and student-teacher solidarity.",
-      link: "https://www.ei-ie.org"
+      category: "Programme & Event Partners",
+      description: "We work with specialized organizations to deliver world-class programs, exhibitions, and leadership initiatives.",
+      partners: [
+        {
+          name: "Prescott Hospital, Ghana",
+          description: "A leading private healthcare facility in Accra.",
+          withAasu: "Medical partner for AASU events, providing health screenings and student wellness support.",
+          link: null
+        },
+        {
+          name: "Groningen Declaration Network (GDN)",
+          description: "Global network for digital student data mobility.",
+          withAasu: "Partners on digitalizing student credentials and simplifying international mobility for African students.",
+          link: "https://www.groningendeclaration.org"
+        },
+        {
+          name: "Global Campaign for Education (GCE)",
+          description: "Civil society movement promoting the right to education.",
+          withAasu: "Jointly advocates for the 'Education Must Be a Right' campaign and sustainable education funding.",
+          link: "https://campaignforeducation.org"
+        },
+        {
+          name: "British Council",
+          description: "UK's international organisation for cultural relations and educational opportunities.",
+          withAasu: "Collaborates on 21st-century skills training, scholarships, and student capacity development.",
+          link: "https://www.britishcouncil.org"
+        },
+        {
+          name: "Students Organizing for Sustainability International (SOS-I)",
+          description: "Global student network for sustainability.",
+          withAasu: "Strategic partner for the 'Greening Skills' project and continental climate action workshops.",
+          link: "https://sosi.world"
+        },
+        {
+          name: "Kofi Annan International Peacekeeping Training Centre (KAIPTC)",
+          description: "Centre of excellence for peace and security training.",
+          withAasu: "Partners on youth, peace, and security dialogues and student leadership in conflict resolution.",
+          link: "https://www.kaiptc.org"
+        },
+        {
+          name: "European Students' Union (ESU)",
+          description: "The representative body of students in Europe.",
+          withAasu: "Key partner for the NELS project and North-South student solidarity frameworks.",
+          link: "https://esu-online.org"
+        },
+        {
+          name: "Pan African Youth Union (PAYU)",
+          description: "The continental body for youth organizations in Africa.",
+          withAasu: "Coordinates high-level youth representation at AU and international summits.",
+          link: "https://payu.org"
+        }
+      ]
     }
   ];
 
@@ -280,64 +316,62 @@ const PartnersPage = () => {
         </div>
       </section>
 
-      {/* Accordion List */}
+      {/* Partners List by Category */}
       <section className="partners-list-section">
         <div className="container">
-          <div className="accordion-wrapper">
-            {partnersData.map((partner, idx) => {
-              const isOpen = openPartner === partner.name;
+          {partnersByCategory.map((catGroup, groupIdx) => (
+            <div key={groupIdx} className="category-group">
+              <div className="category-header-box">
+                <h2 className="category-title">{groupIdx + 1}. {catGroup.category}</h2>
+                <p className="category-desc">{catGroup.description}</p>
+              </div>
 
-              return (
-                <div className="accordion-item" key={idx}>
-                  <button 
-                    className={`accordion-header ${isOpen ? 'active' : ''}`}
-                    onClick={() => togglePartner(partner.name)}
-                  >
-                    <span>{partner.name}</span>
-                    {isOpen ? <ChevronUp size={20} /> : <ChevronDown size={20} />}
-                  </button>
-                  
-                  <AnimatePresence>
-                    {isOpen && (
-                      <motion.div 
-                        className="accordion-content"
-                        initial={{ height: 0, opacity: 0 }}
-                        animate={{ height: "auto", opacity: 1 }}
-                        exit={{ height: 0, opacity: 0 }}
-                        transition={{ duration: 0.3 }}
+              <div className="accordion-wrapper">
+                {catGroup.partners.map((partner, idx) => {
+                  const isOpen = openPartner === partner.name;
+
+                  return (
+                    <div className="accordion-item" key={idx}>
+                      <button 
+                        className={`accordion-header ${isOpen ? 'active' : ''}`}
+                        onClick={() => togglePartner(partner.name)}
                       >
-                        <div className="content-inner">
-                          <div className="description-container">
-                            <p className="description">{partner.description}</p>
-                            <p className="description highlight">
-                              <strong>With AASU:</strong> {partner.withAasu}
-                            </p>
-                            
-                            {partner.link && (
-                              <a href={partner.link} target="_blank" rel="noreferrer" className="partner-link">
-                                <LinkIcon size={16} /> Visit Partner Website
-                              </a>
-                            )}
-                          </div>
-                          
-                          {partner.name === 'Global Student Forum' && (
-                            <div className="partner-logo-box">
-                              {/* Conceptual mockup replacing the missing image */}
-                              <div className="mock-gsf-logo">
-                                <span className="gsf-text-1">GLOBAL</span><br />
-                                <span className="gsf-text-2">STUDENT</span><br />
-                                <span className="gsf-text-3">FORUM</span>
+                        <span>{partner.name}</span>
+                        {isOpen ? <ChevronUp size={20} /> : <ChevronDown size={20} />}
+                      </button>
+                      
+                      <AnimatePresence>
+                        {isOpen && (
+                          <motion.div 
+                            className="accordion-content"
+                            initial={{ height: 0, opacity: 0 }}
+                            animate={{ height: "auto", opacity: 1 }}
+                            exit={{ height: 0, opacity: 0 }}
+                            transition={{ duration: 0.3 }}
+                          >
+                            <div className="content-inner">
+                              <div className="description-container">
+                                <p className="description">{partner.description}</p>
+                                <p className="description highlight">
+                                  <strong>Collaboration with AASU:</strong> {partner.withAasu}
+                                </p>
+                                
+                                {partner.link && (
+                                  <a href={partner.link} target="_blank" rel="noreferrer" className="partner-link">
+                                    <LinkIcon size={16} /> Visit Website
+                                  </a>
+                                )}
                               </div>
                             </div>
-                          )}
-                        </div>
-                      </motion.div>
-                    )}
-                  </AnimatePresence>
-                </div>
-              );
-            })}
-          </div>
+                          </motion.div>
+                        )}
+                      </AnimatePresence>
+                    </div>
+                  );
+                })}
+              </div>
+            </div>
+          ))}
         </div>
       </section>
 
@@ -379,10 +413,34 @@ const PartnersPage = () => {
           background: #fff;
         }
 
+        .category-group {
+          margin-bottom: 80px;
+        }
+
+        .category-header-box {
+          margin-bottom: 2rem;
+          border-left: 6px solid var(--primary-red);
+          padding-left: 2rem;
+        }
+
+        .category-title {
+          font-family: var(--font-headings);
+          font-size: 2.2rem;
+          font-weight: 900;
+          color: #111;
+          margin-bottom: 0.5rem;
+        }
+
+        .category-desc {
+          color: #666;
+          font-size: 1.1rem;
+          max-width: 700px;
+          line-height: 1.6;
+        }
+
         .accordion-wrapper {
-          max-width: 900px;
-          margin: 0 auto;
-          border-top: 1px solid #e0e0e0;
+          max-width: 1000px;
+          border-top: 1px solid #eee;
         }
 
         .accordion-item {
@@ -504,7 +562,7 @@ const PartnersPage = () => {
           }
         }
       `}} />
-    </div>
+    </main>
   );
 };
 

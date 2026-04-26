@@ -952,6 +952,86 @@ const searchData = [
     path: "/reports",
     category: "Resources",
     keywords: ["annual report 2022", "2022 report", "annual report v5", "financial summary", "impact report"]
+  },
+  {
+    id: 117,
+    title: "ECOWAS - Strategic Partner",
+    description: "Economic Community of West African States partnership with AASU on regional education.",
+    path: "/partners",
+    category: "Partners",
+    keywords: ["ecowas", "west africa", "strategic partner", "regional integration"]
+  },
+  {
+    id: 118,
+    title: "SADC - Strategic Partner",
+    description: "Southern African Development Community partnership on student mobility.",
+    path: "/partners",
+    category: "Partners",
+    keywords: ["sadc", "southern africa", "strategic partner", "student mobility"]
+  },
+  {
+    id: 119,
+    title: "AAU - Association of African Universities",
+    description: "Academic partner collaborating on higher education quality assurance.",
+    path: "/partners",
+    category: "Partners",
+    keywords: ["aau", "association of african universities", "higher education", "quality assurance"]
+  },
+  {
+    id: 120,
+    title: "University at Buffalo - Academic Partner",
+    description: "Academic partnership for graduate programs and admissions tips.",
+    path: "/partners",
+    category: "Partners",
+    keywords: ["buffalo", "university at buffalo", "ub", "academic partner", "study abroad"]
+  },
+  {
+    id: 121,
+    title: "University of Ghana (UG)",
+    description: "Premier academic partner and student advocacy hub.",
+    path: "/partners",
+    category: "Partners",
+    keywords: ["ug", "university of ghana", "legon", "academic partner"]
+  },
+  {
+    id: 122,
+    title: "University of Cape Coast (UCC)",
+    description: "Academic partner for teacher education and excellence.",
+    path: "/partners",
+    category: "Partners",
+    keywords: ["ucc", "university of cape coast", "academic partner"]
+  },
+  {
+    id: 123,
+    title: "University of Education, Winneba (UEW)",
+    description: "Specialized academic partner for teacher rights and education.",
+    path: "/partners",
+    category: "Partners",
+    keywords: ["uew", "winneba", "university of education", "academic partner"]
+  },
+  {
+    id: 124,
+    title: "Pure Earth - NGO Partner",
+    description: "Environmental health and pollution prevention partner.",
+    path: "/partners",
+    category: "Partners",
+    keywords: ["pure earth", "pollution", "environment", "ngo partner"]
+  },
+  {
+    id: 125,
+    title: "Obaasima Campaign",
+    description: "Menstrual hygiene and girl-child empowerment partner.",
+    path: "/partners",
+    category: "Partners",
+    keywords: ["obaasima", "pad a girl", "menstruation", "gender advocacy"]
+  },
+  {
+    id: 126,
+    title: "Prescott Hospital, Ghana",
+    description: "Medical partner for student wellness and event health screenings.",
+    path: "/partners",
+    category: "Partners",
+    keywords: ["prescott hospital", "health", "wellness", "medical partner"]
   }
 ];
 
