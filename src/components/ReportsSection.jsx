@@ -2,35 +2,44 @@ import React from 'react';
 import { motion } from 'framer-motion';
 import { ArrowRight } from 'lucide-react';
 import { Link } from 'react-router-dom';
+import { newsEventsData } from '../data/newsEventsData';
+import { reportsData } from '../data/reportsData';
 
 const ReportsSection = () => {
-  const reports = [
-    {
-      type: 'placeholder',
-      tags: ['Statements'],
-      title: 'Statement on the Situation in Sudan',
-      date: 'Updated on Jan 5, 2026'
-    },
-    {
-      type: 'placeholder',
-      tags: ['Statements'],
-      title: 'Civil Society Collective Statement on Public Education',
-      date: 'Updated on Nov 6, 2025'
-    },
-    {
-      type: 'placeholder',
-      tags: ['Statements'],
-      title: 'Students urge governments to place education at the heart of social progress',
-      date: 'Updated on Nov 3, 2025'
-    },
-    {
-      type: 'image',
-      img: '/education-768x180.webp',
-      tags: ['Statements', 'Press release'],
-      title: 'Crackdown on Protests in Member States',
-      date: 'Updated on Sep 9, 2025'
-    }
+  // Get latest 2 statements (Press Releases)
+  const latestStatements = newsEventsData
+    .filter(item => item.type === 'Press Release' || item.id.includes('statement') || item.id.includes('nels-spring'))
+    .sort((a, b) => new Date(b.date) - new Date(a.date))
+    .slice(0, 2);
+
+  // Get latest 2 reports
+  const latestReports = reportsData
+    .sort((a, b) => parseInt(b.year) - parseInt(a.year))
+    .slice(0, 2);
+
+  // Combine them: 2 statements first, then 2 reports
+  const combinedItems = [
+    ...latestStatements.map(s => ({
+      id: s.id,
+      type: 'statement',
+      tags: ['Statement', s.category],
+      title: s.title,
+      date: `Updated on ${new Date(s.date).toLocaleDateString('en-US', { month: 'short', day: 'numeric', year: 'numeric' })}`,
+      img: s.img,
+      link: `/news/${s.id}`
+    })),
+    ...latestReports.map(r => ({
+      id: r.id,
+      type: 'report',
+      tags: ['Report', r.priorityArea],
+      title: r.title,
+      date: `Released in ${r.year}`,
+      img: r.thumbnail || '/report-thumb-placeholder.jpg',
+      link: '/reports' // Reports usually open in the reports hub
+    }))
   ];
+
+  const reports = combinedItems;
 
   return (
     <section className="reports-section">
@@ -45,22 +54,22 @@ const ReportsSection = () => {
         <div className="reports-grid">
           {reports.map((report, i) => (
             <Link 
-              to="/reports" 
+              to={report.link} 
               key={i} 
               className="report-card"
               whileHover={{ y: -8 }}
               transition={{ type: "spring", stiffness: 300, damping: 20 }}
             >
               <div className="report-media">
-                {report.type === 'placeholder' ? (
-                  <div className="report-placeholder">
-                    <span>STATEMENT</span>
-                  </div>
-                ) : (
+                {report.img && report.img !== 'placeholder' ? (
                   <div 
                     className="report-image" 
                     style={{ backgroundImage: `url('${report.img}')` }}
                   ></div>
+                ) : (
+                  <div className="report-placeholder">
+                    <span>{report.type.toUpperCase()}</span>
+                  </div>
                 )}
               </div>
               

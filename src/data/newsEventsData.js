@@ -12,6 +12,400 @@ export const CONTENT_TYPES = {
 
 export const newsEventsData = [
   {
+    id: 'rwanda-genocide-remembrance-2026',
+    type: CONTENT_TYPES.PRESS_RELEASE,
+    category: 'Policy & Advocacy',
+    title: 'Official Statement on the Commemoration of the 1994 Genocide Against the Tutsi in Rwanda',
+    img: '/rwanda-remembrance.png',
+    date: '2026-04-07',
+    excerpt: 'AASU joins the people of Rwanda and the global community in solemn remembrance of the victims of the 1994 Genocide.',
+    description: `Official Statement on the Commemoration of the 1994 Genocide Against the Tutsi in Rwanda
+
+Date Issued: Tuesday, 7 April 2026
+
+Content:
+
+The All-Africa Students Union (AASU) joins the people of Rwanda and the global community in solemn remembrance of the victims of the 1994 Genocide against the Tutsi.
+
+This tragic chapter in Africa’s history remains a painful reminder of the devastating consequences of hatred, division, and indifference. Over one million lives were lost in a period that continues to shape our collective conscience as a continent and as a global community.
+
+As the continental voice of African students, AASU stands in solidarity with survivors and honours the resilience, courage, and commitment to unity demonstrated by the people of Rwanda in the years of rebuilding and reconciliation.
+
+This commemoration is not only a moment of reflection but also a call to action. It reminds us of the responsibility we carry, particularly as young people, to reject all forms of discrimination, promote tolerance, and actively work towards peaceful coexistence across our communities.
+
+AASU emphasises that the lessons of the genocide must remain central to our efforts to build a more united and inclusive Africa. We must continue to strengthen values of respect for human dignity, social cohesion, and shared humanity.
+
+We further encourage African students and youth to use their voices and platforms to promote peace, challenge divisive narratives, and contribute to efforts that prevent such tragedies from ever occurring again.
+
+Together, we remember.
+Together, we stand.
+Together, we say: Never Again.
+
+Signed:
+Divine Edem Kwadzodeh
+Secretary-General`
+  },
+  {
+    id: 'elections-results-final-phase',
+    type: CONTENT_TYPES.NEWS,
+    category: 'Executive Committee',
+    title: 'AASU Announces Results of the Second and Final Phase of Elections for the 14th Elective Congress',
+    img: '/election-results.png',
+    date: '2025-12-16',
+    excerpt: 'AASU formally announces the successful conclusion of the final phase of elections for the 14th Elective Congress.',
+    description: `AASU Announces Results of the Second and Final Phase of Elections for the 14th Elective Congress
+
+Date Issued: Tuesday, 16 December 2025
+
+Content:
+
+The All-Africa Students Union (AASU) wishes to formally announce the successful conduct and conclusion of the second and final phase of elections for the 14th Elective Congress, held on Monday, 15 December 2025.
+
+In accordance with the AASU Constitution and the Electoral Guidelines of the 14th Elective Congress, the second phase of elections was conducted to fill outstanding Executive Committee and Secretariat positions.
+
+Following a transparent and orderly voting process, the Electoral Commission hereby declares the following candidates duly elected:
+
+Executive Committee
+Vice President for North Africa – Jaber Maataoui (Morocco)
+Vice President for Central Africa – Créscence Naomie Mban-ny (Cameroon)
+Vice President for Southern Africa – Buthanani Thobela (South Africa)
+Executive Committee Member for North Africa – Habiba Mohamed Abdallah (Egypt)
+Executive Committee Member for West Africa – Oumu Sall (Liberia)
+Executive Committee Member for Central Africa – Benita Ndokolo Mfuke (DR Congo)
+Executive Committee Member for East Africa – Stellah Akur Garang (South Sudan)
+Executive Committee Member for Southern Africa – Esther Gomani (Malawi)
+Secretariat
+Secretary for Education and Students’ Rights – Ben-Christ Trésor Saizonou (Benin)
+Secretary for Press and Information – Amadou B. Jobarteh (The Gambia)
+Secretary for Gender and Affirmative Action – Boago Dodo Chingapani (Botswana)
+
+With the conclusion of this phase, the electoral process is now complete.
+
+The Union congratulates all elected officers and commends member organisations for their commitment to democratic principles.
+
+Signed:
+Miss Angel Mbuthia
+Electoral Commission Chairperson`
+  },
+  {
+    id: 'elections-results-first-phase',
+    type: CONTENT_TYPES.NEWS,
+    category: 'Executive Committee',
+    title: 'AASU Announces Results of the First Phase of Elections for the 14th Elective Congress',
+    img: '/election-results-phase1.png',
+    date: '2025-11-23',
+    excerpt: 'AASU announces the successful conclusion of the first phase of elections held on 22nd November 2025.',
+    description: `AASU Announces Results of the First Phase of Elections for the 14th Elective Congress
+
+Date Issued: Sunday, 23 November 2025
+
+Content:
+
+The All-Africa Students Union (AASU) announces the successful conclusion of the first phase of elections for the 14th Elective Congress held on Saturday, 22 November 2025.
+
+Elected Officers:
+President – Osisiogu Osikenyi Enyinnaya (Nigeria)
+Secretary-General – Divine Edem Kwadzodeh (Ghana)
+Deputy President – Maravilha Kapaia (Angola)
+Deputy Secretary-General – Alistar Pfunye (Zimbabwe)
+Vice President for West Africa – Rosália Djedjo (Guinea-Bissau)
+Vice President for East Africa – Valentine Mugun Chepkoech (Kenya)
+Secretary for Finance and Administration – Vanessa Kokoé Ajavon (Togo)
+
+The Union congratulates all elected officers.
+
+The second phase of elections was scheduled for Monday, 15 December 2025.
+
+Signed:
+Miss Angel Mbuthia
+Electoral Commission Chairperson`
+  },
+  {
+    id: 'passing-of-president-varney',
+    type: CONTENT_TYPES.PRESS_RELEASE,
+    category: 'Executive Committee',
+    title: 'AASU Regrets to Announce the Passing of Its President',
+    img: '/president-tribute.png',
+    date: '2025-10-24',
+    excerpt: 'It is with deep regret that AASU announces the passing of its President, Varney Alieu Jarsey.',
+    description: `AASU Regrets to Announce the Passing of Its President
+
+Date Issued: Friday, 24 October 2025
+
+Content:
+
+The All-Africa Students Union (AASU) regrets to announce the passing of its President, Varney Alieu Jarsey.
+
+President Jarsey served the Union with distinction and dedication. His commitment to advancing the rights, welfare, and voice of Africa’s students will be remembered with deep respect.
+
+This loss is deeply felt by the AASU family, member unions, partners, and the African student community.
+
+We extend our heartfelt condolences to his family and loved ones.
+
+Signed:
+Peter Kwasi KODJIE
+Secretary-General`
+  },
+  {
+    id: 'international-youth-day-2025',
+    type: CONTENT_TYPES.NEWS,
+    category: 'Policy & Advocacy',
+    title: 'AASU Celebrates International Youth Day 2025',
+    img: '/youth-day-2025.png',
+    date: '2025-08-12',
+    excerpt: 'AASU joins the global community in commemorating International Youth Day 2025 under the theme: Local Youth Actions for the SDGs and Beyond.',
+    description: `AASU Celebrates International Youth Day 2025
+
+Date Issued: Tuesday, 12 August 2025
+
+Content:
+
+AASU joins the global community in commemorating International Youth Day 2025 under the theme:
+“Local Youth Actions for the SDGs and Beyond.”
+
+Young people across Africa are leading transformative change through climate action, education, gender equality, and economic empowerment.
+
+AASU highlights that youth participation is essential for achieving SDGs, especially given that over 65% of targets are linked to local governance.
+
+Despite progress, many young Africans still face systemic barriers. AASU calls for increased investment in youth-led initiatives, capacity building, and enabling policies.
+
+The Union urges governments and partners to support youth-driven development and innovation.
+
+Signed:
+Peter Kwasi KODJIE
+Secretary-General`
+  },
+  {
+    id: 'denmark-africa-student-initiative',
+    type: CONTENT_TYPES.NEWS,
+    category: 'Education & Students Rights',
+    title: 'New Initiative to Attract More African Students to Denmark',
+    img: '/denmark-initiative.png',
+    date: '2025-06-17',
+    excerpt: 'Danish ministries launch a DKK 430 million programme to strengthen partnerships between Danish and African universities.',
+    description: `New Initiative to Attract More African Students to Denmark
+
+Date Issued: 17th June 2025
+
+Content:
+
+The Ministry of Foreign Affairs and Ministry of Higher Education and Research (Denmark) are launching a DKK 430 million programme to strengthen partnerships between Danish and African universities.
+
+The initiative aims to:
+
+Increase African student enrolment in Denmark
+Promote knowledge exchange
+Build long-term academic partnerships
+
+The programme includes:
+
+Scholarships for African students
+Erasmus+ support
+Innovation and mobility initiatives
+
+The Danida Fellowship Centre will manage the programme.
+
+Officials highlighted Africa’s growing youth population and the importance of strengthening global academic collaboration.
+
+Issued by:
+The Secretary-General
+All-Africa Students Union (AASU)`
+  },
+  {
+    id: 'nels-spring-2026',
+    type: CONTENT_TYPES.NEWS,
+    category: 'Capacity Building',
+    title: 'Next Level Skills for Student Leaders (NELS) – Spring 2026 Registration & Session Schedule',
+    img: '/nels-spring-2026.png',
+    date: '2026-04-10',
+    excerpt: 'Registration is now open for the NELS – Spring 2026 Programme, designed to equip student leaders with vision and confidence.',
+    description: `Next Level Skills for Student Leaders (NELS) – Spring 2026 Registration & Session Schedule
+
+Date Issued: 2026 (Spring Programme Announcement)
+
+Content:
+
+The All-Africa Students Union (AASU), in collaboration with partners, announces that registration is now open for the Next Level Skills for Student Leaders (NELS) – Spring 2026 Programme.
+
+This initiative is designed to equip student leaders across Africa with the tools to lead with impact, vision, and confidence through structured training sessions and peer engagement.
+
+Programme Overview
+
+Participants will engage in a series of interactive sessions focused on leadership, sustainability, communication, and student movement dynamics. The programme is tailored to strengthen the capacity of student leaders in addressing contemporary challenges across the continent.
+
+Session Schedule (April 2026)
+Welcome Session
+13 April 2026 — 15:00 CET | 13:00 GMT | 16:00 EAT
+Sustainability and SDGs
+15 April 2026 — 15:00 CET | 13:00 GMT | 16:00 EAT
+Dealing with Resistance in the Student Movement
+17 April 2026 — 15:00 CET | 13:00 GMT | 16:00 EAT
+Communication with Decision Makers
+20 April 2026 — 15:00 CET | 13:00 GMT | 16:00 EAT
+Cross-Cultural Communication with Stakeholders
+22 April 2026 — 15:00 CET | 13:00 GMT | 16:00 EAT
+New Ways of Student Organizing II
+24 April 2026 — 15:00 CET | 13:00 GMT | 16:00 EAT
+Registration
+
+Interested participants are encouraged to register online via:
+nels.training
+
+The programme is co-funded by the European Union and implemented in partnership with leading academic and student organisations across Africa and Europe.`
+  },
+  {
+    id: 'greening-skills-africa',
+    type: CONTENT_TYPES.NEWS,
+    category: 'Environment & Climate Action',
+    title: 'Call for Good Practices: Greening Skills and Qualifications in Africa',
+    img: '/greening-call.png',
+    date: '2025-05-15',
+    excerpt: 'AASU invites institutions to submit good practices in advancing green skills and sustainable qualifications across Africa.',
+    description: `Call for Good Practices: Greening Skills and Qualifications in Africa
+
+Date Issued: 2025 (Deadline Extended to 9 June 2025)
+
+Content:
+
+The All-Africa Students Union (AASU), in collaboration with the ACQF-II Project, invites institutions and stakeholders to submit proven good practices in advancing green skills and sustainable qualifications across Africa.
+
+The initiative seeks models integrating sustainability into education, training, and workforce development, including:
+
+Recognition of Prior Learning (RPL)
+Micro-credentials
+Institutional partnerships and policy innovations
+Community-level green initiatives
+
+Selected submissions will contribute to strengthening continental qualification frameworks and promoting scalable solutions for Africa’s green transition.
+
+Focus Areas
+Policy innovations for green skills at national/regional levels
+Sustainability-focused qualifications and curricula
+Climate resilience and local innovation initiatives
+Africa-based initiatives with proven results
+Eligibility
+Students and youth-led organisations
+Governments and educational institutions
+TVET centres, NGOs, and private sector actors
+Submission Requirements
+Case study (500–800 words)
+Supporting evidence (reports, policies, testimonials)
+Demonstrated relevance to green skills and sustainability frameworks
+
+Submission Link: bit.ly/44HqtdD
+Deadline (Extended): 9 June 2025`
+  },
+  {
+    id: 'nsp-call-2025',
+    type: CONTENT_TYPES.NEWS,
+    category: 'Capacity Building',
+    title: 'Call for National Service Personnel (NSPs) – 2025/2026 Service Year',
+    img: '/nsp-call-2025.png',
+    date: '2025-06-01',
+    excerpt: 'AASU invites applications for placement as National Service Personnel for the 2025/2026 service year across various skill areas.',
+    description: `Call for National Service Personnel (NSPs) – 2025/2026 Service Year
+
+Date Issued: 2025
+
+Content:
+
+The All-Africa Students Union (AASU) invites applications from qualified final-year students for placement as National Service Personnel (NSP) for the 2025/2026 service year.
+
+Preferred Skill Areas
+Research and Policy Analysis
+Data Analytics and Monitoring & Evaluation
+Report and Grant Writing
+Graphic Design (Adobe Suite, Canva)
+Web Design and Management (HTML, CSS, WordPress)
+Report Writing and Editorial Support
+Project Management
+Accounting and Financial Reporting
+Human Resource Management
+IT and Systems Support
+Public Relations and Strategic Communications
+Social Media Management and Content Creation
+Photography and Videography
+General Requirements
+Proficiency in Microsoft Office and collaborative tools
+Strong writing and communication skills
+High level of organisation and attention to detail
+Ability to work independently in a fast-paced, multicultural environment
+Knowledge of French, Portuguese, or Arabic is an added advantage
+Application Documents
+One-page application letter
+Curriculum Vitae (CV)
+Name of institution
+NSS PIN and NSS Number
+Portfolio (for design/web roles)
+
+Submission Email: info@aasuonline.org (cc: jkodjie@aasuonline.org)
+Application Deadline: 20 June 2025
+
+Shortlisted applicants will be invited for interviews.`
+  },
+  {
+    id: 'cobbinah-nya-appointment',
+    type: CONTENT_TYPES.PRESS_RELEASE,
+    category: 'Executive Committee',
+    title: 'AASU Congratulates Mr. Julian Cobbinah on His Appointment as NYA Governing Board Chairperson',
+    img: '/julian-cobbinah-nya.png',
+    date: '2025-05-08',
+    excerpt: 'AASU extends warm congratulations to Mr. Julian Cobbinah on his appointment as Chairperson of the NYA Governing Board.',
+    description: `AASU Congratulates Mr. Julian Cobbinah on His Appointment as NYA Governing Board Chairperson
+
+Date Issued: Thursday, 8 May 2025
+
+Content:
+
+The All-Africa Students Union (AASU) extends its warmest congratulations to Mr. Julian Cobbinah on his appointment as Chairperson of the Governing Board of the National Youth Authority (NYA) of Ghana.
+
+Mr. Cobbinah’s appointment reflects his distinguished track record in youth leadership, policy advocacy, and nation-building. Having served as President of the National Union of Ghana Students (NUGS), he brings significant experience and insight to the role.
+
+AASU recognises the strategic importance of youth institutions such as the NYA in shaping Africa’s future and expresses confidence in Mr. Cobbinah’s leadership to strengthen youth empowerment across Ghana.
+
+The Union looks forward to continued collaboration with the NYA to advance youth engagement, inclusive policy development, and sustainable development across the continent.
+
+Signed:
+Peter Kwasi KODJIE
+Secretary-General`
+  },
+  {
+    id: 'haqaa3-call-student-reps',
+    type: CONTENT_TYPES.NEWS,
+    category: 'Education & Students Rights',
+    title: '2nd Call for Student Representatives – HAQAA3 Quality Assurance Reviews',
+    img: '/haqaa3-call-2.png',
+    date: '2025-04-15',
+    excerpt: 'AASU announces the 2nd Call for Student Representatives for HAQAA3 Quality Assurance Agency Reviews.',
+    description: `2nd Call for Student Representatives – HAQAA3 Quality Assurance Reviews
+
+Date Issued: 2025 (Deadline: 1 May 2025)
+
+Content:
+
+The All-Africa Students Union (AASU) announces the 2nd Call for Student Representatives to serve on panels for the HAQAA3 Quality Assurance Agency Reviews.
+
+Selected students will play a critical role in ensuring that student perspectives are reflected in the assessment and enhancement of quality assurance systems in higher education across Africa.
+
+Eligibility Requirements
+Currently enrolled African higher education student (minimum one year remaining)
+Interest in quality assurance and accreditation processes
+Fluency in English, French, or Portuguese (Arabic advantageous)
+Availability for training and review activities (2025/2026)
+Role of Selected Participants
+Participate in preparatory meetings and site visits
+Analyse institutional self-assessments
+Contribute to review reports
+Advocate for student-centred quality standards
+Why Apply
+Gain professional experience in quality assurance
+Contribute to continental education improvement
+Receive specialised training
+
+Application Link: bit.ly/HAQAA3QA
+Deadline: 1 May 2025`
+  },
+  {
     id: 'event-earthday-2026',
     type: CONTENT_TYPES.EVENT,
     category: 'Environment & Climate Action',
@@ -753,7 +1147,7 @@ The insights and networks gained through this programme are set to contribute si
 ];
 
 export const isEventEnded = (eventDate) => {
-  const today = new Date('2026-04-21'); 
+  const today = new Date('2026-04-26'); 
   const target = new Date(eventDate);
   return target < today;
 };

@@ -19,6 +19,10 @@ export const documents = [
   { title: "SDG4 Concept Note", year: "Education", type: "Concept Note", link: "/Concept Note for SDG4.pdf" },
   { title: "Climate Change & SDGs", year: "Climate", type: "Policy", link: "/CLIMATE CHANGE, the SDGs.pdf" },
   { title: "Green Skills Green Jobs Report", year: "Climate", type: "Report", link: "/REPORT_GREEN SKILLS GREEN JOBS.pdf" },
+  { title: "Statement: Rwanda Genocide 2026", year: "2026", type: "Statement", link: "/news/rwanda-genocide-remembrance-2026" },
+  { title: "Election Results: 14th Elective Congress", year: "2025", type: "Statement", link: "/news/elections-results-final-phase" },
+  { title: "NELS Spring 2026 Registration", year: "2026", type: "Statement", link: "/news/nels-spring-2026" },
+  { title: "Greening Skills Call for Good Practices", year: "2025", type: "Statement", link: "/news/greening-skills-africa" },
 ];
 
 export const programs = [
@@ -95,6 +99,11 @@ export const intents = [
     keywords: ["leaders", "executives", "secretariat", "who is the president"],
     answer: "AASU is led by an Executive Committee elected during the Congress. Our Technical Team manages the day-to-day operations at the Secretariat.",
     links: [{ label: "Executive Committee", url: "/executives" }, { label: "Technical Team", url: "/technical-team" }]
+  },
+  {
+    keywords: ["election results", "14th elective congress", "who was elected", "voting"],
+    answer: "The 14th Elective Congress successfully concluded its elections in two phases. Osisiogu Osikenyi Enyinnaya was elected President, and Divine Edem Kwadzodeh was elected Secretary-General for the 2026-2029 term.",
+    links: [{ label: "View Election Results", url: "/news/elections-results-final-phase" }]
   }
 ];
 

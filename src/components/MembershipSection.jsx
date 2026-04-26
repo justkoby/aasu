@@ -208,6 +208,7 @@ const MembershipSection = () => {
           font-size: 2.8rem;
           font-weight: 800;
           margin-bottom: 2rem;
+          color: white;
         }
 
         .section-desc {
