@@ -28,6 +28,7 @@ import CapacityPage from './pages/priority/CapacityPage';
 import MigrationPage from './pages/priority/MigrationPage';
 import ClimatePage from './pages/priority/ClimatePage';
 import CulturePage from './pages/priority/CulturePage';
+import PrivacyPolicyPage from './pages/PrivacyPolicyPage';
 import LanguageToggle from './components/LanguageToggle';
 import SmartAssistant from './components/SmartAssistant';
 
@@ -66,6 +67,7 @@ function App() {
           <Route path="/priority/migration" element={<MigrationPage />} />
           <Route path="/priority/climate" element={<ClimatePage />} />
           <Route path="/priority/culture" element={<CulturePage />} />
+          <Route path="/privacy-policy" element={<PrivacyPolicyPage />} />
           {/* Catch-all */}
           <Route path="*" element={<div style={{ minHeight: '60vh', display: 'flex', alignItems: 'center', justifyContent: 'center', fontSize: '2rem' }}>404 - Page Not Found</div>} />
         </Routes>
