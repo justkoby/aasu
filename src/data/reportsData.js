@@ -736,6 +736,26 @@ export const reportsData = [
     description: 'A comprehensive report on the cultural exhibition held in Lusaka, Zambia, celebrating African heritage.',
     fileUrl: '/AMACE-REPORT-2023.pdf',
     thumbnail: '/report-thumb-placeholder.jpg'
+  },
+  {
+    id: 'report-youth-peace-security-2023',
+    title: 'Youth, Peace and Security Report',
+    type: DOCUMENT_TYPES.PROGRAM_REPORT,
+    year: '2023',
+    priorityArea: 'Democracy, Good Governance, Peace & Security',
+    description: 'A critical analysis of the role of youth in peacebuilding and security frameworks across the African continent.',
+    fileUrl: '/YOUTH-PEACE-AND-SECURITY.pdf',
+    thumbnail: '/report-thumb-placeholder.jpg'
+  },
+  {
+    id: 'report-annual-2022-v5',
+    title: 'AASU Annual Report 2022',
+    type: DOCUMENT_TYPES.ANNUAL_REPORT,
+    year: '2023',
+    priorityArea: 'General',
+    description: 'The fifth version of the 2022 Annual Report, detailing the Union\'s comprehensive activities and financial summaries.',
+    fileUrl: '/Annual-Report-2022-v5.pdf',
+    thumbnail: '/report-thumb-placeholder.jpg'
   }
 ];
 

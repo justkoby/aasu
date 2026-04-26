@@ -936,6 +936,22 @@ const searchData = [
     path: "/news/elections-results-final-phase",
     category: "News & Events",
     keywords: ["election results", "winners", "14th congress", "secretariat", "executive committee", "statement", "official results"]
+  },
+  {
+    id: 115,
+    title: "Youth, Peace and Security Report (2023)",
+    description: "Critical analysis of youth roles in peacebuilding and security frameworks across Africa.",
+    path: "/reports",
+    category: "Resources",
+    keywords: ["youth peace and security", "peacebuilding", "security", "yps", "peace", "report 2023"]
+  },
+  {
+    id: 116,
+    title: "AASU Annual Report 2022 (Released 2023)",
+    description: "Comprehensive overview of AASU's activities, impact, and financial standing for 2022.",
+    path: "/reports",
+    category: "Resources",
+    keywords: ["annual report 2022", "2022 report", "annual report v5", "financial summary", "impact report"]
   }
 ];
 

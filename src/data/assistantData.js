@@ -29,6 +29,8 @@ export const documents = [
   { title: "14th Congress Bidding Template", year: "Congress", type: "Document", link: "/English-TEMPLATE-LETTER-TO-BID-TO-HOST-14TH-ELECTIVE-CONGRESS.docx" },
   { title: "AMACE 2023 Report", year: "2023", type: "Report", link: "/AMACE-REPORT-2023.pdf" },
   { title: "AMACE 2023 Exhibition Info", year: "2023", type: "News", link: "/news/amace-2023-lusaka" },
+  { title: "Youth, Peace and Security Report", year: "2023", type: "Report", link: "/YOUTH-PEACE-AND-SECURITY.pdf" },
+  { title: "Annual Report 2022 (v5)", year: "2023", type: "Report", link: "/Annual-Report-2022-v5.pdf" },
 ];
 
 export const programs = [
@@ -135,6 +137,16 @@ export const intents = [
     keywords: ["privacy", "data protection", "privacy policy"],
     answer: "AASU is committed to protecting your privacy. Our Privacy Policy explains how we collect, use, and safeguard your personal information when you interact with our platform.",
     links: [{ label: "Read Privacy Policy", url: "/privacy" }]
+  },
+  {
+    keywords: ["youth peace and security", "peacebuilding", "security report", "yps"],
+    answer: "The Youth, Peace and Security (YPS) report analyzes the vital role of students and young people in peacebuilding frameworks and security across Africa. It was released in 2023.",
+    links: [{ label: "Download YPS Report", url: "/YOUTH-PEACE-AND-SECURITY.pdf" }]
+  },
+  {
+    keywords: ["annual report 2022", "2022 report", "annual report v5"],
+    answer: "The AASU Annual Report 2022 (v5) provides a detailed overview of the Union's activities, impact, and financial standing for the year 2022, released in 2023.",
+    links: [{ label: "Download Annual Report 2022", url: "/Annual-Report-2022-v5.pdf" }]
   }
 ];
 
