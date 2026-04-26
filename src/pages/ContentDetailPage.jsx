@@ -17,6 +17,11 @@ const ContentDetailPage = () => {
       const timer = setTimeout(() => navigate('/news'), 3000);
       return () => clearTimeout(timer);
     }
+
+    // Redirect if a link override is specified (e.g., for special landing pages)
+    if (content.linkOverride) {
+      navigate(content.linkOverride, { replace: true });
+    }
   }, [id, content, navigate]);
 
   if (!content) {

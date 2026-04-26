@@ -23,6 +23,9 @@ export const documents = [
   { title: "Election Results: 14th Elective Congress", year: "2025", type: "Statement", link: "/news/elections-results-final-phase" },
   { title: "NELS Spring 2026 Registration", year: "2026", type: "Statement", link: "/news/nels-spring-2026" },
   { title: "Greening Skills Call for Good Practices", year: "2025", type: "Statement", link: "/news/greening-skills-africa" },
+  { title: "14th Congress Announcement", year: "Congress", type: "Document", link: "/14th-congress" },
+  { title: "14th Congress Election Guidelines", year: "Congress", type: "Document", link: "/14th-congress" },
+  { title: "14th Congress Nomination Form", year: "Congress", type: "Document", link: "/14th-congress" },
 ];
 
 export const programs = [
@@ -104,6 +107,11 @@ export const intents = [
     keywords: ["election results", "14th elective congress", "who was elected", "voting"],
     answer: "The 14th Elective Congress successfully concluded its elections in two phases. Osisiogu Osikenyi Enyinnaya was elected President, and Divine Edem Kwadzodeh was elected Secretary-General for the 2026-2029 term.",
     links: [{ label: "View Election Results", url: "/news/elections-results-final-phase" }]
+  },
+  {
+    keywords: ["14th congress", "nomination", "election guidelines", "candidate form", "how to run"],
+    answer: "The 14th Elective Congress portal is open. You can download the Call for Nominations, Election Guidelines, and the Nomination Form in English, French, and Portuguese.",
+    links: [{ label: "Congress Portal", url: "/14th-congress" }]
   }
 ];
 

@@ -73,7 +73,7 @@ const PartnersPage = () => {
       link: "https://nugs.org.gh"
     },
     {
-      name: "Ministry of Foreign Affairs and Regional Integration",
+      name: "Ministry of Foreign Affairs - The Republic of Ghana",
       description: "Handles Ghana’s diplomacy and international relations.",
       withAasu: "Supports student diplomacy, visas, and international engagements.",
       link: "https://mfa.gov.gh"

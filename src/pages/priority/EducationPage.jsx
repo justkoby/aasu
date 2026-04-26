@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import { motion } from 'framer-motion';
 import { Compass, BookOpen, Target, Rocket, Globe, MessageSquare, ArrowRight, Shield, Accessibility, Layers, Users, FileText, CheckCircle2, BarChart3 } from 'lucide-react';
 import ProjectExplorer from '../../components/ProjectExplorer';
@@ -13,6 +13,7 @@ const EducationPage = () => {
   const areaData = priorityProjects.find(a => a.area === "Education & Students' Rights");
   const educationProjects = areaData ? areaData.projects : [];
   const flagship = flagshipPrograms.find(f => f.area === "Education & Students' Rights");
+  const [isReadMore, setIsReadMore] = useState(false);
 
   return (
     <div className="priority-area-page education-page">
@@ -70,12 +71,34 @@ const EducationPage = () => {
               <p>
                 The All-Africa Students Union (AASU) champions an education system that is inclusive, accessible, equitable, and responsive to the realities of African learners. Across the continent, millions of students still face barriers to quality education—from limited access and underfunded institutions to policy gaps and systemic inequalities.
               </p>
-              <p>
-                Through advocacy, partnerships, and student-led initiatives, AASU works to ensure that every African student has the opportunity to learn, thrive, and contribute meaningfully to society.
-              </p>
-              <p>
-                Aligned with global and continental frameworks such as Sustainable Development Goal 4 (SDG 4) and the Continental Education Strategy for Africa (CESA), this priority area positions students not just as participants—but as key drivers of education reform and innovation.
-              </p>
+              
+              <div className={`mobile-read-more-content ${isReadMore ? 'expanded' : ''}`}>
+                <p>
+                  Through advocacy, partnerships, and student-led initiatives, AASU works to ensure that every African student has the opportunity to learn, thrive, and contribute meaningfully to society.
+                </p>
+                <p>
+                  Aligned with global and continental frameworks such as Sustainable Development Goal 4 (SDG 4) and the Continental Education Strategy for Africa (CESA), this priority area positions students not just as participants—but as key drivers of education reform and innovation.
+                </p>
+              </div>
+
+              <button 
+                onClick={() => setIsReadMore(!isReadMore)}
+                className="read-more-btn mobile-only"
+                style={{
+                  background: 'none',
+                  border: `2px solid ${accentColor}`,
+                  color: accentColor,
+                  padding: '0.6rem 1.2rem',
+                  borderRadius: '50px',
+                  fontWeight: 800,
+                  fontSize: '0.9rem',
+                  marginTop: '1rem',
+                  cursor: 'pointer',
+                  display: 'none' /* Hidden by default, shown in media query */
+                }}
+              >
+                {isReadMore ? 'Show Less' : 'Read More'}
+              </button>
             </motion.div>
             <motion.div initial={{ opacity: 0, scale: 0.9 }} whileInView={{ opacity: 1, scale: 1 }} viewport={{ once: true }} className="overview-image-container dual-carousel">
               <div className="carousel-column col-1">
@@ -566,6 +589,27 @@ const EducationPage = () => {
           @keyframes scroll-horizontal {
             0% { transform: translateX(0); }
             100% { transform: translateX(-50%); }
+          }
+
+          .mobile-only {
+            display: none !important;
+          }
+
+          @media (max-width: 768px) {
+            .mobile-only {
+              display: inline-block !important;
+            }
+            .mobile-read-more-content {
+              max-height: 0;
+              overflow: hidden;
+              transition: max-height 0.5s ease, opacity 0.5s ease;
+              opacity: 0;
+            }
+            .mobile-read-more-content.expanded {
+              max-height: 1000px;
+              opacity: 1;
+              margin-top: 1rem;
+            }
           }
         }
 

@@ -29,6 +29,7 @@ import MigrationPage from './pages/priority/MigrationPage';
 import ClimatePage from './pages/priority/ClimatePage';
 import CulturePage from './pages/priority/CulturePage';
 import PrivacyPolicyPage from './pages/PrivacyPolicyPage';
+import CongressPage from './pages/CongressPage';
 import LanguageToggle from './components/LanguageToggle';
 import SmartAssistant from './components/SmartAssistant';
 
@@ -68,6 +69,7 @@ function App() {
           <Route path="/priority/climate" element={<ClimatePage />} />
           <Route path="/priority/culture" element={<CulturePage />} />
           <Route path="/privacy-policy" element={<PrivacyPolicyPage />} />
+          <Route path="/14th-congress" element={<CongressPage />} />
           {/* Catch-all */}
           <Route path="*" element={<div style={{ minHeight: '60vh', display: 'flex', alignItems: 'center', justifyContent: 'center', fontSize: '2rem' }}>404 - Page Not Found</div>} />
         </Routes>

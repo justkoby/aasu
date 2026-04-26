@@ -726,6 +726,16 @@ export const reportsData = [
     description: 'Report on AASU\'s advocacy and engagement during the African Union Heads of State Summit.',
     fileUrl: '/AASU ENGAGEMENT AT THE AU HEADS OF STATE SUMMIT.pdf',
     thumbnail: '/report-thumb-placeholder.jpg'
+  },
+  {
+    id: 'report-amace-2023',
+    title: 'Africa Music, Art & Cultural Exhibition (AMACE) 2023 Report',
+    type: DOCUMENT_TYPES.PROGRAM_REPORT,
+    year: '2023',
+    priorityArea: 'Pan-Africanism & African Culture',
+    description: 'A comprehensive report on the cultural exhibition held in Lusaka, Zambia, celebrating African heritage.',
+    fileUrl: '/AMACE-REPORT-2023.pdf',
+    thumbnail: '/report-thumb-placeholder.jpg'
   }
 ];
 

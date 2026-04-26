@@ -1143,6 +1143,90 @@ Ms. Kaanye actively contributed to the deliberations, reinforcing AASU’s long-
 Its emphasis on strengthening women’s voices and capacities resonates strongly with AASU’s mission to advance gender equality within the African student movement and beyond. Abigail’s participation reflects AASU’s commitment to ensuring that African women, particularly young leaders, gain access to global spaces of knowledge exchange and empowerment.
 
 The insights and networks gained through this programme are set to contribute significantly to AASU’s work in fostering leadership, resilience, and agency among young African women, supporting the Union’s broader vision of a more inclusive and equitable Africa.`
+  },
+  {
+    id: 'amace-2023-lusaka',
+    type: CONTENT_TYPES.NEWS,
+    category: 'Pan-Africanism & African Culture',
+    title: 'Africa Music, Art & Cultural Exhibition (AMACE) 2023',
+    img: '/amace-2023.png',
+    date: '2023-12-10',
+    excerpt: 'The Africa Music, Art, and Cultural Exhibition was a vibrant celebration of the continent\'s rich cultural heritage held in Lusaka, Zambia.',
+    description: `Africa Music, Art & Cultural Exhibition (AMACE) 2023
+ 
+ The Africa Music, Art, and Cultural Exhibition, jointly organized by the All-Africa Students Union (AASU) and the Ministry of Youth, Art, and Sports, was a vibrant celebration of the continent’s rich cultural heritage. Held at the prestigious Mulungushi International Conference Centre in Lusaka, Zambia, the event brought together artists, musicians, cultural practitioners, and enthusiasts from across Africa to showcase the diverse and dynamic expressions of African culture.
+ 
+ Objectives:
+ 1. Promote African Culture: Highlight the richness and diversity of African music, art, and cultural practices.
+ 2. Foster Unity: Encourage cultural exchange and unity among African nations through shared cultural experiences.
+ 3. Empower Youth: Provide a platform for young African artists and musicians to showcase their talents and gain exposure.
+ 4. Boost Tourism: Attract international and local visitors, promoting Zambia as a hub of cultural activity and tourism.
+ 
+ Highlights:
+ The event featured live performances from renowned African musicians representing various genres, including Afrobeat, Highlife, Makossa, and traditional music. Galleries were set up to display artworks including paintings, sculptures, and digital art. fashion shows highlighted African fashion, featuring designs inspired by traditional and contemporary African aesthetics. Interactive workshops and panel discussions featured experts in African art and culture, discussing topics such as cultural heritage and the role of youth in cultural preservation.`
+  },
+  {
+    id: 'russia-scientific-cooperation-2025',
+    type: CONTENT_TYPES.NEWS,
+    category: 'Capacity Building',
+    title: 'AASU Participates in the Fifth Young Scientists Congress in Russia',
+    img: '/russia-scientists-congress.png',
+    date: '2025-11-28',
+    excerpt: 'AASU calls for a new era of equal partnership in Africa-Russia scientific cooperation at the Sirius Federal Territory.',
+    description: `AASU Participates in the Fifth Young Scientists Congress in Russia
+ 
+ Sirius Federal Territory, Russia - 28 November 2025
+ 
+ The All-Africa Students Union (AASU) took part in the Fifth Young Scientists Congress, the flagship event of the Decade of Science and Technology in Russia, held at the Sirius University of Science and Technology from 26-28 November 2025. The Congress brought together more than 8,500 participants from over 100 countries.
+ 
+ AASU’s Secretary-General, Mr. Peter Kwasi Kodjie, joined distinguished panelists in the high-level session titled “Russia-Africa: Opportunities for Applied Scientific Projects”. Speaking during the panel, Mr. Kodjie underscored that Africa’s engagement in global scientific cooperation is entering a new phase – one defined not by aid dependency, but by mutually respectful partnerships grounded in shared expertise, co-creation, and joint technological ambition. 
+ 
+ “Our cooperation must move beyond the traditional frame of donor-recipient dynamics,” he stated. “Africa and Russia have deep reservoirs of scientific talent, and our collaboration should reflect a partnership of equals – rooted in joint responsibility, shared innovation, and a common vision for scientific advancement.”
+ 
+ AASU reaffirmed its readiness to help convene African youth scientists, strengthen mobility pathways, and support research teams working on solutions that advance Agenda 2063 and the Sustainable Development Goals.`
+  },
+  {
+    id: 'elections-results-final-phase',
+    type: CONTENT_TYPES.NEWS,
+    category: 'Executive Committee',
+    title: 'AASU Announces Results of the Final Phase of Elections for the 14th Elective Congress',
+    img: '/election-results.jpg',
+    date: '2025-12-16',
+    excerpt: 'The electoral process for the 14th Elective Congress is complete, with all leadership positions filled.',
+    description: `Accra, 16 December 2025 – The All-Africa Students Union (AASU) formally announces the successful conclusion of the second and final phase of elections for the 14th Elective Congress.
+    
+    Following a transparent and orderly voting process, the Electoral Commission declares the following candidates duly elected:
+    - Jaber Maataoui: Vice President for North Africa (Morocco)
+    - Créscence Naomie Mban-ny: Vice President for Central Africa (Cameroon)
+    - Buthanani Thobela: Vice President for Southern Africa (South Africa)
+    - Habiba Mohamed Abdallah: EC Member – North Africa (Egypt)
+    - Oumu Sall: EC Member – West Africa (Liberia)
+    - Benita Ndokolo Mfuke: EC Member – Central Africa (DR Congo)
+    - Stellah Akur Garang: EC Member – East Africa (South Sudan)
+    - Esther Gomani: EC Member – Southern Africa (Malawi)
+    - Ben-Christ Trésor Saizonou: Secretary for Education & Students’ Rights (Benin)
+    - Amadou B. Jobarteh: Secretary for Press & Information (The Gambia)
+    - Boago Dodo Chingapani: Secretary for Gender & Affirmative Action (Botswana)
+    
+    The electoral process for the 14th Elective Congress is now complete. The newly elected leadership is expected to assume office in January 2026.`
+  },
+  {
+    id: 'congress-14-portal',
+    type: CONTENT_TYPES.NEWS,
+    category: 'Executive Committee',
+    title: 'Portal for the 14th Elective Congress Now Open',
+    img: '/hero-background-01-new-14th congress.webp',
+    date: '2025-11-15',
+    excerpt: 'Access all official materials, guidelines, and nomination forms for the upcoming 14th Elective Congress.',
+    description: `The All-Africa Students Union (AASU) is pleased to announce the opening of the official portal for the 14th Elective Congress.
+    
+    This dedicated page provides student leaders and member unions with direct access to:
+    - Official Announcement and Call for Nominations
+    - Detailed Election Guidelines
+    - Candidate Nomination Forms
+    
+    All documents are available in English, French, and Portuguese to ensure full accessibility across the continent. We encourage all eligible unions to review the materials and participate in this landmark democratic process.`,
+    linkOverride: '/14th-congress'
   }
 ];
 
