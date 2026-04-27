@@ -1,4 +1,11 @@
 {
+  "redirects": [
+    {
+      "source": "/webmail/:path*",
+      "destination": "https://webmail.aasuonline.org",
+      "permanent": true
+    }
+  ],
   "rewrites": [
     { "source": "/(.*)", "destination": "/index.html" }
   ]
