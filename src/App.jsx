@@ -21,6 +21,7 @@ import EventsPage from './pages/EventsPage';
 import ReportsPage from './pages/ReportsPage';
 import ContentDetailPage from './pages/ContentDetailPage';
 import ProgramsPage from './pages/ProgramsPage';
+import GalleryPage from './pages/GalleryPage';
 import EducationPage from './pages/priority/EducationPage';
 import GenderPage from './pages/priority/GenderPage';
 import DemocracyPage from './pages/priority/DemocracyPage';
@@ -61,6 +62,7 @@ function App() {
           <Route path="/events" element={<EventsPage />} />
           <Route path="/events/:id" element={<ContentDetailPage />} />
           <Route path="/reports" element={<ReportsPage />} />
+          <Route path="/gallery" element={<GalleryPage />} />
           <Route path="/priority/education" element={<EducationPage />} />
           <Route path="/priority/gender" element={<GenderPage />} />
           <Route path="/priority/democracy" element={<DemocracyPage />} />

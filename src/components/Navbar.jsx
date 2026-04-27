@@ -251,7 +251,8 @@ const Navbar = () => {
                                         if (link === 'Become a Member') routePath = '/become-a-member';
                                         if (link === 'Internship Opportunities') routePath = '/internship';
                                         if (link === 'Vacancies' || link === 'Careers in AASU') routePath = 'mailto:info@aasuonline.org';
-                                        if (link === 'News' || link === 'Gallery') routePath = '/news';
+                                        if (link === 'News') routePath = '/news';
+                                        if (link === 'Gallery') routePath = '/gallery';
                                         if (link === 'Upcoming Events') routePath = '/events';
                                         if (link === 'Press Statements') routePath = '/news';
                                         if (link === 'Reports' || link === 'Policy Papers' || link === 'Newsletters' || link === 'Archive' || link === 'AASU Strategic Plan' || link === 'AASU Constitution' || link === '11th Congress Resolutions' || link === '12th Congress Resolutions') routePath = '/reports';
@@ -362,7 +363,8 @@ const Navbar = () => {
                                   if (link === 'Become a Member') routePath = '/become-a-member';
                                   if (link === 'Internship Opportunities') routePath = '/internship';
                                   if (link === 'Vacancies' || link === 'Careers in AASU') routePath = 'mailto:info@aasuonline.org';
-                                  if (link === 'News' || link === 'Gallery') routePath = '/news';
+                                  if (link === 'News') routePath = '/news';
+                                  if (link === 'Gallery') routePath = '/gallery';
                                   if (link === 'Upcoming Events') routePath = '/events';
                                   if (link === 'Press Statements') routePath = '/news';
                                   if (link === 'Reports' || link === 'Policy Papers' || link === 'Newsletters' || link === 'Archive' || link === 'AASU Strategic Plan' || link === 'AASU Constitution' || link === '11th Congress Resolutions' || link === '12th Congress Resolutions') routePath = '/reports';
