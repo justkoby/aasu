@@ -22,15 +22,7 @@ const EducationPage = () => {
         <div className="hero-overlay" style={{ background: `linear-gradient(135deg, ${accentColor}dd 0%, #111111ee 100%)` }}></div>
         <div className="container">
           <div className="hero-content">
-            <motion.div 
-              initial={{ opacity: 0, scale: 0.9 }}
-              animate={{ opacity: 1, scale: 1 }}
-              transition={{ duration: 0.5 }}
-              className="priority-badge"
-              style={{ backgroundColor: accentColor }}
-            >
-              Strategic Priority
-            </motion.div>
+
             <motion.h1 
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
@@ -404,14 +396,16 @@ const EducationPage = () => {
 
         /* Hero */
         .priority-hero {
-          height: 70vh;
+          min-height: 75vh;
           position: relative;
           display: flex;
-          align-items: center;
-          justify-content: center;
-          text-align: center;
+          align-items: flex-start;
+          justify-content: flex-start;
+          text-align: left;
           color: white;
           background: url('/header-2.jpg') center/cover no-repeat;
+          padding-top: 220px;
+          padding-bottom: 60px;
         }
 
         .hero-overlay {
@@ -423,6 +417,8 @@ const EducationPage = () => {
           position: relative;
           z-index: 2;
           max-width: 900px;
+          text-align: left;
+          margin: 0;
         }
 
         .priority-badge {

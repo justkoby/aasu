@@ -398,7 +398,7 @@ const VolunteerPage = () => {
           min-height: 100vh;
           display: flex;
           flex-direction: column;
-          align-items: center;
+          align-items: flex-start;
           justify-content: center;
         }
 
@@ -413,6 +413,7 @@ const VolunteerPage = () => {
           z-index: 2;
           padding-top: 240px;
           padding-bottom: 60px;
+          text-align: left;
         }
 
         .vol-eyebrow {
@@ -446,6 +447,7 @@ const VolunteerPage = () => {
           max-width: 560px;
           line-height: 1.7;
           margin-bottom: 2rem;
+          text-align: left;
         }
 
         .vol-hero-ctas {
@@ -516,8 +518,8 @@ const VolunteerPage = () => {
 
         .vol-why-inner {
           max-width: 820px;
-          margin: 0 auto;
-          text-align: center;
+          margin: 0;
+          text-align: left;
         }
 
         .vol-why-badge {
@@ -765,6 +767,17 @@ const VolunteerPage = () => {
           justify-content: center;
           margin: 0 auto 1.25rem;
           box-shadow: 0 6px 20px rgba(203,54,49,0.35);
+        }
+
+        .vol-hero-title {
+          font-family: var(--font-headings);
+          font-size: 3.75rem;
+          font-weight: 900;
+          color: white;
+          line-height: 1.05;
+          margin-bottom: 1.25rem;
+          max-width: 800px;
+          text-align: left;
         }
 
         .step-title {

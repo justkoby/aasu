@@ -20,7 +20,7 @@ const MigrationPage = () => {
         <div className="hero-overlay" style={{ background: `linear-gradient(135deg, ${accentColor}dd 0%, #111111ee 100%)` }}></div>
         <div className="container">
           <div className="hero-content">
-            <motion.div initial={{ opacity: 0, scale: 0.9 }} animate={{ opacity: 1, scale: 1 }} className="priority-badge" style={{ backgroundColor: accentColor }}>Strategic Priority</motion.div>
+
             <motion.h1 initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} className="hero-title">MIGRATION, MOBILITY & <span style={{ color: accentColor }}>EXCHANGES</span></motion.h1>
             <motion.p initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} className="hero-subtitle">Connecting African students across borders through education, mobility, and global opportunities</motion.p>
           </div>
@@ -261,9 +261,9 @@ const MigrationPage = () => {
 
       <style dangerouslySetInnerHTML={{ __html: `
         .priority-area-page { padding-top: 0; }
-        .priority-hero { height: 70vh; position: relative; display: flex; align-items: center; justify-content: center; text-align: center; color: white; background: url('/header-2.jpg') center/cover no-repeat; }
+        .priority-hero { min-height: 75vh; position: relative; display: flex; align-items: flex-start; justify-content: flex-start; text-align: left; color: white; background: url('/header-2.jpg') center/cover no-repeat; padding-top: 220px; padding-bottom: 60px; }
         .hero-overlay { position: absolute; inset: 0; }
-        .hero-content { position: relative; z-index: 2; max-width: 900px; }
+        .hero-content { position: relative; z-index: 2; max-width: 900px; margin: 0; text-align: left; }
         .priority-badge { display: inline-block; padding: 0.5rem 1.5rem; border-radius: 50px; font-weight: 800; font-size: 0.85rem; letter-spacing: 2px; text-transform: uppercase; margin-bottom: 2rem; }
         .hero-title { font-family: var(--font-headings); font-size: 4rem; font-weight: 900; line-height: 1.1; margin-bottom: 1.5rem; }
         .hero-subtitle { font-size: 1.5rem; font-weight: 500; opacity: 0.9; }

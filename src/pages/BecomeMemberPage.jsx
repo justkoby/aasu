@@ -455,7 +455,7 @@ const BecomeMemberPage = () => {
 
       {/* ══ FINAL CTA ══════════════════════════════════════════ */}
       <section className="bm-final-cta">
-        <div className="container bm-text-center">
+        <div className="container">
           <motion.div variants={fadeUp} initial="hidden" whileInView="visible" viewport={{ once: true }}>
             <h2>Join a continental movement that amplifies student voices and drives change across Africa.</h2>
             <p>Over 85 national unions are already shaping the future of education. Your organisation's seat at the table is waiting.</p>
@@ -570,8 +570,8 @@ const BecomeMemberPage = () => {
 
         .bm-context-inner {
           max-width: 860px;
-          margin: 0 auto;
-          text-align: center;
+          margin: 0;
+          text-align: left;
         }
 
         .bm-context-badge {
@@ -595,7 +595,7 @@ const BecomeMemberPage = () => {
         }
 
         /* ── SHARED SECTION LABELS ───────────────── */
-        .bm-section-header { text-align: center; margin-bottom: 3rem; }
+        .bm-section-header { text-align: left; margin-bottom: 3rem; }
 
         .bm-section-title {
           font-family: var(--font-headings);
@@ -609,7 +609,7 @@ const BecomeMemberPage = () => {
           height: 4px;
           width: 60px;
           background: var(--primary-red);
-          margin: 0.75rem auto 1.25rem;
+          margin: 0.75rem 0 1.25rem;
           border-radius: 2px;
         }
 
@@ -1141,7 +1141,7 @@ const BecomeMemberPage = () => {
           padding: 100px 0;
         }
 
-        .bm-text-center { text-align: center; }
+        .bm-text-center { text-align: left; }
 
         .bm-final-cta h2 {
           font-family: var(--font-headings);
@@ -1162,7 +1162,7 @@ const BecomeMemberPage = () => {
         .bm-cta-buttons {
           display: flex;
           gap: 1rem;
-          justify-content: center;
+          justify-content: flex-start;
           flex-wrap: wrap;
         }
 

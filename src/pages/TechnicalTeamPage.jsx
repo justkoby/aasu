@@ -58,7 +58,6 @@ const TechnicalTeamPage = () => {
   }, []);
 
   const team = [
-    // ── Senior Leadership ───────────────────────────────────────────
     {
       name: 'Jemilatu Mamshie Bawa',
       position: 'Chief Operating Officer',
@@ -79,12 +78,54 @@ const TechnicalTeamPage = () => {
       position: 'Chief Programmes Officer',
       pic: 'CPO.jpg',
     },
-    // ── Procurement & Finance ────────────────────────────────────────
     {
       name: 'Akua Asantewaa Adusei',
       position: 'Chief Procurement Officer',
-      pic: null, // placeholder
+      pic: null,
     },
+    {
+      name: 'Eric Chinery',
+      position: 'Chief IT Officer',
+      pic: 'IT-OFFICER.jpg',
+    },
+    {
+      name: 'Hilda Osei-Poku',
+      position: 'Programmes Officer for Migration, Mobility and Exchanges',
+      pic: 'POM.jpg',
+    },
+    // Programmes Officers
+    {
+      name: 'Raymond Frimpong',
+      position: 'Programmes Officer – Democracy, Good Governance, Peace and Security',
+      pic: null,
+    },
+    {
+      name: 'Memunatu Abubakari',
+      position: 'Programmes Officer for Gender Equity and Social Inclusion',
+      pic: 'POG.jpg',
+    },
+    {
+      name: 'Belinda Mensah',
+      position: 'Programmes Officer – Environment and Climate Action',
+      pic: 'belinda.jpg',
+    },
+    // Assistant Programmes Officers
+    {
+      name: 'Eunice Kaanye',
+      position: 'Assistant Programmes Officer for Education and Students\' Rights',
+      pic: 'Eunice.jpg',
+    },
+    {
+      name: 'Walter Nana Owusu Annoh Siameh',
+      position: 'Assistant Programmes Officer for Education and Students\' Rights',
+      pic: null,
+    },
+    {
+      name: 'Solomon Pobi Darko',
+      position: 'Digital Media & Web Communications Officer',
+      pic: 'Creative-Lead.jpg',
+    },
+    // Rest of the team
     {
       name: 'Hamdia Suleman',
       position: 'Head of Accounts',
@@ -93,14 +134,13 @@ const TechnicalTeamPage = () => {
     {
       name: 'Jacob Aryee',
       position: 'Assistant Accountant Officer',
-      pic: null, // placeholder
+      pic: null,
     },
     {
       name: 'Prince Teye Ali',
       position: 'Internal Auditor',
       pic: 'AUDITER.jpg',
     },
-    // ── Human Resources & Administration ────────────────────────────
     {
       name: 'George Sampson-Graves',
       position: 'Human Resource Officer',
@@ -116,78 +156,35 @@ const TechnicalTeamPage = () => {
       position: 'Protocol Officer',
       pic: 'PROTOCOL-OFFICER.jpg',
     },
-    // ── Programmes ──────────────────────────────────────────────────
-    {
-      name: 'Raymond Frimpong',
-      position: 'Programmes Officer – Democracy, Good Governance, Peace and Security',
-      pic: null, // placeholder
-    },
-    {
-      name: 'Eunice Kaanye',
-      position: 'Assistant Programmes Officer for Education and Students\' Rights',
-      pic: 'Eunice.jpg',
-    },
-    {
-      name: 'Walter Nana Owusu Annoh Siameh',
-      position: 'Assistant Programmes Officer for Education and Students\' Rights',
-      pic: null, // placeholder
-    },
-    {
-      name: 'Memunatu Abubakari',
-      position: 'Programmes Officer for Gender Equity and Social Inclusion',
-      pic: 'POG.jpg',
-    },
-    {
-      name: 'Belinda Mensah',
-      position: 'Programmes Officer – Environment and Climate Action',
-      pic: 'belinda.jpg',
-    },
-    {
-      name: 'Hilda Osei-Poku',
-      position: 'Programmes Officer for Migration, Mobility and Exchanges',
-      pic: 'POM.jpg',
-    },
-    // ── IT & Digital ────────────────────────────────────────────────
     {
       name: 'Ramzy Fuseini',
       position: 'Special Projects and Strategic Initiatives Coordinator',
-      pic: null, // placeholder
-    },
-    {
-      name: 'Eric Chinery',
-      position: 'Chief IT Officer',
-      pic: 'IT-OFFICER.jpg',
-    },
-    {
-      name: 'Solomon Pobi Darko',
-      position: 'Digital Media & Web Communications Officer',
-      pic: 'Creative-Lead.jpg',
+      pic: null,
     },
     {
       name: 'Solomon Abeka',
       position: 'Assistant Branding and Creative Officer',
-      pic: null, // placeholder
+      pic: null,
     },
     {
       name: 'Stephen Brako',
       position: 'Estate/Stores Officer',
-      pic: null, // placeholder
+      pic: null,
     },
     {
       name: 'Ettah Johnson',
       position: 'Assistant Photographer and Videographer Officer',
-      pic: null, // placeholder
+      pic: null,
     },
     {
       name: 'Emmanuel Nyamekye Owusu',
       position: 'Assistant Editorial and Public Relations Officer',
-      pic: null, // placeholder
+      pic: null,
     },
-    // ── Executive Support & Drivers ─────────────────────────────────
     {
       name: 'Jerome Kudolo',
       position: 'Executive Assistant to the Secretary General',
-      pic: null, // placeholder
+      pic: null,
     },
     {
       name: 'Robert Idan',
@@ -251,6 +248,8 @@ const TechnicalTeamPage = () => {
           min-height: 52vh;
           display: flex;
           align-items: center;
+          justify-content: flex-start;
+          text-align: left;
           padding: 240px 0 100px;
         }
 
@@ -261,6 +260,7 @@ const TechnicalTeamPage = () => {
           color: #fff;
           margin-bottom: 1rem;
           line-height: 1.05;
+          text-align: left;
         }
 
         .tt-accent { color: var(--primary-red); }
@@ -270,6 +270,8 @@ const TechnicalTeamPage = () => {
           color: rgba(255,255,255,0.82);
           max-width: 640px;
           line-height: 1.75;
+          text-align: left;
+          margin: 0;
         }
 
         /* ── Count bar ──────────────────────────── */

@@ -54,10 +54,10 @@ const ProfilePage = () => {
             whileInView="visible"
             viewport={{ once: true, margin: "-50px" }}
             variants={fadeUpVariant}
-            className="text-center mx-auto max-w-4xl"
+            className="mx-0 max-w-4xl"
           >
             <h2 className="section-heading">Who We Are</h2>
-            <div className="heading-underline center-underline"></div>
+            <div className="heading-underline"></div>
             
             <p className="large-paragraph space-y-4">
               The All-Africa Students Union (AASU) is the principal continental body representing the interests, aspirations, and collective voice of students across Africa. As an umbrella organization of national student unions and student-led institutions, AASU brings together a diverse network of students from across the continent and the diaspora.
@@ -118,10 +118,10 @@ const ProfilePage = () => {
       {/* 4. How AASU Works */}
       <section className="how-it-works-section py-large bg-white">
         <div className="container">
-          <div className="text-center mb-12">
+          <div className="mb-12">
             <h2 className="section-heading">How AASU Works</h2>
-            <div className="heading-underline center-underline"></div>
-            <p className="max-w-3xl mx-auto text-desc">
+            <div className="heading-underline"></div>
+            <p className="max-w-3xl text-desc">
               AASU delivers its mandate through interconnected pillars that drive impact across the continent, ensuring that its work remains responsive to the evolving needs of African students.
             </p>
           </div>
@@ -206,8 +206,8 @@ const ProfilePage = () => {
       </section>
 
       {/* 7. Partnerships & 8. Closing Statement */}
-      <section className="closing-section py-large text-center">
-        <div className="container max-w-4xl mx-auto">
+      <section className="closing-section py-large">
+        <div className="container max-w-4xl">
           <motion.div 
             initial={{ opacity: 0, y: 30 }}
             whileInView={{ opacity: 1, y: 0 }}
@@ -236,7 +236,7 @@ const ProfilePage = () => {
 
       {/* 9. CTA */}
       <section className="cta-banner">
-        <div className="container text-center">
+        <div className="container">
           <h2>Join a continental movement shaping the future of Africa.</h2>
           <p>Read about our work, amplify the student voice, and drive change.</p>
           <button className="btn btn-white-outline mt-6">Be Part of AASU</button>
@@ -304,12 +304,15 @@ const ProfilePage = () => {
           min-height: 55vh;
           display: flex;
           align-items: center;
+          justify-content: flex-start;
+          text-align: left;
           padding-top: 240px;
         }
 
         .h-full {
           display: flex;
           align-items: center;
+          justify-content: flex-start;
           height: 100%;
         }
 

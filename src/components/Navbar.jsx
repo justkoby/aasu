@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { ChevronDown, Menu, X, Facebook, Instagram, Twitter, Linkedin, Search } from 'lucide-react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { Link, useNavigate } from 'react-router-dom';
+import { Link, useNavigate, useLocation } from 'react-router-dom';
 
 const Navbar = () => {
   const [activeMegaMenu, setActiveMegaMenu] = useState(null);
@@ -10,6 +10,7 @@ const Navbar = () => {
   const [searchQuery, setSearchQuery] = useState('');
   const [expandedMobileItem, setExpandedMobileItem] = useState(null);
   const navigate = useNavigate();
+  const location = useLocation();
 
   const handleSearch = (e) => {
     e.preventDefault();
@@ -35,6 +36,13 @@ const Navbar = () => {
     window.addEventListener('scroll', handleScroll);
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
+
+  // Close all menus when route changes
+  useEffect(() => {
+    setActiveMegaMenu(null);
+    setIsMobileMenuOpen(false);
+    setExpandedMobileItem(null);
+  }, [location.pathname]);
 
   const socialUrls = {
     facebook: "https://www.facebook.com/AASU1972",

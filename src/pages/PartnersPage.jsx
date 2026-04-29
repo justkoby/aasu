@@ -387,7 +387,7 @@ const PartnersPage = () => {
         }
 
         .partners-intro {
-          text-align: center;
+          text-align: left;
           padding: 80px 0 40px;
           background: #fff;
         }
@@ -405,7 +405,7 @@ const PartnersPage = () => {
           font-size: 1.1rem;
           line-height: 1.8;
           max-width: 800px;
-          margin: 0 auto;
+          margin: 0;
         }
 
         .partners-list-section {

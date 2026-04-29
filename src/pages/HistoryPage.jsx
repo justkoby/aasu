@@ -118,7 +118,7 @@ const HistoryPage = () => {
         }
 
         .history-intro {
-          text-align: center;
+          text-align: left;
           margin-bottom: 80px;
           color: #111;
         }
@@ -134,7 +134,7 @@ const HistoryPage = () => {
           font-size: 1.2rem;
           color: #666;
           max-width: 600px;
-          margin: 0 auto;
+          margin: 0;
         }
 
         .timeline-container {

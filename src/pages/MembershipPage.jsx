@@ -248,7 +248,7 @@ const MembershipPage = () => {
         }
 
         .membership-intro {
-          text-align: center;
+          text-align: left;
           padding: 80px 0 40px;
           background: #fff;
         }
@@ -266,13 +266,13 @@ const MembershipPage = () => {
           font-size: 1.1rem;
           line-height: 1.8;
           max-width: 900px;
-          margin: 0 auto;
+          margin: 0;
         }
 
         .offices-section {
           background: #f4f4f4;
           padding: 60px 0;
-          text-align: center;
+          text-align: left;
         }
 
         .hq-block h3 {
@@ -300,20 +300,20 @@ const MembershipPage = () => {
           width: 50px;
           height: 2px;
           background-color: var(--primary-red);
-          margin: 0 auto 2rem;
+          margin: 0 0 2rem;
         }
 
         .offices-intro {
           color: #777;
           font-size: 0.95rem;
           max-width: 700px;
-          margin: 0 auto 2rem;
+          margin: 0 0 2rem;
         }
 
         .regional-offices-grid {
           display: flex;
           flex-wrap: wrap;
-          justify-content: center;
+          justify-content: flex-start;
           gap: 1.5rem;
         }
 

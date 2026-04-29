@@ -243,7 +243,7 @@ const ReportsPage = () => {
           background: linear-gradient(rgba(0,0,0,0.8), rgba(0,0,0,0.8)), url('/header-2.jpg') center/cover no-repeat;
           padding: 280px 0 120px;
           color: white;
-          text-align: center;
+          text-align: left;
         }
 
         .page-title {
@@ -257,7 +257,7 @@ const ReportsPage = () => {
           font-size: 1.25rem;
           opacity: 0.9;
           max-width: 700px;
-          margin: 0 auto;
+          margin: 0;
           line-height: 1.6;
         }
 

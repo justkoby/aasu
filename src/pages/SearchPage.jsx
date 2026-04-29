@@ -235,6 +235,8 @@ const SearchPage = () => {
           min-height: 600px;
           display: flex;
           align-items: center;
+          justify-content: flex-start;
+          text-align: left;
           padding: 180px 0 80px;
           border-bottom: 3px solid var(--primary-red);
         }
