@@ -68,7 +68,20 @@ const GAINS = [
 ];
 
 const InternshipPage = () => {
-  useEffect(() => { window.scrollTo(0, 0); }, []);
+  const [honeypot, setHoneypot] = useState('');
+  const [captcha, setCaptcha] = useState({ a: 0, b: 0, sum: 0 });
+  const [captchaInput, setCaptchaInput] = useState('');
+
+  const generateCaptcha = () => {
+    const a = Math.floor(Math.random() * 9) + 1;
+    const b = Math.floor(Math.random() * 9) + 1;
+    setCaptcha({ a, b, sum: a + b });
+  };
+
+  useEffect(() => {
+    window.scrollTo(0, 0);
+    generateCaptcha();
+  }, []);
 
   const formRef = useRef(null);
   const opportunitiesRef = useRef(null);
@@ -84,6 +97,18 @@ const InternshipPage = () => {
 
   const handleSubmit = e => {
     e.preventDefault();
+
+    if (honeypot) {
+      return;
+    }
+
+    if (parseInt(captchaInput) !== captcha.sum) {
+      alert('Verification code is incorrect. Please try again.');
+      generateCaptcha();
+      setCaptchaInput('');
+      return;
+    }
+
     const subject = encodeURIComponent(`Internship Application – ${form.name} (${form.area})`);
     const body = encodeURIComponent(
       `Full Name: ${form.name}\n` +
@@ -330,6 +355,28 @@ const InternshipPage = () => {
                 <div className="int-form-group">
                   <label htmlFor="int-motivation">Short Motivation *</label>
                   <textarea id="int-motivation" name="motivation" required rows={5} placeholder="Tell us why you want to intern at AASU and what you aim to achieve..." value={form.motivation} onChange={handleChange} />
+                </div>
+
+                <div className="int-form-group" style={{ display: 'none' }} aria-hidden="true">
+                  <input
+                    type="text"
+                    name="website_url_verification"
+                    value={honeypot}
+                    onChange={(e) => setHoneypot(e.target.value)}
+                    tabIndex="-1"
+                    autoComplete="off"
+                  />
+                </div>
+
+                <div className="int-form-group">
+                  <label>Anti-Bot Verification: What is {captcha.a} + {captcha.b}? *</label>
+                  <input
+                    type="number"
+                    placeholder="Enter your answer"
+                    required
+                    value={captchaInput}
+                    onChange={(e) => setCaptchaInput(e.target.value)}
+                  />
                 </div>
 
                 <button type="submit" className="int-submit-btn">

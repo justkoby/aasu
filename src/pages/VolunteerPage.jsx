@@ -80,7 +80,20 @@ const GAINS = [
 ];
 
 const VolunteerPage = () => {
-  useEffect(() => { window.scrollTo(0, 0); }, []);
+  const [honeypot, setHoneypot] = useState('');
+  const [captcha, setCaptcha] = useState({ a: 0, b: 0, sum: 0 });
+  const [captchaInput, setCaptchaInput] = useState('');
+
+  const generateCaptcha = () => {
+    const a = Math.floor(Math.random() * 9) + 1;
+    const b = Math.floor(Math.random() * 9) + 1;
+    setCaptcha({ a, b, sum: a + b });
+  };
+
+  useEffect(() => {
+    window.scrollTo(0, 0);
+    generateCaptcha();
+  }, []);
 
   const [form, setForm] = useState({
     name: '', country: '', institution: '', email: '',
@@ -92,6 +105,18 @@ const VolunteerPage = () => {
 
   const handleSubmit = e => {
     e.preventDefault();
+
+    if (honeypot) {
+      return;
+    }
+
+    if (parseInt(captchaInput) !== captcha.sum) {
+      alert('Verification code is incorrect. Please try again.');
+      generateCaptcha();
+      setCaptchaInput('');
+      return;
+    }
+
     const subject = encodeURIComponent(`Volunteer Application – ${form.role || 'AASU'}`);
     const body = encodeURIComponent(
       `Full Name: ${form.name}\n` +
@@ -365,6 +390,28 @@ const VolunteerPage = () => {
                     placeholder="e.g. graphic design, writing, social media, research, event management..."
                     value={form.skills}
                     onChange={handleChange}
+                  />
+                </div>
+
+                <div className="form-group" style={{ display: 'none' }} aria-hidden="true">
+                  <input
+                    type="text"
+                    name="website_url_verification"
+                    value={honeypot}
+                    onChange={(e) => setHoneypot(e.target.value)}
+                    tabIndex="-1"
+                    autoComplete="off"
+                  />
+                </div>
+
+                <div className="form-group">
+                  <label>Anti-Bot Verification: What is {captcha.a} + {captcha.b}? *</label>
+                  <input
+                    type="number"
+                    placeholder="Enter your answer"
+                    required
+                    value={captchaInput}
+                    onChange={(e) => setCaptchaInput(e.target.value)}
                   />
                 </div>
 

@@ -1,14 +1,37 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import { motion } from 'framer-motion';
 import { MapPin, Phone, Mail, Clock } from 'lucide-react';
 
 const ContactPage = () => {
+  const [honeypot, setHoneypot] = useState('');
+  const [captcha, setCaptcha] = useState({ a: 0, b: 0, sum: 0 });
+  const [captchaInput, setCaptchaInput] = useState('');
+
+  const generateCaptcha = () => {
+    const a = Math.floor(Math.random() * 9) + 1;
+    const b = Math.floor(Math.random() * 9) + 1;
+    setCaptcha({ a, b, sum: a + b });
+  };
+
   useEffect(() => {
     window.scrollTo(0, 0);
+    generateCaptcha();
   }, []);
 
   const handleSubmit = (e) => {
     e.preventDefault();
+
+    if (honeypot) {
+      return;
+    }
+
+    if (parseInt(captchaInput) !== captcha.sum) {
+      alert('Verification code is incorrect. Please try again.');
+      generateCaptcha();
+      setCaptchaInput('');
+      return;
+    }
+
     const formData = new FormData(e.target);
     const body = `Name: ${formData.get('name')}%0D%0AEmail: ${formData.get('email')}%0D%0AUser Type: ${formData.get('user_type')}%0D%0AMessage: ${formData.get('message')}`;
     const subject = encodeURIComponent(formData.get('subject') || 'Inquiry via AASU Website');
@@ -92,6 +115,28 @@ const ContactPage = () => {
                 <div className="form-group">
                   <label>Your message (optional)</label>
                   <textarea name="message" rows="5" placeholder="How can we help you?"></textarea>
+                </div>
+
+                <div className="form-group" style={{ display: 'none' }} aria-hidden="true">
+                  <input
+                    type="text"
+                    name="website_url_verification"
+                    value={honeypot}
+                    onChange={(e) => setHoneypot(e.target.value)}
+                    tabIndex="-1"
+                    autoComplete="off"
+                  />
+                </div>
+
+                <div className="form-group">
+                  <label>Anti-Bot Verification: What is {captcha.a} + {captcha.b}?</label>
+                  <input
+                    type="number"
+                    placeholder="Enter your answer"
+                    required
+                    value={captchaInput}
+                    onChange={(e) => setCaptchaInput(e.target.value)}
+                  />
                 </div>
 
                 <button type="submit" className="btn-primary" style={{ width: '100%', justifyContent: 'center' }}>

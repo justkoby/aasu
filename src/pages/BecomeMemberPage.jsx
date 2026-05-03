@@ -52,7 +52,20 @@ const REGIONS = [
 
 /* ── Component ───────────────────────────────────────────────── */
 const BecomeMemberPage = () => {
-  useEffect(() => { window.scrollTo(0, 0); }, []);
+  const [honeypot, setHoneypot] = useState('');
+  const [captcha, setCaptcha] = useState({ a: 0, b: 0, sum: 0 });
+  const [captchaInput, setCaptchaInput] = useState('');
+
+  const generateCaptcha = () => {
+    const a = Math.floor(Math.random() * 9) + 1;
+    const b = Math.floor(Math.random() * 9) + 1;
+    setCaptcha({ a, b, sum: a + b });
+  };
+
+  useEffect(() => {
+    window.scrollTo(0, 0);
+    generateCaptcha();
+  }, []);
 
   const formRef = useRef(null);
   const rolesRef = useRef(null);
@@ -71,6 +84,18 @@ const BecomeMemberPage = () => {
 
   const handleSubmit = e => {
     e.preventDefault();
+
+    if (honeypot) {
+      return;
+    }
+
+    if (parseInt(captchaInput) !== captcha.sum) {
+      alert('Verification code is incorrect. Please try again.');
+      generateCaptcha();
+      setCaptchaInput('');
+      return;
+    }
+
     const subject = encodeURIComponent(`Membership Application – ${form.orgName} (${form.type})`);
     const body = encodeURIComponent(
       `Organisation Name: ${form.orgName}\n` +
@@ -442,6 +467,28 @@ const BecomeMemberPage = () => {
                     <input id="bm-file" type="file" accept=".pdf,.doc,.docx,.jpg,.png" onChange={handleFile} className="bm-file-hidden" />
                   </label>
                   <p className="bm-file-hint">Upload registration certificate, government letter, or equivalent. If emailing directly, attach to the email before sending.</p>
+                </div>
+
+                <div className="bm-form-group" style={{ display: 'none' }} aria-hidden="true">
+                  <input
+                    type="text"
+                    name="website_url_verification"
+                    value={honeypot}
+                    onChange={(e) => setHoneypot(e.target.value)}
+                    tabIndex="-1"
+                    autoComplete="off"
+                  />
+                </div>
+
+                <div className="bm-form-group">
+                  <label>Anti-Bot Verification: What is {captcha.a} + {captcha.b}? *</label>
+                  <input
+                    type="number"
+                    placeholder="Enter your answer"
+                    required
+                    value={captchaInput}
+                    onChange={(e) => setCaptchaInput(e.target.value)}
+                  />
                 </div>
 
                 <button type="submit" className="bm-submit-btn">
