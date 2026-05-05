@@ -31,7 +31,7 @@ const Navbar = () => {
 
   useEffect(() => {
     const handleScroll = () => {
-      setIsScrolled(window.scrollY > 300); // Activate when past hero
+      setIsScrolled(window.scrollY > 50); // Synchronized with TopBar
     };
     window.addEventListener('scroll', handleScroll);
     return () => window.removeEventListener('scroll', handleScroll);
@@ -151,7 +151,7 @@ const Navbar = () => {
           },
           {
             title: 'Publications',
-            links: ['Reports', 'Policy Papers', 'Newsletters', 'Press Statements', 'Archive']
+            links: ['Reports', 'Policy Papers', 'Newsletters', 'Press Statements', 'Archive', 'Brand & Media Kit']
           }
         ],
         image: '/women.jpg',
@@ -189,9 +189,6 @@ const Navbar = () => {
                   value={searchQuery}
                   onChange={e => setSearchQuery(e.target.value)}
                 />
-                <button type="submit" style={{ background: 'none', border: 'none', cursor: 'pointer', display: 'flex', alignItems: 'center', padding: 0 }}>
-                  <Search size={16} className="search-icon" />
-                </button>
               </form>
             </div>
           </div>
@@ -272,6 +269,7 @@ const Navbar = () => {
                                         if (link === 'Climate Action and Environmental Sustainability') routePath = '/priority/climate';
                                         if (link === 'Pan-Africanism & African Culture') routePath = '/priority/culture';
                                         if (link === 'Programs & Impact') routePath = '/programs';
+                                        if (link === 'Brand & Media Kit') routePath = '/resources/branding';
                                         if (link === '13th Congress Resolutions (EN)') routePath = '/13th Congress Resolutions.pdf';
                                         if (link === '13th Congress Resolutions (FR)') routePath = '/13th Congress Resolutions(FR).pdf';
 
@@ -384,6 +382,7 @@ const Navbar = () => {
                                   if (link === 'Climate Action and Environmental Sustainability') routePath = '/priority/climate';
                                   if (link === 'Pan-Africanism & African Culture') routePath = '/priority/culture';
                                   if (link === 'Programs & Impact') routePath = '/programs';
+                                  if (link === 'Brand & Media Kit') routePath = '/resources/branding';
                                   if (link === '13th Congress Resolutions (EN)') routePath = '/13th Congress Resolutions.pdf';
                                   if (link === '13th Congress Resolutions (FR)') routePath = '/13th Congress Resolutions(FR).pdf';
 

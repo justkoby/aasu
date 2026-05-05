@@ -31,6 +31,7 @@ import ClimatePage from './pages/priority/ClimatePage';
 import CulturePage from './pages/priority/CulturePage';
 import PrivacyPolicyPage from './pages/PrivacyPolicyPage';
 import CongressPage from './pages/CongressPage';
+import BrandingPage from './pages/BrandingPage';
 import LanguageToggle from './components/LanguageToggle';
 import SmartAssistant from './components/SmartAssistant';
 
@@ -63,6 +64,7 @@ function App() {
           <Route path="/events/:id" element={<ContentDetailPage />} />
           <Route path="/reports" element={<ReportsPage />} />
           <Route path="/gallery" element={<GalleryPage />} />
+          <Route path="/resources/branding" element={<BrandingPage />} />
           <Route path="/priority/education" element={<EducationPage />} />
           <Route path="/priority/gender" element={<GenderPage />} />
           <Route path="/priority/democracy" element={<DemocracyPage />} />
