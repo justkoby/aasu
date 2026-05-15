@@ -224,10 +224,10 @@ const searchData = [
   {
     id: 26,
     title: "ALISTAR PFUNYE",
-    description: "Deputy Secretary General (Zimbabwe) - Member of the AASU Executive Committee.",
+    description: "Deputy Secretary General (Nigeria) - Member of the AASU Executive Committee.",
     path: "/executives",
     category: "Who We Are",
-    keywords: ["alistar pfunye", "deputy secretary general", "zimbabwe", "executive", "leadership"]
+    keywords: ["alistar pfunye", "deputy secretary general", "nigeria", "executive", "leadership"]
   },
   {
     id: 27,
@@ -253,14 +253,7 @@ const searchData = [
     category: "Who We Are",
     keywords: ["créscence naomie mban-ny", "vice president", "cameroon", "executive", "leadership"]
   },
-  {
-    id: 30,
-    title: "VALENTINE MUGUN CHEPKOECH",
-    description: "Vice President for East Africa (Kenya) - Member of the AASU Executive Committee.",
-    path: "/executives",
-    category: "Who We Are",
-    keywords: ["valentine mugun chepkoech", "vice president", "kenya", "executive", "leadership"]
-  },
+
   {
     id: 31,
     title: "BUTHANANI THOBELA",
@@ -311,11 +304,11 @@ const searchData = [
   },
   {
     id: 37,
-    title: "AJAVON KOKOE VANÉSSA AUGUSTINE",
+    title: "VANESSA KOKOE AJAVON",
     description: "Secretary for Finance and Administration (Togo) - Member of the AASU Executive Committee.",
     path: "/executives",
     category: "Who We Are",
-    keywords: ["ajavon kokoe vanéssa augustine", "finance", "togo", "executive", "leadership"]
+    keywords: ["vanessa kokoe ajavon", "finance", "togo", "executive", "leadership"]
   },
   {
     id: 38,
@@ -340,6 +333,14 @@ const searchData = [
     path: "/executives",
     category: "Who We Are",
     keywords: ["boago dodo chingapani", "gender", "botswana", "executive", "leadership"]
+  },
+  {
+    id: 40.1,
+    title: "ORETHA AUGUSTINA TAYLOR",
+    description: "Secretary for Gender and Affirmative Action (Liberia) - Elected in Phase 1 of the 14th Elective Congress.",
+    path: "/executives",
+    category: "Who We Are",
+    keywords: ["oretha augustina taylor", "gender", "liberia", "executive", "leadership"]
   },
 
   // TECHNICAL TEAM
@@ -931,7 +932,7 @@ const searchData = [
   },
   {
     id: 114,
-    title: "14th Elective Congress Election Results",
+    title: "Second and Final Phase of Elections of the 14th AASU Elective Congress Concluded",
     description: "Official declaration of results for the second and final phase of AASU's 14th Elective Congress.",
     path: "/news/elections-results-final-phase",
     category: "News & Events",

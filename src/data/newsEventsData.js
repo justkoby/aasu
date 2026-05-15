@@ -49,76 +49,90 @@ Secretary-General`
     id: 'elections-results-final-phase',
     type: CONTENT_TYPES.NEWS,
     category: 'Executive Committee',
-    title: 'AASU Announces Results of the Second and Final Phase of Elections for the 14th Elective Congress',
+    title: 'Second and Final Phase of Elections of the 14th AASU Elective Congress Concluded',
     img: '/election-results.png',
     date: '2025-12-16',
-    excerpt: 'AASU formally announces the successful conclusion of the final phase of elections for the 14th Elective Congress.',
-    description: `AASU Announces Results of the Second and Final Phase of Elections for the 14th Elective Congress
+    excerpt: 'AASU formally announces the successful conduct and conclusion of the second and final phase of elections for the 14th Elective Congress.',
+    description: `Accra, 16 December 2025 - The All-Africa Students Union (AASU) wishes to formally announce the successful conduct and conclusion of the second and final phase of elections for the 14th Elective Congress, held on Monday, 15 December 2025.
 
-Date Issued: Tuesday, 16 December 2025
-
-Content:
-
-The All-Africa Students Union (AASU) wishes to formally announce the successful conduct and conclusion of the second and final phase of elections for the 14th Elective Congress, held on Monday, 15 December 2025.
-
-In accordance with the AASU Constitution and the Electoral Guidelines of the 14th Elective Congress, the second phase of elections was conducted to fill outstanding Executive Committee and Secretariat positions.
+In accordance with the AASU Constitution and the Electoral Guidelines of the 14th Elective Congress, the second phase of elections was conducted to fill outstanding Executive Committee and Secretariat positions. This phase followed the settlement of outstanding financial obligations by concerned member organisations, which placed all nominated candidates in good standing.
 
 Following a transparent and orderly voting process, the Electoral Commission hereby declares the following candidates duly elected:
 
-Executive Committee
-Vice President for North Africa – Jaber Maataoui (Morocco)
-Vice President for Central Africa – Créscence Naomie Mban-ny (Cameroon)
-Vice President for Southern Africa – Buthanani Thobela (South Africa)
-Executive Committee Member for North Africa – Habiba Mohamed Abdallah (Egypt)
-Executive Committee Member for West Africa – Oumu Sall (Liberia)
-Executive Committee Member for Central Africa – Benita Ndokolo Mfuke (DR Congo)
-Executive Committee Member for East Africa – Stellah Akur Garang (South Sudan)
-Executive Committee Member for Southern Africa – Esther Gomani (Malawi)
-Secretariat
-Secretary for Education and Students’ Rights – Ben-Christ Trésor Saizonou (Benin)
-Secretary for Press and Information – Amadou B. Jobarteh (The Gambia)
-Secretary for Gender and Affirmative Action – Boago Dodo Chingapani (Botswana)
+EXECUTIVE COMMITTEE
+Jaber Maataoui | Vice President for North Africa | Morocco
+Créscence Naomie Mban-ny | Vice President for Central Africa | Cameroon
+Buthanani Thobela | Vice President for Southern Africa | South Africa
+Habiba Mohamed Abdallah | Executive Committee Member for North Africa | Egypt
+Oumu Sall | Executive Committee Member for West Africa | Liberia
+Benita Ndokolo Mfuke | Executive Committee Member for Central Africa | Democratic Republic of the Congo
+Stellah Akur Garang | Executive Committee Member for East Africa | South Sudan
+Esther Gomani | Executive Committee Member for Southern Africa | Malawi
 
-With the conclusion of this phase, the electoral process is now complete.
+SECRETARIAT
+Ben-Christ Trésor Saizonou | Secretary for Education and Students’ Rights | Benin
+Amadou B. Jobarteh | Secretary for Press and Information | The Gambia
+Boago Dodo Chingapani | Secretary for Gender and Affirmative Action | Botswana
 
-The Union congratulates all elected officers and commends member organisations for their commitment to democratic principles.
+With the successful conclusion of this second phase, the electoral process for the 14th Elective Congress of AASU is now complete, and all constitutional leadership positions have been duly filled.
+
+The Union congratulates all elected officers and commends member organisations for their commitment to strengthening the democratic principles that have defined the Union since its establishment over five decades ago.
+
+The newly elected leadership is expected to assume office in January 2026 in accordance with the provisions of the AASU Constitution and to work collectively towards advancing the welfare, rights, and aspirations of African students across the Continent and in the diaspora.
 
 Signed:
 Miss Angel Mbuthia
-Electoral Commission Chairperson`
+Electoral Commission Chairperson
+All-Africa Students Union (AASU)`
   },
   {
     id: 'elections-results-first-phase',
     type: CONTENT_TYPES.NEWS,
     category: 'Executive Committee',
-    title: 'AASU Announces Results of the First Phase of Elections for the 14th Elective Congress',
+    title: 'First Phase of Elections at the 14th AASU Elective Congress Concluded',
     img: '/election-results-phase1.png',
-    date: '2025-11-23',
-    excerpt: 'AASU announces the successful conclusion of the first phase of elections held on 22nd November 2025.',
-    description: `AASU Announces Results of the First Phase of Elections for the 14th Elective Congress
+    date: '2025-11-21',
+    excerpt: 'AASU formally announces the successful conclusion of the first phase of elections for the 14th Elective Congress, held online on 21 November 2025.',
+    description: `Accra, 21 November 2025 - The All-Africa Students Union (AASU) wishes to formally announce the successful conclusion of the first phase of elections for the 14th Elective Congress, held online today, Friday, 21 November 2025.
 
-Date Issued: Sunday, 23 November 2025
+In accordance with the AASU Constitution and the Electoral Guidelines of the 14th Elective Congress, only candidates nominated by member organisations in good financial standing were eligible to stand in this initial phase.
 
-Content:
+For this first phase, the Electoral Commission conducted elections for the following offices, and has declared the following candidates duly elected:
 
-The All-Africa Students Union (AASU) announces the successful conclusion of the first phase of elections for the 14th Elective Congress held on Saturday, 22 November 2025.
+Osisiogu Osikenyi Enyinnaya | President | Nigeria
+Divine Edem Kwadzodeh | Secretary-General | Ghana
+Maravilha Kapaia | Deputy President | Angola
+Alistar Pfunye | Deputy Secretary-General | Nigeria
+Rosália Djedjo | Vice President for West Africa | Guinea-Bissau
+Vanessa Kokoe Ajavon | Secretary for Finance and Administration | Togo
+Oretha Augustina Taylor | Secretary for Gender and Affirmative Action | Liberia
 
-Elected Officers:
-President – Osisiogu Osikenyi Enyinnaya (Nigeria)
-Secretary-General – Divine Edem Kwadzodeh (Ghana)
-Deputy President – Maravilha Kapaia (Angola)
-Deputy Secretary-General – Alistar Pfunye (Zimbabwe)
-Vice President for West Africa – Rosália Djedjo (Guinea-Bissau)
-Vice President for East Africa – Valentine Mugun Chepkoech (Kenya)
-Secretary for Finance and Administration – Vanessa Kokoé Ajavon (Togo)
+The Union congratulates the elected officers and commends all participating member organisations for upholding the democratic values that have guided AASU for over five decades.
 
-The Union congratulates all elected officers.
+Second Phase of the 14th Elective Congress and Outstanding Positions to Be Filled
 
-The second phase of elections was scheduled for Monday, 15 December 2025.
+AASU wishes to notify all stakeholders that this represents the first phase of the elections for the 14th Elective Congress. The second phase will be conducted as soon as member organisations with outstanding financial obligations have settled their dues, and thereby place their nominated candidates in good standing in accordance with the Constitution and electoral guidelines.
 
-Signed:
-Miss Angel Mbuthia
-Electoral Commission Chairperson`
+The Electoral Commission will communicate the date for the second phase.
+
+The following Executive Committee and Secretariat positions remain outstanding and will be contested during the second phase of elections:
+
+Executive Committee
+• Vice President for Central Africa
+• Vice President for East Africa
+• Vice President for Southern Africa
+• Vice President for North Africa
+• Executive Committee Member for West Africa
+• Executive Committee Member for Central Africa
+• Executive Committee Member for East Africa
+• Executive Committee Member for Southern Africa
+• Executive Committee Member for North Africa
+
+Secretariat
+• Secretary for Education and Students’ Rights
+• Secretary for Press and Information
+
+AASU remains committed to a transparent, inclusive, and credible electoral process that reflects the will of Africa’s student community.`
   },
   {
     id: 'passing-of-president-varney',
@@ -1185,31 +1199,7 @@ The insights and networks gained through this programme are set to contribute si
  
  AASU reaffirmed its readiness to help convene African youth scientists, strengthen mobility pathways, and support research teams working on solutions that advance Agenda 2063 and the Sustainable Development Goals.`
   },
-  {
-    id: 'elections-results-final-phase',
-    type: CONTENT_TYPES.NEWS,
-    category: 'Executive Committee',
-    title: 'AASU Announces Results of the Final Phase of Elections for the 14th Elective Congress',
-    img: '/election-results.jpg',
-    date: '2025-12-16',
-    excerpt: 'The electoral process for the 14th Elective Congress is complete, with all leadership positions filled.',
-    description: `Accra, 16 December 2025 – The All-Africa Students Union (AASU) formally announces the successful conclusion of the second and final phase of elections for the 14th Elective Congress.
-    
-    Following a transparent and orderly voting process, the Electoral Commission declares the following candidates duly elected:
-    - Jaber Maataoui: Vice President for North Africa (Morocco)
-    - Créscence Naomie Mban-ny: Vice President for Central Africa (Cameroon)
-    - Buthanani Thobela: Vice President for Southern Africa (South Africa)
-    - Habiba Mohamed Abdallah: EC Member – North Africa (Egypt)
-    - Oumu Sall: EC Member – West Africa (Liberia)
-    - Benita Ndokolo Mfuke: EC Member – Central Africa (DR Congo)
-    - Stellah Akur Garang: EC Member – East Africa (South Sudan)
-    - Esther Gomani: EC Member – Southern Africa (Malawi)
-    - Ben-Christ Trésor Saizonou: Secretary for Education & Students’ Rights (Benin)
-    - Amadou B. Jobarteh: Secretary for Press & Information (The Gambia)
-    - Boago Dodo Chingapani: Secretary for Gender & Affirmative Action (Botswana)
-    
-    The electoral process for the 14th Elective Congress is now complete. The newly elected leadership is expected to assume office in January 2026.`
-  },
+
   {
     id: 'congress-14-portal',
     type: CONTENT_TYPES.NEWS,

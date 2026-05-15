@@ -57,7 +57,7 @@ const CongressPage = () => {
           >
             <span className="hero-tag">Continental Event</span>
             <h1>14th ELECTIVE <span className="highlight">CONGRESS</span></h1>
-            <p>Commencing the processes toward the 14th Elective Congress in line with AASU's constitutional cycle.</p>
+            <p>The processes and elections for the 14th Elective Congress have successfully concluded, marking a new chapter for AASU.</p>
           </motion.div>
         </div>
       </section>
@@ -72,15 +72,15 @@ const CongressPage = () => {
               viewport={{ once: true }}
               className="intro-text"
             >
-              <h2>A Call for <span style={{ color: accentColor }}>Leadership</span></h2>
+              <h2>A Successful <span style={{ color: accentColor }}>Transition</span></h2>
               <p>
-                The All-Africa Students Union (AASU) held its 13th Elective Congress in 2021, in Accra, Ghana. In line with the constitutional requirement of a four-year electoral cycle, we now commence the processes toward the 14th Elective Congress.
+                The 14th Elective Congress of the All-Africa Students Union (AASU) has successfully concluded its electoral processes. Following a transparent and inclusive democratic process, a new leadership team has been elected to serve for the 2026–2029 term.
               </p>
               <p>
-                This Call for Nominations formally opens the path for eligible member unions to present candidates for leadership in service to Africa’s student movement.
+                The elections were conducted in two phases, concluding in December 2025. This landmark event reinforces AASU's commitment to democratic values and continental solidarity.
               </p>
               <p>
-                The Electoral Commission is committed to delivering elections that are free, fair, transparent, and inclusive. Voting shall be conducted online, using secure accreditation and verified credentials.
+                We congratulate all newly elected officers and thank all member organisations for their active participation in shaping the future of Africa’s student movement.
               </p>
             </motion.div>
             <motion.div 
