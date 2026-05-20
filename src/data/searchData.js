@@ -955,6 +955,14 @@ const searchData = [
     keywords: ["annual report 2022", "2022 report", "annual report v5", "financial summary", "impact report"]
   },
   {
+    id: 116.5,
+    title: "AASU Annual Report 2025",
+    description: "The official annual report of the All-Africa Students Union (AASU) for the year 2025, detailing our comprehensive activities and financial summaries.",
+    path: "/reports",
+    category: "Resources",
+    keywords: ["annual report 2025", "2025 report", "financial summary", "impact report"]
+  },
+  {
     id: 117,
     title: "ECOWAS - Strategic Partner",
     description: "Economic Community of West African States partnership with AASU on regional education.",

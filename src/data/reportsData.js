@@ -28,6 +28,16 @@ export const PRIORITY_AREAS = [
 
 export const reportsData = [
   {
+    id: 'report-2025-annual',
+    title: 'AASU Annual Report 2025',
+    type: DOCUMENT_TYPES.ANNUAL_REPORT,
+    year: '2026',
+    priorityArea: 'General',
+    description: 'The official annual report of the All-Africa Students Union (AASU) for the year 2025, detailing our comprehensive activities and financial summaries.',
+    fileUrl: '/AASU 2025 report.pdf',
+    thumbnail: '/report-thumb-placeholder.jpg'
+  },
+  {
     id: 'report-2025-impact',
     title: 'AASU Impact Report 2025',
     type: DOCUMENT_TYPES.PROGRAM_REPORT,

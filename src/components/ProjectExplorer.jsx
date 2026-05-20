@@ -357,6 +357,34 @@ const ProjectExplorer = ({ hideTabs = false, pillarIndex = 0 }) => {
                       </div>
                       <Download size={18} style={{ color: '#ccc', marginLeft: '1rem' }} />
                     </a>
+
+                    <a 
+                      href="/AASU 2025 report.pdf" 
+                      download 
+                      target="_blank"
+                      className="download-btn" 
+                      style={{ 
+                        display: 'flex', 
+                        alignItems: 'center', 
+                        gap: '1rem', 
+                        padding: '1.2rem 2rem', 
+                        borderRadius: '15px', 
+                        backgroundColor: '#fff', 
+                        border: '2px solid #eee',
+                        cursor: 'pointer',
+                        transition: 'all 0.3s ease',
+                        textDecoration: 'none'
+                      }}
+                    >
+                      <div style={{ backgroundColor: '#f0fdf4', color: '#16a34a', padding: '0.75rem', borderRadius: '10px' }}>
+                        <FileText size={24} />
+                      </div>
+                      <div style={{ textAlign: 'left' }}>
+                        <span style={{ display: 'block', fontWeight: 800, fontSize: '0.95rem', color: '#111' }}>Annual Report 2025</span>
+                        <span style={{ display: 'block', fontSize: '0.75rem', color: '#888' }}>PDF • 9.4 MB</span>
+                      </div>
+                      <Download size={18} style={{ color: '#ccc', marginLeft: '1rem' }} />
+                    </a>
                   </div>
                 </div>
 

@@ -3,6 +3,7 @@ export const documents = [
   { title: "Impact Report 2024", year: "2024", type: "Report", link: "/AASU IMPACT REPORT 2024.pdf" },
   { title: "Impact Report 2023", year: "2023", type: "Report", link: "/Impact Report AASU 2023.pdf" },
   { title: "Impact Report 2025", year: "2025", type: "Report", link: "/impact report - 2025.pdf" },
+  { title: "Annual Report 2025", year: "2025", type: "Report", link: "/AASU 2025 report.pdf" },
   { title: "Annual Report 2023", year: "2023", type: "Report", link: "/Annual REPORT 2023.pdf" },
   { title: "Mid-Year Report 2022", year: "2022", type: "Report", link: "/2022 MID-YEAR REPORT.pdf" },
   { title: "Annual Report 2020", year: "2020", type: "Report", link: "/2020 Annual Report.pdf" },
@@ -147,6 +148,11 @@ export const intents = [
     keywords: ["annual report 2022", "2022 report", "annual report v5"],
     answer: "The AASU Annual Report 2022 (v5) provides a detailed overview of the Union's activities, impact, and financial standing for the year 2022, released in 2023.",
     links: [{ label: "Download Annual Report 2022", url: "/Annual-Report-2022-v5.pdf" }]
+  },
+  {
+    keywords: ["annual report 2025", "2025 report"],
+    answer: "The AASU Annual Report 2025 provides a detailed overview of the Union's activities, impact, and financial standing for the year 2025.",
+    links: [{ label: "Download Annual Report 2025", url: "/AASU 2025 report.pdf" }]
   }
 ];
 
