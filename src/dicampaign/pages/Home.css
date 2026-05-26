@@ -1,0 +1,192 @@
+.dicampaign-root .home-page {
+  padding-bottom: 0;
+}.dicampaign-root .section-header {
+  margin-bottom: 3.5rem;
+}.dicampaign-root .section-header.text-center {
+  text-align: center;
+}.dicampaign-root .section-subtitle {
+  max-width: 600px;
+  margin: 1rem auto 0;
+}.dicampaign-root .section-subtitle-left {
+  max-width: 750px;
+  margin-top: 1rem;
+}.dicampaign-root /* Badge Pill */
+.badge {
+  display: inline-block;
+  padding: 0.35rem 1rem;
+  font-family: var(--font-heading);
+  font-weight: 700;
+  font-size: 0.75rem;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  background-color: var(--primary-light);
+  color: var(--primary);
+  border-radius: 50px;
+  margin-bottom: 1rem;
+}.dicampaign-root .badge-secondary {
+  background-color: var(--secondary-light);
+  color: var(--secondary);
+}.dicampaign-root /* Overview Section */
+.overview-section {
+  padding-top: 6rem;
+}.dicampaign-root .overview-text .lead {
+  font-size: 1.15rem;
+  font-weight: 600;
+  color: var(--text-main);
+  line-height: 1.6;
+}.dicampaign-root .overview-stats {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 2rem;
+  padding: 3rem;
+  border-radius: var(--border-radius);
+}.dicampaign-root .stat-card {
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+}.dicampaign-root .stat-num {
+  font-family: var(--font-heading);
+  font-size: 3rem;
+  font-weight: 800;
+  color: var(--primary);
+  line-height: 1;
+}.dicampaign-root .stat-lbl {
+  font-family: var(--font-heading);
+  font-size: 0.9rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  color: var(--text-muted);
+}.dicampaign-root /* Objective Cards */
+.objective-card {
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 2.5rem 2rem;
+}.dicampaign-root .icon-wrapper {
+  width: 64px;
+  height: 64px;
+  border-radius: 16px;
+  background-color: var(--primary-light);
+  color: var(--primary);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 1.5rem;
+  transition: all var(--transition-speed) ease;
+}.dicampaign-root .objective-card:hover .icon-wrapper {
+  background-color: var(--primary);
+  color: #ffffff;
+  transform: rotate(5deg) scale(1.05);
+}.dicampaign-root /* Impact Section Styles */
+.impact-section {
+  border-top: 1px solid var(--border-color);
+  padding: 6rem 0;
+}.dicampaign-root .impact-pillars-grid {
+  margin-bottom: 5rem;
+}.dicampaign-root .impact-pillar-card {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+  padding: 2rem;
+}.dicampaign-root .pillar-icon-wrapper {
+  width: 48px;
+  height: 48px;
+  border-radius: 12px;
+  background-color: var(--secondary-light);
+  color: var(--secondary);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 0.5rem;
+  transition: all var(--transition-speed) ease;
+}.dicampaign-root .impact-pillar-card:hover .pillar-icon-wrapper {
+  background-color: var(--secondary);
+  color: #ffffff;
+}.dicampaign-root /* Impact Photo Showcase Grid */
+.impact-showcase-container {
+  margin-top: 4rem;
+}.dicampaign-root .impact-showcase-container h3 {
+  font-family: var(--font-heading);
+  font-size: 1.5rem;
+  font-weight: 700;
+  margin-bottom: 2rem;
+  color: var(--primary);
+  text-align: center;
+}.dicampaign-root .impact-photo-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 1.5rem;
+}.dicampaign-root .impact-photo-item {
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  border-radius: var(--border-radius);
+  transition: all var(--transition-speed) cubic-bezier(0.4, 0, 0.2, 1);
+}.dicampaign-root .impact-photo-item img {
+  width: 100%;
+  height: 180px;
+  object-fit: cover;
+  transition: transform 0.5s ease;
+}.dicampaign-root .impact-photo-item:hover img {
+  transform: scale(1.04);
+}.dicampaign-root .impact-photo-item:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 12px 20px -3px var(--shadow-hover);
+  border-color: var(--secondary);
+}.dicampaign-root .photo-info {
+  padding: 1.25rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+  flex: 1;
+}.dicampaign-root .photo-info h5 {
+  font-family: var(--font-heading);
+  font-size: 1rem;
+  font-weight: 700;
+  margin: 0;
+}.dicampaign-root .photo-info p {
+  font-size: 0.85rem;
+  color: var(--text-muted);
+  margin: 0;
+  line-height: 1.4;
+}.dicampaign-root /* Call to Action Section */
+.cta-section {
+  padding-top: 3rem;
+  padding-bottom: 6rem;
+}.dicampaign-root .cta-container {
+  padding: 4rem 3rem;
+  text-align: center;
+  border-radius: var(--border-radius);
+  background: linear-gradient(135deg, var(--glass-bg), rgba(var(--secondary-hsl), 0.05));
+}.dicampaign-root .cta-container h2 {
+  font-size: 2.25rem;
+  margin-bottom: 1rem;
+}.dicampaign-root .cta-container p {
+  max-width: 550px;
+  margin: 0 auto 2rem;
+  font-size: 1.1rem;
+}.dicampaign-root .cta-container .btn {
+  box-shadow: 0 10px 25px -5px rgba(var(--secondary-hsl), 0.35);
+}
+
+@media (max-width: 1024px) {.dicampaign-root .impact-photo-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 600px) {.dicampaign-root .overview-stats {
+    padding: 2rem;
+  }.dicampaign-root .cta-container {
+    padding: 3rem 1.5rem;
+  }.dicampaign-root .cta-container h2 {
+    font-size: 1.75rem;
+  }.dicampaign-root .impact-photo-grid {
+    grid-template-columns: 1fr;
+  }.dicampaign-root .impact-photo-item img {
+    height: 200px;
+  }
+}

@@ -1,0 +1,117 @@
+.dicampaign-root .lightbox-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background-color: rgba(11, 15, 25, 0.95); /* Deep dark background */
+  z-index: 2000;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: opacity var(--transition-speed) ease;
+}
+
+.dicampaign-root .lightbox-content {
+  position: relative;
+  max-width: 85vw;
+  max-height: 85vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+}
+
+.dicampaign-root .lightbox-img {
+  max-width: 100%;
+  max-height: 70vh; /* Leave room for caption */
+  width: auto;
+  height: auto;
+  object-fit: contain;
+  border-radius: 8px;
+  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.5);
+  display: block;
+}
+
+.dicampaign-root .lightbox-caption {
+  margin-top: 1.5rem;
+  text-align: center;
+  color: #ffffff;
+  width: 100%;
+}
+
+.dicampaign-root .lightbox-caption h3 {
+  font-family: var(--font-heading);
+  font-size: 1.25rem;
+  margin-bottom: 0.25rem;
+  color: #ffffff;
+}
+
+.dicampaign-root .lightbox-caption p {
+  font-size: 0.875rem;
+  color: var(--text-muted);
+  margin: 0;
+}
+
+/* Navigation Buttons */
+.dicampaign-root .lightbox-btn {
+  background: transparent;
+  border: none;
+  color: #ffffff;
+  opacity: 0.65;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all var(--transition-speed) ease;
+  z-index: 2001;
+}
+
+.dicampaign-root .lightbox-btn:hover {
+  opacity: 1;
+  transform: scale(1.1);
+}
+
+.dicampaign-root .close-btn {
+  position: absolute;
+  top: 2rem;
+  right: 2rem;
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  background-color: rgba(255, 255, 255, 0.08);
+}
+
+.dicampaign-root .close-btn:hover {
+  background-color: rgba(255, 255, 255, 0.15);
+}
+
+.dicampaign-root .nav-btn {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 64px;
+  height: 64px;
+}
+
+.dicampaign-root .prev-btn {
+  left: 2rem;
+}
+
+.dicampaign-root .next-btn {
+  right: 2rem;
+}
+
+@media (max-width: 768px) {
+  .dicampaign-root .nav-btn {
+    display: none; /* Hide on mobile */
+  }
+  .dicampaign-root .lightbox-content {
+    max-width: 95vw;
+  }
+  .dicampaign-root .close-btn {
+    top: 1rem;
+    right: 1rem;
+  }
+}

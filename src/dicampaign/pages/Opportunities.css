@@ -1,0 +1,217 @@
+.dicampaign-root .opportunities-banner {
+  background-size: cover;
+  background-position: center;
+  padding: 8rem 0 5rem;
+  color: #ffffff;
+  margin-top: 120px;
+  text-align: center;
+}.dicampaign-root .opportunities-banner .page-title {
+  font-size: 3rem;
+  color: #ffffff;
+}.dicampaign-root .opportunities-banner .page-subtitle {
+  color: #e5e7eb;
+  font-size: 1.2rem;
+  max-width: 600px;
+  margin: 0.5rem auto 0;
+}.dicampaign-root .opportunites-list-section {
+  padding: 5rem 0;
+}.dicampaign-root /* Archive Banner Notice */
+.archive-notice {
+  display: flex;
+  align-items: flex-start;
+  gap: 1.5rem;
+  padding: 2rem;
+  border-radius: var(--border-radius);
+  margin-bottom: 3.5rem;
+  border-left: 4px solid var(--secondary);
+}.dicampaign-root .archive-notice h3 {
+  font-family: var(--font-heading);
+  font-size: 1.25rem;
+  color: var(--secondary);
+  margin-bottom: 0.5rem;
+}.dicampaign-root .archive-notice p {
+  font-size: 1rem;
+  margin: 0;
+}.dicampaign-root .info-icon {
+  color: var(--secondary);
+  flex-shrink: 0;
+  margin-top: 0.2rem;
+}.dicampaign-root /* Card layout & statuses */
+.opportunities-grid {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+}.dicampaign-root .opportunity-card {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}.dicampaign-root .opportunity-card.closed {
+  border-color: var(--border-color);
+  background-color: var(--bg-card);
+}.dicampaign-root .opp-meta {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+  align-items: center;
+}.dicampaign-root .opp-tag {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.25rem;
+  font-size: 0.85rem;
+  color: var(--text-muted);
+  background-color: var(--bg-color);
+  padding: 0.25rem 0.75rem;
+  border-radius: 50px;
+  border: 1px solid var(--border-color);
+}.dicampaign-root .opp-status-badge {
+  font-family: var(--font-heading);
+  font-weight: 700;
+  font-size: 0.75rem;
+  text-transform: uppercase;
+  color: #ef4444;
+  background-color: rgba(239, 68, 68, 0.08);
+  padding: 0.2rem 0.75rem;
+  border-radius: 50px;
+  border: 1px solid rgba(239, 68, 68, 0.15);
+}.dicampaign-root .opp-desc {
+  font-size: 1.05rem;
+}.dicampaign-root .opp-deliverables {
+  background-color: var(--primary-light);
+  padding: 1.25rem;
+  border-radius: var(--border-radius);
+}.dicampaign-root .opp-deliverables h4 {
+  font-family: var(--font-heading);
+  font-size: 0.95rem;
+  font-weight: 700;
+  color: var(--primary);
+  margin-bottom: 0.5rem;
+}.dicampaign-root .opp-deliverables ul {
+  list-style: disc;
+  margin-left: 1.25rem;
+  font-size: 0.95rem;
+  color: var(--text-muted);
+}.dicampaign-root .opp-footer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 1rem;
+  padding-top: 1rem;
+  border-top: 1px solid var(--border-color);
+}.dicampaign-root .opp-deadline {
+  font-family: var(--font-heading);
+  font-size: 0.9rem;
+  font-weight: 600;
+  color: var(--text-muted);
+  display: inline-flex;
+  align-items: center;
+  gap: 0.25rem;
+}.dicampaign-root /* Modals & Details */
+.modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background-color: rgba(11, 15, 25, 0.6);
+  z-index: 2000;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 1.5rem;
+}.dicampaign-root .modal-content {
+  width: 100%;
+  max-width: 500px;
+  padding: 3rem 2.5rem;
+  border-radius: var(--border-radius);
+  position: relative;
+  box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.15), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+}.dicampaign-root .modal-close {
+  position: absolute;
+  top: 1.5rem;
+  right: 1.5rem;
+  background: transparent;
+  border: none;
+  color: var(--text-muted);
+  cursor: pointer;
+  padding: 0.5rem;
+  border-radius: 50%;
+  transition: all var(--transition-speed) ease;
+}.dicampaign-root .modal-close:hover {
+  background-color: var(--border-color);
+  color: var(--text-main);
+}.dicampaign-root .tor-details-modal {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}.dicampaign-root .form-header {
+  margin-bottom: 0.25rem;
+}.dicampaign-root .form-header.text-left {
+  text-align: left;
+}.dicampaign-root .form-icon {
+  color: var(--primary);
+  margin-bottom: 0.75rem;
+}.dicampaign-root .form-header h3 {
+  font-size: 1.5rem;
+  color: var(--primary);
+}.dicampaign-root .tor-modal-subtitle {
+  font-family: var(--font-heading);
+  font-weight: 600;
+  color: var(--text-muted);
+  font-size: 0.95rem;
+  margin-top: 0.25rem;
+  display: block;
+}.dicampaign-root /* Modal Status Alert */
+.modal-status-alert {
+  display: flex;
+  align-items: flex-start;
+  gap: 1rem;
+  background-color: rgba(239, 68, 68, 0.04);
+  border: 1px solid rgba(239, 68, 68, 0.15);
+  border-left: 4px solid #ef4444;
+  padding: 1rem 1.25rem;
+  border-radius: 8px;
+}.dicampaign-root .modal-status-alert strong {
+  font-family: var(--font-heading);
+  font-weight: 700;
+  color: #ef4444;
+  font-size: 0.95rem;
+  display: block;
+  margin-bottom: 0.15rem;
+}.dicampaign-root .modal-status-alert p {
+  font-size: 0.875rem;
+  color: var(--text-muted);
+  margin: 0;
+}.dicampaign-root .alert-icon {
+  color: #ef4444;
+  flex-shrink: 0;
+  margin-top: 0.15rem;
+}.dicampaign-root /* Details sub sections */
+.tor-section h4 {
+  font-family: var(--font-heading);
+  font-size: 1rem;
+  font-weight: 700;
+  color: var(--primary);
+  margin-bottom: 0.5rem;
+  border-bottom: 1px solid var(--border-color);
+  padding-bottom: 0.25rem;
+}.dicampaign-root .tor-section p {
+  font-size: 0.95rem;
+  margin-bottom: 0;
+}.dicampaign-root .tor-section ul {
+  list-style: disc;
+  margin-left: 1.25rem;
+  font-size: 0.925rem;
+  color: var(--text-muted);
+  display: flex;
+  flex-direction: column;
+  gap: 0.4rem;
+}.dicampaign-root .modal-actions-footer {
+  margin-top: 1rem;
+  display: flex;
+  justify-content: flex-end;
+}
+
+@media (max-width: 600px) {.dicampaign-root .modal-content {
+    padding: 2.5rem 1.5rem;
+  }
+}

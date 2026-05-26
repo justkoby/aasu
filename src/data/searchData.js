@@ -1041,6 +1041,46 @@ const searchData = [
     path: "/partners",
     category: "Partners",
     keywords: ["prescott hospital", "health", "wellness", "medical partner"]
+  },
+  {
+    id: 127,
+    title: "Digital Inclusion Campaign",
+    description: "The official initiative page for AASU's Digital Inclusion Campaign, documenting student advocacy for internet subsidies and digital rights across Africa.",
+    path: "/dicampaign",
+    category: "What We Do",
+    keywords: ["digital inclusion", "campaign", "internet", "connectivity", "technology", "laptops", "computers", "digital rights", "advocacy", "subsidies"]
+  },
+  {
+    id: 128,
+    title: "Digital Inclusion Campaign Opportunities",
+    description: "Explore opportunities, volunteer positions, and Terms of Reference (TOR) for consultants and advocates under the Digital Inclusion Campaign.",
+    path: "/dicampaign/opportunities",
+    category: "What We Do",
+    keywords: ["opportunities", "volunteer", "consultancy", "tor", "terms of reference", "careers", "jobs", "digital inclusion"]
+  },
+  {
+    id: 129,
+    title: "Digital Inclusion Campaign Updates & News",
+    description: "Read the latest press releases, advocacy reports, and campaign updates documenting student mobilization and policy roundtables.",
+    path: "/dicampaign/updates",
+    category: "News & Events",
+    keywords: ["updates", "news", "press release", "advocacy reports", "malawi", "internet subsidies", "telecom regulators"]
+  },
+  {
+    id: 130,
+    title: "Digital Inclusion Campaign Media Gallery",
+    description: "View historical photos and archived records documenting the Malawi National Students Union workshops, stakeholder sessions, and press launches.",
+    path: "/dicampaign/gallery",
+    category: "Resources",
+    keywords: ["gallery", "photos", "media archive", "workshops", "launch", "malawi student union", "images", "advocacy photos"]
+  },
+  {
+    id: 131,
+    title: "Next Level Skills for Student Leaders (NELS)",
+    description: "Next Level Skills for Student Leaders (NELS) is a dynamic virtual exchange training course designed to equip current and aspiring student leaders in Europe and Sub-Saharan Africa with the next-level skills needed to lead change.",
+    path: "/nels",
+    category: "What We Do",
+    keywords: ["nels", "next level skills", "student leaders", "leadership", "virtual training", "erasmus+", "capacity building", "badge", "ects", "moodle", "teams", "cycle 3", "timetable", "register", "partners", "program", "about nels"]
   }
 ];
 

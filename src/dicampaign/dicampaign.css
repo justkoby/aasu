@@ -1,0 +1,283 @@
+/* CSS Variables for Premium Styling & Theme toggling */
+.dicampaign-root {
+  /* Light Theme Color Palette */
+  --primary-hsl: 170, 100%, 18%; /* Forest/Emerald Green */
+  --primary: hsl(var(--primary-hsl));
+  --primary-hover: hsl(170, 100%, 14%);
+  --primary-light: hsl(170, 100%, 96%);
+
+  --secondary-hsl: 243, 75%, 59%; /* Royal Indigo/Purple */
+  --secondary: hsl(var(--secondary-hsl));
+  --secondary-hover: hsl(243, 75%, 53%);
+  --secondary-light: hsl(243, 75%, 96%);
+
+  --accent-hsl: 38, 92%, 50%; /* Amber Gold */
+  --accent: hsl(var(--accent-hsl));
+  --accent-hover: hsl(38, 92%, 44%);
+
+  --bg-color: #fcfdfd;
+  --bg-card: #ffffff;
+  --text-main: #1f2937;
+  --text-muted: #4b5563;
+  --border-color: #e5e7eb;
+  --shadow-color: rgba(0, 0, 0, 0.05);
+  --shadow-hover: rgba(0, 0, 0, 0.1);
+
+  --glass-bg: rgba(255, 255, 255, 0.75);
+  --glass-border: rgba(255, 255, 255, 0.4);
+  --glass-shadow: rgba(0, 0, 0, 0.04);
+  
+  --font-heading: 'Outfit', sans-serif;
+  --font-body: 'Plus Jakarta Sans', sans-serif;
+  --border-radius: 12px;
+  --transition-speed: 0.35s;
+}
+
+[data-theme="dark"] .dicampaign-root {
+  /* Dark Theme Color Palette */
+  --primary: hsl(170, 90%, 35%);
+  --primary-hover: hsl(170, 90%, 40%);
+  --primary-light: hsl(170, 90%, 10%);
+
+  --secondary: hsl(243, 85%, 70%);
+  --secondary-hover: hsl(243, 85%, 75%);
+  --secondary-light: hsl(243, 85%, 15%);
+
+  --bg-color: #0b0f19;
+  --bg-card: #121826;
+  --text-main: #f3f4f6;
+  --text-muted: #9ca3af;
+  --border-color: #1f2937;
+  --shadow-color: rgba(0, 0, 0, 0.3);
+  --shadow-hover: rgba(0, 0, 0, 0.45);
+
+  --glass-bg: rgba(18, 24, 38, 0.75);
+  --glass-border: rgba(255, 255, 255, 0.08);
+  --glass-shadow: rgba(0, 0, 0, 0.3);
+}
+
+/* Global Reset & Base Styles */
+.dicampaign-root * {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+.dicampaign-root {
+  background-color: var(--bg-color);
+  color: var(--text-main);
+  font-family: var(--font-body);
+  line-height: 1.6;
+  transition: background-color var(--transition-speed) ease, color var(--transition-speed) ease;
+  -webkit-font-smoothing: antialiased;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+.dicampaign-root a {
+  color: inherit;
+  text-decoration: none;
+  transition: all 0.25s ease-in-out;
+}
+
+.dicampaign-root img {
+  max-width: 100%;
+  height: auto;
+  display: block;
+}
+
+/* Headings */
+.dicampaign-root h1, 
+.dicampaign-root h2, 
+.dicampaign-root h3, 
+.dicampaign-root h4, 
+.dicampaign-root h5, 
+.dicampaign-root h6 {
+  font-family: var(--font-heading);
+  font-weight: 700;
+  line-height: 1.25;
+  margin-bottom: 0.75rem;
+  letter-spacing: -0.02em;
+}
+
+.dicampaign-root h1 { font-size: 2.5rem; }
+.dicampaign-root h2 { font-size: 2rem; }
+.dicampaign-root h3 { font-size: 1.5rem; }
+
+.dicampaign-root p {
+  margin-bottom: 1.25rem;
+  color: var(--text-muted);
+}
+
+/* Container */
+.dicampaign-root .container {
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 1.5rem;
+}
+
+/* Buttons */
+.dicampaign-root .btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  padding: 0.75rem 1.75rem;
+  font-family: var(--font-heading);
+  font-weight: 600;
+  border-radius: var(--border-radius);
+  border: 1px solid transparent;
+  cursor: pointer;
+  transition: all var(--transition-speed) cubic-bezier(0.4, 0, 0.2, 1);
+  box-shadow: 0 4px 6px -1px rgba(0,0,0,0.1);
+}
+
+.dicampaign-root .btn-primary {
+  background-color: var(--primary);
+  color: #ffffff;
+}
+
+.dicampaign-root .btn-primary:hover {
+  background-color: var(--primary-hover);
+  transform: translateY(-2px);
+  box-shadow: 0 10px 15px -3px rgba(0,0,0,0.15);
+}
+
+.dicampaign-root .btn-secondary {
+  background-color: var(--secondary);
+  color: #ffffff;
+}
+
+.dicampaign-root .btn-secondary:hover {
+  background-color: var(--secondary-hover);
+  transform: translateY(-2px);
+  box-shadow: 0 10px 15px -3px rgba(0,0,0,0.15);
+}
+
+.dicampaign-root .btn-outline {
+  background-color: transparent;
+  border-color: var(--border-color);
+  color: var(--text-main);
+  box-shadow: none;
+}
+
+.dicampaign-root .btn-outline:hover {
+  background-color: var(--border-color);
+  transform: translateY(-2px);
+}
+
+/* Glassmorphism Classes */
+.dicampaign-root .glass {
+  background: var(--glass-bg);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid var(--glass-border);
+  box-shadow: 0 8px 32px 0 var(--glass-shadow);
+}
+
+/* Card layout */
+.dicampaign-root .card {
+  background-color: var(--bg-card);
+  border: 1px solid var(--border-color);
+  border-radius: var(--border-radius);
+  padding: 1.75rem;
+  box-shadow: 0 4px 6px -1px var(--shadow-color);
+  transition: all var(--transition-speed) cubic-bezier(0.4, 0, 0.2, 1);
+  position: relative;
+  overflow: hidden;
+}
+
+.dicampaign-root .card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 12px 20px -3px var(--shadow-hover);
+  border-color: var(--primary);
+}
+
+/* Grid helper */
+.dicampaign-root .grid-2 {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 2rem;
+}
+
+.dicampaign-root .grid-3 {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 2rem;
+}
+
+@media (max-width: 900px) {
+  .dicampaign-root .grid-2, 
+  .dicampaign-root .grid-3 {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* Section Spacer */
+.dicampaign-root .section {
+  padding: 5rem 0;
+}
+
+.dicampaign-root .section-bg {
+  background-color: var(--primary-light);
+}
+
+/* Scoped Section Header to shield from main website style leaks */
+.dicampaign-root .section-header {
+  display: block !important;
+  text-align: left;
+  margin-bottom: 3rem;
+  width: 100%;
+}
+
+.dicampaign-root .section-header.text-center {
+  text-align: center !important;
+}
+
+.dicampaign-root .section-header h2 {
+  font-family: var(--font-heading);
+  font-size: 2.25rem;
+  font-weight: 700;
+  margin-top: 0.5rem;
+  margin-bottom: 0.75rem;
+  color: var(--text-main);
+  line-height: 1.2;
+}
+
+.dicampaign-root .section-header p {
+  font-size: 1.1rem;
+  color: var(--text-muted);
+  margin: 0;
+  max-width: 600px;
+}
+
+.dicampaign-root .section-header.text-center p {
+  margin: 0 auto !important;
+}
+
+/* Animation utilities */
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(10px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.dicampaign-root .fade-in {
+  animation: fadeIn 0.6s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+/* Custom Scrollbar scoped to Campaign */
+.dicampaign-root::-webkit-scrollbar {
+  width: 8px;
+}
+.dicampaign-root::-webkit-scrollbar-track {
+  background: var(--bg-color);
+}
+.dicampaign-root::-webkit-scrollbar-thumb {
+  background: var(--border-color);
+  border-radius: 4px;
+}
+.dicampaign-root::-webkit-scrollbar-thumb:hover {
+  background: var(--text-muted);
+}

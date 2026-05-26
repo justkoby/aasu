@@ -83,7 +83,9 @@ const Navbar = () => {
           {
             title: 'Initiatives',
             links: [
-              'Programs & Impact'
+              'Programs & Impact',
+              'Digital Inclusion Campaign',
+              'Next Level Skills (NELS)'
             ]
           },
           {
@@ -269,6 +271,8 @@ const Navbar = () => {
                                         if (link === 'Climate Action and Environmental Sustainability') routePath = '/priority/climate';
                                         if (link === 'Pan-Africanism & African Culture') routePath = '/priority/culture';
                                         if (link === 'Programs & Impact') routePath = '/programs';
+                                        if (link === 'Digital Inclusion Campaign') routePath = '/dicampaign';
+                                        if (link === 'Next Level Skills (NELS)') routePath = '/nels';
                                         if (link === 'Brand & Media Kit') routePath = '/resources/branding';
                                         if (link === '13th Congress Resolutions (EN)') routePath = '/13th Congress Resolutions.pdf';
                                         if (link === '13th Congress Resolutions (FR)') routePath = '/13th Congress Resolutions(FR).pdf';
@@ -382,6 +386,8 @@ const Navbar = () => {
                                   if (link === 'Climate Action and Environmental Sustainability') routePath = '/priority/climate';
                                   if (link === 'Pan-Africanism & African Culture') routePath = '/priority/culture';
                                   if (link === 'Programs & Impact') routePath = '/programs';
+                                  if (link === 'Digital Inclusion Campaign') routePath = '/dicampaign';
+                                  if (link === 'Next Level Skills (NELS)') routePath = '/nels';
                                   if (link === 'Brand & Media Kit') routePath = '/resources/branding';
                                   if (link === '13th Congress Resolutions (EN)') routePath = '/13th Congress Resolutions.pdf';
                                   if (link === '13th Congress Resolutions (FR)') routePath = '/13th Congress Resolutions(FR).pdf';

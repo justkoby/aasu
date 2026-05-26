@@ -1,0 +1,142 @@
+.dicampaign-root .gallery-banner {
+  background: linear-gradient(135deg, var(--secondary), var(--primary));
+  padding: 8rem 0 5rem;
+  color: #ffffff;
+  margin-top: 120px;
+  text-align: center;
+}.dicampaign-root .gallery-banner .page-title {
+  font-size: 3rem;
+  color: #ffffff;
+}.dicampaign-root .gallery-banner .page-subtitle {
+  color: #e5e7eb;
+  font-size: 1.2rem;
+  max-width: 600px;
+  margin: 0.5rem auto 0;
+}.dicampaign-root .gallery-grid-section {
+  padding: 5rem 0;
+}.dicampaign-root /* Controls & Filter Bar */
+.gallery-controls {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+  margin-bottom: 3rem;
+}.dicampaign-root .gallery-filters {
+  display: flex;
+  align-items: center;
+  gap: 1.5rem;
+  padding: 1rem 1.5rem;
+  border-radius: var(--border-radius);
+  width: fit-content;
+  flex-wrap: wrap;
+}.dicampaign-root .filter-label {
+  font-family: var(--font-heading);
+  font-weight: 700;
+  color: var(--text-main);
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-size: 0.95rem;
+}.dicampaign-root .filter-buttons {
+  display: flex;
+  gap: 0.5rem;
+  flex-wrap: wrap;
+}.dicampaign-root .gallery-filter-btn {
+  background: transparent;
+  border: 1px solid var(--border-color);
+  color: var(--text-muted);
+  cursor: pointer;
+  padding: 0.4rem 1.15rem;
+  font-family: var(--font-heading);
+  font-weight: 600;
+  border-radius: 50px;
+  font-size: 0.85rem;
+  transition: all var(--transition-speed) ease;
+}.dicampaign-root .gallery-filter-btn:hover {
+  border-color: var(--primary);
+  color: var(--primary);
+}.dicampaign-root .gallery-filter-btn.active {
+  background-color: var(--primary);
+  border-color: var(--primary);
+  color: #ffffff;
+}.dicampaign-root /* Gallery Grid */
+.gallery-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 2rem;
+}
+
+@media (max-width: 900px) {.dicampaign-root .gallery-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 600px) {.dicampaign-root .gallery-grid {
+    grid-template-columns: 1fr;
+  }.dicampaign-root .gallery-filters {
+    width: 100%;
+  }
+}.dicampaign-root .gallery-item-wrapper {
+  padding: 0;
+  cursor: pointer;
+  overflow: hidden;
+  border-radius: var(--border-radius);
+  aspect-ratio: 4 / 3;
+}.dicampaign-root .gallery-img-container {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+}.dicampaign-root .gallery-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.5s ease;
+}.dicampaign-root .gallery-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(to top, rgba(11, 15, 25, 0.9) 10%, rgba(11, 15, 25, 0.2) 80%);
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  padding: 2rem;
+  opacity: 0;
+  transition: opacity var(--transition-speed) ease;
+  color: #ffffff;
+}.dicampaign-root .gallery-overlay h3 {
+  font-size: 1.15rem;
+  font-weight: 700;
+  margin-bottom: 0.25rem;
+  color: #ffffff;
+  transform: translateY(10px);
+  transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+  line-height: 1.3;
+}.dicampaign-root .gallery-overlay-cat {
+  font-family: var(--font-heading);
+  font-size: 0.7rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: var(--accent);
+  margin-bottom: 0.5rem;
+  transform: translateY(10px);
+  transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1) 0.05s;
+}.dicampaign-root .zoom-icon {
+  position: absolute;
+  top: 1.5rem;
+  right: 1.5rem;
+  color: #ffffff;
+  transform: scale(0.8);
+  transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+}.dicampaign-root /* Hover effects */
+.gallery-item-wrapper:hover .gallery-img {
+  transform: scale(1.06);
+}.dicampaign-root .gallery-item-wrapper:hover .gallery-overlay {
+  opacity: 1;
+}.dicampaign-root .gallery-item-wrapper:hover .gallery-overlay h3, .dicampaign-root .gallery-item-wrapper:hover .gallery-overlay-cat {
+  transform: translateY(0);
+}.dicampaign-root .gallery-item-wrapper:hover .zoom-icon {
+  transform: scale(1);
+}
