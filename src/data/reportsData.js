@@ -28,6 +28,36 @@ export const PRIORITY_AREAS = [
 
 export const reportsData = [
   {
+    id: 'toolkit-greening-skills-2026',
+    title: 'Toolkit on Greening Skills and Qualifications in Africa',
+    type: DOCUMENT_TYPES.OTHER,
+    year: '2026',
+    priorityArea: 'Capacity Building, Skills Development & Employability',
+    description: 'A comprehensive toolkit designed to guide the greening of skills and qualifications in Africa, fostering sustainable development and green employability.',
+    fileUrl: '/Toolkit on Greening Skills and Qualifications in Africa-compressed.pdf',
+    thumbnail: '/report-thumb-placeholder.jpg'
+  },
+  {
+    id: 'book-good-practices-greening-2026',
+    title: 'Book of Good Practices for the Greening of Skills and Qualifications in Africa',
+    type: DOCUMENT_TYPES.CASE_BOOK,
+    year: '2026',
+    priorityArea: 'Capacity Building, Skills Development & Employability',
+    description: 'A collection of outstanding practices and success stories in greening skills and qualifications across African educational systems.',
+    fileUrl: '/Book of Good Practices for the Greening of Skills and Qualifications in Africa.pdf',
+    thumbnail: '/report-thumb-placeholder.jpg'
+  },
+  {
+    id: 'greening-skills-engagement-2026',
+    title: 'Greening Skills and Qualifications in Africa  User’s Engagement',
+    type: DOCUMENT_TYPES.PROGRAM_REPORT,
+    year: '2026',
+    priorityArea: 'Capacity Building, Skills Development & Employability',
+    description: 'Engagement and implementation guidelines for stakeholders involved in greening skills and qualifications in Africa.',
+    fileUrl: '/Greening Skills and Qualifications in Africa  User’s Engagement.pdf',
+    thumbnail: '/report-thumb-placeholder.jpg'
+  },
+  {
     id: 'report-2025-annual',
     title: 'AASU Annual Report 2025',
     type: DOCUMENT_TYPES.ANNUAL_REPORT,

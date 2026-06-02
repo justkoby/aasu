@@ -1,5 +1,8 @@
 
 export const documents = [
+  { title: "Toolkit on Greening Skills and Qualifications in Africa", year: "2026", type: "Toolkit", link: "/Toolkit on Greening Skills and Qualifications in Africa-compressed.pdf" },
+  { title: "Book of Good Practices for the Greening of Skills and Qualifications in Africa", year: "2026", type: "Case Book", link: "/Book of Good Practices for the Greening of Skills and Qualifications in Africa.pdf" },
+  { title: "Greening Skills and Qualifications in Africa  User’s Engagement", year: "2026", type: "Report", link: "/Greening Skills and Qualifications in Africa  User’s Engagement.pdf" },
   { title: "Impact Report 2024", year: "2024", type: "Report", link: "/AASU IMPACT REPORT 2024.pdf" },
   { title: "Impact Report 2023", year: "2023", type: "Report", link: "/Impact Report AASU 2023.pdf" },
   { title: "Impact Report 2025", year: "2025", type: "Report", link: "/impact report - 2025.pdf" },
@@ -153,6 +156,15 @@ export const intents = [
     keywords: ["annual report 2025", "2025 report"],
     answer: "The AASU Annual Report 2025 provides a detailed overview of the Union's activities, impact, and financial standing for the year 2025.",
     links: [{ label: "Download Annual Report 2025", url: "/AASU 2025 report.pdf" }]
+  },
+  {
+    keywords: ["greening skills", "greening of skills", "green skills", "greening qualifications", "skills in africa"],
+    answer: "AASU has published resources on the greening of skills and qualifications in Africa, including a Toolkit, a Book of Good Practices, and User's Engagement guidelines to support stakeholders.",
+    links: [
+      { label: "Toolkit", url: "/Toolkit on Greening Skills and Qualifications in Africa-compressed.pdf" },
+      { label: "Book of Good Practices", url: "/Book of Good Practices for the Greening of Skills and Qualifications in Africa.pdf" },
+      { label: "User's Engagement", url: "/Greening Skills and Qualifications in Africa  User’s Engagement.pdf" }
+    ]
   }
 ];
 

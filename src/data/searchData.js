@@ -1081,6 +1081,30 @@ const searchData = [
     path: "/nels",
     category: "What We Do",
     keywords: ["nels", "next level skills", "student leaders", "leadership", "virtual training", "erasmus+", "capacity building", "badge", "ects", "moodle", "teams", "cycle 3", "timetable", "register", "partners", "program", "about nels"]
+  },
+  {
+    id: 132,
+    title: "Toolkit on Greening Skills and Qualifications in Africa",
+    description: "A comprehensive toolkit designed to guide the greening of skills and qualifications in Africa, fostering sustainable development and green employability.",
+    path: "/reports",
+    category: "Resources",
+    keywords: ["toolkit", "greening skills", "qualifications", "africa", "sustainability", "skills development", "green employability", "report"]
+  },
+  {
+    id: 133,
+    title: "Book of Good Practices for the Greening of Skills and Qualifications in Africa",
+    description: "A collection of outstanding practices and success stories in greening skills and qualifications across African educational systems.",
+    path: "/reports",
+    category: "Resources",
+    keywords: ["book of good practices", "greening skills", "qualifications", "success stories", "educational systems", "report"]
+  },
+  {
+    id: 134,
+    title: "Greening Skills and Qualifications in Africa  User’s Engagement",
+    description: "Engagement and implementation guidelines for stakeholders involved in greening skills and qualifications in Africa.",
+    path: "/reports",
+    category: "Resources",
+    keywords: ["users engagement", "stakeholders", "greening skills", "qualifications", "guidelines", "report"]
   }
 ];
 
