@@ -12,6 +12,54 @@ export const CONTENT_TYPES = {
 
 export const newsEventsData = [
   {
+    id: 'event-pre-conference-workshop-2026',
+    type: CONTENT_TYPES.EVENT,
+    category: 'Capacity Building',
+    title: 'Pre-Conference Workshop: Re-connecting Futures',
+    img: '/PRE-CONFERENCE WORKSHOP.webp',
+    date: '2026-06-03',
+    time: '9:30 AM – 4:30 PM',
+    platform: 'Kumasi Hall, Labadi Beach Hotel',
+    excerpt: 'As part of the Students Dialogue on Skills, Employability and Entrepreneurship, this workshop explores tradition and technology for sustainable progress.',
+    description: `As part of the Students Dialogue on Skills, Employability and Entrepreneurship, the Pre-Conference Workshop on “Re-connecting Futures: Indigenous Knowledge and Africa’s Digital Generation” will bring together students, educators, innovators, policymakers, and development stakeholders to explore how Africa can bridge tradition and technology for sustainable progress.
+
+This workshop creates an opportunity to engage in critical conversations around indigenous knowledge systems, digital transformation, youth empowerment, and the future of education in Africa.
+
+Date: Wednesday, 3 June 2026
+Time: 9:30 – 16:30
+Venue: Kumasi Hall, Labadi Beach Hotel
+
+Join us as we reimagine Africa’s future through knowledge, innovation, and youth-driven transformation.
+
+#AASU #ELearningAfrica2026 #AfricanYouth #IndigenousKnowledge #DigitalTransformation #FutureReadyAfrica #YouthInnovation #EducationInAfrica #AfricaRising #DigitalGeneration`,
+    tags: ['AASU', 'ELearningAfrica2026', 'AfricanYouth', 'IndigenousKnowledge', 'DigitalTransformation', 'FutureReadyAfrica', 'YouthInnovation', 'EducationInAfrica', 'AfricaRising', 'DigitalGeneration']
+  },
+  {
+    id: 'event-youth-students-dialogue-2026',
+    type: CONTENT_TYPES.EVENT,
+    category: 'Capacity Building',
+    title: 'Youth and Students Dialogue',
+    img: '/YSD-2026.webp',
+    date: '2026-06-05',
+    time: '2:45 PM – 3:45 PM',
+    platform: 'Sekondi Hall, Labadi Beach Hotel',
+    excerpt: 'Join us at the Youth and Students Dialogue on Skills, Employability and Entrepreneurship during eLearning Africa 2026.',
+    description: `The future of Africa depends on a generation equipped with the right skills, opportunities, and mindset to thrive in a rapidly evolving world.
+
+Join us at the Youth and Students Dialogue on Skills, Employability and Entrepreneurship during eLearning Africa 2026, where students, young leaders, innovators, policymakers, and industry stakeholders will engage in meaningful conversations around building sustainable pathways for youth empowerment across the continent.
+
+This session serves as a platform to inspire ideas, foster partnerships, and amplify the voices of African youth in shaping the future of education, employment, and enterprise development.
+
+Date: Friday, 5 June 2026
+Time: 14:45 – 15:45
+Venue: Sekondi Hall, Labadi Beach Hotel
+
+Together, let us drive conversations that create opportunities, unlock potential, and build a future where African youth can lead with confidence and impact.
+
+#AASU #YouthDialogue2026 #ELearningAfrica2026 #AfricanYouth #Employability #Entrepreneurship #FutureReadySkills #YouthEmpowerment`,
+    tags: ['AASU', 'YouthDialogue2026', 'ELearningAfrica2026', 'AfricanYouth', 'Employability', 'Entrepreneurship', 'FutureReadySkills', 'YouthEmpowerment']
+  },
+  {
     id: 'rwanda-genocide-remembrance-2026',
     type: CONTENT_TYPES.PRESS_RELEASE,
     category: 'Policy & Advocacy',

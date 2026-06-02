@@ -1,5 +1,7 @@
 
 export const documents = [
+  { title: "Event: Pre-Conference Workshop", year: "2026", type: "Event", link: "/events/event-pre-conference-workshop-2026" },
+  { title: "Event: Youth and Students Dialogue", year: "2026", type: "Event", link: "/events/event-youth-students-dialogue-2026" },
   { title: "Toolkit on Greening Skills and Qualifications in Africa", year: "2026", type: "Toolkit", link: "/Toolkit on Greening Skills and Qualifications in Africa-compressed.pdf" },
   { title: "Book of Good Practices for the Greening of Skills and Qualifications in Africa", year: "2026", type: "Case Book", link: "/Book of Good Practices for the Greening of Skills and Qualifications in Africa.pdf" },
   { title: "Greening Skills and Qualifications in Africa  User’s Engagement", year: "2026", type: "Report", link: "/Greening Skills and Qualifications in Africa  User’s Engagement.pdf" },
@@ -164,6 +166,14 @@ export const intents = [
       { label: "Toolkit", url: "/Toolkit on Greening Skills and Qualifications in Africa-compressed.pdf" },
       { label: "Book of Good Practices", url: "/Book of Good Practices for the Greening of Skills and Qualifications in Africa.pdf" },
       { label: "User's Engagement", url: "/Greening Skills and Qualifications in Africa  User’s Engagement.pdf" }
+    ]
+  },
+  {
+    keywords: ["elearning africa", "pre-conference workshop", "students dialogue", "indigenous knowledge", "ysd", "labadi beach"],
+    answer: "AASU is organizing events during eLearning Africa 2026 at Labadi Beach Hotel: the Pre-Conference Workshop on Wednesday, 3 June 2026, and the Youth and Students Dialogue on Friday, 5 June 2026.",
+    links: [
+      { label: "Pre-Conference Workshop Info", url: "/events/event-pre-conference-workshop-2026" },
+      { label: "Youth & Students Dialogue Info", url: "/events/event-youth-students-dialogue-2026" }
     ]
   }
 ];

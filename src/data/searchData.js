@@ -1105,6 +1105,22 @@ const searchData = [
     path: "/reports",
     category: "Resources",
     keywords: ["users engagement", "stakeholders", "greening skills", "qualifications", "guidelines", "report"]
+  },
+  {
+    id: 135,
+    title: "Pre-Conference Workshop: Re-connecting Futures",
+    description: "As part of the Students Dialogue on Skills, Employability and Entrepreneurship, the Pre-Conference Workshop on “Re-connecting Futures: Indigenous Knowledge and Africa’s Digital Generation” will explore tradition and technology.",
+    path: "/events/event-pre-conference-workshop-2026",
+    category: "News & Events",
+    keywords: ["pre-conference workshop", "re-connecting futures", "indigenous knowledge", "digital generation", "skills dialogue", "elearning africa 2026", "labadi beach hotel", "event"]
+  },
+  {
+    id: 136,
+    title: "Youth and Students Dialogue on Skills, Employability and Entrepreneurship",
+    description: "Join us at the Youth and Students Dialogue on Skills, Employability and Entrepreneurship during eLearning Africa 2026 to discuss sustainable pathways for youth empowerment.",
+    path: "/events/event-youth-students-dialogue-2026",
+    category: "News & Events",
+    keywords: ["youth dialogue", "students dialogue", "skills", "employability", "entrepreneurship", "elearning africa 2026", "youth empowerment", "event"]
   }
 ];
 
