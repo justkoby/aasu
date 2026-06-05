@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { motion } from 'framer-motion';
+import SEO from '../components/SEO';
 
 // Placeholder avatar that shows initials when no photo is available
 const PlaceholderAvatar = ({ name }) => {
@@ -200,7 +201,10 @@ const TechnicalTeamPage = () => {
 
   return (
     <div className="tech-team-page">
-
+      <SEO 
+        title="Secretariat Technical Team" 
+        description="Meet the professional technical officers and support staff driving the day-to-day operations and projects at the AASU Secretariat." 
+      />
       {/* Hero */}
       <section className="tt-hero">
         <div className="container">

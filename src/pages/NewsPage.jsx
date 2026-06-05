@@ -3,6 +3,7 @@ import { motion, AnimatePresence } from 'framer-motion';
 import { Link } from 'react-router-dom';
 import { Filter, RotateCcw, ChevronRight, ChevronLeft, Calendar } from 'lucide-react';
 import { newsEventsData, CONTENT_TYPES } from '../data/newsEventsData';
+import SEO from '../components/SEO';
 
 const NewsPage = () => {
   const sortedData = [...newsEventsData].sort((a, b) => new Date(b.date) - new Date(a.date));
@@ -55,6 +56,10 @@ const NewsPage = () => {
 
   return (
     <div className="news-page">
+      <SEO 
+        title="News Hub & Updates" 
+        description="Stay informed with the latest news, statements, and updates from the All-Africa Students Union (AASU)." 
+      />
       <div className="news-header-spacer">
         <div className="container">
           <header className="page-header">

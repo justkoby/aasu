@@ -3,6 +3,7 @@ import { motion } from 'framer-motion';
 import { Compass, BookOpen, Target, Rocket, Globe, MessageSquare, ArrowRight, Shield, Accessibility, Layers, Users, FileText, CheckCircle2, BarChart3 } from 'lucide-react';
 import ProjectExplorer from '../../components/ProjectExplorer';
 import { flagshipPrograms, priorityProjects } from '../../data/programsData';
+import SEO from '../../components/SEO';
 
 const EducationPage = () => {
   useEffect(() => {
@@ -17,6 +18,10 @@ const EducationPage = () => {
 
   return (
     <div className="priority-area-page education-page">
+      <SEO 
+        title="Education & Students' Rights" 
+        description="Championing quality, accessible, and inclusive education across Africa, and defending the rights of student leaders and organizations." 
+      />
       {/* Hero Section */}
       <section className="priority-hero">
         <div className="hero-overlay" style={{ background: `linear-gradient(135deg, ${accentColor}dd 0%, #111111ee 100%)` }}></div>

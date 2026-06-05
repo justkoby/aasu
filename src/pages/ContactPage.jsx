@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { motion } from 'framer-motion';
 import { MapPin, Phone, Mail, Clock } from 'lucide-react';
+import SEO from '../components/SEO';
 
 const ContactPage = () => {
   const [honeypot, setHoneypot] = useState('');
@@ -40,6 +41,10 @@ const ContactPage = () => {
 
   return (
     <div className="contact-page">
+      <SEO 
+        title="Contact Us" 
+        description="Get in touch with the All-Africa Students Union (AASU) Secretariat. Find our office location, email addresses, and phone numbers." 
+      />
       {/* Hero Section */}
       <section className="contact-hero">
         <div className="container h-full">

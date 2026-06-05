@@ -2,6 +2,7 @@ import React, { useState, useEffect, useMemo } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Search, Filter, FileText, Download, Calendar, Tag, Info, ChevronLeft, ChevronRight } from 'lucide-react';
 import { reportsData, DOCUMENT_TYPES, PRIORITY_AREAS, getYears } from '../data/reportsData';
+import SEO from '../components/SEO';
 
 const ITEMS_PER_PAGE = 6;
 
@@ -51,6 +52,10 @@ const ReportsPage = () => {
 
   return (
     <div className="reports-page">
+      <SEO 
+        title="Reports & Publications" 
+        description="Access annual reports, strategic work plans, impact assessments, and policy publications from the All-Africa Students Union (AASU)." 
+      />
       {/* Hero Section */}
       <section className="reports-hero">
         <div className="container">

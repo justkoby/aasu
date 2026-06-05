@@ -5,6 +5,7 @@ import {
   CheckCircle2, ArrowRight, Award, Network, Users,
   GraduationCap, Star, ChevronDown
 } from 'lucide-react';
+import SEO from '../components/SEO';
 
 const fadeUp = {
   hidden: { opacity: 0, y: 30 },
@@ -137,7 +138,10 @@ const VolunteerPage = () => {
 
   return (
     <div className="vol-page">
-
+      <SEO 
+        title="Volunteer with AASU" 
+        description="Join the All-Africa Students Union volunteer network. Lend your skills and contribute directly to youth empowerment and educational excellence in Africa." 
+      />
       {/* ══ HERO ══════════════════════════════════════════════════ */}
       <section className="vol-hero">
         <div className="vol-hero-overlay" />

@@ -3,6 +3,7 @@ import { motion } from 'framer-motion';
 import { useNavigate } from 'react-router-dom';
 import { Calendar, Clock, ExternalLink, ChevronRight } from 'lucide-react';
 import { newsEventsData, CONTENT_TYPES, isEventEnded } from '../data/newsEventsData';
+import SEO from '../components/SEO';
 
 const EventsPage = () => {
   const navigate = useNavigate();
@@ -93,6 +94,10 @@ const EventsPage = () => {
 
   return (
     <div className="events-page">
+      <SEO 
+        title="Upcoming & Past Events" 
+        description="Discover upcoming workshops, conferences, webinars, and youth dialogues organized by the All-Africa Students Union (AASU)." 
+      />
       <div className="events-header-spacer">
         <div className="container">
           <header className="page-header">

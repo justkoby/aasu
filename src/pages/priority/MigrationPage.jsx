@@ -3,6 +3,7 @@ import { motion } from 'framer-motion';
 import { Compass, Plane, Target, Rocket, Globe, FileCheck, ShieldCheck, Network, Info, ArrowRight, BookOpen, Users, CheckCircle2, BarChart3 } from 'lucide-react';
 import ProjectExplorer from '../../components/ProjectExplorer';
 import { flagshipPrograms, priorityProjects } from '../../data/programsData';
+import SEO from '../../components/SEO';
 
 const MigrationPage = () => {
   useEffect(() => {
@@ -16,6 +17,10 @@ const MigrationPage = () => {
 
   return (
     <div className="priority-area-page migration-page">
+      <SEO 
+        title="Migration, Mobility & Exchanges" 
+        description="Fostering academic mobility, student exchanges, recognition of qualifications, and support for refugee/displaced students across Africa." 
+      />
       <section className="priority-hero">
         <div className="hero-overlay" style={{ background: `linear-gradient(135deg, ${accentColor}dd 0%, #111111ee 100%)` }}></div>
         <div className="container">

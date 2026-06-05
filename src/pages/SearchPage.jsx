@@ -3,6 +3,7 @@ import { useSearchParams, Link } from 'react-router-dom';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Search, ArrowRight, X, SlidersHorizontal } from 'lucide-react';
 import searchData from '../data/searchData';
+import SEO from '../components/SEO';
 
 const CATEGORY_COLORS = {
   'Who We Are': '#2563EB',
@@ -66,6 +67,10 @@ const SearchPage = () => {
 
   return (
     <div className="search-page">
+      <SEO 
+        title="Search the Portal" 
+        description="Search for news articles, press releases, reports, events, and leadership directories on the All-Africa Students Union (AASU) website." 
+      />
       {/* Hero Search Bar */}
       <section className="search-hero">
         <div className="container">

@@ -3,6 +3,7 @@ import { motion } from 'framer-motion';
 import { Compass, Palette, Target, Rocket, Globe, Shield, Award, Handshake, ArrowRight } from 'lucide-react';
 import ProjectExplorer from '../../components/ProjectExplorer';
 import { flagshipPrograms, priorityProjects } from '../../data/programsData';
+import SEO from '../../components/SEO';
 
 const CulturePage = () => {
   useEffect(() => {
@@ -15,6 +16,10 @@ const CulturePage = () => {
 
   return (
     <div className="priority-area-page culture-page">
+      <SEO 
+        title="Pan-Africanism & Culture" 
+        description="Celebrating African identity, heritage, and unity, while promoting student exchanges and cultural integration across the continent." 
+      />
       <section className="priority-hero">
         <div className="hero-overlay" style={{ background: `linear-gradient(135deg, ${accentColor}dd 0%, #111111ee 100%)` }}></div>
         <div className="container">

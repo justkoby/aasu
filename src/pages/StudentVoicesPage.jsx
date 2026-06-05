@@ -1,6 +1,7 @@
 import React, { useEffect } from 'react';
 import { motion } from 'framer-motion';
 import { ChevronRight, CheckCircle2 } from 'lucide-react';
+import SEO from '../components/SEO';
 
 const StudentVoicesPage = () => {
   useEffect(() => {
@@ -9,6 +10,10 @@ const StudentVoicesPage = () => {
 
   return (
     <div className="student-voice-page">
+      <SEO 
+        title="Students' Voices & Advocacy" 
+        description="Amplifying the perspectives, stories, and opinions of students across Africa. Read articles, op-eds, and student advocacy posts." 
+      />
       <section className="student-voice-hero">
         <div className="container h-full">
           <div className="hero-content">

@@ -9,6 +9,7 @@ import {
 import { Link } from 'react-router-dom';
 import ProjectExplorer from '../components/ProjectExplorer';
 import { flagshipPrograms, impactStats } from '../data/programsData';
+import SEO from '../components/SEO';
 
 import './ProgramsPage.css';
 
@@ -19,6 +20,10 @@ const ProgramsPage = () => {
 
   return (
     <div className="programs-page">
+      <SEO 
+        title="Our Programs & Initiatives" 
+        description="Explore the main programs and initiatives run by the All-Africa Students Union (AASU) across the continent to support youth development and quality education." 
+      />
       {/* Hero Section */}
       <section className="programs-hero">
         <div className="hero-overlay"></div>

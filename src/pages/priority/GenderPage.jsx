@@ -3,6 +3,7 @@ import { motion } from 'framer-motion';
 import { Compass, Users, Target, Rocket, Globe, Heart, Shield, Scale, ArrowRight, UserPlus, Handshake, Landmark, CheckCircle2, BarChart3, Cpu } from 'lucide-react';
 import ProjectExplorer from '../../components/ProjectExplorer';
 import { priorityProjects, flagshipPrograms } from '../../data/programsData';
+import SEO from '../../components/SEO';
 
 const GenderPage = () => {
   useEffect(() => {
@@ -16,6 +17,10 @@ const GenderPage = () => {
 
   return (
     <div className="priority-area-page gender-page">
+      <SEO 
+        title="Gender Equity & Social Inclusion" 
+        description="Fostering equal opportunities, combating gender-based violence (GBV), and empowering young women in leadership and STEM fields across Africa." 
+      />
       {/* Hero Section */}
       <section className="priority-hero">
         <div className="hero-overlay" style={{ background: `linear-gradient(135deg, ${accentColor}dd 0%, #111111ee 100%)` }}></div>

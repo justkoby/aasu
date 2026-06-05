@@ -6,6 +6,7 @@ import {
   Search, Users, BookOpen, Megaphone,
   Layout, ClipboardList
 } from 'lucide-react';
+import SEO from '../components/SEO';
 
 /* ── Animation Variants ──────────────────────────────────────── */
 const fadeUp = {
@@ -123,6 +124,10 @@ const InternshipPage = () => {
 
   return (
     <div className="int-page">
+      <SEO 
+        title="Internship Program" 
+        description="Launch your career with the All-Africa Students Union (AASU). Join our internship program and gain valuable experience." 
+      />
 
       {/* ══ HERO ════════════════════════════════════════════════ */}
       <section className="int-hero">

@@ -3,6 +3,7 @@ import { motion } from 'framer-motion';
 import { Compass, Target, ArrowRight, Rocket, Shield, Leaf, Zap, Users, Globe } from 'lucide-react';
 import ProjectExplorer from '../../components/ProjectExplorer';
 import { flagshipPrograms, priorityProjects } from '../../data/programsData';
+import SEO from '../../components/SEO';
 
 const ClimatePage = () => {
   useEffect(() => {
@@ -16,6 +17,10 @@ const ClimatePage = () => {
 
   return (
     <div className="priority-area-page climate-page">
+      <SEO 
+        title="Climate Action & Environmental Sustainability" 
+        description="Mobilizing African students to lead climate education, advocacy, and community action for a sustainable, resilient continent." 
+      />
       <section className="priority-hero">
         <div className="hero-overlay" style={{ background: `linear-gradient(135deg, ${accentColor}dd 0%, #111111ee 100%)` }}></div>
         <div className="container">

@@ -1,5 +1,6 @@
 import React, { useEffect } from 'react';
 import { motion } from 'framer-motion';
+import SEO from '../components/SEO';
 
 const HistoryPage = () => {
   // Ensure the page scrolls to top when loaded
@@ -37,6 +38,10 @@ const HistoryPage = () => {
 
   return (
     <div className="history-page">
+      <SEO 
+        title="Our History & Legacy" 
+        description="Discover the history and journey of student advocacy, leadership, and Pan-African movement of the All-Africa Students Union (AASU) since 1972." 
+      />
       {/* Page Header */}
       {/* Page Header Image */}
       <section className="history-hero">

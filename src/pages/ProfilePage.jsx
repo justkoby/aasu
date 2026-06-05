@@ -1,6 +1,7 @@
 import React, { useEffect } from 'react';
 import { motion } from 'framer-motion';
 import { Target, Eye, Star, Shield, Users, BookOpen, Globe, Lightbulb, CheckCircle2 } from 'lucide-react';
+import SEO from '../components/SEO';
 
 const ProfilePage = () => {
   useEffect(() => {
@@ -22,6 +23,10 @@ const ProfilePage = () => {
 
   return (
     <div className="profile-page">
+      <SEO 
+        title="AASU Profile & Values" 
+        description="Read the official profile of the All-Africa Students Union (AASU), including our mission, vision, core values, and organizational structures." 
+      />
       {/* 1. Hero Section */}
       <section className="profile-hero">
         <div className="container h-full">

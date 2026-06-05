@@ -6,6 +6,7 @@ import {
   BookOpen, Shield, Building2, GraduationCap
 } from 'lucide-react';
 import { Link } from 'react-router-dom';
+import SEO from '../components/SEO';
 
 /* ── Animation Variants ──────────────────────────────────────── */
 const fadeUp = {
@@ -113,6 +114,10 @@ const BecomeMemberPage = () => {
 
   return (
     <div className="bm-page">
+      <SEO 
+        title="Become a Member" 
+        description="Join the continental platform representing millions of students across Africa. Apply for AASU membership today." 
+      />
 
       {/* ══ HERO ════════════════════════════════════════════════ */}
       <section className="bm-hero">

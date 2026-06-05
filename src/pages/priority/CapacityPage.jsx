@@ -3,6 +3,7 @@ import { motion } from 'framer-motion';
 import { Compass, Cpu, Target, Rocket, Globe, Briefcase, Lightbulb, Monitor, TrendingUp, Users, ArrowRight, BookOpen, CheckCircle2, BarChart3, Zap } from 'lucide-react';
 import ProjectExplorer from '../../components/ProjectExplorer';
 import { flagshipPrograms, priorityProjects } from '../../data/programsData';
+import SEO from '../../components/SEO';
 
 const CapacityPage = () => {
   useEffect(() => {
@@ -16,6 +17,10 @@ const CapacityPage = () => {
 
   return (
     <div className="priority-area-page capacity-page">
+      <SEO 
+        title="Capacity Building, Skills Development & Employability" 
+        description="Equipping African students with future-ready skills, digital competencies, entrepreneurship, and leadership to succeed in the modern economy." 
+      />
       <section className="priority-hero">
         <div className="hero-overlay" style={{ background: `linear-gradient(135deg, ${accentColor}dd 0%, #111111ee 100%)` }}></div>
         <div className="container">

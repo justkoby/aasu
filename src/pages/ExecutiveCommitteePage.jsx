@@ -1,5 +1,6 @@
 import React, { useEffect } from 'react';
 import { motion } from 'framer-motion';
+import SEO from '../components/SEO';
 
 const ExecutiveCommitteePage = () => {
   useEffect(() => {
@@ -29,6 +30,10 @@ const ExecutiveCommitteePage = () => {
 
   return (
     <div className="executives-page">
+      <SEO 
+        title="Executive Committee & Leadership" 
+        description="Meet the dynamic student leaders and officers leading the All-Africa Students Union (AASU) for the 2026-2029 administration term." 
+      />
       {/* Hero Section */}
       <section className="exec-hero">
         <div className="container h-full">

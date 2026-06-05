@@ -36,6 +36,31 @@ const SEO = ({ title, description, keywords, image, url }) => {
     const ogUrl = document.querySelector('meta[property="og:url"]');
     if (ogUrl) ogUrl.setAttribute('content', url || `https://aasuonline.org${location.pathname}`);
 
+    // Update Twitter Title & Description
+    const twitterTitle = document.querySelector('meta[property="twitter:title"]');
+    if (twitterTitle) twitterTitle.setAttribute('content', title || baseTitle);
+
+    const twitterDesc = document.querySelector('meta[property="twitter:description"]');
+    if (twitterDesc) twitterDesc.setAttribute('content', description || "The principal continental body representing the voice of 170 million African students.");
+
+    // Update Twitter Image
+    const twitterImage = document.querySelector('meta[property="twitter:image"]');
+    if (twitterImage) twitterImage.setAttribute('content', image || "/NEW LOGO [AASU] 2022 (T1).jpg");
+
+    // Update Twitter URL
+    const twitterUrl = document.querySelector('meta[property="twitter:url"]');
+    if (twitterUrl) twitterUrl.setAttribute('content', url || `https://aasuonline.org${location.pathname}`);
+
+    // Update Canonical URL Link
+    let canonical = document.querySelector('link[rel="canonical"]');
+    const canonicalUrl = url || `https://aasuonline.org${location.pathname}`;
+    if (!canonical) {
+      canonical = document.createElement('link');
+      canonical.setAttribute('rel', 'canonical');
+      document.head.appendChild(canonical);
+    }
+    canonical.setAttribute('href', canonicalUrl);
+
   }, [title, description, keywords, image, url, location]);
 
   return null;

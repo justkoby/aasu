@@ -3,6 +3,7 @@ import { motion } from 'framer-motion';
 import { Compass, Landmark, Target, Rocket, Globe, Shield, Scale, ArrowRight, Gavel, Users, BarChart3, MessageSquare, CheckCircle2 } from 'lucide-react';
 import ProjectExplorer from '../../components/ProjectExplorer';
 import { flagshipPrograms, priorityProjects } from '../../data/programsData';
+import SEO from '../../components/SEO';
 
 const DemocracyPage = () => {
   useEffect(() => {
@@ -16,6 +17,10 @@ const DemocracyPage = () => {
 
   return (
     <div className="priority-area-page democracy-page">
+      <SEO 
+        title="Democracy, Good Governance, Peace & Security" 
+        description="Empowering students as active participants in democratic processes, accountability, transparency, and peacebuilding efforts across Africa." 
+      />
       {/* Hero Section */}
       <section className="priority-hero">
         <div className="hero-overlay" style={{ background: `linear-gradient(135deg, ${accentColor}dd 0%, #111111ee 100%)` }}></div>

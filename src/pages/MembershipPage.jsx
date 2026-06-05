@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { motion } from 'framer-motion';
 import { MapPin, Navigation } from 'lucide-react';
+import SEO from '../components/SEO';
 
 const MembershipPage = () => {
   useEffect(() => {
@@ -131,6 +132,10 @@ const MembershipPage = () => {
 
   return (
     <div className="membership-page">
+      <SEO 
+        title="Our Members & Structure" 
+        description="Learn about the national student unions and organizations that make up the All-Africa Students Union (AASU), representing 54 African countries." 
+      />
       {/* Page Header Image */}
       <section className="membership-hero">
       </section>
