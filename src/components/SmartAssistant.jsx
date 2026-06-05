@@ -499,10 +499,13 @@ const SmartAssistant = () => {
 
         @media (max-width: 480px) {
           .assistant-window {
+            top: 0;
+            left: 0;
             bottom: 0;
             right: 0;
             width: 100%;
             height: 100%;
+            height: 100dvh;
             border-radius: 0;
           }
           .assistant-trigger { 
