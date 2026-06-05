@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import Hero from '../components/Hero';
 import MembershipSection from '../components/MembershipSection';
 import ReportsSection from '../components/ReportsSection';
@@ -10,6 +10,7 @@ import OpportunitiesSection from '../components/OpportunitiesSection';
 import SEO from '../components/SEO';
 
 const Home = () => {
+  const [isExpanded, setIsExpanded] = useState(false);
   return (
     <main>
       <SEO 
@@ -43,27 +44,36 @@ const Home = () => {
                 culture, sustainable development, entrepreneurship, fostering of academic freedom, freedom of research and 
                 autonomy of higher institutions of learning, and the promotion of peace and democratic values, and other noteworthy objectives.
               </p>
-              <p>
-                AASU’s core activities are focused on a broad range of issues that affect students, including but not limited to 
-                the 7 Strategic Priorities of the Union – Education & Students Rights, Capacity Building, Gender Advocacy, 
-                Environment & Climate Action, Pan-Africanism & African Culture, Migration & Mobility, Democracy & Good Governance. 
-                Our Strategic Priorities are fully aligned to the UN development priorities as articulated in the Sustainable 
-                Development Goals (SDGs). Also, these priorities complement the global efforts to build a relevant contemporary 
-                human capital capable of fitting into the global citizen ecosystem.
-              </p>
-              <p>
-                The Union is wholly student-run and student-led, autonomous, representative, and operates according to democratic principles.
-              </p>
-              <p>
-                In the year 2000, the UN awarded AASU in recognition of the Union’s efforts at advancing students’ rights and 
-                championing the democratisation of education across the African Continent. 
-                (See: <a href="http://www.un.org/press/en/2000/20000410.dev2241.doc.html" target="_blank" rel="noopener noreferrer">UN Press Release</a>)
-              </p>
-              <p>
-                AASU’s key strength lies in its diversity and numerical strength; which it employs as a bargaining tool to speak 
-                for the supreme interests of students at all times. The Union is made up of diverse students, regardless of their 
-                religion, gender, cultural background, political persuasion, ethnic origin or social standing.
-              </p>
+              <div className="mission-extra-content" style={{ '--extra-display': isExpanded ? 'flex' : 'none' }}>
+                <p>
+                  AASU’s core activities are focused on a broad range of issues that affect students, including but not limited to 
+                  the 7 Strategic Priorities of the Union – Education & Students Rights, Capacity Building, Gender Advocacy, 
+                  Environment & Climate Action, Pan-Africanism & African Culture, Migration & Mobility, Democracy & Good Governance. 
+                  Our Strategic Priorities are fully aligned to the UN development priorities as articulated in the Sustainable 
+                  Development Goals (SDGs). Also, these priorities complement the global efforts to build a relevant contemporary 
+                  human capital capable of fitting into the global citizen ecosystem.
+                </p>
+                <p>
+                  The Union is wholly student-run and student-led, autonomous, representative, and operates according to democratic principles.
+                </p>
+                <p>
+                  In the year 2000, the UN awarded AASU in recognition of the Union’s efforts at advancing students’ rights and 
+                  championing the democratisation of education across the African Continent. 
+                  (See: <a href="http://www.un.org/press/en/2000/20000410.dev2241.doc.html" target="_blank" rel="noopener noreferrer">UN Press Release</a>)
+                </p>
+                <p>
+                  AASU’s key strength lies in its diversity and numerical strength; which it employs as a bargaining tool to speak 
+                  for the supreme interests of students at all times. The Union is made up of diverse students, regardless of their 
+                  religion, gender, cultural background, political persuasion, ethnic origin or social standing.
+                </p>
+              </div>
+              <button 
+                className="see-more-btn" 
+                onClick={() => setIsExpanded(!isExpanded)}
+                aria-expanded={isExpanded}
+              >
+                {isExpanded ? 'See Less' : 'See More'}
+              </button>
             </div>
           </div>
         </div>
@@ -114,9 +124,48 @@ const Home = () => {
           text-align: left;
         }
 
+        .mission-extra-content {
+          display: flex;
+          flex-direction: column;
+          gap: 2rem;
+        }
+
+        .see-more-btn {
+          display: none;
+        }
+
         @media (max-width: 768px) {
           .mission-title {
             font-size: 2.2rem;
+          }
+
+          .mission-extra-content {
+            display: var(--extra-display, none);
+          }
+
+          .see-more-btn {
+            display: inline-block;
+            background: transparent;
+            border: 2px solid var(--primary-red);
+            color: var(--primary-red);
+            padding: 0.6rem 1.8rem;
+            font-weight: 800;
+            font-size: 0.85rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            border-radius: 50px;
+            cursor: pointer;
+            margin-top: 1rem;
+            transition: all 0.25s ease;
+            width: fit-content;
+            align-self: flex-start;
+          }
+
+          .see-more-btn:hover {
+            background: var(--primary-red);
+            color: white;
+            transform: translateY(-2px);
+            box-shadow: 0 4px 10px rgba(203,54,49,0.2);
           }
         }
       `}} />
