@@ -12,6 +12,239 @@ export const CONTENT_TYPES = {
 
 export const newsEventsData = [
   {
+    id: 'news-climate-resilience-2026',
+    type: CONTENT_TYPES.NEWS,
+    category: 'Environment & Climate Action',
+    title: 'AASU Showcases Youth-Led Climate Action and Resilience Building at eLearning Africa 2026',
+    img: '/hilda-1.jpeg',
+    images: ['/hilda-2.jpeg'],
+    date: '2026-06-05',
+    excerpt: 'The All-Africa Students Union (AASU) continues to amplify the voices and contributions of African youth in global conversations on sustainable development through eLearning Africa 2026.',
+    description: `The All-Africa Students Union (AASU) continues to amplify the voices and contributions of African youth in global conversations on sustainable development through its active participation in the ongoing eLearning Africa 2026 Summit in Accra, Ghana.
+
+Representing the Union, Ms. Hilda Osei-Poku, Programmes Officer at AASU, delivered a presentation and facilitated discussions on the critical role of climate education, community action, and local resilience in addressing the growing environmental challenges facing communities across Africa.
+
+Her presentation focused on the need to place young people at the center of climate solutions, emphasizing that youth should not be viewed merely as beneficiaries of climate interventions but as active partners, innovators, and co-creators of sustainable change.
+
+Drawing on practical experiences and evidence-based initiatives from across the continent, Ms. Osei-Poku highlighted several youth-led and student-driven projects that are making meaningful contributions to environmental sustainability, climate adaptation, and community resilience. These initiatives demonstrate how young people are leading awareness campaigns, environmental conservation efforts, climate advocacy programmes, and community-based solutions that respond directly to local challenges.
+
+During the session, participants explored how climate education can empower students and young people with the knowledge, skills, and leadership capabilities required to address environmental issues within their schools, communities, and countries. Discussions also examined the importance of integrating sustainability principles into education systems and promoting practical approaches that connect learning with real-world action.
+
+A key message emerging from the session was that building climate resilience requires collaboration across sectors, including governments, educational institutions, civil society organizations, development partners, and youth networks. Participants emphasized that meaningful progress can only be achieved when young people are actively involved in designing and implementing solutions that affect their futures.
+
+The session further highlighted the importance of strengthening local resilience by supporting community-led initiatives, promoting environmental stewardship, and creating opportunities for young people to contribute to policy discussions and climate decision-making processes.
+
+For AASU, climate action remains an important component of its broader commitment to sustainable development, youth empowerment, and social transformation across Africa. The Union recognizes that the impacts of climate change disproportionately affect young people and future generations, making it essential to equip students with the tools, knowledge, and platforms needed to drive positive change.
+
+AASU commends Ms. Hilda Osei-Poku for her leadership and contribution to this important dialogue and reaffirms its commitment to supporting youth-led climate action, environmental sustainability, and resilient communities across the continent.
+
+Through its engagement at eLearning Africa 2026, AASU continues to advocate for an Africa where young people are empowered to lead innovative solutions that contribute to a more sustainable, inclusive, and climate-resilient future.`
+  },
+  {
+    id: 'news-steam-skills-2026',
+    type: CONTENT_TYPES.NEWS,
+    category: 'Capacity Building',
+    title: 'AASU Champions Practical STEAM and Digital Skills Development at eLearning Africa 2026',
+    img: '/SDM-1a.jpg',
+    images: ['/SDM-1.jpg', '/SDM-2.jpg', '/SDM-3.jpg', '/SDM-4.jpg', '/SDM-5.jpg'],
+    date: '2026-06-05',
+    excerpt: 'The All-Africa Students Union (AASU) continues to strengthen its commitment to youth empowerment and future-ready education through active participation in eLearning Africa 2026.',
+    description: `The All-Africa Students Union (AASU) continues to strengthen its commitment to youth empowerment and future-ready education through active participation in continental and global discussions on skills development and digital innovation.
+
+At the 19th International Conference and Exhibition on Digital Education, Training and Skills Development (eLearning Africa 2026), co-hosted by the Ministry of Education of the Republic of Ghana, Mr. Bismark Amefianu, AASU's Lead on Capacity Building, Skills Development and Employability, moderated an engaging and impactful session titled:
+
+"Practical STEAM and Digital Skills Models for Youth Digital Innovation."
+
+The session brought together educators, policymakers, youth development practitioners, technology leaders, and innovators to explore practical approaches for equipping young people with the competencies needed to thrive in an increasingly digital and innovation-driven world.
+
+Discussions focused on the growing importance of Science, Technology, Engineering, Arts and Mathematics (STEAM) education and the role of digital skills in fostering innovation, entrepreneurship, employability, creativity, and problem-solving among African youth.
+
+A key highlight of the session was the presentation of successful youth-focused skills development models by organizations including THE CUBE from The Gambia and Partnership Bureau from Ghana. These organizations shared inspiring examples of how practical, community-centered learning approaches can empower young people, stimulate innovation, and drive digital transformation within their communities.
+
+As moderator, Mr. Amefianu guided a dynamic and solution-oriented conversation that emphasized the need to move beyond theoretical learning and invest in practical, inclusive, and scalable skills development models. Participants highlighted the importance of creating learning environments that prepare young people not only for employment but also for leadership, entrepreneurship, and lifelong learning.
+
+The discussion further underscored the critical role of partnerships among educational institutions, governments, private sector actors, development organizations, and youth-led initiatives in building resilient and sustainable skills ecosystems across Africa.
+
+For AASU, participation in eLearning Africa 2026 aligns with the Union's broader vision of ensuring that African students and young people are equipped with the knowledge, skills, and opportunities required to succeed in the rapidly evolving global economy.
+
+As the voice of African students, AASU remains committed to supporting initiatives that advance digital inclusion, promote innovation, strengthen employability, and create pathways for meaningful youth participation in Africa's development agenda.
+
+The Union commends Mr. Bismark Amefianu for his leadership and contribution to this important conversation and reaffirms its dedication to championing transformative education and skills development opportunities for students and young people across the continent.`
+  },
+  {
+    id: 'news-gdn-uk-2026',
+    type: CONTENT_TYPES.NEWS,
+    category: 'International Engagements',
+    title: 'AASU Represented at Groningen Declaration Network Regional Meeting in the United Kingdom',
+    img: '/gdn-01.jpg',
+    images: ['/gdn-02.jpg', '/gdn-03.jpg', '/gdn-04.jpg'],
+    date: '2026-06-05',
+    excerpt: 'Spencer Kyirem represents the All-Africa Students Union (AASU) at the Groningen Declaration Network (GDN) Regional Meeting hosted by Manchester Metropolitan University in the United Kingdom.',
+    description: `The All-Africa Students Union (AASU) is proud to be represented at the ongoing Groningen Declaration Network (GDN) Regional Meeting being hosted by Manchester Metropolitan University in the United Kingdom.
+
+Representing AASU at the high-level gathering is Spencer Kyirem, Policy Advisor, who joins distinguished leaders, policymakers, academics, technology innovators, and education stakeholders from around the world to explore emerging trends and solutions shaping the future of learning and workforce development.
+
+This year's regional meeting is being held under the theme:
+
+"Skills Without Limits: Developing the Future Skills Ecosystem."
+
+The discussions focus on how governments, educational institutions, industry leaders, and technology providers can collaborate to create inclusive and innovative skills ecosystems that respond to the evolving demands of the global economy. Key areas of engagement include digital credentials, skills recognition, lifelong learning, academic mobility, workforce readiness, and the role of technology in transforming education.
+
+As Africa continues to experience rapid demographic growth and digital transformation, AASU recognizes the importance of ensuring that African students and young people are actively represented in international conversations that influence educational policies, qualification recognition systems, and opportunities for future generations.
+
+The participation of AASU at the Groningen Declaration Network Regional Meeting reflects the Union's ongoing commitment to strengthening global partnerships and advocating for policies that enhance access to quality education, promote student mobility, and improve recognition of African qualifications and skills across borders.
+
+Speaking on the significance of the event, AASU emphasized that meaningful collaboration between educational institutions, governments, and international organizations remains essential for building a future where young people can access learning opportunities without barriers and contribute effectively to sustainable development.
+
+The Union remains dedicated to ensuring that the voices, aspirations, and interests of African students are represented in global platforms that shape the future of education, innovation, and human capital development.
+
+Through engagements such as the Groningen Declaration Network Regional Meeting, AASU continues to advance its mission of fostering Pan-African cooperation, educational excellence, youth empowerment, and international collaboration for the benefit of students across the continent.`
+  },
+  {
+    id: 'pr-nans-president-afeez-2026',
+    type: CONTENT_TYPES.PRESS_RELEASE,
+    category: 'Executive Committee',
+    pressReleaseCategory: 'Congratulations',
+    refNumber: 'PR.SG.26.013',
+    title: 'AASU Congratulates Comrade Akinteye Babatunde Afeez on His Election as President of NANS',
+    img: '/aasu-plhd.jpg',
+    date: '2026-06-04',
+    excerpt: 'The All-Africa Students Union (AASU) has extended its heartfelt congratulations to Comrade Akinteye Babatunde Afeez on his election as President of the National Association of Nigerian Students (NANS).',
+    description: `The All-Africa Students Union (AASU) has extended its heartfelt congratulations to Comrade Akinteye Babatunde Afeez on his election as President of the National Association of Nigerian Students (NANS), one of Africa’s most influential student representative bodies.
+
+AASU noted that his emergence reflects the confidence reposed in his vision, leadership capabilities, and commitment to advancing the interests of students and young people.
+
+The Union highlighted the critical role student leadership continues to play in shaping conversations around education, governance, social development, and democratic participation across the continent.
+
+AASU recognized the strategic role of NANS in promoting student welfare, educational advocacy, civic engagement, and youth empowerment in Nigeria. The Union also acknowledged the contributions of NANS in inspiring student movements beyond national borders.
+
+Expressing confidence in the new leadership, AASU stated that it looks forward to strengthening collaboration with NANS in pursuit of shared objectives, including educational transformation, youth leadership development, Pan-African solidarity, and sustainable progress for students across Africa.
+
+The Union once again congratulated Comrade Akinteye Babatunde Afeez and wished him a successful and impactful tenure in office.
+
+Signed
+Divine Edem Kwadzodeh
+Secretary-General`
+  },
+  {
+    id: 'pr-nigeria-abductions-2026',
+    type: CONTENT_TYPES.PRESS_RELEASE,
+    category: 'Education & Students Rights',
+    pressReleaseCategory: 'Advocacy',
+    refNumber: 'PR.SG.26.012',
+    title: 'AASU Demands Urgent Action to End the Abduction of Students and Educators in Nigeria',
+    img: '/aasu-plhd.jpg',
+    date: '2026-06-03',
+    excerpt: 'The All-Africa Students Union (AASU) has expressed deep concern over the abduction of pupils and teachers in Oyo State, Nigeria, and the continuing insecurity affecting educational institutions and communities across the country.',
+    description: `The All-Africa Students Union (AASU) has expressed deep concern over the abduction of pupils and teachers in Oyo State, Nigeria, and the continuing insecurity affecting educational institutions and communities across the country.
+
+The Union noted that the reported kidnapping of schoolchildren and educators once again exposes the growing threats facing students, teachers, and educational systems in parts of Africa.
+
+AASU emphasized that educational institutions must remain safe spaces for learning, growth, and development, free from fear, violence, and criminal attacks.
+
+The Union expressed solidarity with the affected pupils, teachers, families, and communities while calling for the immediate and safe release of all victims. AASU also commended the efforts of security agencies and relevant authorities while urging intensified operations to secure the release of those affected and prevent future occurrences.
+
+AASU further stressed the need for stronger security measures around schools, improved intelligence gathering, community-based protection mechanisms, and sustained investment in safeguarding educational environments.
+
+The Union noted its willingness to work closely with the leadership of the National Association of Nigerian Students (NANS) under the stewardship of Comrade Akinteye Babatunde Afeez to promote safer learning environments and stronger protection mechanisms for students.
+
+AASU called on the Federal Government of Nigeria, security agencies, and state authorities to act decisively to address the security challenges confronting schools and ensure that every Nigerian student can pursue education safely and with dignity.
+
+Signed
+
+Divine Edem Kwadzodeh
+Secretary-General
+
+Osisiogu Osikenyi E.
+President`
+  },
+  {
+    id: 'pr-kenya-school-safety-2026',
+    type: CONTENT_TYPES.PRESS_RELEASE,
+    category: 'Education & Students Rights',
+    pressReleaseCategory: 'Condolences',
+    refNumber: 'PR.SG.26.011',
+    title: 'AASU Calls for Accountability and Enhanced School Safety Following the Utumishi Girls Academy Tragedy in Kenya',
+    img: '/aasu-plhd.jpg',
+    date: '2026-06-03',
+    excerpt: 'The All-Africa Students Union (AASU) has expressed profound sorrow over the tragic fire outbreak at Utumishi Girls Academy in Gilgil, Kenya.',
+    description: `The All-Africa Students Union (AASU) has expressed profound sorrow over the tragic fire outbreak at Utumishi Girls Academy in Gilgil, Kenya, which resulted in the loss of young lives and left families, students, and communities in deep grief.
+
+AASU described the incident as a painful reminder of the importance of ensuring safe and secure learning environments across Africa.
+
+The Union expressed concern over reports indicating possible breaches of safety protocols, including overcrowding and challenges relating to emergency exit accessibility. While investigations remain ongoing, AASU noted that the incident highlights the urgent need for stronger safety standards, regular inspections, emergency preparedness measures, and effective enforcement of regulations within educational institutions.
+
+AASU commended Kenyan authorities for initiating investigations and called for a transparent, professional, and thorough process to establish accountability wherever negligence or failure to uphold safety obligations is identified.
+
+The Union further urged governments, school authorities, educational regulators, and stakeholders across Africa to prioritize student safety and invest in infrastructure, fire prevention systems, emergency response mechanisms, and student welfare services.
+
+AASU stands in solidarity with the Government and people of Kenya, the affected families, students, and school community during this difficult period.
+
+Signed
+Divine Edem Kwadzodeh
+Secretary-General`
+  },
+  {
+    id: 'pr-burkina-faso-rights-2026',
+    type: CONTENT_TYPES.PRESS_RELEASE,
+    category: 'Education & Students Rights',
+    pressReleaseCategory: 'Statements',
+    refNumber: 'PR.SG.26.008',
+    title: "AASU Condemns the Suspension of Burkina Faso's Student Union and Calls for Protection of Student Rights",
+    img: '/aasu-plhd.jpg',
+    date: '2026-05-28',
+    excerpt: "The All-Africa Students Union (AASU) has strongly condemned the suspension of the General Union of Students of Burkina Faso (UGEB) and the reported arrest of student leaders and members in Burkina Faso.",
+    description: `The All-Africa Students Union (AASU) has strongly condemned the suspension of the General Union of Students of Burkina Faso (UGEB) and the reported arrest of student leaders and members in Burkina Faso.
+
+According to the Union, the development represents a setback to student representation, civic participation, and the fundamental rights of young people to organize and express themselves through legitimate student structures.
+
+AASU expressed deep concern over measures that restrict the operations of student organizations and undermine students’ ability to participate effectively in matters affecting their education, welfare, and future.
+
+The Union emphasized that freedom of association and expression are fundamental principles that must be protected and respected.
+
+AASU called for the immediate restoration of students’ rights to organize freely through their representative bodies and urged authorities to ensure the safety, dignity, and welfare of all affected students and student leaders.
+
+The Union further encouraged dialogue and engagement as the most appropriate means of addressing concerns involving students and their representative organizations.
+
+AASU reaffirmed its solidarity with the students of Burkina Faso and reiterated its commitment to defending student rights, academic freedom, democratic participation, and the voice of African youth across the continent.
+
+Signed
+Divine Edem Kwadzodeh
+Secretary-General`
+  },
+  {
+    id: 'pr-water-sanitation-2026',
+    type: CONTENT_TYPES.PRESS_RELEASE,
+    category: 'Policy & Advocacy',
+    pressReleaseCategory: 'Advocacy',
+    refNumber: 'PR.SG.26.007',
+    title: 'AASU Commemorates Africa Day 2026 and Calls for Sustainable Water and Sanitation Systems',
+    img: '/aasu-plhd.jpg',
+    date: '2026-05-25',
+    excerpt: 'The All-Africa Students Union (AASU) joined Africans across the continent and in the diaspora in commemorating Africa Day 2026, marking the 63rd anniversary of the founding of the Organization of African Unity (OAU).',
+    description: `The All-Africa Students Union (AASU) joined Africans across the continent and in the diaspora in commemorating Africa Day 2026, marking the 63rd anniversary of the founding of the Organization of African Unity (OAU), now the African Union (AU).
+
+This year’s commemoration was observed under the theme:
+
+"Assuring Sustainable Water Availability and Safe Sanitation Systems to Achieve the Goals of Agenda 2063."
+
+AASU noted that access to clean water and proper sanitation remains a major challenge in several African countries, affecting public health, food security, human dignity, and sustainable development.
+
+The Union emphasized that safe water and sanitation are not only development concerns but also matters of social justice, equity, and fundamental human rights. It stressed that sustainable development cannot be achieved while communities continue to face preventable health risks resulting from unsafe water and inadequate sanitation.
+
+AASU therefore called on African governments, institutions, development partners, and stakeholders to strengthen investments in sustainable water systems, sanitation infrastructure, environmental protection, and climate-resilient policies.
+
+The Union further encouraged African students and young people to contribute actively to environmental sustainability through advocacy, innovation, community engagement, and responsible environmental practices within their schools and communities.
+
+As Africa continues its journey toward greater integration and transformation, AASU reaffirmed its commitment to building a continent where every individual has access to safe water, quality education, good health, and equal opportunities for growth and development.
+
+Happy Africa Day.
+
+Signed
+Divine Edem Kwadzodeh
+Secretary-General`
+  },
+  {
     id: 'event-pre-conference-workshop-2026',
     type: CONTENT_TYPES.EVENT,
     category: 'Capacity Building',
@@ -63,6 +296,8 @@ Together, let us drive conversations that create opportunities, unlock potential
     id: 'rwanda-genocide-remembrance-2026',
     type: CONTENT_TYPES.PRESS_RELEASE,
     category: 'Policy & Advocacy',
+    pressReleaseCategory: 'Statements',
+    refNumber: 'PR.SG.26.004',
     title: 'Official Statement on the Commemoration of the 1994 Genocide Against the Tutsi in Rwanda',
     img: '/rwanda-remembrance.png',
     date: '2026-04-07',
@@ -186,6 +421,8 @@ AASU remains committed to a transparent, inclusive, and credible electoral proce
     id: 'passing-of-president-varney',
     type: CONTENT_TYPES.PRESS_RELEASE,
     category: 'Executive Committee',
+    pressReleaseCategory: 'Condolences',
+    refNumber: 'PR.SG.25.015',
     title: 'AASU Regrets to Announce the Passing of Its President',
     img: '/president-tribute.png',
     date: '2025-10-24',
@@ -409,6 +646,8 @@ Shortlisted applicants will be invited for interviews.`
     id: 'cobbinah-nya-appointment',
     type: CONTENT_TYPES.PRESS_RELEASE,
     category: 'Executive Committee',
+    pressReleaseCategory: 'Congratulations',
+    refNumber: 'PR.SG.25.009',
     title: 'AASU Congratulates Mr. Julian Cobbinah on His Appointment as NYA Governing Board Chairperson',
     img: '/julian-cobbinah-nya.png',
     date: '2025-05-08',
@@ -606,8 +845,10 @@ Click below to meet the new committee members and learn about their roles.`
     id: 'press-release-rwanda-2026',
     type: CONTENT_TYPES.PRESS_RELEASE,
     category: 'Policy & Advocacy',
+    pressReleaseCategory: 'Statements',
+    refNumber: 'PR.SG.26.004',
     title: 'OFFICIAL STATEMENT ON THE COMMEMORATION OF THE 1994 GENOCIDE AGAINST THE TUTSI IN RWANDA',
-    img: '/news-1.png', 
+    img: '/aasu-plhd.jpg', 
     date: '2026-04-07',
     excerpt: 'AASU joins the people of Rwanda and the global community in solemn remembrance of the victims.',
     description: `The All-Africa Students Union (AASU) joins the people of Rwanda and the global community in solemn remembrance of the victims of the 1994 Genocide against the Tutsi. This tragic chapter in Africa's history remains a painful reminder of the devastating consequences of hatred, division, and indifference.`

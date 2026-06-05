@@ -1121,6 +1121,70 @@ const searchData = [
     path: "/events/event-youth-students-dialogue-2026",
     category: "News & Events",
     keywords: ["youth dialogue", "students dialogue", "skills", "employability", "entrepreneurship", "elearning africa 2026", "youth empowerment", "event"]
+  },
+  {
+    id: 137,
+    title: "AASU Commemorates Africa Day 2026 and Calls for Sustainable Water and Sanitation Systems",
+    description: "Assuring Sustainable Water Availability and Safe Sanitation Systems to Achieve the Goals of Agenda 2063.",
+    path: "/news/pr-water-sanitation-2026",
+    category: "News & Events",
+    keywords: ["africa day", "water", "sanitation", "agenda 2063", "sustainability", "press release", "pr.sg.26.007"]
+  },
+  {
+    id: 138,
+    title: "AASU Condemns the Suspension of Burkina Faso's Student Union and Calls for Protection of Student Rights",
+    description: "Strongly condemning the suspension of the General Union of Students of Burkina Faso (UGEB) and calling for the protection of student rights.",
+    path: "/news/pr-burkina-faso-rights-2026",
+    category: "News & Events",
+    keywords: ["burkina faso", "ugeb", "student union", "suspension", "student rights", "press release", "pr.sg.26.008"]
+  },
+  {
+    id: 139,
+    title: "AASU Calls for Accountability and Enhanced School Safety Following the Utumishi Girls Academy Tragedy in Kenya",
+    description: "Expressing profound sorrow over the tragic fire outbreak at Utumishi Girls Academy and calling for accountability and enhanced school safety.",
+    path: "/news/pr-kenya-school-safety-2026",
+    category: "News & Events",
+    keywords: ["kenya", "utumishi", "girls academy", "fire", "school safety", "accountability", "press release", "pr.sg.26.011"]
+  },
+  {
+    id: 140,
+    title: "AASU Demands Urgent Action to End the Abduction of Students and Educators in Nigeria",
+    description: "Deep concern over the abduction of pupils and teachers in Oyo State, Nigeria, calling for urgent security and protection measures.",
+    path: "/news/pr-nigeria-abductions-2026",
+    category: "News & Events",
+    keywords: ["nigeria", "oyo state", "abduction", "kidnapping", "school security", "nans", "press release", "pr.sg.26.012"]
+  },
+  {
+    id: 141,
+    title: "AASU Congratulates Comrade Akinteye Babatunde Afeez on His Election as President of NANS",
+    description: "Heartfelt congratulations to Comrade Akinteye Babatunde Afeez on his election as President of the National Association of Nigerian Students (NANS).",
+    path: "/news/pr-nans-president-afeez-2026",
+    category: "News & Events",
+    keywords: ["nans", "nigeria", "president", "akinteye", "afeez", "congratulations", "press release", "pr.sg.26.013"]
+  },
+  {
+    id: 142,
+    title: "AASU Represented at Groningen Declaration Network Regional Meeting in the United Kingdom",
+    description: "Spencer Kyirem represents AASU at the GDN Regional Meeting hosted by Manchester Metropolitan University, exploring future skills ecosystems.",
+    path: "/news/news-gdn-uk-2026",
+    category: "News & Events",
+    keywords: ["groningen declaration network", "gdn", "united kingdom", "manchester", "spencer kyirem", "skills without limits", "skills ecosystem", "education", "mobility"]
+  },
+  {
+    id: 143,
+    title: "AASU Champions Practical STEAM and Digital Skills Development at eLearning Africa 2026",
+    description: "Bismark Amefianu moderates session on Practical STEAM and Digital Skills Models for Youth Digital Innovation at eLearning Africa 2026 in Ghana.",
+    path: "/news/news-steam-skills-2026",
+    category: "News & Events",
+    keywords: ["elearning africa", "steam", "digital skills", "bismark amefianu", "youth innovation", "employability", "capacity building", "ghana", "news"]
+  },
+  {
+    id: 144,
+    title: "AASU Showcases Youth-Led Climate Action and Resilience Building at eLearning Africa 2026",
+    description: "Hilda Osei-Poku presents on the critical role of climate education, community action, and local resilience at eLearning Africa 2026 in Ghana.",
+    path: "/news/news-climate-resilience-2026",
+    category: "News & Events",
+    keywords: ["elearning africa", "climate change", "climate education", "hilda osei-poku", "youth leadership", "sustainability", "resilience", "community action", "news"]
   }
 ];
 

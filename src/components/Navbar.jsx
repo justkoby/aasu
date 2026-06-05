@@ -261,8 +261,8 @@ const Navbar = () => {
                                         if (link === 'News') routePath = '/news';
                                         if (link === 'Gallery') routePath = '/gallery';
                                         if (link === 'Upcoming Events') routePath = '/events';
-                                        if (link === 'Press Statements') routePath = '/news';
-                                        if (link === 'Reports' || link === 'Policy Papers' || link === 'Newsletters' || link === 'Archive' || link === 'AASU Strategic Plan' || link === 'AASU Constitution' || link === '11th Congress Resolutions' || link === '12th Congress Resolutions') routePath = '/reports';
+                                        if (link === 'Press Statements' || link === 'Archive') routePath = '/press-releases';
+                                        if (link === 'Reports' || link === 'Policy Papers' || link === 'Newsletters' || link === 'AASU Strategic Plan' || link === 'AASU Constitution' || link === '11th Congress Resolutions' || link === '12th Congress Resolutions') routePath = '/reports';
                                         if (link === "Education & Students' Rights") routePath = '/priority/education';
                                         if (link === 'Gender Equity & Social Inclusion') routePath = '/priority/gender';
                                         if (link === 'Democracy, Good Governance, Peace & Security') routePath = '/priority/democracy';
@@ -376,8 +376,8 @@ const Navbar = () => {
                                   if (link === 'News') routePath = '/news';
                                   if (link === 'Gallery') routePath = '/gallery';
                                   if (link === 'Upcoming Events') routePath = '/events';
-                                  if (link === 'Press Statements') routePath = '/news';
-                                  if (link === 'Reports' || link === 'Policy Papers' || link === 'Newsletters' || link === 'Archive' || link === 'AASU Strategic Plan' || link === 'AASU Constitution' || link === '11th Congress Resolutions' || link === '12th Congress Resolutions') routePath = '/reports';
+                                  if (link === 'Press Statements' || link === 'Archive') routePath = '/press-releases';
+                                  if (link === 'Reports' || link === 'Policy Papers' || link === 'Newsletters' || link === 'AASU Strategic Plan' || link === 'AASU Constitution' || link === '11th Congress Resolutions' || link === '12th Congress Resolutions') routePath = '/reports';
                                   if (link === "Education & Students' Rights") routePath = '/priority/education';
                                   if (link === 'Gender Equity & Social Inclusion') routePath = '/priority/gender';
                                   if (link === 'Democracy, Good Governance, Peace & Security') routePath = '/priority/democracy';

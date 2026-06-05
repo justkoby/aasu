@@ -17,6 +17,7 @@ import VolunteerPage from './pages/VolunteerPage';
 import BecomeMemberPage from './pages/BecomeMemberPage';
 import InternshipPage from './pages/InternshipPage';
 import NewsPage from './pages/NewsPage';
+import PressReleaseArchivePage from './pages/PressReleaseArchivePage';
 import EventsPage from './pages/EventsPage';
 import ReportsPage from './pages/ReportsPage';
 import ContentDetailPage from './pages/ContentDetailPage';
@@ -82,6 +83,7 @@ function AppContent() {
         <Route path="/internship" element={<InternshipPage />} />
         <Route path="/news" element={<NewsPage />} />
         <Route path="/news/:id" element={<ContentDetailPage />} />
+        <Route path="/press-releases" element={<PressReleaseArchivePage />} />
         <Route path="/events" element={<EventsPage />} />
         <Route path="/events/:id" element={<ContentDetailPage />} />
         <Route path="/reports" element={<ReportsPage />} />

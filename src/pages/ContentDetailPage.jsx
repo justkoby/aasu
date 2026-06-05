@@ -1,7 +1,7 @@
 import React, { useEffect } from 'react';
 import { useParams, useNavigate, Link } from 'react-router-dom';
 import { motion } from 'framer-motion';
-import { Calendar, Tag, ChevronLeft, Clock, MapPin, ExternalLink, Share2 } from 'lucide-react';
+import { Calendar, Tag, ChevronLeft, Clock, MapPin, ExternalLink, Share2, Facebook, Twitter, Linkedin, Link as LinkIcon, FileText } from 'lucide-react';
 import { newsEventsData, isEventEnded } from '../data/newsEventsData';
 
 import SEO from '../components/SEO';
@@ -37,6 +37,47 @@ const ContentDetailPage = () => {
 
   const ended = content.date ? isEventEnded(content.date) : false;
 
+  // Query related press releases if this is a press release
+  const relatedReleases = newsEventsData
+    .filter(item => item.type === 'Press Release' && item.id !== content.id)
+    .sort((a, b) => new Date(b.date) - new Date(a.date))
+    .slice(0, 3);
+
+  const shareUrl = encodeURIComponent(window.location.href);
+  const shareTitle = encodeURIComponent(content.title);
+
+  const handleShareClick = () => {
+    if (navigator.share) {
+      navigator.share({
+        title: content.title,
+        url: window.location.href
+      }).catch(err => console.log(err));
+    } else {
+      navigator.clipboard.writeText(window.location.href);
+      alert("Link copied to clipboard!");
+    }
+  };
+
+  const renderShareButtons = () => (
+    <div className="share-box-premium">
+      <span className="share-label">SHARE THIS ARTICLE</span>
+      <div className="share-buttons">
+        <a href={`https://twitter.com/intent/tweet?url=${shareUrl}&text=${shareTitle}`} target="_blank" rel="noopener noreferrer" className="share-btn twitter" title="Share on X">
+          <Twitter size={16} />
+        </a>
+        <a href={`https://www.facebook.com/sharer/sharer.php?u=${shareUrl}`} target="_blank" rel="noopener noreferrer" className="share-btn facebook" title="Share on Facebook">
+          <Facebook size={16} />
+        </a>
+        <a href={`https://www.linkedin.com/sharing/share-offsite/?url=${shareUrl}`} target="_blank" rel="noopener noreferrer" className="share-btn linkedin" title="Share on LinkedIn">
+          <Linkedin size={16} />
+        </a>
+        <button onClick={handleShareClick} className="share-btn copy-link" title="Copy Link / More">
+          <LinkIcon size={16} />
+        </button>
+      </div>
+    </div>
+  );
+
   return (
     <div className="content-detail-page">
       <SEO 
@@ -45,7 +86,9 @@ const ContentDetailPage = () => {
       />
       <div className="detail-header-spacer">
         <div className="container">
-          <p className="detail-section-label">{content.type === 'Event' ? 'Events' : 'News & Events'}</p>
+          <p className="detail-section-label">
+            {content.type === 'Event' ? 'Events' : content.type === 'Press Release' ? 'Press Release' : 'News'}
+          </p>
         </div>
       </div>
 
@@ -76,6 +119,11 @@ const ContentDetailPage = () => {
               {content.category && (
                 <span className="detail-cat">
                   <Tag size={16} /> {content.category}
+                </span>
+              )}
+              {content.refNumber && (
+                <span className="detail-ref">
+                  <FileText size={16} /> {content.refNumber}
                 </span>
               )}
             </div>
@@ -119,13 +167,7 @@ const ContentDetailPage = () => {
                 ))}
 
                 {/* Share Box for News (Non-Event) */}
-                {content.type !== 'Event' && (
-                  <div className="share-box news-share">
-                    <button onClick={() => navigator.share?.({ title: content.title, url: window.location.href })}>
-                      <Share2 size={18} /> Share Article
-                    </button>
-                  </div>
-                )}
+                {content.type !== 'Event' && renderShareButtons()}
               </div>
 
              {/* Sidebar Info for Events */}
@@ -168,15 +210,39 @@ const ContentDetailPage = () => {
                     )}
                   </div>
 
-                  <div className="share-box">
-                    <button onClick={() => navigator.share?.({ title: content.title, url: window.location.href })}>
-                      <Share2 size={18} /> Share Article
-                    </button>
-                  </div>
+                  {renderShareButtons()}
                </div>
              )}
           </div>
         </article>
+
+        {/* Related Press Releases Section */}
+        {content.type === 'Press Release' && relatedReleases.length > 0 && (
+          <section className="related-releases-section">
+            <h2 className="related-title">Related <span className="highlight-red">Press Releases</span></h2>
+            <div className="title-underline"></div>
+            <div className="related-grid">
+              {relatedReleases.map(rel => (
+                <Link key={rel.id} to={`/news/${rel.id}`} className="related-card-link">
+                  <div className="related-card">
+                    <div className="related-media">
+                      <img src={rel.img} alt={rel.title} />
+                      <span className="related-badge">PRESS RELEASE</span>
+                    </div>
+                    <div className="related-info">
+                      <div className="related-meta">
+                        <span className="related-date">{new Date(rel.date).toLocaleDateString('en-GB', { day: 'numeric', month: 'short', year: 'numeric' })}</span>
+                        {rel.refNumber && <span className="related-ref">{rel.refNumber}</span>}
+                      </div>
+                      <h3 className="related-card-title">{rel.title}</h3>
+                      <p className="related-excerpt">{rel.excerpt}</p>
+                    </div>
+                  </div>
+                </Link>
+              ))}
+            </div>
+          </section>
+        )}
       </div>
 
       <style dangerouslySetInnerHTML={{ __html: `
@@ -251,13 +317,22 @@ const ContentDetailPage = () => {
         .detail-badge.readout { background: #4B0082; }
         .detail-badge.event { background: #228B22; }
 
-        .detail-date, .detail-cat {
+        .detail-date, .detail-cat, .detail-ref {
           display: flex;
           align-items: center;
           gap: 0.5rem;
           color: #888;
           font-size: 0.9rem;
           font-weight: 600;
+        }
+
+        .detail-ref {
+          color: #cb3631;
+          background: rgba(203, 54, 49, 0.1);
+          padding: 0.25rem 0.75rem;
+          border-radius: 4px;
+          font-family: monospace;
+          font-size: 0.85rem;
         }
 
         .article-title {
@@ -403,33 +478,153 @@ const ContentDetailPage = () => {
           border-radius: 8px;
         }
 
-        .share-box {
-          margin-top: 2rem;
-        }
-
-        .share-box button {
-          background: #f0f0f0;
-          border: none;
-          padding: 0.75rem 1.5rem;
-          border-radius: 30px;
-          font-weight: 700;
-          color: #555;
-          display: flex;
-          align-items: center;
-          gap: 0.5rem;
-          cursor: pointer;
-          transition: all 0.3s ease;
-        }
-
-        .share-box button:hover {
-          background: #e0e0e0;
-          color: var(--primary-red);
-        }
-
-        .share-box.news-share {
+        /* ── PREMIUM SHARE BOX ────────────────── */
+        .share-box-premium {
           margin-top: 4rem;
           padding-top: 2rem;
           border-top: 1px solid #eee;
+          display: flex;
+          flex-direction: column;
+          gap: 1rem;
+        }
+
+        .share-label {
+          font-size: 0.75rem;
+          font-weight: 800;
+          color: #888;
+          letter-spacing: 1px;
+        }
+
+        .share-buttons {
+          display: flex;
+          gap: 1rem;
+        }
+
+        .share-btn {
+          width: 40px;
+          height: 40px;
+          border-radius: 50%;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          color: white;
+          border: none;
+          cursor: pointer;
+          transition: all 0.3s ease;
+          text-decoration: none;
+        }
+
+        .share-btn.twitter { background: #2d2d2d; }
+        .share-btn.twitter:hover { background: #cb3631; transform: translateY(-3px); }
+        .share-btn.facebook { background: #2d2d2d; }
+        .share-btn.facebook:hover { background: #cb3631; transform: translateY(-3px); }
+        .share-btn.linkedin { background: #2d2d2d; }
+        .share-btn.linkedin:hover { background: #cb3631; transform: translateY(-3px); }
+        .share-btn.copy-link { background: #2d2d2d; }
+        .share-btn.copy-link:hover { background: #cb3631; transform: translateY(-3px); }
+
+        /* ── RELATED RELEASES ─────────────────── */
+        .related-releases-section {
+          margin-top: 6rem;
+          border-top: 1px solid #eee;
+          padding-top: 4rem;
+        }
+
+        .related-title {
+          font-size: 2rem;
+          font-weight: 900;
+          color: #111;
+          margin-bottom: 0.5rem;
+        }
+
+        .related-grid {
+          display: grid;
+          grid-template-columns: repeat(3, 1fr);
+          gap: 2.5rem;
+          margin-top: 2.5rem;
+        }
+
+        .related-card-link {
+          text-decoration: none;
+          color: inherit;
+        }
+
+        .related-card {
+          background: white;
+          border-radius: 12px;
+          overflow: hidden;
+          box-shadow: 0 4px 20px rgba(0,0,0,0.05);
+          display: flex;
+          flex-direction: column;
+          height: 100%;
+          transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .related-card-link:hover .related-card {
+          transform: translateY(-8px);
+          box-shadow: 0 15px 30px rgba(0,0,0,0.1);
+        }
+
+        .related-media {
+          position: relative;
+          height: 180px;
+          overflow: hidden;
+        }
+
+        .related-media img {
+          width: 100%;
+          height: 100%;
+          object-fit: cover;
+        }
+
+        .related-badge {
+          position: absolute;
+          top: 1rem;
+          left: 1rem;
+          background: #8B0000;
+          color: white;
+          padding: 0.3rem 0.8rem;
+          font-size: 0.65rem;
+          font-weight: 800;
+          border-radius: 3px;
+        }
+
+        .related-info {
+          padding: 1.5rem;
+          display: flex;
+          flex-direction: column;
+          gap: 0.75rem;
+          flex-grow: 1;
+        }
+
+        .related-meta {
+          display: flex;
+          justify-content: space-between;
+          font-size: 0.8rem;
+          color: #999;
+          font-weight: 600;
+        }
+
+        .related-card-title {
+          font-size: 1.1rem;
+          font-weight: 800;
+          color: #222;
+          line-height: 1.4;
+          display: -webkit-box;
+          -webkit-line-clamp: 2;
+          -webkit-box-orient: vertical;
+          overflow: hidden;
+        }
+
+        .related-excerpt {
+          font-size: 0.9rem;
+          color: #666;
+          line-height: 1.5;
+          display: -webkit-box;
+          -webkit-line-clamp: 2;
+          -webkit-box-orient: vertical;
+          overflow: hidden;
+          margin: 0;
         }
 
         @media (max-width: 900px) {
@@ -438,6 +633,7 @@ const ContentDetailPage = () => {
           .article-image-container { height: 300px; }
           .article-sidebar { order: -1; margin-bottom: 2rem; }
           .sidebar-card { position: static; }
+          .related-grid { grid-template-columns: 1fr; }
         }
       `}} />
     </div>
