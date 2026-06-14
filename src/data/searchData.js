@@ -1185,6 +1185,14 @@ const searchData = [
     path: "/news/news-climate-resilience-2026",
     category: "News & Events",
     keywords: ["elearning africa", "climate change", "climate education", "hilda osei-poku", "youth leadership", "sustainability", "resilience", "community action", "news"]
+  },
+  {
+    id: 145,
+    title: "AASU Secretary-General Receives SAQA CEO on Courtesy Visit to Strengthen Pan-African Educational Cooperation",
+    description: "The Secretary-General of AASU, Mr. Divine Kwadzodeh, welcomed the Chief Executive Officer of the South African Qualifications Authority (SAQA), Ms. Nadia Starr, to the AASU Secretariat in Ghana.",
+    path: "/news/news-saqa-ceo-visit-2026",
+    category: "News & Events",
+    keywords: ["saqa", "nadia starr", "divine kwadzodeh", "courtesy visit", "educational cooperation", "pan-african", "student mobility", "qualifications", "accra", "ghana", "news"]
   }
 ];
 

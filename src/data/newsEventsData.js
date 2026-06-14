@@ -101,6 +101,31 @@ The Union remains dedicated to ensuring that the voices, aspirations, and intere
 Through engagements such as the Groningen Declaration Network Regional Meeting, AASU continues to advance its mission of fostering Pan-African cooperation, educational excellence, youth empowerment, and international collaboration for the benefit of students across the continent.`
   },
   {
+    id: 'news-saqa-ceo-visit-2026',
+    type: CONTENT_TYPES.NEWS,
+    category: 'International Engagements',
+    title: 'AASU Secretary-General Receives SAQA CEO on Courtesy Visit to Strengthen Pan-African Educational Cooperation',
+    img: '/news-old.png',
+    date: '2026-06-04',
+    excerpt: 'The Secretary-General of the All-Africa Students Union (AASU), Mr. Divine Kwadzodeh, welcomed the Chief Executive Officer of the South African Qualifications Authority (SAQA), Ms. Nadia Starr, to the AASU Secretariat in Ghana.',
+    description: `The Secretary-General of the All-Africa Students Union (AASU), Mr. Divine Kwadzodeh, welcomed the Chief Executive Officer of the South African Qualifications Authority (SAQA), Ms. Nadia Starr, to the AASU Secretariat in Ghana during her first official visit to the country.
+
+The courtesy visit served as an important platform for meaningful engagement on issues of higher education, student mobility, skills development, and the future of educational collaboration across the African continent. The meeting reaffirmed the shared commitment of both institutions to advancing inclusive, quality education and creating opportunities that empower Africa's young people to thrive in an increasingly interconnected world.
+
+During the discussions, the two leaders explored areas of mutual interest, including strengthening partnerships that promote academic excellence, youth leadership, and the recognition of qualifications to facilitate greater educational and professional mobility across Africa. They also highlighted the critical role of collaboration between continental institutions in supporting the aspirations of the African Union's Agenda 2063 and the broader vision of an integrated and prosperous Africa.
+
+Ms. Starr commended AASU for its enduring commitment to representing and amplifying the voices of African students. She acknowledged the Union's significant contributions to student advocacy, capacity building, and youth development, describing AASU as a valued and long-standing partner of SAQA in promoting educational quality and advancing opportunities for young Africans.
+
+In his remarks, Secretary-General Divine Kwadzodeh expressed appreciation for the continued partnership between AASU and SAQA, noting that strategic collaborations remain essential to addressing the evolving challenges facing African students and educational institutions. He reaffirmed AASU's commitment to working with stakeholders across the continent to ensure that African youth are equipped with the knowledge, skills, and opportunities needed to contribute meaningfully to sustainable development.
+
+The visit further underscored the importance of fostering stronger institutional relationships that bridge policy and practice while placing students at the centre of Africa's development agenda. As both organisations continue to champion educational transformation and youth empowerment, the meeting marked another significant step towards building a more collaborative and inclusive future for African education.
+
+AASU remains dedicated to strengthening partnerships that advance the interests of students across the continent and contribute to the development of a united, educated, and empowered African youth.
+
+Photo Caption:
+Secretary-General of the All-Africa Students Union (AASU), Mr. Divine Kwadzodeh, with the Chief Executive Officer of the South African Qualifications Authority (SAQA), Ms. Nadia Starr, during her courtesy visit to the AASU Secretariat in Accra, Ghana, on 4 June 2026.`
+  },
+  {
     id: 'pr-nans-president-afeez-2026',
     type: CONTENT_TYPES.PRESS_RELEASE,
     category: 'Executive Committee',
