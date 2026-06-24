@@ -47,8 +47,7 @@ const Home = () => {
               <div className="mission-extra-content" style={{ '--extra-display': isExpanded ? 'flex' : 'none' }}>
                 <p>
                   AASU’s core activities are focused on a broad range of issues that affect students, including but not limited to 
-                  the 7 Strategic Priorities of the Union – Education & Students Rights, Capacity Building, Gender Advocacy, 
-                  Environment & Climate Action, Pan-Africanism & African Culture, Migration & Mobility, Democracy & Good Governance. 
+                  the 7 Strategic Priorities of the Union – Education & Students' Rights, Capacity Building, Skills Development & Employability, Gender Equity & Social Inclusion, Climate Action & Environmental Sustainability, Pan-Africanism & African Culture, Migration, Mobility & Exchanges, Democracy, Good Governance, Peace & Security. 
                   Our Strategic Priorities are fully aligned to the UN development priorities as articulated in the Sustainable 
                   Development Goals (SDGs). Also, these priorities complement the global efforts to build a relevant contemporary 
                   human capital capable of fitting into the global citizen ecosystem.

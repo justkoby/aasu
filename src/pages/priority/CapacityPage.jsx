@@ -40,11 +40,9 @@ const CapacityPage = () => {
                 <Compass className="section-icon" style={{ color: accentColor }} />
                 <h2 className="section-title">OVERVIEW</h2>
               </div>
-              <p>Africa’s greatest asset is its youth—but unlocking that potential requires more than access to education. It requires skills, exposure, and opportunities that prepare students for the realities of the modern world.</p>
-              <p>Across the continent, many graduates face challenges transitioning from education to employment due to skills gaps, limited access to practical training, and evolving labour market demands.</p>
-              <p>The All-Africa Students Union (AASU) is committed to bridging this gap by empowering students with the tools, competencies, and networks needed to succeed.</p>
-              <p>Through training programs, partnerships, and innovation-driven initiatives, AASU is shaping a generation of students who are not only educated—but skilled, employable, and capable of driving economic and social transformation.</p>
-              <p>Aligned with global frameworks such as the Sustainable Development Goals and the UN Youth Strategy 2030, this priority area focuses on preparing students for leadership, entrepreneurship, and the future of work.</p>
+              <p>AASU recognises that education must translate into opportunity, agency, and meaningful participation in society. This priority focuses on equipping African students with the leadership, technical, digital, and soft skills required to navigate a rapidly changing global landscape.</p>
+              <p>Through structured leadership programmes, skills development initiatives, policy literacy training, and employability-focused engagements, AASU strengthens student capacity to lead institutions, influence policy, innovate, and transition successfully from education into the world of work. Particular emphasis is placed on future-oriented skills, youth leadership in governance, and bridging the gap between education systems and labour market realities.</p>
+              <p>This priority contributes directly to SDG 4 (Quality Education) and SDG 8 (Decent Work and Economic Growth), while advancing Agenda 2063’s vision of an empowered African youth driving innovation, productivity, and sustainable development.</p>
             </motion.div>
             <motion.div initial={{ opacity: 0, scale: 0.9 }} whileInView={{ opacity: 1, scale: 1 }} viewport={{ once: true }} className="overview-image-container dual-carousel">
               <div className="carousel-column col-1">

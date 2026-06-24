@@ -39,11 +39,9 @@ const CulturePage = () => {
                 <Compass className="section-icon" style={{ color: accentColor }} />
                 <h2 className="section-title">OVERVIEW</h2>
               </div>
-              <p>Africa’s strength lies in its identity—its people, its history, its culture, and its shared vision for the future.</p>
-              <p>Pan-Africanism is more than an idea; it is a movement rooted in the belief that Africa’s progress depends on unity, collaboration, and a shared sense of purpose among its people—both on the continent and in the diaspora.</p>
-              <p>The All-Africa Students Union (AASU) stands at the forefront of promoting this vision by empowering students to embrace their identity, celebrate their heritage, and actively contribute to the development of the continent.</p>
-              <p>Through cultural engagement, policy advocacy, and continental collaboration, AASU is fostering a generation of students who are not only globally aware—but deeply connected to what it means to be African.</p>
-              <p>Aligned with the aspirations of the African Union Agenda 2063, this priority area reinforces the role of culture and identity as drivers of unity, development, and global influence.</p>
+              <p>Pan-Africanism is foundational to AASU’s identity. Under this priority, the Union promotes African unity, shared identity, cultural expression, and historical consciousness among students across the continent and the diaspora.</p>
+              <p>AASU advances initiatives that celebrate African culture, languages, arts, and intellectual traditions, while fostering solidarity among students from diverse regions and backgrounds. This priority reinforces the idea of education not only as a technical endeavour, but as a cultural and civic project rooted in African values and collective destiny.</p>
+              <p>This work directly advances Agenda 2063’s core aspiration of African unity, cultural renaissance, and people-centred development, while complementing global efforts to promote inclusive societies and cultural diversity.</p>
             </motion.div>
             <motion.div initial={{ opacity: 0, scale: 0.9 }} whileInView={{ opacity: 1, scale: 1 }} viewport={{ once: true }} className="overview-image-container dual-carousel">
               <div className="carousel-column col-1">

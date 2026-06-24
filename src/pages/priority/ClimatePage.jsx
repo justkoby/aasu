@@ -40,11 +40,9 @@ const ClimatePage = () => {
                 <Compass className="section-icon" style={{ color: accentColor }} />
                 <h2 className="section-title">OVERVIEW</h2>
               </div>
-              <p>Climate change is one of the greatest challenges facing Africa today—and its impact goes far beyond the environment.</p>
-              <p>From disrupted education systems and food insecurity to economic instability and conflict, the effects of climate change are deeply interconnected with every aspect of development. Young people, especially students, are among the most affected—but also among the most powerful agents of change.</p>
-              <p>The All-Africa Students Union (AASU) is committed to mobilizing students across the continent to take action on climate and environmental issues. By promoting awareness, advocacy, and innovation, AASU is ensuring that students are not only informed—but actively involved in shaping solutions.</p>
-              <p>Through education, partnerships, and student-led initiatives, this priority area focuses on building a generation that is environmentally conscious, climate-resilient, and solution-driven.</p>
-              <p>Aligned with global and continental frameworks, this work positions climate action as a core pillar of sustainable development and future-focused education systems.</p>
+              <p>Climate change is a defining challenge of this generation, and African students are both among the most affected and the most innovative actors in responding to it. Through this priority, AASU promotes youth-led climate action, environmental education, and sustainability practices across educational institutions and communities.</p>
+              <p>AASU supports student leadership in climate justice advocacy, environmental awareness, green skills development, and locally grounded solutions that connect climate action to education, livelihoods, and social equity. The Union positions students as critical partners in shaping Africa’s environmental future and advancing sustainable development pathways.</p>
+              <p>This priority contributes to SDG 13 (Climate Action) and reinforces Agenda 2063’s aspiration for environmentally sustainable and climate-resilient development across the continent.</p>
             </motion.div>
             <motion.div initial={{ opacity: 0, scale: 0.9 }} whileInView={{ opacity: 1, scale: 1 }} viewport={{ once: true }} className="overview-image-container dual-carousel">
               <div className="carousel-column col-1">

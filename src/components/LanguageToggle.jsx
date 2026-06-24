@@ -15,34 +15,40 @@ const LanguageToggle = () => {
   ];
 
   useEffect(() => {
-    // Initialize Google Translate
-    const addGoogleTranslateScript = () => {
-      if (!window.googleTranslateElementInit) {
-        window.googleTranslateElementInit = () => {
-          new window.google.translate.TranslateElement(
-            {
-              pageLanguage: 'en',
-              includedLanguages: 'en,fr,pt,es,ar',
-              autoDisplay: false,
-            },
-            'google_translate_element'
-          );
-        };
-        const script = document.createElement('script');
-        script.src = '//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit';
-        script.async = true;
-        document.body.appendChild(script);
+    const initTranslate = () => {
+      if (window.google && window.google.translate) {
+        new window.google.translate.TranslateElement(
+          {
+            pageLanguage: 'en',
+            includedLanguages: 'en,fr,pt,es,ar',
+            autoDisplay: false,
+          },
+          'google_translate_element'
+        );
       }
     };
 
-    addGoogleTranslateScript();
+    // Initialize directly if script is already loaded and active on window
+    if (window.google && window.google.translate) {
+      initTranslate();
+    } else {
+      window.googleTranslateElementInit = initTranslate;
+      const script = document.createElement('script');
+      script.src = 'https://translate.google.com/translate_a/element.js?cb=googleTranslateElementInit';
+      script.async = true;
+      document.body.appendChild(script);
+    }
   }, []);
 
   const selectLanguage = (langName, langCode) => {
     setCurrentLang(langName);
     setIsOpen(false);
 
-    // Trigger Google Translate
+    // Set cookies for persistent translation on the live site
+    document.cookie = `googtrans=/en/${langCode}; path=/`;
+    document.cookie = `googtrans=/en/${langCode}; path=/; domain=.aasuonline.org`;
+
+    // Trigger Google Translate combo-box if present
     const translateCombo = document.querySelector('.goog-te-combo');
     if (translateCombo) {
       translateCombo.value = langCode;

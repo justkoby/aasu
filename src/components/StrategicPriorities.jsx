@@ -13,49 +13,49 @@ const priorities = [
     icon: <BookOpen />,
     color: "#E53935",
     path: "/priority/education",
-    desc: "Advocating for quality, accessible education and protecting student welfare across the continent."
+    desc: "Under this priority, AASU advances the right of every African student - from basic to higher education - to access quality, relevant, inclusive, and future-ready education systems."
   },
   {
     title: "Gender Equity & Social Inclusion",
     icon: <Heart />,
     color: "#FB8C00",
     path: "/priority/gender",
-    desc: "Promoting inclusive participation and empowering marginalized voices in all levels of society."
+    desc: "Under this priority, AASU works to advance the rights, dignity, and full participation of women, girls, and marginalised student populations across Africa."
   },
   {
-    title: "Democracy & Peace building",
+    title: "Democracy, Good Governance, Peace & Security",
     icon: <Landmark />,
     color: "#C9A227",
     path: "/priority/democracy",
-    desc: "Strengthening democratic governance, peace, and security through youth-led dialogue."
+    desc: "Through this priority, the Union strengthens student participation in democratic governance, civic engagement, and peace-building processes at institutional, national, and continental levels."
   },
   {
-    title: "Capacity Building & Employability",
+    title: "Capacity Building, Skills Development & Employability",
     icon: <Cpu />,
     color: "#1E88E5",
     path: "/priority/capacity",
-    desc: "Equipping African students with 21st-century skills and fostering entrepreneurial innovation."
+    desc: "This priority focuses on equipping African students with the leadership, technical, digital, and soft skills required to navigate a rapidly changing global landscape."
   },
   {
     title: "Migration, Mobility & Exchanges",
     icon: <Plane />,
     color: "#8E24AA",
     path: "/priority/migration",
-    desc: "Facilitating student mobility and ensuring the rights of young people in transit."
+    desc: "Under this priority, AASU works to expand equitable, safe, and accessible pathways for African students to study, train, and collaborate across borders."
   },
   {
-    title: "Climate Action & Sustainability",
+    title: "Climate Action & Environmental Sustainability",
     icon: <Leaf />,
     color: "#2E7D32",
     path: "/priority/climate",
-    desc: "Mobilizing students for environmental protection and resilient education systems."
+    desc: "Through this priority, AASU promotes youth-led climate action, environmental education, and sustainability practices across educational institutions and communities."
   },
   {
     title: "Pan-Africanism & African Culture",
     icon: <Palette />,
     color: "#121212",
     path: "/priority/culture",
-    desc: "Celebrating African identity and fostering unity across borders and the diaspora."
+    desc: "Under this priority, the Union promotes African unity, shared identity, cultural expression, and historical consciousness among students across the continent and the diaspora."
   }
 ];
 

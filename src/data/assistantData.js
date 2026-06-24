@@ -175,6 +175,15 @@ export const intents = [
       { label: "Pre-Conference Workshop Info", url: "/events/event-pre-conference-workshop-2026" },
       { label: "Youth & Students Dialogue Info", url: "/events/event-youth-students-dialogue-2026" }
     ]
+  },
+  {
+    keywords: ["data must fall", "digital inclusion", "internet cost", "subsidized data", "zero rated", "telecoms bundle", "campaign"],
+    answer: "AASU's Digital Inclusion (#DataMustFall) campaign advocates for student digital rights, zero-rated higher-education portals, and affordable mobile internet data for students across Africa.",
+    links: [
+      { label: "Campaign Homepage", url: "/dicampaign" },
+      { label: "Campaign Updates", url: "/dicampaign/updates" },
+      { label: "Campaign Gallery", url: "/dicampaign/gallery" }
+    ]
   }
 ];
 

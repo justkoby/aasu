@@ -63,18 +63,15 @@ const EducationPage = () => {
                 <h2 className="section-title">OVERVIEW</h2>
               </div>
               <p>
-                Education is the foundation of Africa’s transformation—and at the center of that transformation are students.
+                Education lies at the heart of the All-Africa Students Union’s mandate. Under this priority, AASU advances the right of every African student - from basic to higher education - to access quality, relevant, inclusive, and future-ready education systems.
               </p>
               <p>
-                The All-Africa Students Union (AASU) champions an education system that is inclusive, accessible, equitable, and responsive to the realities of African learners. Across the continent, millions of students still face barriers to quality education—from limited access and underfunded institutions to policy gaps and systemic inequalities.
+                Our work focuses on defending students’ academic, social, and institutional rights; strengthening quality assurance and learning outcomes; promoting harmonisation of higher education systems; and ensuring that education policies reflect the lived realities of students across the continent. AASU engages governments, universities, continental bodies, and global partners to ensure that students are recognised not merely as beneficiaries of education reform, but as stakeholders and partners in its design and delivery.
               </p>
               
               <div className={`mobile-read-more-content ${isReadMore ? 'expanded' : ''}`}>
                 <p>
-                  Through advocacy, partnerships, and student-led initiatives, AASU works to ensure that every African student has the opportunity to learn, thrive, and contribute meaningfully to society.
-                </p>
-                <p>
-                  Aligned with global and continental frameworks such as Sustainable Development Goal 4 (SDG 4) and the Continental Education Strategy for Africa (CESA), this priority area positions students not just as participants—but as key drivers of education reform and innovation.
+                  This priority aligns strongly with Sustainable Development Goals (SDG 4 - Quality Education) and supports the education aspirations of African Union Agenda 2063, particularly the goal of building an integrated, prosperous, and knowledge-driven Africa.
                 </p>
               </div>
 

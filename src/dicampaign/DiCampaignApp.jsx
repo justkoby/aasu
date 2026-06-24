@@ -7,6 +7,8 @@ import Home from './pages/Home';
 import Opportunities from './pages/Opportunities';
 import Updates from './pages/Updates';
 import Gallery from './pages/Gallery';
+import LanguageToggle from '../components/LanguageToggle';
+import SmartAssistant from '../components/SmartAssistant';
 import './dicampaign.css';
 
 // Auto-Scroll to top of page on route change helper
@@ -47,6 +49,8 @@ export const DiCampaignApp = () => {
         
         {/* Footer Base */}
         <Footer />
+        <LanguageToggle />
+        <SmartAssistant />
       </div>
     </div>
   );

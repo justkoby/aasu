@@ -59,19 +59,9 @@ const DemocracyPage = () => {
                 <Compass className="section-icon" style={{ color: accentColor }} />
                 <h2 className="section-title">OVERVIEW</h2>
               </div>
-              <p>Democracy and good governance are the backbone of a stable, just, and prosperous Africa—and students have a critical role to play in shaping that future.</p>
-              <p>
-                Across the continent, challenges such as weak institutions, limited youth participation, political instability, and governance gaps continue to affect development and social progress. At the same time, Africa’s youthful population represents a powerful force for change.
-              </p>
-              <p>
-                The All-Africa Students Union (AASU) is committed to harnessing this potential by empowering students to become active participants in democratic processes, governance systems, and peacebuilding efforts.
-              </p>
-              <p>
-                Through advocacy, dialogue, and leadership development, AASU promotes a culture of accountability, transparency, inclusion, and civic responsibility, ensuring that students are not only aware of their rights—but equipped to defend and exercise them.
-              </p>
-              <p>
-                Aligned with Sustainable Development Goals 10 & 16 and the African Union Agenda 2063, this priority area positions students as key stakeholders in building democratic and peaceful societies.
-              </p>
+              <p>AASU has a long tradition of promoting democratic values and accountable leadership. Through this priority, the Union strengthens student participation in democratic governance, civic engagement, and peace-building processes at institutional, national, and continental levels.</p>
+              <p>AASU supports transparent student governance, electoral integrity, leadership ethics, and youth participation in public decision-making. The Union also engages broader issues of peace, stability, and security as they affect education systems, student safety, and civic space across Africa.</p>
+              <p>This priority contributes to SDG 16 (Peace, Justice and Strong Institutions) and supports Agenda 2063’s commitment to democratic governance, conflict prevention, and a peaceful Africa.</p>
             </motion.div>
             <motion.div initial={{ opacity: 0, scale: 0.9 }} whileInView={{ opacity: 1, scale: 1 }} viewport={{ once: true }} className="overview-image-container dual-carousel">
               <div className="carousel-column col-1">

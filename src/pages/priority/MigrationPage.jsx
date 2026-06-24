@@ -40,11 +40,9 @@ const MigrationPage = () => {
                 <Compass className="section-icon" style={{ color: accentColor }} />
                 <h2 className="section-title">OVERVIEW</h2>
               </div>
-              <p>In an increasingly interconnected world, the ability of students to move, learn, and collaborate across borders is essential for Africa’s development.</p>
-              <p>Academic mobility, student exchanges, and cross-border education opportunities play a critical role in building knowledge, fostering innovation, and strengthening continental integration. However, many African students still face barriers such as visa restrictions, limited funding, and challenges in recognition of qualifications.</p>
-              <p>The All-Africa Students Union (AASU) is committed to breaking down these barriers by promoting safe, accessible, and equitable mobility opportunities for students across Africa and beyond.</p>
-              <p>Through partnerships, advocacy, and student-led platforms, AASU is working to create an environment where students can learn without borders, share experiences, and contribute to a more integrated and globally competitive Africa.</p>
-              <p>Aligned with continental priorities on education harmonization and global cooperation, this priority area positions mobility as a tool for unity, knowledge exchange, and opportunity creation.</p>
+              <p>Student mobility is a cornerstone of academic integration, knowledge exchange, and continental solidarity. Under this priority, AASU works to expand equitable, safe, and accessible pathways for African students to study, train, and collaborate across borders.</p>
+              <p>Our work addresses academic mobility, recognition of qualifications, exchange programmes, and the practical challenges students face in moving within Africa and beyond - including visas, residency, institutional barriers, and protection of rights. AASU also engages issues affecting migrant, refugee, and diaspora students, ensuring that mobility enhances opportunity rather than exclusion.</p>
+              <p>This priority aligns with SDG 10 (Reduced Inequalities) and SDG 4, while advancing Agenda 2063’s vision of an integrated Africa with free movement of people, ideas, and knowledge.</p>
             </motion.div>
             <motion.div initial={{ opacity: 0, scale: 0.9 }} whileInView={{ opacity: 1, scale: 1 }} viewport={{ once: true }} className="overview-image-container dual-carousel">
               <div className="carousel-column col-1">

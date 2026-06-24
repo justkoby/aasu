@@ -12,6 +12,228 @@ export const CONTENT_TYPES = {
 
 export const newsEventsData = [
   {
+    id: 'event-russia-africa-scientists-2026',
+    type: CONTENT_TYPES.EVENT,
+    category: 'Science & Innovation',
+    title: 'Call for Applications: Russia–Africa Forum-Competition of Young Scientists 2026',
+    img: '/russia-africa.png',
+    date: '2026-10-12',
+    time: 'In-person Format',
+    platform: 'Empress Catherine II St. Petersburg Mining University, Russia',
+    link: 'https://bit.ly/RAFYS-26',
+    excerpt: 'Talented young scholars across Africa and Russia are invited to participate in a unique platform for research, innovation, and global engagement under the auspices of UNESCO.',
+    description: `Are you a student, postgraduate researcher, or young scientist with innovative ideas that can shape the future?
+
+The Russia–Africa Forum-Competition of Young Scientists, held under the auspices of UNESCO, is inviting applications from talented young scholars across Africa and Russia to participate in a unique platform for research, innovation, collaboration, and global engagement.
+
+Theme: Future Engineers of the World – The Foundation for Sustainable Development
+
+Venue: Empress Catherine II St. Petersburg Mining University, Russia
+
+Date: 12–17 October 2026
+Format: In-person
+Working Languages: English and Russian
+
+Open to teams of 3–5 members comprising senior undergraduate students, postgraduate students, and young scientists under 35 years.
+
+Selected participants will enjoy:
+• No registration fee
+• Fully covered accommodation and meals
+• Cultural programme in St. Petersburg
+• International networking opportunities
+• Exposure to global engineering and sustainability challenges
+• Collaboration with leading universities and researchers
+
+Application Deadline: 1st July 2026
+
+🔗 Apply here: https://bit.ly/RAFYS-26
+
+The All-Africa Students Union (AASU) encourages eligible African students, researchers, innovators, and young scientists to seize this opportunity to showcase their ideas, build international partnerships, and contribute to sustainable development through science and innovation.
+
+#AASU #YoungScientists #UNESCO #RussiaAfricaForum`
+  },
+  {
+    id: 'event-aau-summit-2026',
+    type: CONTENT_TYPES.EVENT,
+    category: 'Youth Leadership',
+    title: 'AAU African Students’ Leadership Summit 2026',
+    img: '/AAU-Summit.png',
+    date: '2026-08-17',
+    time: 'Three-day Summit',
+    platform: 'Cairo, Egypt',
+    link: 'https://pay.aau.org/sls-cairo-2026',
+    excerpt: 'Creating the platform to shape the next generation of African transformation, leadership, and innovation in action.',
+    description: `The future of Africa will be shaped by bold, innovative, and visionary student leaders, and the AAU African Students’ Leadership Summit 2026 is creating the platform to make that possible.
+
+Organized by the Association of African Universities (AAU) in collaboration with the All-Africa Students Union (AASU), this high-level continental summit will bring together student leaders, changemakers, and young innovators from across Africa under the theme: “Shaping the Next Generation of African Transformation: Leadership, Innovation, and Agenda 2063 in Action.”
+
+Through keynote sessions, expert-led discussions, workshops, and networking opportunities, participants will gain practical leadership skills, strengthen their capacity for ethical governance, and build meaningful pan-African connections that drive impact beyond the classroom.
+
+Date: 17–19 August 2026
+Venue: Cairo, Egypt
+
+Join the conversation. Strengthen your leadership. Shape Africa’s future.
+
+Register now to secure your spot.
+
+https://pay.aau.org/sls-cairo-2026
+
+#AAUAfricanStudents’LeadershipSummit2026 #AASU #AAU #AfricanYouth`
+  },
+  {
+    id: 'news-adolescence-360-health-2026',
+    type: CONTENT_TYPES.NEWS,
+    category: 'Health & Wellbeing',
+    title: 'AASU Engages JHS Students in Winneba on Menstrual Hygiene and Reproductive Health',
+    img: '/adol-360-1.png',
+    images: ['/adol-360-1.png', '/adol-360-2.png', '/adol-360-3.png', '/adol-360-4.png', '/adol-360-5.png', '/adol-360-6.png'],
+    date: '2026-06-24',
+    excerpt: 'The Adolescence 360 Health Outreach Project engages Winneba students to break stigmas and promote healthy practices.',
+    description: `The All-Africa Students Union (AASU) engaged students of A.M.E. Zion 'D' JHS, Winneba through the Adolescence 360 Health Outreach Project, creating a safe and interactive space for discussions on puberty, menstrual hygiene, reproductive health, and overall adolescent wellbeing.
+
+By providing accurate information and encouraging open dialogue, we are helping to break harmful stigmas, promote healthy practices, and empower young people to make informed decisions about their health and future.
+
+Together, we are building a healthier, more confident, and informed generation.
+
+#Adolescence360 #AASU #YouthHealth #AdolescentHealth #MenstrualHygiene #EducationForImpact`
+  },
+  {
+    id: 'event-gsdc-sustainability-2026',
+    type: CONTENT_TYPES.EVENT,
+    category: 'Environment & Climate Action',
+    title: 'Beyond the Syllabus: Embedding Sustainability into the Larger Learning Journey at GSDC 2026',
+    img: '/Beyond the syllabus.png',
+    date: '2026-06-23',
+    time: 'Panel and Workshop',
+    platform: 'Global Sustainable Development Congress 2026',
+    excerpt: 'AASU reinforces the message that sustainability must move beyond siloed courses and be reflected across the entire student experience.',
+    description: `The All-Africa Students Union is participating in the #GSDC2026. We kicked of with a panel and workshop themed “Beyond the syllabus: Embedding sustainability into the larger learning journey,” reinforcing a clear message: sustainability must move beyond siloed initiatives within single courses or departments and be reflected across the entire student experience.
+
+The session was opened by Jean-Christophe Carteron, President of Sulitest, and Santosh Khatri, Chief of Education at UNESCO Regional Office and Liaison at ASEAN.
+
+Belinda Mensah, Programmes Officer of All-Africa Students UNION, moderated the panel on innovative co-curriculum and whole-institution approaches to developing sustainability literacy.
+
+Speakers of the panel included Dr. Jingwen Mu of Hong Kong Baptist University, who shared perspectives on service-learning for lifelong and authentic learning; Raghuram Barabadran of Amrita Vishwa Vidyapeetham, who spoke on designing education for life by aligning knowledge with grassroots action; and Jennifer O’Brien, who explored what good sustainability practice looks like and how institutions can embed and measure it effectively.
+
+The HESI SAG team Patricija Z., Franziska Sophia Knog ler, Darren Axe, Belinda Mensah and Isha Le Xue Singh, facilitated an interactive workshop, bringing together students, educators, and higher education leaders to co-create ideas on embedding sustainability across the full student learning journey.
+
+The session closed with reflections from Shinobu Yume YAMAGUCHI, Director at the United Nations University Institute for the Advanced Study of Sustainability, and was wrapped up by Jonghwi Park (UNU) and Darren Axe.`
+  },
+  {
+    id: 'news-african-child-day-liberia-2026',
+    type: CONTENT_TYPES.NEWS,
+    category: 'Education & Students Rights',
+    title: 'AASU Convenes High-Level Strategic Dialogue in Liberia for Day of the African Child 2026',
+    img: '/African Child 2026-1.png',
+    images: ['/African Child 2026-1.png', '/African Child 2026-2.png', '/African Child 2026-3.png'],
+    date: '2026-06-22',
+    excerpt: 'AASU Executive Committee Member Amb Oumu Sall successfully convenes youth, government, and community stakeholders to discuss child rights and WASH services.',
+    description: `As part of the All-Africa Students Union's activities commemorating the Day of the African Child 2026, AASU's Executive Committee Member for West Africa, Amb Oumu Sall, successfully convened a high-level Strategic Dialogue bringing together student leaders, youth organisations, government officials, development partners, civil society actors and community leaders in Liberia.
+
+Held under the African Union's 2026 theme, "Ensuring Universal Access to Water, Sanitation and Hygiene for Every Child in Africa," the dialogue provided an important platform to reflect on the progress made in advancing the rights and welfare of African children, while examining the challenges that continue to hinder access to quality education, safe learning environments, and essential WASH services.
+
+As we honoured the memory of the courageous students of Soweto, whose sacrifice became a defining symbol of the struggle for justice, dignity and educational freedom, participants reflected on the unfinished work of ensuring that every African child enjoys the rights and opportunities for which they fought.
+
+The dialogue explored critical issues including educational equity, child rights, youth participation in governance, and the impact of water, sanitation and hygiene on learning outcomes and child development. Participants also advanced practical recommendations aimed at strengthening education systems, promoting social justice, and expanding access to essential services for children and young people across the continent.
+
+AASU extends its sincere appreciation to our distinguished speakers, guests and partners, including representatives of government institutions, student organisations, youth movements and civil society groups whose contributions enriched the discussions.`
+  },
+  {
+    id: 'news-world-youth-forum-china-2026',
+    type: CONTENT_TYPES.NEWS,
+    category: 'International Engagements',
+    title: 'AASU President Osisiogu Osikenyi Represents African Students at the World Youth Development Forum in China',
+    img: '/aasu-china-1.png',
+    images: ['/aasu-china-1.png', '/aasu-china-2.png', '/aasu-china-3.png', '/aasu-china-4.png', '/aasu-china-5.png', '/aasu-china-6.png', '/aasu-china-7.png'],
+    date: '2026-06-22',
+    excerpt: 'President Osisiogu Osikenyi represents AASU in Wuhan and Hubei Province, strengthening China-Africa youth relations and addressing student welfare.',
+    description: `The World Youth Development Forum was held in Wuhan, China, from 14 to 17 June 2026, bringing together more than 500 representatives of United Nations agencies, international youth organisations, and young leaders from over 120 countries.
+
+The All-Africa Students Union (AASU) was proudly represented by its President, Osisiogu Osikenyi, whose participation ensured that the perspectives of African students and young people were reflected in global conversations on development, cooperation and leadership.
+
+During the Forum, President Osisiogu participated in the youth roundtable discussion on "A Community with a Shared Future for Mankind in the Eyes of the Youth", contributing to discussions on international cooperation, youth leadership, shared prosperity, and the role of young people in building a more inclusive, peaceful and sustainable world.
+
+Following the Forum, President Osisiogu was invited to address the China–Africa Youth Culture Forum held in Shiyan, Hubei Province, from 18 to 19 June 2026. The Forum provided an important platform for strengthening China–Africa youth relations, promoting cultural exchange, and advancing dialogue on partnership, mutual understanding and shared development.
+
+As part of his visit, the President also met with African students at Hubei University of Medicine. The interaction focused on student welfare, academic mobility, youth leadership and the importance of building stronger connections among African students studying across the world. The engagement provided an opportunity to hear directly from students about their experiences and aspirations, while reaffirming AASU's commitment to representing and supporting African students both on the continent and throughout the diaspora.`
+  },
+  {
+    id: 'news-reparatory-justice-ghana-2026',
+    type: CONTENT_TYPES.NEWS,
+    category: 'Human Rights & Advocacy',
+    title: 'AASU Participates in High-Level Consultative Conference on Reparatory Justice in Accra',
+    img: '/aasu-pres-1.png',
+    images: ['/aasu-pres-1.png', '/aasu-pres-2.png', '/aasu-pres-3.png', '/aasu-pres-4.png', '/aasu-pres-5.png'],
+    date: '2026-06-19',
+    excerpt: 'Secretary-General Divine Kwadzodeh represents AASU at Accra conference implementing Landmark UN Resolution A/RES/80/250 on Reparatory Justice.',
+    description: `The All-Africa Students Union (AASU) participated in the High-Level Consultative Conference on the Next Steps to the Landmark United Nations Resolution A/RES/80/250 on Reparatory Justice, held in Accra, Ghana.
+
+The conference brought together Heads of State and Government, policymakers, scholars, advocates, youth leaders, and other stakeholders to advance the global conversation on justice, historical accountability, and the future of reparatory justice for Africa and people of African descent.
+
+Representing AASU, Secretary-General Divine Kwadzodeh reaffirmed the importance of moving from recognition to implementation and ensuring that African youth remain active participants in shaping a more just, equitable, and prosperous future.
+
+The conference served as an important platform for dialogue on the collective responsibility of the international community to address historical injustices while advancing dignity, development, and opportunity for future generations.
+
+#AASU #ReparatoryJustice #JusticeForAfrica #AfricanYouth #YouthLeadership`
+  },
+  {
+    id: 'event-climate-forward-summit-2026',
+    type: CONTENT_TYPES.EVENT,
+    category: 'Environment & Climate Action',
+    title: 'Climate Forward Summit 2026: The Circular Transition',
+    img: '/wastetowealth.png',
+    date: '2026-06-19',
+    time: '10:00 AM GMT',
+    platform: 'Executive Conference Centre, GIMPA, Ghana',
+    link: 'http://www.climateforwardsummit.org/register',
+    excerpt: 'Integrating waste-to-wealth pathways and clean energy for Ghana’s green industrialisation, in partnership with The Implementers.',
+    description: `The Implementers and AASU in partnership with diverse network of organizations driving innovation and sustainability presents the Climate Forward Summit 2026 under the theme, The Circular Transition: Integrating Waste-to-Wealth Pathways and Clean Energy for Ghana’s Green Industrialisation.
+
+At the summit, students, youth and innovators will share innovative solutions towards converting waste to wealth. Bold ideas, practical solutions, and collective action will shape a greener future for Ghana at the Climate Forward Summit.
+
+You don't want to miss it!
+
+Register now at www.climateforwardsummit.org/register and join us on 9th July 2026 at the Executive Conference Centre, GIMPA as we transform Ghana's circular economy landscape.
+
+Wondered how to make wealth from waste? Join the Waste to Wealth Webinar ahead of the the Climate Forward Summit 2026 to find out how to contribute to climate action while generating an wealth.
+
+Mark your calendars!
+Date: 25th June, 2026
+Time: 10AM prompt
+Online Zoom ID: 882 6119 1112
+Passcode: 397103
+
+The talk has shifted from just protecting the environment to profiting while protecting it. You don’t want to miss out on this!
+
+#WastetoWealth #circulareconomy #ClimateForwardSummit2026`
+  },
+  {
+    id: 'event-digital-sovereignty-2026',
+    type: CONTENT_TYPES.EVENT,
+    category: 'Technology & Policy',
+    title: 'Digital Sovereignty vs. The Algorithm Dialogue Convened by AASU and Free Market Fellowship',
+    img: '/digi-sov.png',
+    date: '2026-06-17',
+    time: 'Interactive Session',
+    platform: 'Secretariat Dialogue Hall',
+    excerpt: 'Exploring opportunities, risks, and responsibilities associated with Africa’s digital transformation and youth participation.',
+    description: `As artificial intelligence, data systems, and digital platforms increasingly shape education, employment, governance, and civic participation, questions of digital sovereignty have become central to Africa's development agenda.
+
+Recognizing the importance of these conversations, the All-Africa Students Union (AASU), in partnership with The Free Market Fellowship, convened a dialogue on "Digital Sovereignty vs. The Algorithm" to explore the opportunities, risks, and responsibilities associated with Africa's digital transformation.
+
+The discussion brought together experts and young leaders to examine issues of data governance, cybersecurity, digital identity, artificial intelligence, and the role of African institutions in shaping a digital future that reflects the continent's interests and aspirations.
+
+AASU extends its sincere appreciation to Sampson-Graves George for moderating the session and to Ettah Johnson Kwaku, Manasseh Lorlornyo Adossi, Eric Chinery, and Mr. Samuel Eze for their valuable contributions.
+
+As the continental voice of African students, AASU believes that young people must not merely adapt to technological change. They must help shape it.
+
+The future of Africa's digital landscape will depend not only on innovation, but also on inclusion, accountability, and the meaningful participation of Africa's youth.
+
+The conversation continues. The future is ours to shape.
+
+#AASU #DigitalSovereignty #AfricaDigitalFuture #DigitalTransformation #AIForAfrica #DataRights #Cybersecurity #YouthLeadership`
+  },
+  {
     id: 'news-climate-resilience-2026',
     type: CONTENT_TYPES.NEWS,
     category: 'Environment & Climate Action',

@@ -1,192 +1,1249 @@
-.dicampaign-root .home-page {
-  padding-bottom: 0;
-}.dicampaign-root .section-header {
-  margin-bottom: 3.5rem;
-}.dicampaign-root .section-header.text-center {
-  text-align: center;
-}.dicampaign-root .section-subtitle {
-  max-width: 600px;
-  margin: 1rem auto 0;
-}.dicampaign-root .section-subtitle-left {
-  max-width: 750px;
-  margin-top: 1rem;
-}.dicampaign-root /* Badge Pill */
-.badge {
-  display: inline-block;
-  padding: 0.35rem 1rem;
-  font-family: var(--font-heading);
-  font-weight: 700;
-  font-size: 0.75rem;
-  text-transform: uppercase;
-  letter-spacing: 0.08em;
-  background-color: var(--primary-light);
-  color: var(--primary);
-  border-radius: 50px;
-  margin-bottom: 1rem;
-}.dicampaign-root .badge-secondary {
-  background-color: var(--secondary-light);
-  color: var(--secondary);
-}.dicampaign-root /* Overview Section */
-.overview-section {
-  padding-top: 6rem;
-}.dicampaign-root .overview-text .lead {
-  font-size: 1.15rem;
-  font-weight: 600;
-  color: var(--text-main);
-  line-height: 1.6;
-}.dicampaign-root .overview-stats {
+/* Premium Custom Variables for Campaign */
+.dicampaign-root {
+  --neon-green: #38bdf8;
+  --neon-blue: #3b82f6;
+  --neon-purple: #8b5cf6;
+  --accent-gold: var(--accent);
+}
+
+/* ══ HERO SECTION (Gradient Mesh + Canvas Particle Overlay) ══ */
+.dicampaign-root .hero-mesh-section {
+  position: relative;
+  min-height: 85vh;
   display: flex;
-  flex-direction: column;
+  align-items: center;
   justify-content: center;
-  gap: 2rem;
-  padding: 3rem;
+  overflow: hidden;
+  background-color: #050811;
+  padding: 8rem 0;
+}
+
+.dicampaign-root .hero-particle-canvas {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 2;
+  pointer-events: auto;
+}
+
+.dicampaign-root .hero-mesh-bg {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 1;
+  background: radial-gradient(circle at 10% 20%, rgba(15, 203, 170, 0.15) 0%, transparent 40%),
+              radial-gradient(circle at 90% 80%, rgba(99, 102, 241, 0.15) 0%, transparent 45%),
+              #050811;
+  animation: meshMovement 20s ease-in-out infinite alternate;
+}
+
+@keyframes meshMovement {
+  0% { transform: scale(1) translate(0, 0); }
+  50% { transform: scale(1.05) translate(-2%, 2%); }
+  100% { transform: scale(1) translate(0, 0); }
+}
+
+.dicampaign-root .hero-mesh-content {
+  position: relative;
+  z-index: 3;
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+.dicampaign-root .hero-giant-title {
+  font-size: 3.75rem;
+  font-weight: 850;
+  line-height: 1.1;
+  margin-bottom: 1.5rem;
+  color: #ffffff;
+  letter-spacing: -0.03em;
+}
+
+.dicampaign-root .gradient-text {
+  background: linear-gradient(135deg, var(--neon-green), var(--secondary));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  text-fill-color: transparent;
+}
+
+.dicampaign-root .hero-lead-text {
+  font-size: 1.25rem;
+  line-height: 1.6;
+  color: #94a3b8;
+  max-width: 650px;
+  margin: 0 auto 2.5rem;
+}
+
+.dicampaign-root .hero-actions-row {
+  display: flex;
+  gap: 1rem;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+.dicampaign-root .btn-white-border {
+  border: 2px solid rgba(255, 255, 255, 0.2);
+  color: #ffffff !important;
+}
+
+.dicampaign-root .btn-white-border:hover {
+  border-color: #ffffff;
+  background: rgba(255, 255, 255, 0.05);
+}
+
+/* ══ PROGRESS TRACKER ══════════════════════════════════ */
+.dicampaign-root .tracker-section {
+  position: relative;
+  margin-top: -3.5rem;
+  z-index: 10;
+  padding: 0 1.5rem 3.5rem 1.5rem;
+  background-color: #050811;
+}
+
+.dicampaign-root .glass-tracker {
+  background: #ffffff;
+  border: 1px solid rgba(0, 0, 0, 0.08);
   border-radius: var(--border-radius);
-}.dicampaign-root .stat-card {
+  box-shadow: 0 20px 40px -15px rgba(0, 0, 0, 0.1);
+  padding: 2rem 1.5rem;
+  max-width: 1200px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.dicampaign-root .tracker-grid {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  gap: 1.5rem;
   text-align: center;
+}
+
+.dicampaign-root .tracker-item {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.75rem;
+  padding: 0.5rem;
+}
+
+.dicampaign-root .tracker-icon {
+  font-size: 1.75rem;
+}
+
+.dicampaign-root .tracker-data {
   display: flex;
   flex-direction: column;
-  gap: 0.25rem;
-}.dicampaign-root .stat-num {
-  font-family: var(--font-heading);
-  font-size: 3rem;
+  align-items: flex-start;
+  text-align: left;
+}
+
+.dicampaign-root .tracker-num {
+  font-size: 1.75rem;
   font-weight: 800;
-  color: var(--primary);
-  line-height: 1;
-}.dicampaign-root .stat-lbl {
-  font-family: var(--font-heading);
-  font-size: 0.9rem;
+  color: #1e293b;
+  line-height: 1.2;
+}
+
+.dicampaign-root .tracker-lbl {
+  font-size: 0.75rem;
+  color: #64748b;
   font-weight: 600;
   text-transform: uppercase;
   letter-spacing: 0.05em;
+}
+
+/* ══ SECTION 1: THE PROBLEM (Dark Section) ════════════ */
+.dicampaign-root .dark-problem-section {
+  background-color: #070a13;
+  color: #ffffff;
+  padding: 8rem 0;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.dicampaign-root .huge-typography {
+  font-size: 3rem;
+  font-weight: 850;
+  line-height: 1.1;
+  color: #ffffff;
+  margin-bottom: 1rem;
+}
+
+.dicampaign-root .badge-accent {
+  background-color: rgba(251, 191, 36, 0.1);
+  color: var(--accent);
+  border: 1px solid rgba(251, 191, 36, 0.2);
+}
+
+.dicampaign-root .lead-accent {
+  font-size: 1.35rem;
+  font-weight: 700;
+  color: var(--accent);
+  margin-bottom: 1.5rem;
+}
+
+.dicampaign-root .problem-para {
+  font-size: 1.05rem;
+  color: #94a3b8;
+  line-height: 1.7;
+}
+
+.dicampaign-root .stats-four-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 1.5rem;
+}
+
+.dicampaign-root .stat-box {
+  padding: 2.25rem 1.75rem;
+  border-radius: 16px;
+  background: rgba(15, 23, 42, 0.6);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  text-align: center;
+  transition: all 0.3s ease;
+}
+
+.dicampaign-root .stat-box:hover {
+  transform: translateY(-5px);
+  background: rgba(255, 255, 255, 0.04);
+  border-color: var(--neon-green);
+  box-shadow: 0 10px 30px rgba(15, 203, 170, 0.1);
+}
+
+.dicampaign-root .stat-big-num {
+  font-size: 2.75rem;
+  font-weight: 900;
+  color: var(--neon-green);
+  margin-bottom: 0.5rem;
+  line-height: 1;
+  font-family: var(--font-heading);
+}
+
+.dicampaign-root .stat-small-lbl {
+  font-size: 0.85rem;
+  color: #94a3b8;
+  font-weight: 550;
+  line-height: 1.4;
+}
+
+/* ══ SECTION 2: SCROLL STORY ═══════════════════════════ */
+.dicampaign-root .scroll-story-section {
+  position: relative;
+  background-color: #0b0f19;
+  padding: 6rem 0;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.dicampaign-root .story-wrapper {
+  display: flex;
+  gap: 4rem;
+  align-items: flex-start;
+}
+
+.dicampaign-root .story-text-column {
+  width: 50%;
+  display: flex;
+  flex-direction: column;
+}
+
+.dicampaign-root .story-block {
+  min-height: 70vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  opacity: 0.25;
+  transform: scale(0.95);
+  transition: all 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+  padding: 2rem 0;
+}
+
+.dicampaign-root .story-block.active {
+  opacity: 1;
+  transform: scale(1);
+}
+
+.dicampaign-root .story-step-num {
+  font-size: 1rem;
+  font-weight: 800;
+  color: var(--neon-green);
+  letter-spacing: 0.1em;
+  margin-bottom: 1rem;
+}
+
+.dicampaign-root .story-block h3 {
+  font-size: 2.25rem;
+  color: #ffffff;
+  margin-bottom: 1.25rem;
+}
+
+.dicampaign-root .story-block p {
+  font-size: 1.1rem;
+  color: #94a3b8;
+  line-height: 1.7;
+}
+
+.dicampaign-root .story-image-column {
+  width: 50%;
+  position: sticky;
+  top: 120px;
+  height: 60vh;
+  display: flex;
+  align-items: center;
+}
+
+.dicampaign-root .story-image-frame {
+  width: 100%;
+  height: 100%;
+  border-radius: var(--border-radius);
+  overflow: hidden;
+  position: relative;
+  border-color: rgba(255, 255, 255, 0.08);
+}
+
+.dicampaign-root .story-slide-img {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  opacity: 0;
+  transition: opacity 0.8s cubic-bezier(0.25, 1, 0.5, 1);
+  filter: brightness(0.9);
+}
+
+.dicampaign-root .story-slide-img.visible {
+  opacity: 1;
+  z-index: 2;
+}
+
+/* ══ SECTION 3: WHO GETS LEFT BEHIND? ══════════════════ */
+.dicampaign-root .who-left-section {
+  background-color: var(--bg-color);
+}
+
+.dicampaign-root .demographic-card {
+  padding-top: 2rem;
+  overflow: hidden;
+  text-align: center;
+}
+
+.dicampaign-root .card-accent-line {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 4px;
+}
+
+.dicampaign-root .demographic-card h4 {
+  font-size: 1.35rem;
+  font-weight: 700;
+  margin-bottom: 1rem;
+}
+
+.dicampaign-root .data-costs-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 1.5rem;
+  max-width: 900px;
+  margin: 0 auto;
+}
+
+@media (max-width: 768px) {
+  .dicampaign-root .data-costs-grid {
+    grid-template-columns: 1fr;
+  }
+  .dicampaign-root .cost-card:last-child {
+    grid-column: span 1 !important;
+  }
+}
+
+.dicampaign-root .cost-card:last-child {
+  grid-column: span 2;
+}
+
+.dicampaign-root .cost-card {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 1.75rem 2rem;
+  border-radius: var(--border-radius);
+  border-color: var(--border-color);
+  background: var(--bg-card);
+  box-shadow: 0 4px 6px -1px var(--shadow-color);
+  transition: all 0.3s ease;
+  position: relative;
+  overflow: hidden;
+  text-align: center;
+}
+
+.dicampaign-root .cost-card:hover {
+  transform: scale(1.01);
+  box-shadow: 0 10px 20px -5px var(--shadow-hover);
+}
+
+.dicampaign-root .cost-card.highlight-red {
+  border-left: 5px solid #ef4444;
+  background: linear-gradient(90deg, rgba(239, 68, 68, 0.03), transparent);
+}
+
+.dicampaign-root .cost-country {
+  font-family: var(--font-heading);
+  font-size: 1.2rem;
+  font-weight: 800;
+  color: var(--text-main);
+  margin-bottom: 0.25rem;
+}
+
+.dicampaign-root .cost-price {
+  font-size: 1.75rem;
+  font-weight: 850;
+  color: var(--primary);
+  margin-bottom: 0.25rem;
+}
+
+.dicampaign-root .highlight-red .cost-price {
+  color: #ef4444;
+}
+
+.dicampaign-root .cost-label {
+  font-size: 0.78rem;
   color: var(--text-muted);
-}.dicampaign-root /* Objective Cards */
-.objective-card {
+  font-weight: 600;
+  margin-bottom: 1rem;
+}
+
+.dicampaign-root .cost-bar {
+  height: 6px;
+  border-radius: 5px;
+  margin: 0 auto;
+}
+
+/* ══ SECTION 5: WHY DATA MUST FALL (Black Section) ════ */
+.dicampaign-root .black-why-data-section {
+  background-color: #050811;
+  padding: 7rem 0;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.dicampaign-root .rationale-grid {
+  gap: 2.5rem;
+}
+
+.dicampaign-root .rationale-box {
+  background: rgba(255, 255, 255, 0.015);
+  border: 1px solid rgba(255, 255, 255, 0.05);
+  border-radius: var(--border-radius);
+  padding: 2.5rem 2rem;
+  transition: all 0.35s ease;
   text-align: center;
   display: flex;
   flex-direction: column;
   align-items: center;
-  padding: 2.5rem 2rem;
-}.dicampaign-root .icon-wrapper {
-  width: 64px;
-  height: 64px;
-  border-radius: 16px;
-  background-color: var(--primary-light);
-  color: var(--primary);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  margin-bottom: 1.5rem;
-  transition: all var(--transition-speed) ease;
-}.dicampaign-root .objective-card:hover .icon-wrapper {
-  background-color: var(--primary);
-  color: #ffffff;
-  transform: rotate(5deg) scale(1.05);
-}.dicampaign-root /* Impact Section Styles */
-.impact-section {
-  border-top: 1px solid var(--border-color);
-  padding: 6rem 0;
-}.dicampaign-root .impact-pillars-grid {
-  margin-bottom: 5rem;
-}.dicampaign-root .impact-pillar-card {
+}
+
+.dicampaign-root .rationale-box:hover {
+  background: rgba(255, 255, 255, 0.03);
+  border-color: rgba(255, 255, 255, 0.1);
+  transform: translateY(-5px);
+}
+
+.dicampaign-root .rationale-header {
   display: flex;
   flex-direction: column;
+  align-items: center;
   gap: 0.75rem;
-  padding: 2rem;
-}.dicampaign-root .pillar-icon-wrapper {
+  margin-bottom: 1.25rem;
+}
+
+.dicampaign-root .rationale-icon {
   width: 48px;
   height: 48px;
   border-radius: 12px;
-  background-color: var(--secondary-light);
-  color: var(--secondary);
+  padding: 10px;
   display: flex;
   align-items: center;
   justify-content: center;
-  margin-bottom: 0.5rem;
-  transition: all var(--transition-speed) ease;
-}.dicampaign-root .impact-pillar-card:hover .pillar-icon-wrapper {
-  background-color: var(--secondary);
+}
+
+.dicampaign-root .color-green {
+  background: rgba(15, 203, 170, 0.08);
+  color: var(--neon-green);
+}
+
+.dicampaign-root .color-blue {
+  background: rgba(59, 130, 246, 0.08);
+  color: var(--neon-blue);
+}
+
+.dicampaign-root .color-purple {
+  background: rgba(139, 92, 246, 0.08);
+  color: var(--neon-purple);
+}
+
+.dicampaign-root .rationale-box h3 {
+  font-size: 1.35rem;
+  font-weight: 750;
   color: #ffffff;
-}.dicampaign-root /* Impact Photo Showcase Grid */
-.impact-showcase-container {
-  margin-top: 4rem;
-}.dicampaign-root .impact-showcase-container h3 {
-  font-family: var(--font-heading);
-  font-size: 1.5rem;
-  font-weight: 700;
-  margin-bottom: 2rem;
-  color: var(--primary);
-  text-align: center;
-}.dicampaign-root .impact-photo-grid {
-  display: grid;
-  grid-template-columns: repeat(4, 1fr);
-  gap: 1.5rem;
-}.dicampaign-root .impact-photo-item {
+  margin-bottom: 0;
+}
+
+.dicampaign-root .rationale-box p {
+  color: #ffffff;
+  font-size: 0.95rem;
+  line-height: 1.6;
+  margin-bottom: 0;
+}
+
+/* ══ SECTION 6: WHAT WE WANT (Roadmap) ════════════════ */
+.dicampaign-root .roadmap-section {
+  background-color: var(--bg-color);
+}
+
+.dicampaign-root .roadmap-horizontal {
   display: flex;
-  flex-direction: column;
-  overflow: hidden;
-  border-radius: var(--border-radius);
-  transition: all var(--transition-speed) cubic-bezier(0.4, 0, 0.2, 1);
-}.dicampaign-root .impact-photo-item img {
-  width: 100%;
-  height: 180px;
-  object-fit: cover;
-  transition: transform 0.5s ease;
-}.dicampaign-root .impact-photo-item:hover img {
-  transform: scale(1.04);
-}.dicampaign-root .impact-photo-item:hover {
-  transform: translateY(-5px);
-  box-shadow: 0 12px 20px -3px var(--shadow-hover);
-  border-color: var(--secondary);
-}.dicampaign-root .photo-info {
-  padding: 1.25rem;
-  display: flex;
-  flex-direction: column;
-  gap: 0.25rem;
+  justify-content: space-between;
+  position: relative;
+  gap: 2rem;
+  padding-top: 2rem;
+  overflow-x: auto;
+  padding-bottom: 1rem;
+}
+
+.dicampaign-root .roadmap-horizontal::before {
+  content: '';
+  position: absolute;
+  top: 42px;
+  left: 5%;
+  width: 90%;
+  height: 2px;
+  background: var(--border-color);
+  z-index: 1;
+}
+
+.dicampaign-root .roadmap-step {
   flex: 1;
-}.dicampaign-root .photo-info h5 {
+  min-width: 180px;
+  text-align: center;
+  z-index: 2;
+  position: relative;
+}
+
+.dicampaign-root .step-circle {
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  background: var(--bg-card);
+  border: 3px solid var(--primary);
+  color: var(--primary);
   font-family: var(--font-heading);
-  font-size: 1rem;
-  font-weight: 700;
-  margin: 0;
-}.dicampaign-root .photo-info p {
+  font-weight: 800;
+  font-size: 1.1rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0 auto 1.5rem;
+  box-shadow: 0 4px 6px var(--shadow-color);
+  transition: all 0.3s ease;
+}
+
+.dicampaign-root .roadmap-step:hover .step-circle {
+  background: var(--primary);
+  color: #ffffff;
+  transform: scale(1.1);
+  box-shadow: 0 0 15px rgba(var(--primary-hsl), 0.3);
+}
+
+.dicampaign-root .roadmap-step h4 {
+  font-size: 1.15rem;
+  font-weight: 750;
+  margin-bottom: 0.5rem;
+  color: var(--text-main);
+}
+
+.dicampaign-root .roadmap-step p {
   font-size: 0.85rem;
   color: var(--text-muted);
-  margin: 0;
-  line-height: 1.4;
-}.dicampaign-root /* Call to Action Section */
-.cta-section {
-  padding-top: 3rem;
-  padding-bottom: 6rem;
-}.dicampaign-root .cta-container {
-  padding: 4rem 3rem;
-  text-align: center;
-  border-radius: var(--border-radius);
-  background: linear-gradient(135deg, var(--glass-bg), rgba(var(--secondary-hsl), 0.05));
-}.dicampaign-root .cta-container h2 {
-  font-size: 2.25rem;
-  margin-bottom: 1rem;
-}.dicampaign-root .cta-container p {
-  max-width: 550px;
-  margin: 0 auto 2rem;
-  font-size: 1.1rem;
-}.dicampaign-root .cta-container .btn {
-  box-shadow: 0 10px 25px -5px rgba(var(--secondary-hsl), 0.35);
+  line-height: 1.5;
 }
 
-@media (max-width: 1024px) {.dicampaign-root .impact-photo-grid {
+/* ══ SECTION 7: OUR STRATEGY (Timeline) ═══════════════ */
+.dicampaign-root .timeline-vertical {
+  position: relative;
+  max-width: 850px;
+  margin: 0 auto;
+  padding: 2rem 0;
+}
+
+.dicampaign-root .timeline-vertical::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 50%;
+  height: 100%;
+  width: 2px;
+  background: var(--border-color);
+  transform: translateX(-50%);
+}
+
+.dicampaign-root .timeline-block {
+  position: relative;
+  display: flex;
+  width: 100%;
+  margin-bottom: 2.5rem;
+}
+
+.dicampaign-root .timeline-block:last-child {
+  margin-bottom: 0;
+}
+
+.dicampaign-root .timeline-block:nth-child(odd) {
+  justify-content: flex-start;
+}
+
+.dicampaign-root .timeline-block:nth-child(even) {
+  justify-content: flex-end;
+}
+
+.dicampaign-root .timeline-marker {
+  position: absolute;
+  top: 24px;
+  left: 50%;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background: var(--bg-color);
+  color: var(--primary);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 2px solid var(--border-color);
+  z-index: 5;
+  box-shadow: 0 2px 4px var(--shadow-color);
+  transform: translateX(-50%);
+}
+
+.dicampaign-root .timeline-card {
+  width: 45%;
+  padding: 2rem;
+  border-radius: var(--border-radius);
+  transition: all 0.3s ease;
+}
+
+.dicampaign-root .timeline-card:hover {
+  transform: translateY(-5px);
+  border-color: var(--primary);
+}
+
+.dicampaign-root .timeline-date {
+  font-family: var(--font-heading);
+  font-size: 0.8rem;
+  font-weight: 750;
+  color: var(--primary);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  display: block;
+  margin-bottom: 0.5rem;
+}
+
+.dicampaign-root .timeline-card h3 {
+  font-size: 1.35rem;
+  font-weight: 750;
+  margin-bottom: 0.75rem;
+}
+
+.dicampaign-root .timeline-card p {
+  font-size: 0.95rem;
+  line-height: 1.6;
+  margin-bottom: 0;
+}
+
+/* ══ SECTION 8: INTERACTIVE AFRICA MAP ════════════════ */
+.dicampaign-root .map-interactive-section {
+  background-color: var(--bg-color);
+}
+
+.dicampaign-root .map-story-grid {
+  display: grid;
+  grid-template-columns: 1.2fr 0.8fr;
+  gap: 4rem;
+  align-items: center;
+}
+
+@media (max-width: 900px) {
+  .dicampaign-root .map-story-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+.dicampaign-root .map-left-render {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.dicampaign-root .interactive-svg-wrapper {
+  width: 100%;
+  max-width: 600px;
+  height: auto;
+}
+
+.dicampaign-root .interactive-svg-wrapper svg {
+  width: 100%;
+  height: auto;
+  overflow: visible;
+}
+
+/* SVG Country Path Styles */
+.dicampaign-root .interactive-svg-wrapper svg path {
+  fill: var(--border-color);
+  stroke: var(--bg-color);
+  stroke-width: 1.5px;
+  cursor: default;
+  transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+}
+
+/* Specific Highlighted Active countries (GH, KE, ZW) */
+.dicampaign-root .interactive-svg-wrapper svg path[id="GH"] {
+  fill: hsla(170, 100%, 18%, 0.4);
+  stroke: var(--primary);
+  stroke-width: 2.5px;
+  cursor: pointer;
+  filter: drop-shadow(0 0 4px rgba(15, 203, 170, 0.2));
+}
+
+.dicampaign-root .interactive-svg-wrapper svg path[id="KE"] {
+  fill: hsla(243, 75%, 59%, 0.4);
+  stroke: var(--secondary);
+  stroke-width: 2.5px;
+  cursor: pointer;
+  filter: drop-shadow(0 0 4px rgba(99, 102, 241, 0.2));
+}
+
+.dicampaign-root .interactive-svg-wrapper svg path[id="ZW"] {
+  fill: rgba(239, 68, 68, 0.4);
+  stroke: #ef4444;
+  stroke-width: 2.5px;
+  cursor: pointer;
+  filter: drop-shadow(0 0 4px rgba(239, 68, 68, 0.2));
+}
+
+/* Hover States for Active Hotspots */
+.dicampaign-root .interactive-svg-wrapper svg path[id="GH"]:hover {
+  fill: var(--primary);
+  filter: drop-shadow(0 0 10px var(--primary));
+}
+
+.dicampaign-root .interactive-svg-wrapper svg path[id="KE"]:hover {
+  fill: var(--secondary);
+  filter: drop-shadow(0 0 10px var(--secondary));
+}
+
+.dicampaign-root .interactive-svg-wrapper svg path[id="ZW"]:hover {
+  fill: #ef4444;
+  filter: drop-shadow(0 0 10px #ef4444);
+}
+
+.dicampaign-root .map-legend {
+  display: flex;
+  gap: 1.5rem;
+  margin-top: 1.5rem;
+  font-size: 0.8rem;
+  font-weight: 600;
+}
+
+.dicampaign-root .legend-item {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.dicampaign-root .legend-dot {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+}
+
+.dicampaign-root .active-dot {
+  background-color: var(--primary);
+}
+
+.dicampaign-root .normal-dot {
+  background-color: var(--border-color);
+}
+
+.dicampaign-root .map-fallback {
+  width: 100%;
+  height: 350px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 1rem;
+}
+
+.dicampaign-root .country-story-card {
+  padding: 3rem 2.5rem;
+  border-radius: var(--border-radius);
+  min-height: 300px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  position: relative;
+  transition: all 0.4s ease;
+}
+
+.dicampaign-root .card-header-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 1.5rem;
+}
+
+.dicampaign-root .country-tag {
+  font-family: var(--font-heading);
+  font-size: 0.8rem;
+  font-weight: 800;
+  color: #ffffff;
+  padding: 0.35rem 1rem;
+  border-radius: 50px;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+.dicampaign-root .country-stat-badge {
+  font-size: 0.85rem;
+  font-weight: 700;
+  color: var(--text-muted);
+}
+
+.dicampaign-root .country-story-card h3 {
+  font-size: 1.85rem;
+  font-weight: 800;
+  margin-bottom: 1rem;
+}
+
+.dicampaign-root .story-body {
+  font-size: 1.05rem;
+  line-height: 1.7;
+  color: var(--text-muted);
+  margin-bottom: 1.5rem;
+}
+
+.dicampaign-root .story-meta-row {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-size: 0.78rem;
+  color: var(--text-muted);
+  font-weight: 600;
+}
+
+.dicampaign-root .flex-center {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 1rem;
+}
+
+/* ══ SECTION 9: PARTNERS (Infinite Marquee) ═══════════ */
+.dicampaign-root .marquee-partners-section {
+  padding: 6rem 0;
+  background-color: var(--primary-light);
+  overflow: hidden;
+}
+
+.dicampaign-root .marquee-title {
+  font-size: 1.25rem;
+  font-weight: 750;
+  margin-bottom: 3rem;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: var(--text-muted);
+}
+
+.dicampaign-root .marquee-container {
+  display: flex;
+  width: 100vw;
+  position: relative;
+  overflow: hidden;
+  margin-bottom: 1.5rem;
+}
+
+.dicampaign-root .marquee-container.reverse .marquee-track {
+  animation: scrollMarqueeReverse 30s linear infinite;
+}
+
+.dicampaign-root .marquee-track {
+  display: flex;
+  gap: 4rem;
+  white-space: nowrap;
+  animation: scrollMarquee 30s linear infinite;
+}
+
+.dicampaign-root .marquee-track span {
+  font-family: var(--font-heading);
+  font-size: 2rem;
+  font-weight: 800;
+  color: var(--primary);
+  opacity: 0.25;
+  transition: opacity 0.3s ease;
+  cursor: default;
+}
+
+.dicampaign-root .marquee-track span:hover {
+  opacity: 0.7;
+}
+
+@keyframes scrollMarquee {
+  0% { transform: translateX(0); }
+  100% { transform: translateX(-50%); }
+}
+
+@keyframes scrollMarqueeReverse {
+  0% { transform: translateX(-50%); }
+  100% { transform: translateX(0); }
+}
+
+/* ══ SECTION 10: STAKEHOLDERS (Nodes Canvas) ══════════ */
+.dicampaign-root .stakeholders-graph-wrap {
+  position: relative;
+  padding: 0;
+  overflow: hidden;
+  border-color: var(--border-color);
+}
+
+.dicampaign-root .stakeholder-canvas {
+  display: block;
+  width: 100%;
+  height: 400px;
+}
+
+.dicampaign-root .stakeholder-caption-overlay {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  padding: 1rem;
+  background: linear-gradient(to top, rgba(0, 0, 0, 0.4), transparent);
+  color: #ffffff;
+  font-size: 0.8rem;
+  font-weight: 500;
+  z-index: 10;
+}
+
+[data-theme="dark"] .dicampaign-root .stakeholder-caption-overlay {
+  background: linear-gradient(to top, rgba(15, 23, 42, 0.9), transparent);
+  color: #94a3b8;
+}
+
+/* ══ SECTION 11: VISION (Full-screen Overlay) ═════════ */
+.dicampaign-root .vision-fullscreen-section {
+  position: relative;
+  height: 80vh;
+  display: flex;
+  align-items: center;
+  overflow: hidden;
+  background-color: #050811;
+}
+
+.dicampaign-root .vision-bg-parallax {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(rgba(5, 8, 17, 0.85), rgba(5, 8, 17, 0.95)), url('/images/satellite_space.png') center / cover no-repeat;
+  filter: blur(2px) grayscale(0.5);
+  transform: scale(1.05);
+}
+
+.dicampaign-root .vision-content {
+  position: relative;
+  z-index: 5;
+}
+
+.dicampaign-root .vision-lead {
+  font-size: 2.75rem;
+  font-weight: 850;
+  color: #ffffff;
+  margin-bottom: 2rem;
+  letter-spacing: -0.02em;
+}
+
+.dicampaign-root .vision-list {
+  list-style: none;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+.dicampaign-root .vision-list li {
+  font-family: var(--font-heading);
+  font-size: 2.25rem;
+  font-weight: 800;
+  background: linear-gradient(135deg, #ffffff, #94a3b8);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  text-fill-color: transparent;
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.dicampaign-root .vision-list li::before {
+  content: '→';
+  color: var(--neon-green);
+  font-weight: 400;
+}
+
+/* ══ ORIGINAL CAMPAIGN LEGACY SHOWCASE ════════════════ */
+.dicampaign-root .legacy-archival-section {
+  border-top: 1px solid var(--border-color);
+  background-color: var(--bg-color);
+}
+
+.dicampaign-root .archive-highlight-title {
+  font-size: 1.5rem;
+  font-weight: 800;
+  color: var(--primary);
+  margin-bottom: 2rem;
+  text-align: center;
+}
+
+/* ══ SECTION 12: JOIN THE MOVEMENT (CTA Section) ═══════ */
+.dicampaign-root .join-movement-section {
+  background-color: #070a13;
+  padding: 8rem 0;
+}
+
+.dicampaign-root .join-container {
+  padding: 4rem 3rem;
+  max-width: 900px;
+  margin: 0 auto;
+  border-radius: 24px;
+  border: 1px solid rgba(239, 68, 68, 0.25);
+  background: rgba(15, 23, 42, 0.95);
+  box-shadow: 0 30px 60px rgba(0, 0, 0, 0.3), 0 0 30px rgba(239, 68, 68, 0.05);
+}
+
+.dicampaign-root .cta-giant-slogan {
+  font-size: 3.25rem;
+  font-weight: 850;
+  line-height: 1.1;
+  color: #ffffff;
+  margin-bottom: 1.5rem;
+}
+
+.dicampaign-root .glow-red-text {
+  color: #ef4444;
+  text-shadow: 0 0 20px rgba(239, 68, 68, 0.2);
+}
+
+.dicampaign-root .join-lead-p {
+  font-size: 1.15rem;
+  color: #94a3b8;
+  max-width: 600px;
+  margin: 0 auto 3rem;
+  line-height: 1.6;
+}
+
+.dicampaign-root .cta-button-row {
+  display: flex;
+  gap: 1.25rem;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+/* Pulsing Button Animation */
+.dicampaign-root .pulse-btn {
+  box-shadow: 0 0 0 0 rgba(var(--secondary-hsl), 0.7);
+  animation: pulseButton 2s infinite;
+}
+
+@keyframes pulseButton {
+  0% {
+    transform: scale(1);
+    box-shadow: 0 0 0 0 rgba(var(--secondary-hsl), 0.7);
+  }
+  70% {
+    transform: scale(1.02);
+    box-shadow: 0 0 0 15px rgba(var(--secondary-hsl), 0);
+  }
+  100% {
+    transform: scale(1);
+    box-shadow: 0 0 0 0 rgba(var(--secondary-hsl), 0);
+  }
+}
+
+/* Responsive Overrides */
+@media (max-width: 1024px) {
+  .dicampaign-root .tracker-grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+  .dicampaign-root .tracker-item:nth-child(4),
+  .dicampaign-root .tracker-item:nth-child(5) {
+    grid-column: span 1.5;
+  }
+}
+
+@media (max-width: 768px) {
+  .dicampaign-root .hero-giant-title {
+    font-size: 2.75rem;
+  }
+  .dicampaign-root .tracker-grid {
     grid-template-columns: repeat(2, 1fr);
   }
+  .dicampaign-root .tracker-item:nth-child(4),
+  .dicampaign-root .tracker-item:nth-child(5) {
+    grid-column: span 1;
+  }
+  .dicampaign-root .huge-typography {
+    font-size: 2.25rem;
+  }
+  .dicampaign-root .story-wrapper {
+    flex-direction: column;
+    gap: 2rem;
+  }
+  .dicampaign-root .story-text-column,
+  .dicampaign-root .story-image-column {
+    width: 100%;
+  }
+  .dicampaign-root .story-image-column {
+    position: relative;
+    top: 0;
+    height: 40vh;
+  }
+  .dicampaign-root .story-block {
+    min-height: 40vh;
+  }
+  .dicampaign-root .roadmap-horizontal::before {
+    display: none;
+  }
+  .dicampaign-root .roadmap-horizontal {
+    flex-direction: column;
+    align-items: center;
+    gap: 3rem;
+  }
+  .dicampaign-root .cta-giant-slogan {
+    font-size: 2.25rem;
+  }
+  .dicampaign-root .join-container {
+    padding: 3rem 1.5rem;
+  }
 }
 
-@media (max-width: 600px) {.dicampaign-root .overview-stats {
-    padding: 2rem;
-  }.dicampaign-root .cta-container {
-    padding: 3rem 1.5rem;
-  }.dicampaign-root .cta-container h2 {
-    font-size: 1.75rem;
-  }.dicampaign-root .impact-photo-grid {
+@media (max-width: 480px) {
+  .dicampaign-root .tracker-grid {
     grid-template-columns: 1fr;
-  }.dicampaign-root .impact-photo-item img {
-    height: 200px;
   }
+}
+
+/* ══ CENTER UTILITIES & BADGES ═════════════════════════ */
+.dicampaign-root .text-center {
+  text-align: center !important;
+}
+
+.dicampaign-root .badge {
+  display: inline-block;
+  padding: 0.4rem 1.2rem;
+  border-radius: 50px;
+  background-color: rgba(99, 102, 241, 0.1);
+  color: var(--secondary);
+  font-family: var(--font-heading);
+  font-weight: 750;
+  font-size: 0.8rem;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  margin-bottom: 0.75rem;
+  border: 1px solid rgba(99, 102, 241, 0.2);
+}
+
+.dicampaign-root .badge-secondary {
+  background-color: rgba(239, 68, 68, 0.1);
+  color: #ef4444;
+  border: 1px solid rgba(239, 68, 68, 0.2);
+}
+
+.dicampaign-root .badge-accent {
+  background-color: rgba(251, 191, 36, 0.1);
+  color: var(--accent);
+  border: 1px solid rgba(251, 191, 36, 0.2);
+}
+
+/* ══ ARCHIVED PHOTO MARQUEE ══════════════════════════ */
+.dicampaign-root .impact-photo-marquee-wrapper {
+  overflow: hidden;
+  width: 100%;
+  position: relative;
+  padding: 1.5rem 0;
+  margin-top: 2.5rem;
+}
+
+.dicampaign-root .impact-photo-marquee-track {
+  display: flex;
+  gap: 2rem;
+  width: max-content;
+  animation: photoMarquee 45s linear infinite;
+}
+
+.dicampaign-root .impact-photo-marquee-track:hover {
+  animation-play-state: paused;
+}
+
+.dicampaign-root .impact-photo-item {
+  width: 320px;
+  flex-shrink: 0;
+  border-radius: 16px;
+  overflow: hidden;
+  position: relative;
+  background: var(--bg-card);
+  border: 1px solid var(--border-color);
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
+  display: flex;
+  flex-direction: column;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.dicampaign-root .impact-photo-item:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+  border-color: var(--primary);
+}
+
+.dicampaign-root .impact-photo-item img {
+  width: 100%;
+  height: 200px;
+  object-fit: cover;
+}
+
+.dicampaign-root .photo-info {
+  padding: 1.25rem;
+  flex-grow: 1;
+}
+
+.dicampaign-root .photo-info h5 {
+  font-size: 1.05rem;
+  font-weight: 750;
+  color: var(--text-main);
+  margin-bottom: 0.5rem;
+  line-height: 1.3;
+}
+
+.dicampaign-root .photo-info p {
+  font-size: 0.85rem;
+  color: var(--text-muted);
+  line-height: 1.4;
+  margin-bottom: 0;
+}
+
+@keyframes photoMarquee {
+  0% { transform: translateX(0); }
+  100% { transform: translateX(-50%); }
 }

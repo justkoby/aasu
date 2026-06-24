@@ -1193,6 +1193,30 @@ const searchData = [
     path: "/news/news-saqa-ceo-visit-2026",
     category: "News & Events",
     keywords: ["saqa", "nadia starr", "divine kwadzodeh", "courtesy visit", "educational cooperation", "pan-african", "student mobility", "qualifications", "accra", "ghana", "news"]
+  },
+  {
+    id: 146,
+    title: "Digital Inclusion Campaign - #DataMustFall",
+    description: "AASU's continental campaign demanding digital rights, zero-rated study portals, and affordable internet data for students in Africa.",
+    path: "/dicampaign",
+    category: "What We Do",
+    keywords: ["digital inclusion", "data must fall", "education must rise", "internet", "connectivity", "subsidized data", "zero-rated", "student rights", "advocacy", "campaign", "telecoms"]
+  },
+  {
+    id: 147,
+    title: "Data Must Fall - Campaign Updates & News",
+    description: "Read the latest updates, statements, and developments from the AASU Digital Inclusion Campaign across the continent.",
+    path: "/dicampaign/updates",
+    category: "News & Events",
+    keywords: ["data must fall updates", "campaign news", "advocacy updates", "digital rights updates", "press release", "mansu", "malawi", "zimbabwe", "ghana"]
+  },
+  {
+    id: 148,
+    title: "Data Must Fall - Campaign Gallery",
+    description: "View photos and visual highlights from the digital inclusion campaign mobilization and workshops across Africa.",
+    path: "/dicampaign/gallery",
+    category: "Resources",
+    keywords: ["campaign gallery", "photos", "action highlights", "mansu mobilization", "advocacy workshop photos", "visuals"]
   }
 ];
 

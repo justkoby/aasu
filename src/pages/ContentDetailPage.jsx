@@ -37,6 +37,10 @@ const ContentDetailPage = () => {
 
   const ended = content.date ? isEventEnded(content.date) : false;
 
+  const currentIndex = newsEventsData.findIndex(item => item.id === content.id);
+  const nextArticle = currentIndex > 0 ? newsEventsData[currentIndex - 1] : null;
+  const prevArticle = currentIndex < newsEventsData.length - 1 ? newsEventsData[currentIndex + 1] : null;
+
   // Query related press releases if this is a press release
   const relatedReleases = newsEventsData
     .filter(item => item.type === 'Press Release' && item.id !== content.id)
@@ -215,6 +219,23 @@ const ContentDetailPage = () => {
              )}
           </div>
         </article>
+
+        {/* Navigation Section */}
+        <div className="article-navigation">
+          {prevArticle ? (
+            <Link to={`/news/${prevArticle.id}`} className="nav-link prev">
+              <span className="nav-label">← PREVIOUS ARTICLE</span>
+              <span className="nav-title">{prevArticle.title}</span>
+            </Link>
+          ) : <div className="nav-placeholder" />}
+          
+          {nextArticle ? (
+            <Link to={`/news/${nextArticle.id}`} className="nav-link next">
+              <span className="nav-label">NEXT ARTICLE →</span>
+              <span className="nav-title">{nextArticle.title}</span>
+            </Link>
+          ) : <div className="nav-placeholder" />}
+        </div>
 
         {/* Related Press Releases Section */}
         {content.type === 'Press Release' && relatedReleases.length > 0 && (
@@ -625,6 +646,56 @@ const ContentDetailPage = () => {
           -webkit-box-orient: vertical;
           overflow: hidden;
           margin: 0;
+        }
+
+        /* ── NAVIGATION ──────────────────────── */
+        .article-navigation {
+          display: flex;
+          justify-content: space-between;
+          margin-top: 4rem;
+          padding-top: 2rem;
+          border-top: 1px solid #eee;
+          gap: 2rem;
+        }
+
+        .nav-link {
+          display: flex;
+          flex-direction: column;
+          text-decoration: none;
+          max-width: 48%;
+          transition: transform 0.2s;
+        }
+
+        .nav-link:hover {
+          transform: translateY(-2px);
+        }
+
+        .nav-link.next {
+          align-items: flex-end;
+          text-align: right;
+        }
+
+        .nav-label {
+          font-size: 0.75rem;
+          font-weight: 800;
+          color: #888;
+          margin-bottom: 0.5rem;
+          letter-spacing: 1px;
+        }
+
+        .nav-title {
+          font-size: 1rem;
+          font-weight: 700;
+          color: #111;
+          line-height: 1.4;
+        }
+
+        .nav-title:hover {
+          color: var(--primary-red);
+        }
+
+        .nav-placeholder {
+          flex: 1;
         }
 
         @media (max-width: 900px) {

@@ -59,16 +59,9 @@ const GenderPage = () => {
                 <Compass className="section-icon" style={{ color: accentColor }} />
                 <h2 className="section-title">OVERVIEW</h2>
               </div>
-              <p>A truly transformative education system is one that works for everyone.</p>
-              <p>
-                Across Africa, gender disparities and social inequalities continue to limit access to education, opportunities, and leadership for millions of students—particularly women, girls, and marginalized groups. These challenges are not just social issues; they are systemic barriers that hinder the continent’s full potential.
-              </p>
-              <p>
-                The All-Africa Students Union (AASU) is committed to advancing gender equity and inclusive participation across all levels of education and society. Through advocacy, education, and community engagement, AASU works to create an environment where every student—regardless of gender, socioeconomic background, disability, or identity—can access opportunities and contribute meaningfully.
-              </p>
-              <p>
-                Aligned with Sustainable Development Goal 5 (Gender Equality) and broader inclusion frameworks, this priority area ensures that equity is not an afterthought—but a core pillar of development and education reform.
-              </p>
+              <p>Gender equity and social inclusion are central to achieving just and effective education systems. Under this priority, AASU works to advance the rights, dignity, and full participation of women, girls, and marginalised student populations across Africa.</p>
+              <p>Our interventions address structural barriers to participation, including gender-based discrimination, access to education, leadership representation, health and dignity, and safe learning environments. AASU’s approach emphasises practical, community-level action alongside policy advocacy, ensuring that gender equality and inclusion are embedded within education systems, student governance, and institutional cultures.</p>
+              <p>This priority aligns with SDG 5 (Gender Equality) and supports Agenda 2063’s commitment to inclusive development, social justice, and the full empowerment of women and young people.</p>
             </motion.div>
             <motion.div initial={{ opacity: 0, scale: 0.9 }} whileInView={{ opacity: 1, scale: 1 }} viewport={{ once: true }} className="overview-image-container dual-carousel">
               <div className="carousel-column col-1">
