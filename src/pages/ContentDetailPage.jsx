@@ -223,18 +223,18 @@ const ContentDetailPage = () => {
         {/* Navigation Section */}
         <div className="article-navigation">
           {prevArticle ? (
-            <Link to={`/news/${prevArticle.id}`} className="nav-link prev">
-              <span className="nav-label">← PREVIOUS ARTICLE</span>
-              <span className="nav-title">{prevArticle.title}</span>
+            <Link to={`/news/${prevArticle.id}`} className="article-nav-link prev">
+              <span className="article-nav-label">← PREVIOUS ARTICLE</span>
+              <span className="article-nav-title">{prevArticle.title}</span>
             </Link>
-          ) : <div className="nav-placeholder" />}
+          ) : <div className="article-nav-placeholder" />}
           
           {nextArticle ? (
-            <Link to={`/news/${nextArticle.id}`} className="nav-link next">
-              <span className="nav-label">NEXT ARTICLE →</span>
-              <span className="nav-title">{nextArticle.title}</span>
+            <Link to={`/news/${nextArticle.id}`} className="article-nav-link next">
+              <span className="article-nav-label">NEXT ARTICLE →</span>
+              <span className="article-nav-title">{nextArticle.title}</span>
             </Link>
-          ) : <div className="nav-placeholder" />}
+          ) : <div className="article-nav-placeholder" />}
         </div>
 
         {/* Related Press Releases Section */}
@@ -658,7 +658,7 @@ const ContentDetailPage = () => {
           border-top: 1px solid #eee;
         }
 
-        .nav-link {
+        .article-nav-link {
           display: flex;
           flex-direction: column;
           text-decoration: none;
@@ -667,21 +667,22 @@ const ContentDetailPage = () => {
           border: 1px solid #eee;
           border-radius: 8px;
           transition: all 0.3s ease;
+          white-space: normal;
         }
 
-        .nav-link:hover {
+        .article-nav-link:hover {
           background: #fff;
           border-color: var(--primary-red);
           transform: translateY(-3px);
           box-shadow: 0 10px 20px rgba(0,0,0,0.05);
         }
 
-        .nav-link.next {
+        .article-nav-link.next {
           align-items: flex-end;
           text-align: right;
         }
 
-        .nav-label {
+        .article-nav-label {
           font-size: 0.75rem;
           font-weight: 800;
           color: #888;
@@ -689,7 +690,7 @@ const ContentDetailPage = () => {
           letter-spacing: 1px;
         }
 
-        .nav-title {
+        .article-nav-title {
           font-size: 0.95rem;
           font-weight: 700;
           color: #222;
@@ -698,13 +699,14 @@ const ContentDetailPage = () => {
           -webkit-line-clamp: 2;
           -webkit-box-orient: vertical;
           overflow: hidden;
+          white-space: normal;
         }
 
-        .nav-title:hover {
+        .article-nav-title:hover {
           color: var(--primary-red);
         }
 
-        .nav-placeholder {
+        .article-nav-placeholder {
           visibility: hidden;
         }
 
