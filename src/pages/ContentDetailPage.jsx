@@ -650,24 +650,30 @@ const ContentDetailPage = () => {
 
         /* ── NAVIGATION ──────────────────────── */
         .article-navigation {
-          display: flex;
-          justify-content: space-between;
+          display: grid;
+          grid-template-columns: 1fr 1fr;
+          gap: 2rem;
           margin-top: 4rem;
           padding-top: 2rem;
           border-top: 1px solid #eee;
-          gap: 2rem;
         }
 
         .nav-link {
           display: flex;
           flex-direction: column;
           text-decoration: none;
-          max-width: 48%;
-          transition: transform 0.2s;
+          padding: 1.5rem;
+          background: #fafafa;
+          border: 1px solid #eee;
+          border-radius: 8px;
+          transition: all 0.3s ease;
         }
 
         .nav-link:hover {
-          transform: translateY(-2px);
+          background: #fff;
+          border-color: var(--primary-red);
+          transform: translateY(-3px);
+          box-shadow: 0 10px 20px rgba(0,0,0,0.05);
         }
 
         .nav-link.next {
@@ -684,10 +690,14 @@ const ContentDetailPage = () => {
         }
 
         .nav-title {
-          font-size: 1rem;
+          font-size: 0.95rem;
           font-weight: 700;
-          color: #111;
-          line-height: 1.4;
+          color: #222;
+          line-height: 1.45;
+          display: -webkit-box;
+          -webkit-line-clamp: 2;
+          -webkit-box-orient: vertical;
+          overflow: hidden;
         }
 
         .nav-title:hover {
@@ -695,7 +705,7 @@ const ContentDetailPage = () => {
         }
 
         .nav-placeholder {
-          flex: 1;
+          visibility: hidden;
         }
 
         @media (max-width: 900px) {
