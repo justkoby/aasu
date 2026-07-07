@@ -177,6 +177,25 @@ The conference served as an important platform for dialogue on the collective re
 #AASU #ReparatoryJustice #JusticeForAfrica #AfricanYouth #YouthLeadership`
   },
   {
+    id: 'news-au-reflection-forum-2026',
+    type: CONTENT_TYPES.NEWS,
+    category: 'Democracy & Good Governance',
+    title: 'Secretary-General Represents AASU at African Union Reflection Forum on Unconstitutional Changes of Government',
+    img: '/AU-ref-1.png',
+    images: ['/AU-ref-1.png', '/AU-ref-2.png', '/AU-ref-3.png', '/AU-ref-4.png', '/AU-ref-5.png'],
+    date: '2026-07-03',
+    excerpt: 'Divine Kwadzodeh represents AASU at the Opening Session of the Third African Union Reflection Forum in Accra under the theme "Youth Inclusion for African Stability."',
+    description: `On Friday, 3 July 2026, the Secretary-General of the All-Africa Students Union (AASU), Divine Kwadzodeh, participated in the Opening Session of the Third African Union Reflection Forum on Unconstitutional Changes of Government, happening in Accra from July 3 to 4, 2026 under the theme "Youth Inclusion for African Stability."
+
+Convened by the African Union Commission in partnership with the Government of Ghana, the Forum brings together government ministers, security chiefs, policymakers, governance experts, youth leaders and development partners to examine the causes of unconstitutional changes of government and to strengthen Africa's collective response to democratic instability.
+
+The Forum speaks directly to one of AASU's strategic priorities: Democracy, Good Governance, Peace and Security.
+Across the continent, political instability continues to disrupt education, weaken public institutions, displace communities and deny millions of young Africans the opportunity to learn, participate and contribute meaningfully to national development. For African students, democracy and constitutional governance are not abstract political ideals; they are essential conditions for stable education systems, academic freedom and social progress.
+
+Through its participation, AASU continues to ensure that the perspectives of African students form part of continental conversations on governance, peace and democratic development, while strengthening its engagement with the African Union and other institutions working to build a more stable and prosperous Africa.
+The Union remains committed to advancing a continent where democratic governance, the rule of law and peaceful constitutional processes create the conditions necessary for education, innovation and the full participation of young people in public life.`
+  },
+  {
     id: 'pr-protection-african-students-sa-2026',
     type: CONTENT_TYPES.PRESS_RELEASE,
     category: 'Education & Students Rights',

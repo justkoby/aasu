@@ -1225,6 +1225,14 @@ const searchData = [
     path: "/news/pr-protection-african-students-sa-2026",
     category: "News & Events",
     keywords: ["south africa", "african students", "student protection", "xenophobia", "student safety", "press release", "pr.sg.26.017"]
+  },
+  {
+    id: 150,
+    title: "Secretary-General Represents AASU at African Union Reflection Forum on Unconstitutional Changes of Government",
+    description: "Divine Kwadzodeh represents AASU at the Opening Session of the Third African Union Reflection Forum in Accra under the theme 'Youth Inclusion for African Stability'.",
+    path: "/news/news-au-reflection-forum-2026",
+    category: "News & Events",
+    keywords: ["african union", "reflection forum", "accra", "ghana", "divine kwadzodeh", "democracy", "stability", "unconstitutional changes of government"]
   }
 ];
 
