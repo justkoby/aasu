@@ -20,6 +20,35 @@ const ContentDetailPage = () => {
     ? Array.from(new Set([content.img, ...(content.images || [])])).filter(Boolean)
     : [];
 
+  const renderTextWithLinks = (text) => {
+    if (!text) return null;
+    const urlRegex = /(https?:\/\/[^\s]+)/g;
+    return text.split('\n').map((para, i) => {
+      if (!para.trim()) return <br key={i} />;
+      const parts = para.split(urlRegex);
+      return (
+        <p key={i}>
+          {parts.map((part, j) => {
+            if (part.match(urlRegex)) {
+              return (
+                <a 
+                  key={j} 
+                  href={part} 
+                  target="_blank" 
+                  rel="noopener noreferrer"
+                  className="article-body-link"
+                >
+                  {part}
+                </a>
+              );
+            }
+            return part;
+          })}
+        </p>
+      );
+    });
+  };
+
   useEffect(() => {
     if (!lightboxOpen) return;
     const handleKeyDown = (e) => {
@@ -206,11 +235,9 @@ const ContentDetailPage = () => {
             </div>
           )}
 
-          <div className="article-body">
+          <div className={`article-body ${content.type !== 'Event' ? 'full-width-body' : ''}`}>
               <div className="article-main-text">
-                {content.description?.split('\n').map((para, i) => (
-                  para.trim() ? <p key={i}>{para}</p> : <br key={i} />
-                ))}
+                {renderTextWithLinks(content.description)}
 
                 {/* Share Box for News (Non-Event) */}
                 {content.type !== 'Event' && renderShareButtons()}
@@ -443,9 +470,21 @@ const ContentDetailPage = () => {
         }
 
         /* If not an event, take full width */
-        .detail-article:not(:has(.article-sidebar)) .article-body {
+        .article-body.full-width-body {
           grid-template-columns: 1fr;
           max-width: 800px;
+        }
+
+        .article-body-link {
+          color: var(--primary-red);
+          text-decoration: underline;
+          font-weight: 600;
+          word-break: break-all;
+          transition: color 0.2s;
+        }
+
+        .article-body-link:hover {
+          color: var(--primary-red-hover, #992d29);
         }
 
         .article-main-text {
@@ -776,8 +815,8 @@ const ContentDetailPage = () => {
           position: fixed;
           top: 0;
           left: 0;
-          width: 100vw;
-          height: 100vh;
+          right: 0;
+          bottom: 0;
           background: rgba(0, 0, 0, 0.85);
           backdrop-filter: blur(8px);
           z-index: 9999;
