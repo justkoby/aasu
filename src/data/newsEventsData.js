@@ -12,6 +12,25 @@ export const CONTENT_TYPES = {
 
 export const newsEventsData = [
   {
+    id: 'news-times-higher-education-sustainability-2026',
+    type: CONTENT_TYPES.NEWS,
+    category: 'Environment & Climate Action',
+    title: 'AASU Featured in Maiden Times Higher Education Sustainability Impact Ratings 2026',
+    img: '/Pages from Binder1.jpeg',
+    images: ['/Pages from Binder2.jpeg'],
+    date: '2026-07-07',
+    excerpt: 'We are proud to share that the All-Africa Students Union (AASU) has been featured in the maiden Times Higher Education Sustainability Impact Ratings 2026 publication, launched at the Global Sustainable Development Congress (GSDC) 2026.',
+    description: `We are proud to share that the All-Africa Students Union (AASU) has been featured in the maiden Times Higher Education Sustainability Impact Ratings 2026 publication, launched at the Global Sustainable Development Congress (GSDC) 2026.
+
+The Sustainability Impact Ratings highlights the efforts of higher education institutions and stakeholders advancing the United Nations Sustainable Development Goals (SDGs), showcasing impactful sustainability initiatives from around the world.
+
+Our feature highlights AASU’s commitment to mobilizing students across Africa to drive climate action, environmental sustainability, and sustainable development.
+
+We extend our sincere gratitude to Times Higher Education and Naomi Firsht for the opportunity to be featured in this flagship publication and contribute to the global sustainability conversation.
+
+Read the publication here: https://flipbooks.timeshighereducation.com/19712/148288/index.html?98172=&page=2`
+  },
+  {
     id: 'event-russia-africa-scientists-2026',
     type: CONTENT_TYPES.EVENT,
     category: 'Science & Innovation',

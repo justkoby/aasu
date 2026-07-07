@@ -1233,6 +1233,14 @@ const searchData = [
     path: "/news/news-au-reflection-forum-2026",
     category: "News & Events",
     keywords: ["african union", "reflection forum", "accra", "ghana", "divine kwadzodeh", "democracy", "stability", "unconstitutional changes of government"]
+  },
+  {
+    id: 151,
+    title: "All-Africa Students Union (AASU) Featured in Times Higher Education Sustainability Impact Ratings 2026",
+    description: "We are proud to share that the All-Africa Students Union (AASU) has been featured in the maiden Times Higher Education Sustainability Impact Ratings 2026 publication, launched at the Global Sustainable Development Congress (GSDC) 2026.",
+    path: "/news/news-times-higher-education-sustainability-2026",
+    category: "News & Events",
+    keywords: ["times higher education", "sustainability impact ratings", "2026", "sustainability", "global sustainable development congress", "gsdc", "news", "aasu", "environmental sustainability"]
   }
 ];
 

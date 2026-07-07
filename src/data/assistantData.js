@@ -25,6 +25,7 @@ export const documents = [
   { title: "SDG4 Concept Note", year: "Education", type: "Concept Note", link: "/Concept Note for SDG4.pdf" },
   { title: "Climate Change & SDGs", year: "Climate", type: "Policy", link: "/CLIMATE CHANGE, the SDGs.pdf" },
   { title: "Green Skills Green Jobs Report", year: "Climate", type: "Report", link: "/REPORT_GREEN SKILLS GREEN JOBS.pdf" },
+  { title: "AASU Featured in Times Higher Education Sustainability Impact Ratings 2026", year: "2026", type: "News", link: "/news/news-times-higher-education-sustainability-2026" },
   { title: "Statement: Rwanda Genocide 2026", year: "2026", type: "Statement", link: "/news/rwanda-genocide-remembrance-2026" },
   { title: "Election Results: 14th Elective Congress", year: "2025", type: "Statement", link: "/news/elections-results-final-phase" },
   { title: "NELS Spring 2026 Registration", year: "2026", type: "Statement", link: "/news/nels-spring-2026" },
