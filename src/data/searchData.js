@@ -1217,6 +1217,14 @@ const searchData = [
     path: "/dicampaign/gallery",
     category: "Resources",
     keywords: ["campaign gallery", "photos", "action highlights", "mansu mobilization", "advocacy workshop photos", "visuals"]
+  },
+  {
+    id: 149,
+    title: "AASU Calls for Enhanced Protection of African Students in South Africa",
+    description: "The All-Africa Students Union (AASU) is closely monitoring recent developments in South Africa and calling for the protection of African students.",
+    path: "/news/pr-protection-african-students-sa-2026",
+    category: "News & Events",
+    keywords: ["south africa", "african students", "student protection", "xenophobia", "student safety", "press release", "pr.sg.26.017"]
   }
 ];
 

@@ -177,6 +177,32 @@ The conference served as an important platform for dialogue on the collective re
 #AASU #ReparatoryJustice #JusticeForAfrica #AfricanYouth #YouthLeadership`
   },
   {
+    id: 'pr-protection-african-students-sa-2026',
+    type: CONTENT_TYPES.PRESS_RELEASE,
+    category: 'Education & Students Rights',
+    pressReleaseCategory: 'Statements',
+    refNumber: 'PR.SG.26.017',
+    title: 'AASU Calls for Enhanced Protection of African Students in South Africa',
+    img: '/aasu-plhd.jpg',
+    date: '2026-07-03',
+    excerpt: 'The All-Africa Students Union (AASU) is closely monitoring recent developments in South Africa and calling for the protection of African students.',
+    description: `The All-Africa Students Union (AASU) is closely monitoring recent developments in the Republic of South Africa and the concerns these have generated among African students, their families, national student unions and higher education stakeholders across the continent.
+
+As Africa advances the African Union's vision of continental integration, academic mobility and people-to-people cooperation, the safety and dignity of every African student studying beyond his or her national borders must remain a shared continental responsibility. No student should have to pursue his or her education under conditions of fear, uncertainty or intimidation. Over the past several days, AASU has engaged recognised student unions and student leaders in South Africa and other parts of the continent to obtain first-hand information on the evolving situation.
+
+From these consultations, the Union notes the assurances received from South African student leaders that, based on information currently available to them, there have been no verified reports of organised attacks specifically targeting foreign students within universities and other higher education institutions. We commend South African student unions for their responsible engagement with university authorities, their efforts to reassure students, discourage misinformation and promote calm across campuses.
+
+At the same time, AASU recognises that incidents reported in some communities and schools, together with heightened public tensions surrounding migration, have understandably generated anxiety among many African students and their families. Even where university campuses remain stable, the broader environment requires vigilance and proactive measures to safeguard students.
+
+The Union therefore emphasises that student safety cannot depend solely on the absence of reported attacks. It must be guaranteed through visible institutional protection, effective coordination among relevant authorities, and sustained public confidence. Every African student in South Africa should be able to study, conduct research, move freely and participate fully in academic life without fear of harassment, discrimination, intimidation or violence. AASU unequivocally condemns xenophobia, hate speech, vigilantism, collective punishment and every form of violence directed against foreign nationals.
+
+The Union equally recognises that the management of migration and the enforcement of immigration laws remain the sovereign responsibility of the Government of the Republic of South Africa. Such responsibilities must, however, be exercised through lawful institutions, due process and full respect for constitutional principles, human dignity and South Africa's regional and international obligations. Legitimate policy debates concerning migration can never justify violence, intimidation or discrimination against individuals on account of their nationality or perceived immigration status.
+
+Signed
+Divine Edem Kwadzodeh
+Secretary-General`
+  },
+  {
     id: 'event-climate-forward-summit-2026',
     type: CONTENT_TYPES.EVENT,
     category: 'Environment & Climate Action',
