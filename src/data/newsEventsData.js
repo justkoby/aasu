@@ -182,7 +182,7 @@ The conference served as an important platform for dialogue on the collective re
     category: 'Environment & Climate Action',
     title: 'Climate Forward Summit 2026: The Circular Transition',
     img: '/wastetowealth.png',
-    date: '2026-06-19',
+    date: '2026-07-09',
     time: '10:00 AM GMT',
     platform: 'Executive Conference Centre, GIMPA, Ghana',
     link: 'http://www.climateforwardsummit.org/register',
