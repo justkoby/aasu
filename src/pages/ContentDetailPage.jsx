@@ -1,7 +1,7 @@
-import React, { useEffect } from 'react';
+import React, { useState, useEffect } from 'react';
 import { useParams, useNavigate, Link } from 'react-router-dom';
-import { motion } from 'framer-motion';
-import { Calendar, Tag, ChevronLeft, Clock, MapPin, ExternalLink, Share2, Facebook, Twitter, Linkedin, Link as LinkIcon, FileText } from 'lucide-react';
+import { motion, AnimatePresence } from 'framer-motion';
+import { Calendar, Tag, ChevronLeft, ChevronRight, Clock, MapPin, ExternalLink, Share2, Facebook, Twitter, Linkedin, Link as LinkIcon, FileText } from 'lucide-react';
 import { newsEventsData, isEventEnded } from '../data/newsEventsData';
 
 import SEO from '../components/SEO';
@@ -11,6 +11,28 @@ const ContentDetailPage = () => {
   const navigate = useNavigate();
   
   const content = newsEventsData.find(item => item.id === id);
+
+  const [lightboxOpen, setLightboxOpen] = useState(false);
+  const [activeImgIndex, setActiveImgIndex] = useState(0);
+
+  // Combine cover image and additional images, removing duplicates
+  const allImages = content 
+    ? Array.from(new Set([content.img, ...(content.images || [])])).filter(Boolean)
+    : [];
+
+  useEffect(() => {
+    if (!lightboxOpen) return;
+    const handleKeyDown = (e) => {
+      if (e.key === 'Escape') setLightboxOpen(false);
+      else if (e.key === 'ArrowRight') {
+        setActiveImgIndex(prev => (prev + 1) % allImages.length);
+      } else if (e.key === 'ArrowLeft') {
+        setActiveImgIndex(prev => (prev - 1 + allImages.length) % allImages.length);
+      }
+    };
+    window.addEventListener('keydown', handleKeyDown);
+    return () => window.removeEventListener('keydown', handleKeyDown);
+  }, [lightboxOpen, allImages.length]);
 
   useEffect(() => {
     window.scrollTo(0, 0);
@@ -140,7 +162,18 @@ const ContentDetailPage = () => {
             animate={{ opacity: 1, scale: 1 }}
             transition={{ delay: 0.2 }}
           >
-            <img src={content.img} alt={content.title} className="detail-main-img" />
+            <img 
+              src={content.img} 
+              alt={content.title} 
+              className="detail-main-img clickable-img" 
+              onClick={() => {
+                const idx = allImages.indexOf(content.img);
+                if (idx !== -1) {
+                  setActiveImgIndex(idx);
+                  setLightboxOpen(true);
+                }
+              }}
+            />
             {content.type === 'Event' && ended && (
               <div className="status-overlay">EVENT HAS ENDED</div>
             )}
@@ -149,18 +182,27 @@ const ContentDetailPage = () => {
           {/* Additional Images Gallery */}
           {content.images && content.images.length > 0 && (
             <div className="additional-images-grid">
-              {content.images.map((img, idx) => (
-                <motion.div 
-                  key={idx}
-                  className="gallery-img-wrapper"
-                  initial={{ opacity: 0, y: 20 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  viewport={{ once: true }}
-                  transition={{ delay: idx * 0.1 }}
-                >
-                  <img src={img} alt={`${content.title} gallery ${idx + 1}`} />
-                </motion.div>
-              ))}
+              {content.images.map((img, idx) => {
+                const imgIndex = allImages.indexOf(img);
+                return (
+                  <motion.div 
+                    key={idx}
+                    className="gallery-img-wrapper clickable-img"
+                    initial={{ opacity: 0, y: 20 }}
+                    whileInView={{ opacity: 1, y: 0 }}
+                    viewport={{ once: true }}
+                    transition={{ delay: idx * 0.1 }}
+                    onClick={() => {
+                      if (imgIndex !== -1) {
+                        setActiveImgIndex(imgIndex);
+                        setLightboxOpen(true);
+                      }
+                    }}
+                  >
+                    <img src={img} alt={`${content.title} gallery ${idx + 1}`} />
+                  </motion.div>
+                );
+              })}
             </div>
           )}
 
@@ -718,7 +760,217 @@ const ContentDetailPage = () => {
           .sidebar-card { position: static; }
           .related-grid { grid-template-columns: 1fr; }
         }
+
+        /* Clickable Images cursor */
+        .clickable-img {
+          cursor: pointer;
+          transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        .clickable-img:hover {
+          transform: translateY(-2px);
+          box-shadow: 0 10px 20px rgba(0,0,0,0.15);
+        }
+
+        /* Lightbox Overlay */
+        .lightbox-overlay {
+          position: fixed;
+          top: 0;
+          left: 0;
+          width: 100vw;
+          height: 100vh;
+          background: rgba(0, 0, 0, 0.85);
+          backdrop-filter: blur(8px);
+          z-index: 9999;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          user-select: none;
+        }
+
+        /* Lightbox Navigation Buttons */
+        .lightbox-nav {
+          position: absolute;
+          top: 50%;
+          transform: translateY(-50%);
+          background: rgba(255, 255, 255, 0.1);
+          border: 1px solid rgba(255, 255, 255, 0.2);
+          color: white;
+          border-radius: 50%;
+          width: 56px;
+          height: 56px;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          cursor: pointer;
+          transition: all 0.2s ease;
+          z-index: 10001;
+        }
+        .lightbox-nav:hover {
+          background: rgba(255, 255, 255, 0.25);
+          transform: translateY(-50%) scale(1.1);
+        }
+        .lightbox-nav.prev {
+          left: 2rem;
+        }
+        .lightbox-nav.next {
+          right: 2rem;
+        }
+
+        /* Close Button */
+        .lightbox-close {
+          position: absolute;
+          top: 2rem;
+          right: 2rem;
+          background: rgba(255, 255, 255, 0.1);
+          border: 1px solid rgba(255, 255, 255, 0.2);
+          color: white;
+          width: 48px;
+          height: 48px;
+          border-radius: 50%;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          cursor: pointer;
+          transition: all 0.2s ease;
+          z-index: 10002;
+        }
+        .lightbox-close:hover {
+          background: rgba(255, 255, 255, 0.25);
+          transform: scale(1.1);
+        }
+        .close-icon {
+          font-size: 24px;
+          line-height: 1;
+        }
+
+        /* Lightbox Content & Image */
+        .lightbox-content {
+          position: relative;
+          max-width: 80%;
+          max-height: 80%;
+          display: flex;
+          flex-direction: column;
+          align-items: center;
+          justify-content: center;
+        }
+        .lightbox-image {
+          max-width: 100%;
+          max-height: 85vh;
+          object-fit: contain;
+          border-radius: 8px;
+          box-shadow: 0 20px 40px rgba(0, 0, 0, 0.5);
+          border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        /* Lightbox Counter */
+        .lightbox-counter {
+          color: rgba(255, 255, 255, 0.7);
+          font-size: 0.9rem;
+          margin-top: 1rem;
+          background: rgba(0, 0, 0, 0.4);
+          padding: 4px 12px;
+          border-radius: 20px;
+          border: 1px solid rgba(255, 255, 255, 0.1);
+          font-weight: 500;
+        }
+
+        @media (max-width: 768px) {
+          .lightbox-nav {
+            width: 44px;
+            height: 44px;
+          }
+          .lightbox-nav.prev {
+            left: 0.5rem;
+          }
+          .lightbox-nav.next {
+            right: 0.5rem;
+          }
+          .lightbox-close {
+            top: 1rem;
+            right: 1rem;
+            width: 40px;
+            height: 40px;
+          }
+          .lightbox-content {
+            max-width: 95%;
+          }
+        }
       `}} />
+
+      <AnimatePresence>
+        {lightboxOpen && allImages.length > 0 && (
+          <motion.div 
+            className="lightbox-overlay"
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            onClick={() => setLightboxOpen(false)}
+          >
+            {/* Close Button */}
+            <button 
+              className="lightbox-close" 
+              onClick={(e) => {
+                e.stopPropagation();
+                setLightboxOpen(false);
+              }}
+              aria-label="Close lightbox"
+            >
+              <span className="close-icon">&times;</span>
+            </button>
+
+            {/* Left Control */}
+            {allImages.length > 1 && (
+              <button 
+                className="lightbox-nav prev" 
+                onClick={(e) => {
+                  e.stopPropagation();
+                  setActiveImgIndex((prev) => (prev - 1 + allImages.length) % allImages.length);
+                }}
+                aria-label="Previous image"
+              >
+                <ChevronLeft size={36} />
+              </button>
+            )}
+
+            {/* Lightbox Content */}
+            <motion.div 
+              className="lightbox-content"
+              onClick={(e) => e.stopPropagation()}
+              initial={{ scale: 0.9, opacity: 0 }}
+              animate={{ scale: 1, opacity: 1 }}
+              exit={{ scale: 0.9, opacity: 0 }}
+              transition={{ type: "spring", damping: 25, stiffness: 200 }}
+            >
+              <img 
+                src={allImages[activeImgIndex]} 
+                alt={`${content.title} full screen ${activeImgIndex + 1}`} 
+                className="lightbox-image"
+              />
+              
+              {/* Image Counter */}
+              {allImages.length > 1 && (
+                <div className="lightbox-counter">
+                  {activeImgIndex + 1} / {allImages.length}
+                </div>
+              )}
+            </motion.div>
+
+            {/* Right Control */}
+            {allImages.length > 1 && (
+              <button 
+                className="lightbox-nav next" 
+                onClick={(e) => {
+                  e.stopPropagation();
+                  setActiveImgIndex((prev) => (prev + 1) % allImages.length);
+                }}
+                aria-label="Next image"
+              >
+                <ChevronRight size={36} />
+              </button>
+            )}
+          </motion.div>
+        )}
+      </AnimatePresence>
     </div>
   );
 };
