@@ -20,8 +20,64 @@ const SmartAssistant = () => {
     }
   ]);
   const [suggestions, setSuggestions] = useState([]);
+  const [isLoading, setIsLoading] = useState(false);
   const chatEndRef = useRef(null);
   const inputRef = useRef(null);
+
+  const renderMessageText = (text) => {
+    if (!text) return null;
+    const regex = /\[([^\]]+)\]\(([^)]+)\)/g;
+    const parts = [];
+    let lastIndex = 0;
+    let match;
+
+    while ((match = regex.exec(text)) !== null) {
+      const [fullMatch, label, url] = match;
+      const matchIndex = match.index;
+
+      if (matchIndex > lastIndex) {
+        parts.push(text.substring(lastIndex, matchIndex));
+      }
+
+      const isInternal = url.startsWith('/') || url.startsWith('#');
+      if (isInternal) {
+        parts.push(
+          <Link 
+            key={matchIndex} 
+            to={url} 
+            onClick={() => {
+              if (url !== '#') {
+                setIsOpen(false);
+              }
+            }}
+            className="chat-link"
+          >
+            {label}
+          </Link>
+        );
+      } else {
+        parts.push(
+          <a 
+            key={matchIndex} 
+            href={url} 
+            target="_blank" 
+            rel="noopener noreferrer"
+            className="chat-link"
+          >
+            {label}
+          </a>
+        );
+      }
+
+      lastIndex = regex.lastIndex;
+    }
+
+    if (lastIndex < text.length) {
+      parts.push(text.substring(lastIndex));
+    }
+
+    return parts.length > 0 ? parts : text;
+  };
 
   const scrollToBottom = () => {
     chatEndRef.current?.scrollIntoView({ behavior: "smooth" });
@@ -37,17 +93,40 @@ const SmartAssistant = () => {
     }
   }, [isOpen]);
 
-  const handleSearch = (searchTerm) => {
-    if (!searchTerm.trim()) return;
+  const handleSearch = async (searchTerm) => {
+    if (!searchTerm.trim() || isLoading) return;
 
     const userMsg = { type: 'user', text: searchTerm };
     setMessages(prev => [...prev, userMsg]);
     setQuery('');
     setSuggestions([]);
+    setIsLoading(true);
 
-    setTimeout(() => {
+    try {
+      const response = await fetch("/api/chat", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json"
+        },
+        body: JSON.stringify({ message: searchTerm })
+      });
+
+      if (!response.ok) {
+        throw new Error("Failed to contact API");
+      }
+
+      const data = await response.json();
+      const botMsg = { 
+        type: 'bot', 
+        text: data.reply
+      };
+      setMessages(prev => [...prev, botMsg]);
+    } catch (err) {
+      console.warn("API error, falling back to offline assistant:", err);
       processIntent(searchTerm.toLowerCase());
-    }, 600);
+    } finally {
+      setIsLoading(false);
+    }
   };
 
   const processIntent = (term) => {
@@ -168,7 +247,7 @@ const SmartAssistant = () => {
                     {msg.type === 'bot' ? <Bot size={14} /> : <User size={14} />}
                   </div>
                   <div className="message-content">
-                    <p>{msg.text}</p>
+                    <p style={{ whiteSpace: 'pre-line' }}>{renderMessageText(msg.text)}</p>
                     
                     {/* Quick Actions (Only on initial message) */}
                     {msg.isInitial && (
@@ -234,6 +313,18 @@ const SmartAssistant = () => {
                   </div>
                 </div>
               ))}
+              {isLoading && (
+                <div className="message-wrapper bot">
+                  <div className="message-icon">
+                    <Bot size={14} />
+                  </div>
+                  <div className="chat-typing-indicator">
+                    <span className="dot"></span>
+                    <span className="dot"></span>
+                    <span className="dot"></span>
+                  </div>
+                </div>
+              )}
               <div ref={chatEndRef} />
             </div>
 
@@ -523,6 +614,47 @@ const SmartAssistant = () => {
             width: 18px;
             height: 18px;
           }
+        }
+
+        .chat-link {
+          color: var(--primary-red);
+          font-weight: 700;
+          text-decoration: underline;
+          cursor: pointer;
+          transition: opacity 0.2s;
+        }
+        .chat-link:hover {
+          opacity: 0.8;
+        }
+
+        .chat-typing-indicator {
+          display: flex;
+          gap: 6px;
+          padding: 0.8rem 1.2rem;
+          align-items: center;
+          background: white;
+          border-radius: 18px;
+          border-top-left-radius: 4px;
+          box-shadow: 0 2px 10px rgba(0,0,0,0.03);
+          border: 1px solid #f0f0f0;
+          width: fit-content;
+        }
+        .chat-typing-indicator .dot {
+          width: 8px;
+          height: 8px;
+          background: #aaa;
+          border-radius: 50%;
+          animation: chatTyping 1s infinite alternate;
+        }
+        .chat-typing-indicator .dot:nth-child(2) {
+          animation-delay: 0.2s;
+        }
+        .chat-typing-indicator .dot:nth-child(3) {
+          animation-delay: 0.4s;
+        }
+        @keyframes chatTyping {
+          from { opacity: 0.3; transform: translateY(0); }
+          to { opacity: 1; transform: translateY(-4px); }
         }
       `}} />
     </>
