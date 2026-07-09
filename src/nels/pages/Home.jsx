@@ -1,9 +1,110 @@
 import React, { useEffect, useState } from 'react';
-import { ArrowRight } from 'lucide-react';
+import { ArrowRight, ChevronUp, ChevronDown, Sparkles } from 'lucide-react';
 import SEO from '../../components/SEO';
 
 export const Home = () => {
   const [openFaqIndex, setOpenFaqIndex] = useState(null);
+  
+  // 1. Sliding Images (nels-1 to nels-14)
+  const [activeImgIndex, setActiveImgIndex] = useState(0);
+  const nelsImages = Array.from({ length: 14 }, (_, i) => `/nels-${i + 1}.jpg`);
+
+  useEffect(() => {
+    const timer = setInterval(() => {
+      setActiveImgIndex(prev => (prev + 1) % nelsImages.length);
+    }, 4000);
+    return () => clearInterval(timer);
+  }, []);
+
+  // 2. Video switcher state & data
+  const [activeVideoIndex, setActiveVideoIndex] = useState(0);
+  const videos = [
+    {
+      title: "Co-Creating Student Leadership",
+      description: `As Cohort 2 of the NELS journey wraps up tomorrow, we hear from our session leaders, **Valentine Chepkoech Mugun** (Vice President East Africa, All Africa Students Union), and **Manja Klemenčič** (Senior Researcher at the Faculty of Education, University of Ljubljana, and Associate at the Department of Sociology, Harvard University), as they share why showing up matters.
+
+This isn’t just another session, it’s your final opportunity to be part of a transformative experience with fellow student leaders, to learn, connect, and grow.
+
+If you’ve been watching from the sidelines, this is your moment. Join us for the final session tomorrow. Come, engage, and finish strong.`,
+      src: "/nels-video-1.mp4"
+    },
+    {
+      title: "Quality Assurance & Feedback",
+      description: `We spoke with **Dr. Manja Klemenčič**, Senior Researcher at the Faculty of Education, University of Ljubljana, Slovenia, and Associate at the Department of Sociology, Harvard University.
+
+In her brief interview, she explained her role in quality assurance within NELS. She is responsible for designing participant feedback surveys after each session and analysing the responses collected. She then translates this feedback into practical insights, which are shared with session leaders and facilitators to help improve the design and delivery of future sessions.
+
+Through this process, she helps ensure that each cohort is not only delivered effectively, but continuously improved based on participant experience. She encouraged students to take part in the NELS programme and contribute to shaping its ongoing development.`,
+      src: "/nels-video-2.mp4",
+      regLink: "https://fh-ooe.at/en/nels/registration-form"
+    },
+    {
+      title: "New Ways of Student Organizing",
+      description: `In a brief interview, **Laura Reppmann**, International Officer of the Austrian National Students Union (ÖH), encouraged students to sign up for the NELS programme and be part of the upcoming sessions. She also highlighted a few of the topics participants can look forward to, including "New Ways of Student Organizing."
+
+Ready to be part of it?`,
+      src: "/nels-video-3.mp4",
+      regLink: "https://fh-ooe.at/en/nels/registration-form"
+    },
+    {
+      title: "Advancing Continental Student Leadership",
+      description: `During our 3rd Strategic Project Meeting in Ghana, we had the opportunity to speak with **Mr. James Kodjie**, Chief Programmes Officer of the All-Africa Students Union and a key voice in advancing student leadership across the continent.
+
+In this interview, he encouraged youth and student leaders to actively look forward to the upcoming NELS sessions in our second cohort, highlighting the programme as a unique platform for capacity building, collaboration, and shared learning. His message was clear: NELS is more than just a programme; it is a space for growth, empowerment, and shaping the future of student leadership in Africa.
+
+Don’t miss this opportunity to grow, connect, and lead. Now’s the time, secure your spot and keep your leadership journey moving.`,
+      src: "/nels-video-4.mp4",
+      regLink: "https://fh-ooe.at/en/nels/registration-form"
+    },
+    {
+      title: "Cross-Cultural Communication",
+      description: `As part of the 3rd Strategic Project Meeting in Ghana, we engaged session leaders to give students deeper insight into the NELS programme. We had the privilege of interacting with two distinguished session leaders shaping today’s discussion on Cross-Cultural Communication with Stakeholders:
+
+- **Mbakeh Camara** (Director of International Relations and Cross-Sector Partnership Fellow at The Gambia National Assembly)
+- **Louis Brau** (Head of Secretariat, European Students' Union and External Professor at Sciences Po Aix)
+
+Their perspectives offered practical, real-world guidance on navigating stakeholder dynamics across cultures, an essential competence for student leaders operating in today’s interconnected space. This is the NELS experience: engaging directly with expertise, asking the right questions, and building the capacity to lead beyond borders.`,
+      src: "/nels-video-5.mp4"
+    }
+  ];
+
+  const handleNextVideo = () => {
+    setActiveVideoIndex(prev => (prev + 1) % videos.length);
+  };
+
+  const handlePrevVideo = () => {
+    setActiveVideoIndex(prev => (prev - 1 + videos.length) % videos.length);
+  };
+
+  const formatText = (text) => {
+    if (!text) return null;
+    const lines = text.split('\n\n');
+    return lines.map((para, i) => {
+      let elements = [];
+      const boldRegex = /\*\*([^*]+)\*\*/g;
+      let lastIdx = 0;
+      let match;
+      
+      while ((match = boldRegex.exec(para)) !== null) {
+        const [full, word] = match;
+        if (match.index > lastIdx) {
+          elements.push(para.substring(lastIdx, match.index));
+        }
+        elements.push(<strong key={match.index} style={{ color: 'var(--primary-red)' }}>{word}</strong>);
+        lastIdx = boldRegex.lastIndex;
+      }
+      if (lastIdx < para.length) {
+        elements.push(para.substring(lastIdx));
+      }
+
+      return (
+        <p key={i} className="video-description-paragraph">
+          {elements.length > 0 ? elements : para}
+        </p>
+      );
+    });
+  };
+
   useEffect(() => {
     // Smooth scrolling for hash links
     const handleHashClick = (e) => {
@@ -190,20 +291,34 @@ export const Home = () => {
 
           {/* Right Column: Image with Geometric Grid Mask */}
           <div className="hero-right">
-            <div className="hero-img-container">
-              <img 
-                src="/bg-nels.jpg" 
-                alt="Student Leaders - Next Level Skills" 
-                className="hero-img"
-              />
+            <div className="hero-img-container" style={{ position: 'relative' }}>
+              {nelsImages.map((imgSrc, idx) => (
+                <img 
+                  key={idx} 
+                  src={imgSrc} 
+                  alt={`Student Leaders - Next Level Skills ${idx + 1}`} 
+                  className="hero-img"
+                  style={{ 
+                    position: idx === 0 ? 'relative' : 'absolute', 
+                    top: 0, 
+                    left: 0, 
+                    width: '100%', 
+                    height: '100%', 
+                    objectFit: 'cover',
+                    opacity: idx === activeImgIndex ? 1 : 0, 
+                    transition: 'opacity 1s ease-in-out',
+                    zIndex: idx === activeImgIndex ? 1 : 0
+                  }}
+                />
+              ))}
               
               {/* Stepped Geometric/Puzzle Overlay Squares */}
-              <div className="grid-square sq-top-left-1"></div>
-              <div className="grid-square sq-top-left-2"></div>
-              <div className="grid-square sq-left-mid"></div>
-              <div className="grid-square sq-bottom-right-1"></div>
-              <div className="grid-square sq-bottom-right-2"></div>
-              <div className="grid-square sq-bottom-mid"></div>
+              <div className="grid-square sq-top-left-1" style={{ zIndex: 2 }}></div>
+              <div className="grid-square sq-top-left-2" style={{ zIndex: 2 }}></div>
+              <div className="grid-square sq-left-mid" style={{ zIndex: 2 }}></div>
+              <div className="grid-square sq-bottom-right-1" style={{ zIndex: 2 }}></div>
+              <div className="grid-square sq-bottom-right-2" style={{ zIndex: 2 }}></div>
+              <div className="grid-square sq-bottom-mid" style={{ zIndex: 2 }}></div>
             </div>
           </div>
         </div>
@@ -405,6 +520,78 @@ export const Home = () => {
         </div>
       </section>
 
+      {/* Video Presentation Section */}
+      <section className="nels-video-showcase-section">
+        <div className="container">
+          <div className="nels-video-spotlight-title-container">
+            <div className="spotlight-badge subtitle-badge">
+              <Sparkles size={14} className="sparkle-icon" />
+              NELS Video Highlights
+            </div>
+            <h2 className="nels-video-main-heading">
+              Voices of NELS: <span className="highlight-red">Hear from our Leaders &amp; Experts</span>
+            </h2>
+          </div>
+
+          <div className="nels-video-grid">
+            {/* Video Text Information - Left Side */}
+            <div className="nels-video-info-panel">
+              <h3 className="nels-video-current-title">
+                {videos[activeVideoIndex].title}
+              </h3>
+              
+              <div className="nels-video-current-description">
+                {formatText(videos[activeVideoIndex].description)}
+              </div>
+
+              {videos[activeVideoIndex].regLink && (
+                <a 
+                  href={videos[activeVideoIndex].regLink} 
+                  target="_blank" 
+                  rel="noopener noreferrer" 
+                  className="nels-video-reg-btn"
+                >
+                  Register for NELS <ArrowRight size={16} />
+                </a>
+              )}
+            </div>
+
+            {/* Video Player & Nav controls - Right Side */}
+            <div className="nels-video-player-outer">
+              <div className="nels-video-player-wrapper">
+                <video 
+                  key={activeVideoIndex} 
+                  controls 
+                  className="nels-video-player-element"
+                  autoPlay={false}
+                >
+                  <source src={videos[activeVideoIndex].src} type="video/mp4" />
+                  Your browser does not support the video tag.
+                </video>
+              </div>
+
+              {/* Circular Stack Navigation Controls */}
+              <div className="nels-video-nav-controls">
+                <button 
+                  onClick={handlePrevVideo} 
+                  className="nels-video-nav-btn" 
+                  aria-label="Previous Video"
+                >
+                  <ChevronUp size={22} />
+                </button>
+                <button 
+                  onClick={handleNextVideo} 
+                  className="nels-video-nav-btn btn-active" 
+                  aria-label="Next Video"
+                >
+                  <ChevronDown size={22} />
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
       {/* Social Media Insights Section */}
       <section className="nels-social-section">
         <div className="container">
@@ -594,6 +781,204 @@ export const Home = () => {
           </p>
         </div>
       </section>
+
+      <style dangerouslySetInnerHTML={{ __html: `
+        /* Video Showcase Section styles */
+        .nels-video-showcase-section {
+          background: #ffffff;
+          padding: 100px 0;
+          border-top: 1px solid #f0f0f0;
+          border-bottom: 1px solid #f0f0f0;
+        }
+
+        .nels-video-spotlight-title-container {
+          text-align: center;
+          margin-bottom: 3.5rem;
+        }
+
+        .nels-video-main-heading {
+          font-family: var(--font-headings);
+          font-size: 2.5rem;
+          font-weight: 900;
+          color: #111;
+          margin: 0;
+        }
+
+        .nels-video-main-heading .highlight-red {
+          color: var(--primary-red);
+        }
+
+        .spotlight-badge {
+          display: inline-flex;
+          align-items: center;
+          gap: 0.5rem;
+          background: rgba(227, 30, 36, 0.08);
+          color: var(--primary-red);
+          padding: 0.5rem 1rem;
+          border-radius: 50px;
+          font-size: 0.8rem;
+          font-weight: 800;
+          text-transform: uppercase;
+          letter-spacing: 1px;
+          margin-bottom: 1.5rem;
+          border: 1px solid rgba(227, 30, 36, 0.15);
+        }
+
+        .subtitle-badge {
+          background: rgba(142, 36, 170, 0.08);
+          color: #8e24aa;
+          border-color: rgba(142, 36, 170, 0.15);
+          margin-bottom: 1rem;
+        }
+
+        .nels-video-grid {
+          display: grid;
+          grid-template-columns: 1fr 1fr;
+          gap: 6rem;
+          align-items: center;
+        }
+
+        .nels-video-info-panel {
+          display: flex;
+          flex-direction: column;
+          gap: 1.5rem;
+          text-align: left;
+        }
+
+        .nels-video-current-title {
+          font-family: var(--font-headings);
+          font-size: 2rem;
+          font-weight: 800;
+          color: #111;
+          margin: 0;
+          line-height: 1.3;
+        }
+
+        .nels-video-current-description {
+          display: flex;
+          flex-direction: column;
+          gap: 1.2rem;
+        }
+
+        .video-description-paragraph {
+          font-size: 1.05rem;
+          line-height: 1.75;
+          color: #4a5568;
+          margin: 0;
+        }
+
+        .nels-video-reg-btn {
+          display: inline-flex;
+          align-items: center;
+          gap: 0.6rem;
+          background: #8e24aa;
+          color: white;
+          padding: 0.8rem 1.8rem;
+          border-radius: 50px;
+          font-weight: 800;
+          font-size: 0.9rem;
+          text-decoration: none;
+          width: fit-content;
+          margin-top: 1rem;
+          box-shadow: 0 4px 15px rgba(142, 36, 170, 0.2);
+          transition: all 0.25s ease;
+        }
+
+        .nels-video-reg-btn:hover {
+          background: #7b1fa2;
+          transform: translateY(-2px);
+          box-shadow: 0 6px 20px rgba(142, 36, 170, 0.35);
+        }
+
+        .nels-video-player-outer {
+          display: flex;
+          align-items: center;
+          gap: 2rem;
+          width: 100%;
+          justify-content: center;
+        }
+
+        .nels-video-player-wrapper {
+          width: 100%;
+          max-width: 320px;
+          aspect-ratio: 9 / 16;
+          border-radius: 24px;
+          overflow: hidden;
+          box-shadow: 0 20px 45px rgba(0, 0, 0, 0.08);
+          border: 1px solid rgba(0, 0, 0, 0.03);
+          background: #000;
+        }
+
+        .nels-video-player-element {
+          width: 100%;
+          height: 100%;
+          object-fit: cover;
+          display: block;
+        }
+
+        .nels-video-nav-controls {
+          display: flex;
+          flex-direction: column;
+          gap: 1rem;
+        }
+
+        .nels-video-nav-btn {
+          width: 52px;
+          height: 52px;
+          border-radius: 50%;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          border: 1px solid #e2e8f0;
+          background: white;
+          color: #4a5568;
+          cursor: pointer;
+          box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+          transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .nels-video-nav-btn:hover {
+          transform: scale(1.08);
+          border-color: #8e24aa;
+          color: #8e24aa;
+          box-shadow: 0 6px 15px rgba(142, 36, 170, 0.15);
+        }
+
+        .nels-video-nav-btn.btn-active {
+          background: #8e24aa;
+          color: white;
+          border-color: #8e24aa;
+          box-shadow: 0 6px 18px rgba(142, 36, 170, 0.3);
+        }
+
+        @media (max-width: 991px) {
+          .nels-video-grid {
+            gap: 3rem;
+          }
+        }
+
+        @media (max-width: 768px) {
+          .nels-video-grid {
+            grid-template-columns: 1fr;
+            gap: 4rem;
+          }
+          .nels-video-info-panel {
+            align-items: center;
+            text-align: center;
+          }
+          .nels-video-player-outer {
+            flex-direction: column;
+            gap: 1.5rem;
+          }
+          .nels-video-nav-controls {
+            flex-direction: row;
+            gap: 1.5rem;
+          }
+          .nels-video-main-heading {
+            font-size: 2rem;
+          }
+        }
+      `}} />
     </main>
   );
 };
