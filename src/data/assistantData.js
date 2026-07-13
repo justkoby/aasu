@@ -97,7 +97,7 @@ export const intents = [
   },
   {
     keywords: ["scholarship", "internship", "exchange", "opportunity", "training"],
-    answer: "AASU provides various opportunities including the Mobility & Exchange programs, Leadership training via NELS, and periodic internship vacancies within our technical team.",
+    answer: "AASU provides various opportunities including the Mobility & Exchange programs, Leadership training via NELS, and periodic internship vacancies within our staff.",
     links: [{ label: "Mobility & Exchanges", url: "/priority/migration" }, { label: "Capacity Building", url: "/priority/capacity" }]
   },
   {
@@ -111,9 +111,9 @@ export const intents = [
     links: [{ label: "Contact Page", url: "/contact" }]
   },
   {
-    keywords: ["leaders", "executives", "secretariat", "who is the president"],
-    answer: "AASU is led by an Executive Committee elected during the Congress. Our Technical Team manages the day-to-day operations at the Secretariat.",
-    links: [{ label: "Executive Committee", url: "/executives" }, { label: "Technical Team", url: "/technical-team" }]
+    keywords: ["leaders", "executives", "staff", "who is the president"],
+    answer: "AASU is led by an Executive Committee elected during the Congress. Our Staff manages the day-to-day operations.",
+    links: [{ label: "Executive Committee", url: "/executives" }, { label: "Staff", url: "/technical-team" }]
   },
   {
     keywords: ["election results", "14th elective congress", "who was elected", "voting"],

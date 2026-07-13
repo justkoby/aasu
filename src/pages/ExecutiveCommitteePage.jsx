@@ -74,7 +74,7 @@ const ExecutiveCommitteePage = () => {
               The Executive Committee is the second highest organ of the Union, and assumes responsibility for the execution of all policies and programmes adopted by the Congress.
             </p>
             <p className="intro-paragraph">
-              The Executive Committee meets once a year and comprise the Secretariat members and representatives of each sub-region namely:
+              The Executive Committee meets once a year and comprises representatives of each sub-region namely:
             </p>
             
             <div className="regions-container">

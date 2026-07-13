@@ -60,7 +60,7 @@ const Navbar = () => {
         columns: [
           {
             title: 'About Us',
-            links: ['Executive Committee', 'Secretariat', 'Technical Team']
+            links: ['Executive Committee', 'Staff']
           },
           {
             title: 'Membership',
@@ -253,7 +253,7 @@ const Navbar = () => {
                                         if (link === 'Partners') routePath = '/partners';
                                         if (link === 'Executive Committee') routePath = '/executives';
                                         if (link === 'Profile of AASU') routePath = '/profile';
-                                        if (link === 'Technical Team' || link === 'Secretariat') routePath = '/technical-team';
+                                        if (link === 'Staff') routePath = '/technical-team';
                                         if (link === 'Volunteer with us') routePath = '/volunteer';
                                         if (link === 'Become a Member') routePath = '/become-a-member';
                                         if (link === 'Internship Opportunities') routePath = '/internship';
@@ -368,7 +368,7 @@ const Navbar = () => {
                                   if (link === 'Partners') routePath = '/partners';
                                   if (link === 'Executive Committee') routePath = '/executives';
                                   if (link === 'Profile of AASU') routePath = '/profile';
-                                  if (link === 'Technical Team' || link === 'Secretariat') routePath = '/technical-team';
+                                  if (link === 'Staff') routePath = '/technical-team';
                                   if (link === 'Volunteer with us') routePath = '/volunteer';
                                   if (link === 'Become a Member') routePath = '/become-a-member';
                                   if (link === 'Internship Opportunities') routePath = '/internship';

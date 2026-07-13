@@ -22,10 +22,10 @@ const searchData = [
   {
     id: 3,
     title: "Executive Committee",
-    description: "Meet the Executive Committee — the second highest organ of the Union. Comprising the Secretariat and representatives from West, East, North, Southern, and Central Africa.",
+    description: "Meet the Executive Committee — the second highest organ of the Union. Comprising the representatives from West, East, North, Southern, and Central Africa.",
     path: "/executives",
     category: "Who We Are",
-    keywords: ["executive committee", "leadership", "president", "secretary general", "vice president", "secretariat", "officials", "committee members", "board", "executives"]
+    keywords: ["executive committee", "leadership", "president", "secretary general", "vice president", "officials", "committee members", "board", "executives"]
   },
   {
     id: 4,
@@ -347,7 +347,7 @@ const searchData = [
   {
     id: 41,
     title: "Jemilatu Mamshie Bawa",
-    description: "Chief Operating Officer - Member of the AASU Technical Team.",
+    description: "Chief Operating Officer - Member of the AASU Staff.",
     path: "/technical-team",
     category: "Who We Are",
     keywords: ["jemilatu mamshie bawa", "coo", "technical team", "staff", "secretariat"]
@@ -355,7 +355,7 @@ const searchData = [
   {
     id: 42,
     title: "Bismark Amefianu Kudoafor",
-    description: "Deputy Chief Operating Officer (Administration) - Member of the AASU Technical Team.",
+    description: "Deputy Chief Operating Officer (Administration) - Member of the AASU Staff.",
     path: "/technical-team",
     category: "Who We Are",
     keywords: ["bismark amefianu kudoafor", "cto", "technical team", "staff", "secretariat"]
@@ -363,7 +363,7 @@ const searchData = [
   {
     id: 43,
     title: "Samuel Sasu Adonteng",
-    description: "Deputy Chief Operating Officer (Technical) - Member of the AASU Technical Team.",
+    description: "Deputy Chief Operating Officer (Technical) - Member of the AASU Staff.",
     path: "/technical-team",
     category: "Who We Are",
     keywords: ["samuel sasu adonteng", "cco", "technical team", "staff", "secretariat"]
@@ -371,7 +371,7 @@ const searchData = [
   {
     id: 44,
     title: "James Kodjie",
-    description: "Chief Programmes Officer - Member of the AASU Technical Team.",
+    description: "Chief Programmes Officer - Member of the AASU Staff.",
     path: "/technical-team",
     category: "Who We Are",
     keywords: ["james kodjie", "cpo", "technical team", "staff", "secretariat"]
@@ -379,7 +379,7 @@ const searchData = [
   {
     id: 45,
     title: "Akua Asantewaa Adusei",
-    description: "Chief Procurement Officer - Member of the AASU Technical Team.",
+    description: "Chief Procurement Officer - Member of the AASU Staff.",
     path: "/technical-team",
     category: "Who We Are",
     keywords: ["akua asantewaa adusei", "procurement", "technical team", "staff", "secretariat"]
@@ -387,7 +387,7 @@ const searchData = [
   {
     id: 46,
     title: "Hamdia Suleman",
-    description: "Head of Accounts - Member of the AASU Technical Team.",
+    description: "Head of Accounts - Member of the AASU Staff.",
     path: "/technical-team",
     category: "Who We Are",
     keywords: ["hamdia suleman", "accountant", "technical team", "staff", "secretariat"]
@@ -395,7 +395,7 @@ const searchData = [
   {
     id: 47,
     title: "Jacob Aryee",
-    description: "Assistant Accountant Officer - Member of the AASU Technical Team.",
+    description: "Assistant Accountant Officer - Member of the AASU Staff.",
     path: "/technical-team",
     category: "Who We Are",
     keywords: ["jacob aryee", "accounts", "technical team", "staff", "secretariat"]
@@ -403,7 +403,7 @@ const searchData = [
   {
     id: 48,
     title: "Prince Teye Ali",
-    description: "Internal Auditor - Member of the AASU Technical Team.",
+    description: "Internal Auditor - Member of the AASU Staff.",
     path: "/technical-team",
     category: "Who We Are",
     keywords: ["prince teye ali", "auditor", "technical team", "staff", "secretariat"]
@@ -411,7 +411,7 @@ const searchData = [
   {
     id: 49,
     title: "George Sampson-Graves",
-    description: "Human Resource Officer - Member of the AASU Technical Team.",
+    description: "Human Resource Officer - Member of the AASU Staff.",
     path: "/technical-team",
     category: "Who We Are",
     keywords: ["george sampson-graves", "hr", "technical team", "staff", "secretariat"]
@@ -419,7 +419,7 @@ const searchData = [
   {
     id: 50,
     title: "Sulemana Atawa Shamsia",
-    description: "Administrative Secretary - Member of the AASU Technical Team.",
+    description: "Administrative Secretary - Member of the AASU Staff.",
     path: "/technical-team",
     category: "Who We Are",
     keywords: ["sulemana atawa shamsia", "admin", "technical team", "staff", "secretariat"]
@@ -427,7 +427,7 @@ const searchData = [
   {
     id: 51,
     title: "Jasmine Salisu Mohammed",
-    description: "Protocol Officer - Member of the AASU Technical Team.",
+    description: "Protocol Officer - Member of the AASU Staff.",
     path: "/technical-team",
     category: "Who We Are",
     keywords: ["jasmine salisu mohammed", "protocol", "technical team", "staff", "secretariat"]
@@ -435,7 +435,7 @@ const searchData = [
   {
     id: 52,
     title: "Raymond Frimpong",
-    description: "Programmes Officer – Democracy, Good Governance, Peace and Security - Member of the AASU Technical Team.",
+    description: "Programmes Officer – Democracy, Good Governance, Peace and Security - Member of the AASU Staff.",
     path: "/technical-team",
     category: "Who We Are",
     keywords: ["raymond frimpong", "democracy", "technical team", "staff", "secretariat"]
@@ -443,7 +443,7 @@ const searchData = [
   {
     id: 53,
     title: "Eunice Kaanye",
-    description: "Assistant Programmes Officer for Education and Students' Rights - Member of the AASU Technical Team.",
+    description: "Assistant Programmes Officer for Education and Students' Rights - Member of the AASU Staff.",
     path: "/technical-team",
     category: "Who We Are",
     keywords: ["eunice kaanye", "education", "technical team", "staff", "secretariat"]
@@ -451,7 +451,7 @@ const searchData = [
   {
     id: 54,
     title: "Walter Nana Owusu Annoh Siameh",
-    description: "Assistant Programmes Officer for Education and Students' Rights - Member of the AASU Technical Team.",
+    description: "Assistant Programmes Officer for Education and Students' Rights - Member of the AASU Staff.",
     path: "/technical-team",
     category: "Who We Are",
     keywords: ["walter nana owusu annoh siameh", "education", "technical team", "staff", "secretariat"]
@@ -459,7 +459,7 @@ const searchData = [
   {
     id: 55,
     title: "Memunatu Abubakari",
-    description: "Programmes Officer for Gender Equity and Social Inclusion - Member of the AASU Technical Team.",
+    description: "Programmes Officer for Gender Equity and Social Inclusion - Member of the AASU Staff.",
     path: "/technical-team",
     category: "Who We Are",
     keywords: ["memunatu abubakari", "gender", "technical team", "staff", "secretariat"]
@@ -467,7 +467,7 @@ const searchData = [
   {
     id: 56,
     title: "Belinda Mensah",
-    description: "Programmes Officer – Environment and Climate Action - Member of the AASU Technical Team.",
+    description: "Programmes Officer – Environment and Climate Action - Member of the AASU Staff.",
     path: "/technical-team",
     category: "Who We Are",
     keywords: ["belinda mensah", "environment", "technical team", "staff", "secretariat"]
@@ -475,7 +475,7 @@ const searchData = [
   {
     id: 57,
     title: "Hilda Osei-Poku",
-    description: "Programmes Officer for Migration, Mobility and Exchanges - Member of the AASU Technical Team.",
+    description: "Programmes Officer for Migration, Mobility and Exchanges - Member of the AASU Staff.",
     path: "/technical-team",
     category: "Who We Are",
     keywords: ["hilda osei-poku", "migration", "technical team", "staff", "secretariat"]
@@ -483,7 +483,7 @@ const searchData = [
   {
     id: 58,
     title: "Ramzy Fuseini",
-    description: "Special Projects and Strategic Initiatives Coordinator - Member of the AASU Technical Team.",
+    description: "Special Projects and Strategic Initiatives Coordinator - Member of the AASU Staff.",
     path: "/technical-team",
     category: "Who We Are",
     keywords: ["ramzy fuseini", "projects", "technical team", "staff", "secretariat"]
@@ -491,7 +491,7 @@ const searchData = [
   {
     id: 59,
     title: "Eric Chinery",
-    description: "Chief IT Officer - Member of the AASU Technical Team.",
+    description: "Chief IT Officer - Member of the AASU Staff.",
     path: "/technical-team",
     category: "Who We Are",
     keywords: ["eric chinery", "it", "technical team", "staff", "secretariat"]
@@ -499,7 +499,7 @@ const searchData = [
   {
     id: 60,
     title: "Solomon Pobi Darko",
-    description: "Digital Media & Web Communications Officer - Member of the AASU Technical Team.",
+    description: "Digital Media & Web Communications Officer - Member of the AASU Staff.",
     path: "/technical-team",
     category: "Who We Are",
     keywords: ["solomon pobi darko", "media", "web", "technical team", "staff", "secretariat"]
@@ -507,7 +507,7 @@ const searchData = [
   {
     id: 61,
     title: "Solomon Abeka",
-    description: "Assistant Branding and Creative Officer - Member of the AASU Technical Team.",
+    description: "Assistant Branding and Creative Officer - Member of the AASU Staff.",
     path: "/technical-team",
     category: "Who We Are",
     keywords: ["solomon abeka", "branding", "creative", "technical team", "staff", "secretariat"]
@@ -515,7 +515,7 @@ const searchData = [
   {
     id: 62,
     title: "Stephen Brako",
-    description: "Estate/Stores Officer - Member of the AASU Technical Team.",
+    description: "Estate/Stores Officer - Member of the AASU Staff.",
     path: "/technical-team",
     category: "Who We Are",
     keywords: ["stephen brako", "estate", "technical team", "staff", "secretariat"]
@@ -523,7 +523,7 @@ const searchData = [
   {
     id: 63,
     title: "Ettah Johnson",
-    description: "Assistant Photographer and Videographer Officer - Member of the AASU Technical Team.",
+    description: "Assistant Photographer and Videographer Officer - Member of the AASU Staff.",
     path: "/technical-team",
     category: "Who We Are",
     keywords: ["ettah johnson", "photo", "video", "technical team", "staff", "secretariat"]
@@ -531,7 +531,7 @@ const searchData = [
   {
     id: 64,
     title: "Emmanuel Nyamekye Owusu",
-    description: "Assistant Editorial and Public Relations Officer - Member of the AASU Technical Team.",
+    description: "Assistant Editorial and Public Relations Officer - Member of the AASU Staff.",
     path: "/technical-team",
     category: "Who We Are",
     keywords: ["emmanuel nyamekye owusu", "pr", "editorial", "technical team", "staff", "secretariat"]
@@ -539,7 +539,7 @@ const searchData = [
   {
     id: 65,
     title: "Jerome Kudolo",
-    description: "Executive Assistant to the Secretary General - Member of the AASU Technical Team.",
+    description: "Executive Assistant to the Secretary General - Member of the AASU Staff.",
     path: "/technical-team",
     category: "Who We Are",
     keywords: ["jerome kudolo", "ea", "technical team", "staff", "secretariat"]
@@ -547,7 +547,7 @@ const searchData = [
   {
     id: 66,
     title: "Robert Idan",
-    description: "Principal Driver - Member of the AASU Technical Team.",
+    description: "Principal Driver - Member of the AASU Staff.",
     path: "/technical-team",
     category: "Who We Are",
     keywords: ["robert idan", "driver", "technical team", "staff", "secretariat"]
@@ -555,7 +555,7 @@ const searchData = [
   {
     id: 67,
     title: "John Yewenu",
-    description: "Assistant Driver - Member of the AASU Technical Team.",
+    description: "Assistant Driver - Member of the AASU Staff.",
     path: "/technical-team",
     category: "Who We Are",
     keywords: ["john yewenu", "driver", "technical team", "staff", "secretariat"]

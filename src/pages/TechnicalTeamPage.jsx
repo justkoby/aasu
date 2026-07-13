@@ -202,8 +202,8 @@ const TechnicalTeamPage = () => {
   return (
     <div className="tech-team-page">
       <SEO 
-        title="Secretariat Technical Team" 
-        description="Meet the professional technical officers and support staff driving the day-to-day operations and projects at the AASU Secretariat." 
+        title="Staff" 
+        description="Meet the professional officers and support staff driving the day-to-day operations and projects at AASU." 
       />
       {/* Hero */}
       <section className="tt-hero">
@@ -214,7 +214,7 @@ const TechnicalTeamPage = () => {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.7 }}
           >
-            Technical <span className="tt-accent">Team</span>
+            AASU <span className="tt-accent">Staff</span>
           </motion.h1>
           <motion.p
             className="tt-hero-subtitle"
