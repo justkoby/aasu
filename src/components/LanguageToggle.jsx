@@ -15,28 +15,44 @@ const LanguageToggle = () => {
   ];
 
   useEffect(() => {
+    // Read current language from googtrans cookie on mount
+    const match = document.cookie.match(/(?:^|;\s*)googtrans=([^;]*)/);
+    if (match && match[1]) {
+      const code = match[1].split('/').pop();
+      const matchedLang = languages.find(l => l.code === code);
+      if (matchedLang) {
+        setCurrentLang(matchedLang.name);
+      }
+    }
+
     const initTranslate = () => {
       if (window.google && window.google.translate) {
-        new window.google.translate.TranslateElement(
-          {
-            pageLanguage: 'en',
-            includedLanguages: 'en,fr,pt,es,ar',
-            autoDisplay: false,
-          },
-          'google_translate_element'
-        );
+        try {
+          new window.google.translate.TranslateElement(
+            {
+              pageLanguage: 'en',
+              includedLanguages: 'en,fr,pt,es,ar',
+              autoDisplay: false,
+            },
+            'google_translate_element'
+          );
+        } catch (e) {
+          console.warn('Google Translate initialization:', e);
+        }
       }
     };
 
-    // Initialize directly if script is already loaded and active on window
     if (window.google && window.google.translate) {
       initTranslate();
     } else {
       window.googleTranslateElementInit = initTranslate;
-      const script = document.createElement('script');
-      script.src = 'https://translate.google.com/translate_a/element.js?cb=googleTranslateElementInit';
-      script.async = true;
-      document.body.appendChild(script);
+      if (!document.getElementById('google-translate-script')) {
+        const script = document.createElement('script');
+        script.id = 'google-translate-script';
+        script.src = 'https://translate.google.com/translate_a/element.js?cb=googleTranslateElementInit';
+        script.async = true;
+        document.body.appendChild(script);
+      }
     }
   }, []);
 
@@ -44,22 +60,44 @@ const LanguageToggle = () => {
     setCurrentLang(langName);
     setIsOpen(false);
 
-    // Set cookies for persistent translation on the live site
-    document.cookie = `googtrans=/en/${langCode}; path=/`;
-    document.cookie = `googtrans=/en/${langCode}; path=/; domain=.aasuonline.org`;
+    // Set cookie for path=/
+    if (langCode === 'en') {
+      document.cookie = 'googtrans=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;';
+      document.cookie = `googtrans=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/; domain=.${window.location.hostname}`;
+    } else {
+      document.cookie = `googtrans=/en/${langCode}; path=/;`;
+      if (!window.location.hostname.includes('localhost') && !window.location.hostname.includes('127.0.0.1')) {
+        document.cookie = `googtrans=/en/${langCode}; path=/; domain=.${window.location.hostname}`;
+      }
+    }
 
     // Trigger Google Translate combo-box if present
     const translateCombo = document.querySelector('.goog-te-combo');
     if (translateCombo) {
       translateCombo.value = langCode;
       translateCombo.dispatchEvent(new Event('change'));
+    } else {
+      // Reload page to apply cookie translation if combo element was not ready
+      window.location.reload();
     }
   };
 
   return (
     <div className="language-toggle-wrapper">
-      {/* Hidden Google Translate element */}
-      <div id="google_translate_element" style={{ display: 'none' }}></div>
+      {/* Google Translate element positioned off-screen so Google Translate can initialize properly */}
+      <div 
+        id="google_translate_element" 
+        style={{ 
+          position: 'absolute', 
+          opacity: 0, 
+          width: '1px', 
+          height: '1px', 
+          overflow: 'hidden', 
+          pointerEvents: 'none', 
+          top: '-9999px', 
+          left: '-9999px' 
+        }} 
+      />
 
       <AnimatePresence>
         {isOpen && (
@@ -108,7 +146,8 @@ const LanguageToggle = () => {
         .goog-te-gadget-icon,
         .goog-te-gadget-simple span,
         #goog-gt-tt,
-        .VIpgJd-ZVi9nd-ORHb-nS1RWf {
+        .VIpgJd-ZVi9nd-ORHb-nS1RWf,
+        .skiptranslate {
           display: none !important;
         }
 

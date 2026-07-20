@@ -128,11 +128,6 @@ Their perspectives offered practical, real-world guidance on navigating stakehol
             viewport={{ once: true, margin: "-100px" }}
             transition={{ duration: 0.6 }}
           >
-            <div className="spotlight-badge">
-              <span className="badge-dot"></span>
-              Spotlight Initiative
-            </div>
-            
             <h2 className="nels-spotlight-heading">
               New Era for Leadership in Schools
             </h2>
@@ -208,10 +203,6 @@ Their perspectives offered practical, real-world guidance on navigating stakehol
 
         {/* Row 2: Video Presentation / Spotlight Section */}
         <div className="nels-video-spotlight-title-container">
-          <div className="spotlight-badge subtitle-badge">
-            <Sparkles size={14} className="sparkle-icon" />
-            NELS Video Highlights
-          </div>
           <h3 className="nels-video-main-heading">
             Voices of NELS: <span className="highlight-red">Hear from our Leaders &amp; Experts</span>
           </h3>
