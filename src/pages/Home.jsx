@@ -2,7 +2,6 @@ import React, { useState } from 'react';
 import Hero from '../components/Hero';
 import MembershipSection from '../components/MembershipSection';
 import ReportsSection from '../components/ReportsSection';
-import NelsSpotlight from '../components/NelsSpotlight';
 import NewsSection from '../components/NewsSection';
 import EventsSection from '../components/EventsSection';
 import OpportunitiesSection from '../components/OpportunitiesSection';
@@ -83,7 +82,6 @@ const Home = () => {
 
       <MembershipSection />
       <ReportsSection />
-      <NelsSpotlight />
       <NewsSection />
       <EventsSection />
       <OpportunitiesSection />

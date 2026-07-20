@@ -12,6 +12,25 @@ export const CONTENT_TYPES = {
 
 export const newsEventsData = [
   {
+    id: 'news-innovating-education-africa-2026-debate',
+    type: CONTENT_TYPES.NEWS,
+    category: 'Education Policy & Financing',
+    title: 'AASU Champions Sustainable Financing Reforms at Innovating Education in Africa 2026 Policy Dialogue',
+    img: '/au-1.jpg',
+    images: ['/au-1.jpg', '/au-2.jpg', '/au-3.jpg', '/au-4.jpg'],
+    date: '2026-07-20',
+    excerpt: 'AASU led a high-level Oxford-style debate examining essential education financing reforms needed to realistically achieve the AU Decade of Education and Skills (2025–2034) targets.',
+    description: `As part of the Innovating Education in Africa 2026 Policy Dialogue, the All-Africa Students Union (AASU) proudly participated in and organized a high-level Oxford-style debate addressing one of the continent's most urgent questions:
+
+"This House believes the AU's Decade of Education and Skills (2025–2034) targets require comprehensive financing reform to be realistically achievable."
+
+The debate provided a vibrant, high-impact platform for critical engagement on how African nations can sustainably resource the ambitious goals of the African Union's 10-year education framework.
+
+Chaired by Ramzy Fuseini, AASU's Special Projects and Strategic Initiatives Coordinator, the session featured compelling contributions from both Proposition and Opposition speakers: Umar Farouk Abdul-Karim, Yaa Asantewaa Asante, Tahir Ahmad Muslim, and Elorm Joachim Desewu. Together, they explored diverse and innovative perspectives on continental education financing models, public policy implementation, institutional governance, and the future of African youth.
+
+Through high-level policy dialogues such as this, AASU continues to ensure that the voices of over 170 million African students are not only represented in continental governance spaces, but are recognized as essential partners in driving the successful implementation of the AU Decade of Education and Skills (2025–2034).`
+  },
+  {
     id: 'news-times-higher-education-sustainability-2026',
     type: CONTENT_TYPES.NEWS,
     category: 'Environment & Climate Action',

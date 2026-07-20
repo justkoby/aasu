@@ -97,10 +97,10 @@ const Hero = () => {
         </div>
       </div>
 
-      {/* Arch Divider (Peaking in Center) */}
+      {/* Arch Divider (Flipped / Dipping in Center) */}
       <div className="curve-divider">
         <svg data-name="Layer 1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 120" preserveAspectRatio="none">
-          <path d="M0,120 C200,120 400,0 600,0 C800,0 1000,120 1200,120 V120 H0 Z" fill="#ffffff" opacity="1"></path>
+          <path d="M0,0 C200,0 400,120 600,120 C800,120 1000,0 1200,0 V120 H0 Z" fill="#ffffff" opacity="1"></path>
         </svg>
       </div>
 
