@@ -231,7 +231,7 @@ const ProjectExplorer = ({ hideTabs = false, pillarIndex = 0 }) => {
                   {currentProject.overview || `${currentProject.desc} The ${currentProject.name} is a strategic initiative within the ${currentPillar.area} pillar, designed to address critical challenges and empower African students through targeted research, advocacy, and collaborative action.`}
                 </p>
 
-                <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '2rem', marginBottom: '4rem' }}>
+                <div className="detail-info-grid" style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '2rem', marginBottom: '4rem' }}>
                   <div className="info-box" style={{ padding: '2rem', borderRadius: '25px', backgroundColor: '#fff', border: '1px solid #f0f0f0' }}>
                     <Target style={{ color: currentPillar.color, marginBottom: '1rem' }} />
                     <h5 style={{ fontWeight: 800, color: '#111', marginBottom: '0.5rem' }}>Core Focus</h5>
@@ -424,23 +424,56 @@ const ProjectExplorer = ({ hideTabs = false, pillarIndex = 0 }) => {
           color: #cb3631 !important;
         }
         @media (max-width: 1024px) {
+          .project-explorer-section {
+            padding: 50px 0 !important;
+          }
           .explorer-body {
             grid-template-columns: 1fr !important;
+            gap: 2rem !important;
+            min-height: auto !important;
           }
           .project-list-panel {
-            position: relative;
-            top: 0;
-            order: 1;
-            margin-bottom: 3rem;
+            position: relative !important;
+            top: 0 !important;
+            width: 100% !important;
+          }
+          .project-list-panel h5 {
+            margin-bottom: 0.75rem !important;
+            padding-left: 0.25rem !important;
           }
           .project-detail-panel {
-            order: 2;
+            width: 100% !important;
           }
           .project-detail-panel > div {
-            padding: 2rem !important;
+            padding: 1.75rem 1.25rem !important;
+            border-radius: 24px !important;
+          }
+          .project-detail-panel h3 {
+            font-size: 1.6rem !important;
+          }
+          .project-detail-panel p {
+            font-size: 1rem !important;
+            margin-bottom: 2rem !important;
+          }
+          .project-detail-panel .info-box {
+            padding: 1.25rem !important;
+            border-radius: 16px !important;
           }
           .section-title {
-            font-size: 2.2rem !important;
+            font-size: 2rem !important;
+          }
+          .download-btn {
+            width: 100% !important;
+            justify-content: space-between !important;
+            padding: 1rem 1.25rem !important;
+          }
+        }
+
+        @media (max-width: 640px) {
+          .detail-info-grid {
+            grid-template-columns: 1fr !important;
+            gap: 1rem !important;
+            margin-bottom: 2rem !important;
           }
         }
       `}} />
