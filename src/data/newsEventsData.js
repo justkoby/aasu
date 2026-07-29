@@ -19,22 +19,15 @@ export const newsEventsData = [
     img: '/ACQF-01.jpeg',
     date: '2026-07-29',
     excerpt: 'The All-Africa Students Union (AASU), in collaboration with the European Training Foundation (ETF) and partners, has released three essential resources on greening skills and qualifications in Africa.',
-    description: `The All-Africa Students Union, in collaboration with the European Training Foundation (ETF) and partners, have undertaken the ACQF Pilot II project on Greening Skills and Qualifications in Africa User's Engagement. The project focused on establishing a foundation for aligning green skills with education and qualifications frameworks across the Continent. It sought to create a Conceptual Framework, capturing a working definition for green skills adapted to the African context, produce a case book of good practices on greening skills and qualifications in Africa and a stakeholder toolkit for embedding green skills in education & training systems.
+    description: `The All-Africa Students Union, in collaboration with the European Training Foundation (ETF) and other partners, undertook the ACQF Pilot II Project on Greening Skills and Qualifications in Africa User Engagement.
 
-Following the success of the project, the three deliverables have been made! They reflect surveys and interview responses of stakeholders, i.e, Students and youth, National Qualification Authorities (NQA), policy makers, industry leaders, academia, and religious leaders.
+The project focused on establishing a strong foundation for aligning green skills with education and qualifications frameworks across the African continent. It sought to develop a conceptual framework containing a working definition of green skills adapted to the African context, produce a casebook of good practices on greening skills and qualifications in Africa, and create a stakeholder toolkit for embedding green skills into education and training systems.
 
-Whether you’re a student, educator, policymaker, researcher, or youth leader, these three essential resources provide the insights, strategies, and real-world practices needed to build a greener and more sustainable future.
+Following the successful implementation of the project, the three key deliverables have now been completed and made available. These resources reflect the views, experiences, and recommendations gathered through surveys and interviews with a wide range of stakeholders, including students and young people, National Qualifications Authorities, policymakers, industry leaders, academics, and religious leaders.
 
-Scan the QR codes or tap on these links to explore the complete collection:
+Whether you are a student, educator, policymaker, researcher, or youth leader, these three essential resources provide valuable insights, practical strategies, and real-world examples needed to support the development of greener and more sustainable education, training, and qualification systems across Africa.
 
-📘 Toolkit on Greening Skills and Qualifications
-https://acqf.africa/resources/research/green-skills/acqf-aasu-toolkit-on-greening-skills-and-qualifications-in-africa
-
-📗 Casebook on Greening Skills and Qualifications
-https://acqf.africa/resources/research/green-skills/acqf-case-book-on-green-skills-qualifications-good-practices
-
-📙 Greening Skills and Qualifications in Africa – Users’ Engagement Concept Document
-https://acqf.africa/resources/research/green-skills/acqf-greening-skills-and-qualifications-in-africa-users-engagement`,
+Tap on these links to explore the three key deliverables:`,
     documents: [
       {
         title: 'Toolkit on Greening Skills and Qualifications in Africa',
