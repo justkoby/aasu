@@ -12,6 +12,51 @@ export const CONTENT_TYPES = {
 
 export const newsEventsData = [
   {
+    id: 'news-acqf-greening-skills-qualifications-2026',
+    type: CONTENT_TYPES.NEWS,
+    category: 'Capacity Building, Skills Development & Employability',
+    title: 'AASU & ETF Release Key Deliverables for ACQF Pilot II on Greening Skills and Qualifications in Africa',
+    img: '/ACQF-01.jpeg',
+    date: '2026-07-29',
+    excerpt: 'The All-Africa Students Union (AASU), in collaboration with the European Training Foundation (ETF) and partners, has released three essential resources on greening skills and qualifications in Africa.',
+    description: `The All-Africa Students Union, in collaboration with the European Training Foundation (ETF) and partners, have undertaken the ACQF Pilot II project on Greening Skills and Qualifications in Africa User's Engagement. The project focused on establishing a foundation for aligning green skills with education and qualifications frameworks across the Continent. It sought to create a Conceptual Framework, capturing a working definition for green skills adapted to the African context, produce a case book of good practices on greening skills and qualifications in Africa and a stakeholder toolkit for embedding green skills in education & training systems.
+
+Following the success of the project, the three deliverables have been made! They reflect surveys and interview responses of stakeholders, i.e, Students and youth, National Qualification Authorities (NQA), policy makers, industry leaders, academia, and religious leaders.
+
+Whether you’re a student, educator, policymaker, researcher, or youth leader, these three essential resources provide the insights, strategies, and real-world practices needed to build a greener and more sustainable future.
+
+Scan the QR codes or tap on these links to explore the complete collection:
+
+📘 Toolkit on Greening Skills and Qualifications
+https://acqf.africa/resources/research/green-skills/acqf-aasu-toolkit-on-greening-skills-and-qualifications-in-africa
+
+📗 Casebook on Greening Skills and Qualifications
+https://acqf.africa/resources/research/green-skills/acqf-case-book-on-green-skills-qualifications-good-practices
+
+📙 Greening Skills and Qualifications in Africa – Users’ Engagement Concept Document
+https://acqf.africa/resources/research/green-skills/acqf-greening-skills-and-qualifications-in-africa-users-engagement`,
+    documents: [
+      {
+        title: 'Toolkit on Greening Skills and Qualifications in Africa',
+        fileUrl: '/Toolkit%20on%20Greening%20Skills%20and%20Qualifications%20in%20Africa-compressed.pdf',
+        thumbnail: '/acqf-toolkit.png',
+        externalUrl: 'https://acqf.africa/resources/research/green-skills/acqf-aasu-toolkit-on-greening-skills-and-qualifications-in-africa'
+      },
+      {
+        title: 'Book of Good Practices for the Greening of Skills and Qualifications in Africa',
+        fileUrl: '/Book%20of%20Good%20Practices%20for%20the%20Greening%20of%20Skills%20and%20Qualifications%20in%20Africa.pdf',
+        thumbnail: '/book of practices.png',
+        externalUrl: 'https://acqf.africa/resources/research/green-skills/acqf-case-book-on-green-skills-qualifications-good-practices'
+      },
+      {
+        title: 'Greening Skills and Qualifications in Africa User’s Engagement',
+        fileUrl: '/Greening%20Skills%20and%20Qualifications%20in%20Africa%20%20User’s%20Engagement.pdf',
+        thumbnail: '/concept-doc-acqf.png',
+        externalUrl: 'https://acqf.africa/resources/research/green-skills/acqf-greening-skills-and-qualifications-in-africa-users-engagement'
+      }
+    ]
+  },
+  {
     id: 'news-innovating-education-africa-2026-debate',
     type: CONTENT_TYPES.NEWS,
     category: 'Education Policy & Financing',
@@ -140,7 +185,7 @@ Together, we are building a healthier, more confident, and informed generation.
     type: CONTENT_TYPES.EVENT,
     category: 'Environment & Climate Action',
     title: 'Beyond the Syllabus: Embedding Sustainability into the Larger Learning Journey at GSDC 2026',
-    img: '/Beyond the syllabus.png',
+    img: '/%F0%9D%90%81%F0%9D%90%9E%F0%9D%90%AF%F0%9D%90%AE%F0%9D%90%A7%F0%9D%90%9D%20%F0%9D%90%AB%F0%9D%90%A1%F0%9D%90%9E%20%F0%9D%90%AF%F0%9D%90%AE%F0%9D%90%A2%F0%9D%90%A5%F0%9D%90%A5%F0%9D%90%9A%F0%9D%90%9B%F0%9D%90%AE%F0%9D%90%AF.png',
     date: '2026-06-23',
     time: 'Panel and Workshop',
     platform: 'Global Sustainable Development Congress 2026',

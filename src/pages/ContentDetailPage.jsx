@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { useParams, useNavigate, Link } from 'react-router-dom';
 import { motion, AnimatePresence } from 'framer-motion';
-import { Calendar, Tag, ChevronLeft, ChevronRight, Clock, MapPin, ExternalLink, Share2, Facebook, Twitter, Linkedin, Link as LinkIcon, FileText } from 'lucide-react';
+import { Calendar, Tag, ChevronLeft, ChevronRight, Clock, MapPin, ExternalLink, Share2, Facebook, Twitter, Linkedin, Link as LinkIcon, FileText, Download } from 'lucide-react';
 import { newsEventsData, isEventEnded } from '../data/newsEventsData';
 
 import SEO from '../components/SEO';
@@ -238,6 +238,45 @@ const ContentDetailPage = () => {
           <div className={`article-body ${content.type !== 'Event' ? 'full-width-body' : ''}`}>
               <div className="article-main-text">
                 {renderTextWithLinks(content.description)}
+
+                {content.documents && content.documents.length > 0 && (
+                  <div className="article-documents-section">
+                    <h3 className="documents-section-title">Key Project Documents & Deliverables</h3>
+                    <div className="documents-grid">
+                      {content.documents.map((doc, idx) => (
+                        <div key={idx} className="doc-card">
+                          <div className="doc-thumbnail-wrapper">
+                            <img src={doc.thumbnail} alt={doc.title} className="doc-thumbnail" />
+                          </div>
+                          <div className="doc-content">
+                            <h4 className="doc-title">{doc.title}</h4>
+                            <div className="doc-actions">
+                              <a 
+                                href={doc.fileUrl} 
+                                target="_blank" 
+                                rel="noopener noreferrer" 
+                                className="doc-btn primary"
+                                download
+                              >
+                                <Download size={16} /> Download Report (PDF)
+                              </a>
+                              {doc.externalUrl && (
+                                <a 
+                                  href={doc.externalUrl} 
+                                  target="_blank" 
+                                  rel="noopener noreferrer" 
+                                  className="doc-btn secondary"
+                                >
+                                  <ExternalLink size={16} /> View on ACQF Portal
+                                </a>
+                              )}
+                            </div>
+                          </div>
+                        </div>
+                      ))}
+                    </div>
+                  </div>
+                )}
 
                 {/* Share Box for News (Non-Event) */}
                 {content.type !== 'Event' && renderShareButtons()}
@@ -495,6 +534,127 @@ const ContentDetailPage = () => {
 
         .article-main-text p {
           margin-bottom: 1.5rem;
+        }
+
+        /* ── DOCUMENTS SECTION ──────────────── */
+        .article-documents-section {
+          margin: 3rem 0;
+          padding: 2rem;
+          background: #f8fafc;
+          border-radius: 16px;
+          border: 1px solid #e2e8f0;
+        }
+
+        .documents-section-title {
+          font-size: 1.35rem;
+          font-weight: 700;
+          color: #0f172a;
+          margin-bottom: 1.5rem;
+          padding-bottom: 0.75rem;
+          border-bottom: 2px solid var(--primary-red, #bd3731);
+        }
+
+        .documents-grid {
+          display: flex;
+          flex-direction: column;
+          gap: 1.5rem;
+        }
+
+        .doc-card {
+          display: flex;
+          gap: 1.5rem;
+          background: #ffffff;
+          padding: 1.25rem;
+          border-radius: 12px;
+          border: 1px solid #e2e8f0;
+          box-shadow: 0 4px 12px rgba(0, 0, 0, 0.03);
+          transition: transform 0.2s ease, box-shadow 0.2s ease;
+        }
+
+        .doc-card:hover {
+          transform: translateY(-2px);
+          box-shadow: 0 8px 20px rgba(0, 0, 0, 0.08);
+        }
+
+        .doc-thumbnail-wrapper {
+          width: 140px;
+          height: 180px;
+          flex-shrink: 0;
+          border-radius: 8px;
+          overflow: hidden;
+          background: #f1f5f9;
+          box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        .doc-thumbnail {
+          width: 100%;
+          height: 100%;
+          object-fit: cover;
+        }
+
+        .doc-content {
+          display: flex;
+          flex-direction: column;
+          justify-content: space-between;
+          flex: 1;
+        }
+
+        .doc-title {
+          font-size: 1.1rem;
+          font-weight: 700;
+          color: #1e293b;
+          line-height: 1.4;
+          margin-bottom: 1rem;
+        }
+
+        .doc-actions {
+          display: flex;
+          flex-wrap: wrap;
+          gap: 0.75rem;
+          margin-top: auto;
+        }
+
+        .doc-btn {
+          display: inline-flex;
+          align-items: center;
+          gap: 0.5rem;
+          padding: 0.6rem 1.2rem;
+          font-size: 0.88rem;
+          font-weight: 600;
+          border-radius: 8px;
+          text-decoration: none;
+          transition: all 0.2s ease;
+        }
+
+        .doc-btn.primary {
+          background: var(--primary-red, #bd3731);
+          color: #ffffff;
+        }
+
+        .doc-btn.primary:hover {
+          background: var(--primary-red-hover, #992d29);
+          color: #ffffff;
+        }
+
+        .doc-btn.secondary {
+          background: #f1f5f9;
+          color: #334155;
+          border: 1px solid #cbd5e1;
+        }
+
+        .doc-btn.secondary:hover {
+          background: #e2e8f0;
+          color: #0f172a;
+        }
+
+        @media (max-width: 640px) {
+          .doc-card {
+            flex-direction: column;
+          }
+          .doc-thumbnail-wrapper {
+            width: 100%;
+            height: 220px;
+          }
         }
 
         /* ── GALLERY ────────────────────────── */

@@ -2,6 +2,14 @@
 // Each entry has a title, description, page path, category, and keywords for matching.
 
 const searchData = [
+  {
+    id: 'news-acqf-greening-skills-qualifications-2026',
+    title: "AASU & ETF Release Key Deliverables for ACQF Pilot II on Greening Skills and Qualifications in Africa",
+    description: "The All-Africa Students Union, in collaboration with the European Training Foundation (ETF) and partners, has released three essential resources on greening skills and qualifications in Africa.",
+    path: "/news/news-acqf-greening-skills-qualifications-2026",
+    category: "News & Events",
+    keywords: ["acqf", "etf", "green skills", "qualifications", "greening skills", "toolkit", "casebook", "conceptual framework", "education", "sustainability", "africa"]
+  },
   // WHO WE ARE
   {
     id: 1,

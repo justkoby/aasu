@@ -1,8 +1,11 @@
 import React, { useEffect } from 'react';
+import { Link } from 'react-router-dom';
 import { motion } from 'framer-motion';
-import { Compass, Target, ArrowRight, Rocket, Shield, Leaf, Zap, Users, Globe } from 'lucide-react';
+import { Compass, Target, ArrowRight, Rocket, Shield, Leaf, Zap, Users, Globe, Newspaper, FileText, Calendar, Download, ExternalLink } from 'lucide-react';
 import ProjectExplorer from '../../components/ProjectExplorer';
 import { flagshipPrograms, priorityProjects } from '../../data/programsData';
+import { newsEventsData } from '../../data/newsEventsData';
+import { reportsData } from '../../data/reportsData';
 import SEO from '../../components/SEO';
 
 const ClimatePage = () => {
@@ -228,6 +231,134 @@ const ClimatePage = () => {
 
       {/* Replaced by Project Explorer above */}
 
+      {/* Climate & Environment News Section */}
+      {(() => {
+        const climateNews = newsEventsData.filter(item => {
+          const cat = item.category?.toLowerCase() || '';
+          const title = item.title?.toLowerCase() || '';
+          const desc = item.description?.toLowerCase() || '';
+          return cat.includes('environment') || cat.includes('climate') || cat.includes('sustainability') ||
+                 title.includes('climate') || title.includes('greening') || title.includes('sustainability') || title.includes('environment') ||
+                 desc.includes('climate') || desc.includes('greening');
+        }).slice(0, 3);
+
+        if (climateNews.length === 0) return null;
+
+        return (
+          <section className="climate-news-section" style={{ backgroundColor: '#ffffff', borderTop: '1px solid #eee' }}>
+            <div className="container">
+              <div className="section-header" style={{ justifyContent: 'space-between', flexWrap: 'wrap' }}>
+                <div style={{ display: 'flex', alignItems: 'center', gap: '1rem' }}>
+                  <Newspaper className="section-icon" style={{ color: accentColor }} />
+                  <div>
+                    <span className="section-tag" style={{ color: accentColor, fontWeight: 800, fontSize: '0.85rem', textTransform: 'uppercase', letterSpacing: '1px' }}>Latest Updates</span>
+                    <h2 className="section-title" style={{ margin: 0 }}>Environment & Climate News</h2>
+                  </div>
+                </div>
+                <Link to="/news" className="see-all-link" style={{ color: accentColor, fontWeight: 800, display: 'flex', alignItems: 'center', gap: '0.5rem', textDecoration: 'none' }}>
+                  View All News & Events <ArrowRight size={16} />
+                </Link>
+              </div>
+
+              <div className="climate-news-grid">
+                {climateNews.map((item) => (
+                  <motion.div 
+                    key={item.id}
+                    className="climate-news-card"
+                    initial={{ opacity: 0, y: 20 }}
+                    whileInView={{ opacity: 1, y: 0 }}
+                    viewport={{ once: true }}
+                  >
+                    <div className="news-img-wrapper">
+                      <img src={item.img} alt={item.title} />
+                      <span className="news-badge" style={{ backgroundColor: accentColor }}>{item.category || item.type}</span>
+                    </div>
+                    <div className="news-card-content">
+                      <div className="news-date">
+                        <Calendar size={14} />
+                        {new Date(item.date).toLocaleDateString('en-GB', { day: 'numeric', month: 'short', year: 'numeric' })}
+                      </div>
+                      <h3 className="news-card-title">{item.title}</h3>
+                      <p className="news-card-excerpt">{item.excerpt}</p>
+                      <Link to={`/news/${item.id}`} className="read-more-link" style={{ color: accentColor }}>
+                        Read Full Story <ArrowRight size={14} />
+                      </Link>
+                    </div>
+                  </motion.div>
+                ))}
+              </div>
+            </div>
+          </section>
+        );
+      })()}
+
+      {/* Climate & Environment Reports & Documents Section */}
+      {(() => {
+        const climateReports = reportsData.filter(item => {
+          const pArea = item.priorityArea?.toLowerCase() || '';
+          const title = item.title?.toLowerCase() || '';
+          const desc = item.description?.toLowerCase() || '';
+          return pArea.includes('climate') || pArea.includes('environment') ||
+                 title.includes('climate') || title.includes('greening') || title.includes('tree') || title.includes('environment') ||
+                 desc.includes('climate') || desc.includes('greening') || desc.includes('environment');
+        });
+
+        if (climateReports.length === 0) return null;
+
+        return (
+          <section className="climate-reports-section" style={{ backgroundColor: '#f8fafc', borderTop: '1px solid #e2e8f0', borderBottom: '1px solid #e2e8f0' }}>
+            <div className="container">
+              <div className="section-header" style={{ justifyContent: 'space-between', flexWrap: 'wrap' }}>
+                <div style={{ display: 'flex', alignItems: 'center', gap: '1rem' }}>
+                  <FileText className="section-icon" style={{ color: accentColor }} />
+                  <div>
+                    <span className="section-tag" style={{ color: accentColor, fontWeight: 800, fontSize: '0.85rem', textTransform: 'uppercase', letterSpacing: '1px' }}>Publications & Resources</span>
+                    <h2 className="section-title" style={{ margin: 0 }}>Climate & Environmental Reports</h2>
+                  </div>
+                </div>
+                <Link to="/reports" className="see-all-link" style={{ color: accentColor, fontWeight: 800, display: 'flex', alignItems: 'center', gap: '0.5rem', textDecoration: 'none' }}>
+                  View Document Hub <ArrowRight size={16} />
+                </Link>
+              </div>
+
+              <div className="climate-reports-grid">
+                {climateReports.map((doc) => (
+                  <motion.div 
+                    key={doc.id}
+                    className="climate-report-card"
+                    initial={{ opacity: 0, y: 20 }}
+                    whileInView={{ opacity: 1, y: 0 }}
+                    viewport={{ once: true }}
+                  >
+                    <div className="report-thumb-box">
+                      <img src={doc.thumbnail || '/report-thumb-placeholder.jpg'} alt={doc.title} />
+                      <span className="report-year-badge">{doc.year}</span>
+                    </div>
+                    <div className="report-card-body">
+                      <span className="report-type-tag" style={{ color: accentColor }}>{doc.type}</span>
+                      <h3 className="report-card-title">{doc.title}</h3>
+                      <p className="report-card-desc">{doc.description}</p>
+                      <div className="report-actions">
+                        <a 
+                          href={doc.fileUrl} 
+                          target="_blank" 
+                          rel="noopener noreferrer" 
+                          className="report-download-btn"
+                          style={{ backgroundColor: accentColor }}
+                          download
+                        >
+                          <Download size={15} /> Download PDF
+                        </a>
+                      </div>
+                    </div>
+                  </motion.div>
+                ))}
+              </div>
+            </div>
+          </section>
+        );
+      })()}
+
       <section className="vision-section" style={{ backgroundColor: '#ffffff', color: '#222' }}>
         <div className="container">
           <div className="vision-card" style={{ borderColor: accentColor }}>
@@ -329,6 +460,215 @@ const ClimatePage = () => {
         .quote-mark { font-size: 8rem; font-family: serif; position: absolute; top: -2rem; left: 50%; transform: translateX(-50%); opacity: 0.1; }
         .impact-quote p { font-size: 1.75rem; font-weight: 900; font-family: var(--font-headings); color: #111; margin-bottom: 1.5rem; }
         .quote-bar { width: 80px; height: 6px; margin: 0 auto; border-radius: 10px; }
+        /* ── CLIMATE NEWS & REPORTS STYLES ───── */
+        .climate-news-grid {
+          display: grid;
+          grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+          gap: 2rem;
+          margin-top: 1rem;
+        }
+
+        .climate-news-card {
+          background: #ffffff;
+          border-radius: 16px;
+          overflow: hidden;
+          box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
+          border: 1px solid #eef2f6;
+          display: flex;
+          flex-direction: column;
+          transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .climate-news-card:hover {
+          transform: translateY(-6px);
+          box-shadow: 0 12px 30px rgba(0, 0, 0, 0.1);
+        }
+
+        .news-img-wrapper {
+          position: relative;
+          height: 200px;
+          overflow: hidden;
+        }
+
+        .news-img-wrapper img {
+          width: 100%;
+          height: 100%;
+          object-fit: cover;
+          transition: transform 0.5s ease;
+        }
+
+        .climate-news-card:hover .news-img-wrapper img {
+          transform: scale(1.05);
+        }
+
+        .news-badge {
+          position: absolute;
+          top: 1rem;
+          left: 1rem;
+          color: white;
+          font-size: 0.75rem;
+          font-weight: 800;
+          padding: 0.35rem 0.85rem;
+          border-radius: 50px;
+          text-transform: uppercase;
+          letter-spacing: 0.5px;
+        }
+
+        .news-card-content {
+          padding: 1.5rem;
+          display: flex;
+          flex-direction: column;
+          flex: 1;
+        }
+
+        .news-date {
+          display: flex;
+          align-items: center;
+          gap: 0.4rem;
+          font-size: 0.85rem;
+          color: #64748b;
+          font-weight: 600;
+          margin-bottom: 0.75rem;
+        }
+
+        .news-card-title {
+          font-family: var(--font-headings);
+          font-size: 1.15rem;
+          font-weight: 800;
+          color: #0f172a;
+          line-height: 1.4;
+          margin-bottom: 0.75rem;
+        }
+
+        .news-card-excerpt {
+          font-size: 0.95rem;
+          color: #475569;
+          line-height: 1.6;
+          margin-bottom: 1.5rem;
+          display: -webkit-box;
+          -webkit-line-clamp: 3;
+          -webkit-box-orient: vertical;
+          overflow: hidden;
+        }
+
+        .read-more-link {
+          margin-top: auto;
+          font-weight: 800;
+          font-size: 0.9rem;
+          display: inline-flex;
+          align-items: center;
+          gap: 0.4rem;
+          text-decoration: none;
+        }
+
+        .climate-reports-grid {
+          display: grid;
+          grid-template-columns: repeat(auto-fill, minmax(340px, 1fr));
+          gap: 2rem;
+          margin-top: 1rem;
+        }
+
+        .climate-report-card {
+          background: #ffffff;
+          border-radius: 16px;
+          padding: 1.5rem;
+          border: 1px solid #e2e8f0;
+          display: flex;
+          gap: 1.25rem;
+          box-shadow: 0 4px 15px rgba(0, 0, 0, 0.03);
+          transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .climate-report-card:hover {
+          transform: translateY(-4px);
+          box-shadow: 0 10px 25px rgba(0, 0, 0, 0.08);
+        }
+
+        .report-thumb-box {
+          position: relative;
+          width: 110px;
+          height: 150px;
+          flex-shrink: 0;
+          border-radius: 10px;
+          overflow: hidden;
+          background: #f1f5f9;
+          box-shadow: 0 2px 10px rgba(0, 0, 0, 0.08);
+        }
+
+        .report-thumb-box img {
+          width: 100%;
+          height: 100%;
+          object-fit: cover;
+        }
+
+        .report-year-badge {
+          position: absolute;
+          bottom: 0.5rem;
+          right: 0.5rem;
+          background: rgba(15, 23, 42, 0.85);
+          color: white;
+          font-size: 0.7rem;
+          font-weight: 800;
+          padding: 0.2rem 0.5rem;
+          border-radius: 4px;
+        }
+
+        .report-card-body {
+          display: flex;
+          flex-direction: column;
+          flex: 1;
+        }
+
+        .report-type-tag {
+          font-size: 0.75rem;
+          font-weight: 800;
+          text-transform: uppercase;
+          letter-spacing: 0.5px;
+          margin-bottom: 0.4rem;
+        }
+
+        .report-card-title {
+          font-family: var(--font-headings);
+          font-size: 1.05rem;
+          font-weight: 800;
+          color: #0f172a;
+          line-height: 1.35;
+          margin-bottom: 0.5rem;
+        }
+
+        .report-card-desc {
+          font-size: 0.88rem;
+          color: #64748b;
+          line-height: 1.5;
+          margin-bottom: 1.25rem;
+          display: -webkit-box;
+          -webkit-line-clamp: 2;
+          -webkit-box-orient: vertical;
+          overflow: hidden;
+        }
+
+        .report-actions {
+          margin-top: auto;
+        }
+
+        .report-download-btn {
+          display: inline-flex;
+          align-items: center;
+          gap: 0.5rem;
+          padding: 0.55rem 1.1rem;
+          color: #ffffff;
+          font-size: 0.85rem;
+          font-weight: 700;
+          border-radius: 8px;
+          text-decoration: none;
+          transition: opacity 0.2s;
+        }
+
+        .report-download-btn:hover {
+          opacity: 0.9;
+          color: #ffffff;
+        }
+
         .cta-box { padding: 5rem; border-radius: 30px; text-align: center; color: white; }
         .cta-box h2 { font-family: var(--font-headings); font-size: 3rem; font-weight: 900; margin-bottom: 2.5rem; }
         .cta-links { display: flex; justify-content: center; gap: 2rem; }
