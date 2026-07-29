@@ -214,15 +214,15 @@ const ClimatePage = () => {
               { num: '4', title: 'Raising Awareness on Wider Impact', points: ['Educate on links between climate and development', 'Highlight relationship between environment and security', 'Promote informed and responsible action'], footer: 'Climate action is connected to Africa’s overall development and stability.' },
               { num: '5', title: 'Strengthening Global Partnerships', points: ['Collaborate with governments and development partners', 'Work with environmental organizations', 'Engage in global climate conversations'], footer: 'Ensuring student voices are part of global climate solutions.' }
             ].map((focus, idx) => (
-              <motion.div key={idx} initial={{ opacity: 0, x: idx % 2 === 0 ? -20 : 20 }} whileInView={{ opacity: 1, x: 0 }} viewport={{ once: true }} className="focus-timeline-item">
-                <div className="focus-num" style={{ backgroundColor: accentColor }}>{focus.num}</div>
-                <div className="focus-content">
+              <motion.div key={idx} initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} className="focus-timeline-item">
+                <div className="focus-header-row">
+                  <div className="focus-num" style={{ backgroundColor: accentColor }}>{focus.num}</div>
                   <h3 className="focus-title">{focus.title}</h3>
-                  <ul className="focus-list">
-                    {focus.points.map((p, pIdx) => <li key={pIdx}>{p}</li>)}
-                  </ul>
-                  <p className="focus-footer">{focus.footer}</p>
                 </div>
+                <ul className="focus-list">
+                  {focus.points.map((p, pIdx) => <li key={pIdx}>{p}</li>)}
+                </ul>
+                <p className="focus-footer">{focus.footer}</p>
               </motion.div>
             ))}
           </div>
@@ -438,14 +438,33 @@ const ClimatePage = () => {
         .card-icon-wrap svg { width: 40px; height: 40px; }
         .card-title { font-family: var(--font-headings); font-size: 1.25rem; font-weight: 800; margin-bottom: 1rem; }
         .card-desc { color: #666; line-height: 1.6; }
-        .timeline-grid { display: grid; gap: 3rem; }
-        .focus-timeline-item { display: flex; gap: 2rem; }
-        .focus-num { width: 50px; height: 50px; border-radius: 50%; color: white; display: flex; align-items: center; justify-content: center; font-weight: 900; font-size: 1.5rem; flex-shrink: 0; }
-        .focus-title { font-family: var(--font-headings); font-size: 1.75rem; font-weight: 800; margin-bottom: 1rem; }
-        .focus-list { list-style: none; margin-bottom: 1rem; }
-        .focus-list li { position: relative; padding-left: 1.5rem; margin-bottom: 0.8rem; color: #222; font-weight: 500; font-size: 1.05rem; line-height: 1.5; }
-        .focus-list li::before { content: ''; position: absolute; left: 0; top: 10px; width: 8px; height: 8px; background: ${accentColor}; border-radius: 50%; }
-        .focus-footer { font-style: italic; color: #555; border-left: 3px solid #ddd; padding-left: 1rem; margin-top: 1rem; font-weight: 500; }
+        .timeline-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 2rem; }
+        .focus-timeline-item { 
+          display: flex; 
+          flex-direction: column; 
+          gap: 1.25rem; 
+          background: #ffffff; 
+          padding: 2.25rem 2rem; 
+          border-radius: 20px; 
+          border: 1px solid #eef2f6; 
+          box-shadow: 0 4px 20px rgba(0, 0, 0, 0.03); 
+          transition: transform 0.3s ease, box-shadow 0.3s ease; 
+        }
+        .focus-timeline-item:hover { 
+          transform: translateY(-4px); 
+          box-shadow: 0 12px 30px rgba(0, 0, 0, 0.07); 
+          border-color: ${accentColor}; 
+        }
+        .focus-header-row { display: flex; align-items: center; gap: 1.25rem; }
+        .focus-num { width: 44px; height: 44px; border-radius: 50%; color: white; display: flex; align-items: center; justify-content: center; font-weight: 900; font-size: 1.25rem; flex-shrink: 0; }
+        .focus-title { font-family: var(--font-headings); font-size: 1.35rem; font-weight: 800; color: #0f172a; margin: 0; line-height: 1.3; }
+        .focus-list { list-style: none; margin-bottom: 1rem; flex: 1; }
+        .focus-list li { position: relative; padding-left: 1.5rem; margin-bottom: 0.75rem; color: #334155; font-weight: 500; font-size: 0.98rem; line-height: 1.5; }
+        .focus-list li::before { content: ''; position: absolute; left: 0; top: 9px; width: 7px; height: 7px; background: ${accentColor}; border-radius: 50%; }
+        .focus-footer { font-style: italic; color: #64748b; border-left: 3px solid ${accentColor}; padding-left: 1rem; margin-top: auto; font-weight: 500; font-size: 0.92rem; line-height: 1.4; }
+        @media (max-width: 900px) {
+          .timeline-grid { grid-template-columns: 1fr; }
+        }
         .initiatives-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 2rem; }
         .initiative-card { background: #222; padding: 2.5rem; border-radius: 20px; border-left: 5px solid ${accentColor}; }
         .init-title { font-family: var(--font-headings); font-size: 1.5rem; font-weight: 800; margin-bottom: 1rem; }
