@@ -14,7 +14,7 @@ export const newsEventsData = [
   {
     id: 'news-acqf-greening-skills-qualifications-2026',
     type: CONTENT_TYPES.NEWS,
-    category: 'Capacity Building, Skills Development & Employability',
+    category: 'Climate Action & Environmental Sustainability',
     title: 'AASU & ETF Release Key Deliverables for ACQF Pilot II on Greening Skills and Qualifications in Africa',
     img: '/ACQF-01.jpeg',
     date: '2026-07-29',
