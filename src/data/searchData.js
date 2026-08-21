@@ -63,7 +63,7 @@ const searchData = [
   },
   {
     id: 7,
-    title: "Environment & Climate Action",
+    title: "Climate Action & Environmental Sustainability",
     description: "AASU engages African students in environmental advocacy and climate action, championing green growth and sustainable development for the continent.",
     path: "/#what-we-do",
     category: "What We Do",

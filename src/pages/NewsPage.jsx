@@ -20,7 +20,7 @@ const NewsPage = () => {
     window.scrollTo(0, 0);
   }, []);
 
-  const themes = ['All', 'Education & Students Rights', 'Environment & Climate Action', 'Gender Advocacy', 'Capacity Building', 'Policy & Advocacy'];
+  const themes = ['All', 'Education & Students Rights', 'Climate Action & Environmental Sustainability', 'Gender Advocacy', 'Capacity Building', 'Policy & Advocacy'];
   const types = ['All', ...Object.values(CONTENT_TYPES)];
   const regions = ['All', 'North Africa', 'East Africa', 'West Africa', 'Central Africa', 'Southern Africa', 'International'];
 

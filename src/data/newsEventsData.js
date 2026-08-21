@@ -71,7 +71,7 @@ Through high-level policy dialogues such as this, AASU continues to ensure that 
   {
     id: 'news-times-higher-education-sustainability-2026',
     type: CONTENT_TYPES.NEWS,
-    category: 'Environment & Climate Action',
+    category: 'Climate Action & Environmental Sustainability',
     title: 'AASU Featured in Maiden Times Higher Education Sustainability Impact Ratings 2026',
     img: '/Pages from Binder1.jpeg',
     images: ['/Pages from Binder2.jpeg'],
@@ -176,7 +176,7 @@ Together, we are building a healthier, more confident, and informed generation.
   {
     id: 'event-gsdc-sustainability-2026',
     type: CONTENT_TYPES.EVENT,
-    category: 'Environment & Climate Action',
+    category: 'Climate Action & Environmental Sustainability',
     title: 'Beyond the Syllabus: Embedding Sustainability into the Larger Learning Journey at GSDC 2026',
     img: '/%F0%9D%90%81%F0%9D%90%9E%F0%9D%90%AF%F0%9D%90%AE%F0%9D%90%A7%F0%9D%90%9D%20%F0%9D%90%AB%F0%9D%90%A1%F0%9D%90%9E%20%F0%9D%90%AF%F0%9D%90%AE%F0%9D%90%A2%F0%9D%90%A5%F0%9D%90%A5%F0%9D%90%9A%F0%9D%90%9B%F0%9D%90%AE%F0%9D%90%AF.png',
     date: '2026-06-23',
@@ -300,7 +300,7 @@ Secretary-General`
   {
     id: 'event-climate-forward-summit-2026',
     type: CONTENT_TYPES.EVENT,
-    category: 'Environment & Climate Action',
+    category: 'Climate Action & Environmental Sustainability',
     title: 'Climate Forward Summit 2026: The Circular Transition',
     img: '/wastetowealth.png',
     date: '2026-07-09',
@@ -357,7 +357,7 @@ The conversation continues. The future is ours to shape.
   {
     id: 'news-climate-resilience-2026',
     type: CONTENT_TYPES.NEWS,
-    category: 'Environment & Climate Action',
+    category: 'Climate Action & Environmental Sustainability',
     title: 'AASU Showcases Youth-Led Climate Action and Resilience Building at eLearning Africa 2026',
     img: '/hilda-1.jpeg',
     images: ['/hilda-2.jpeg'],
@@ -923,7 +923,7 @@ The programme is co-funded by the European Union and implemented in partnership 
   {
     id: 'greening-skills-africa',
     type: CONTENT_TYPES.NEWS,
-    category: 'Environment & Climate Action',
+    category: 'Climate Action & Environmental Sustainability',
     title: 'Call for Good Practices: Greening Skills and Qualifications in Africa',
     img: '/greening-call.png',
     date: '2025-05-15',
@@ -1077,7 +1077,7 @@ Deadline: 1 May 2025`
   {
     id: 'event-earthday-2026',
     type: CONTENT_TYPES.EVENT,
-    category: 'Environment & Climate Action',
+    category: 'Climate Action & Environmental Sustainability',
     title: 'Earth Day Webinar: Renewable Energy and Sustainable Practices',
     img: '/earthday.jpg',
     date: '2026-04-22', 
@@ -1224,7 +1224,7 @@ Click below to meet the new committee members and learn about their roles.`
   {
     id: 'news-sos-germany',
     type: CONTENT_TYPES.NEWS,
-    category: 'Environment & Climate Action',
+    category: 'Climate Action & Environmental Sustainability',
     title: 'AASU Participates in SOS International: Student Voice for a Safe and Just Transition',
     img: '/sos-new.jpg',
     date: '2026-03-21',
@@ -1286,7 +1286,7 @@ https://fh-ooe.at/en/nels/registration-form
   {
     id: 'event-greening-skills-2026',
     type: CONTENT_TYPES.EVENT,
-    category: 'Environment & Climate Action',
+    category: 'Climate Action & Environmental Sustainability',
     title: 'Greening Skills and Qualification Dialogues: Second Session',
     img: '/greening.jpg',
     date: '2026-04-20',
@@ -1334,7 +1334,7 @@ Be part of the movement. See you in Accra!
   {
     id: 'event-learning-planet-2026',
     type: CONTENT_TYPES.EVENT,
-    category: 'Environment & Climate Action',
+    category: 'Climate Action & Environmental Sustainability',
     title: 'Learning Planet Festival 2026 — Students & Youth Session',
     img: '/learning-festival.jpg',
     date: '2026-01-27',
@@ -1497,7 +1497,7 @@ Let’s celebrate and amplify the voices of girls leading change across Ghana!
   {
     id: 'event-sos-exchange-2025',
     type: CONTENT_TYPES.EVENT,
-    category: 'Environment & Climate Action',
+    category: 'Climate Action & Environmental Sustainability',
     title: 'SOS International Member Exchange 2025',
     img: '/sos-int.jpg',
     date: '2025-10-17',
@@ -1521,7 +1521,7 @@ Don’t miss it!
   {
     id: 'news-burundi-green-office',
     type: CONTENT_TYPES.NEWS,
-    category: 'Environment & Climate Action',
+    category: 'Climate Action & Environmental Sustainability',
     title: 'BNSU Launches Green Office Burundi: A Milestone for Sustainability',
     img: '/burundi.jpg',
     date: '2026-03-10',
@@ -1570,7 +1570,7 @@ Together, we are building a brighter future for student leaders!
   {
     id: 'news-sos-ghent-2025',
     type: CONTENT_TYPES.NEWS,
-    category: 'Environment & Climate Action',
+    category: 'Climate Action & Environmental Sustainability',
     title: 'AASU Delegation at the 2025 SOS-International Summit in Ghent',
     img: '/sos-meet-1.jpg',
     images: ['/sos-meet-2.jpg', '/sos-meet-3.jpg'],
@@ -1607,7 +1607,7 @@ Let’s keep the conversation going and the support flowing.
   {
     id: 'news-tree-planting-oxfam',
     type: CONTENT_TYPES.NEWS,
-    category: 'Environment & Climate Action',
+    category: 'Climate Action & Environmental Sustainability',
     title: 'Tree-Planting Exercise: A Commitment to Climate Action',
     img: '/tree-plant-1.jpg',
     images: ['/tree-plant-2.jpg'],
@@ -1636,7 +1636,7 @@ This strategic engagement marks a step forward in ensuring that students are not
   {
     id: 'news-eco-ambassadors-aau-tv',
     type: CONTENT_TYPES.NEWS,
-    category: 'Environment & Climate Action',
+    category: 'Climate Action & Environmental Sustainability',
     title: 'Eco Ambassadors Initiative Highlighted on AAU TV',
     img: '/aheadof-prog.jpg',
     date: '2025-07-28',
@@ -1733,7 +1733,7 @@ Earlier, Jemila and Angel delivered powerful presentations at the Opening Ceremo
   {
     id: 'news-eco-ambassadors-workshop-2025',
     type: CONTENT_TYPES.NEWS,
-    category: 'Environment & Climate Action',
+    category: 'Climate Action & Environmental Sustainability',
     title: 'Eco Ambassadors Workshop 2025: Youth for Sustainable Futures',
     img: '/eco-students.jpg',
     images: ['/eco-students-2.jpg', '/eco-students-3.jpg'],
