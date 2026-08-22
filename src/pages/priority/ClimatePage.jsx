@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useMemo } from 'react';
 import { Link } from 'react-router-dom';
 import { motion } from 'framer-motion';
 import { Compass, Target, ArrowRight, Rocket, Shield, Leaf, Zap, Users, Globe, Newspaper, FileText, Calendar, Download, ExternalLink } from 'lucide-react';
@@ -6,12 +6,32 @@ import ProjectExplorer from '../../components/ProjectExplorer';
 import { flagshipPrograms, priorityProjects } from '../../data/programsData';
 import { newsEventsData } from '../../data/newsEventsData';
 import { reportsData } from '../../data/reportsData';
+import { useClimatePosts } from '../../hooks/useContent';
 import SEO from '../../components/SEO';
 
 const ClimatePage = () => {
+  const { data: dbClimatePosts, loading: climateLoading, error: climateError } = useClimatePosts(3);
+
   useEffect(() => {
     window.scrollTo(0, 0);
   }, []);
+
+  const climateNews = useMemo(() => {
+    if (climateError || dbClimatePosts === null) {
+      if (climateError) {
+        console.warn("[AASU Web ClimatePage] Using static fallback data due to Supabase error:", climateError.message);
+      }
+      return newsEventsData.filter(item => {
+        const cat = item.category?.toLowerCase() || '';
+        const title = item.title?.toLowerCase() || '';
+        const desc = item.description?.toLowerCase() || '';
+        return cat.includes('environment') || cat.includes('climate') || cat.includes('sustainability') ||
+               title.includes('climate') || title.includes('greening') || title.includes('sustainability') || title.includes('environment') ||
+               desc.includes('climate') || desc.includes('greening');
+      }).slice(0, 3);
+    }
+    return dbClimatePosts;
+  }, [dbClimatePosts, climateError]);
 
   const accentColor = "#2E7D32"; // Green for Climate & Environment
   const areaData = priorityProjects.find(a => a.area === "Climate Action & Sustainability");
@@ -232,65 +252,52 @@ const ClimatePage = () => {
       {/* Replaced by Project Explorer above */}
 
       {/* Climate & Environment News Section */}
-      {(() => {
-        const climateNews = newsEventsData.filter(item => {
-          const cat = item.category?.toLowerCase() || '';
-          const title = item.title?.toLowerCase() || '';
-          const desc = item.description?.toLowerCase() || '';
-          return cat.includes('environment') || cat.includes('climate') || cat.includes('sustainability') ||
-                 title.includes('climate') || title.includes('greening') || title.includes('sustainability') || title.includes('environment') ||
-                 desc.includes('climate') || desc.includes('greening');
-        }).slice(0, 3);
-
-        if (climateNews.length === 0) return null;
-
-        return (
-          <section className="climate-news-section" style={{ backgroundColor: '#ffffff', borderTop: '1px solid #eee' }}>
-            <div className="container">
-              <div className="section-header" style={{ justifyContent: 'space-between', flexWrap: 'wrap' }}>
-                <div style={{ display: 'flex', alignItems: 'center', gap: '1rem' }}>
-                  <Newspaper className="section-icon" style={{ color: accentColor }} />
-                  <div>
-                    <span className="section-tag" style={{ color: accentColor, fontWeight: 800, fontSize: '0.85rem', textTransform: 'uppercase', letterSpacing: '1px' }}>Latest Updates</span>
-                    <h2 className="section-title" style={{ margin: 0 }}>Environment & Climate News</h2>
-                  </div>
+      {climateNews && climateNews.length > 0 && (
+        <section className="climate-news-section" style={{ backgroundColor: '#ffffff', borderTop: '1px solid #eee' }}>
+          <div className="container">
+            <div className="section-header" style={{ justifyContent: 'space-between', flexWrap: 'wrap' }}>
+              <div style={{ display: 'flex', alignItems: 'center', gap: '1rem' }}>
+                <Newspaper className="section-icon" style={{ color: accentColor }} />
+                <div>
+                  <span className="section-tag" style={{ color: accentColor, fontWeight: 800, fontSize: '0.85rem', textTransform: 'uppercase', letterSpacing: '1px' }}>Latest Updates</span>
+                  <h2 className="section-title" style={{ margin: 0 }}>Environment &amp; Climate News</h2>
                 </div>
-                <Link to="/news" className="see-all-link" style={{ color: accentColor, fontWeight: 800, display: 'flex', alignItems: 'center', gap: '0.5rem', textDecoration: 'none' }}>
-                  View All News & Events <ArrowRight size={16} />
-                </Link>
               </div>
-
-              <div className="climate-news-grid">
-                {climateNews.map((item) => (
-                  <motion.div 
-                    key={item.id}
-                    className="climate-news-card"
-                    initial={{ opacity: 0, y: 20 }}
-                    whileInView={{ opacity: 1, y: 0 }}
-                    viewport={{ once: true }}
-                  >
-                    <div className="news-img-wrapper">
-                      <img src={item.img} alt={item.title} />
-                      <span className="news-badge" style={{ backgroundColor: accentColor }}>{item.category || item.type}</span>
-                    </div>
-                    <div className="news-card-content">
-                      <div className="news-date">
-                        <Calendar size={14} />
-                        {new Date(item.date).toLocaleDateString('en-GB', { day: 'numeric', month: 'short', year: 'numeric' })}
-                      </div>
-                      <h3 className="news-card-title">{item.title}</h3>
-                      <p className="news-card-excerpt">{item.excerpt}</p>
-                      <Link to={`/news/${item.id}`} className="read-more-link" style={{ color: accentColor }}>
-                        Read Full Story <ArrowRight size={14} />
-                      </Link>
-                    </div>
-                  </motion.div>
-                ))}
-              </div>
+              <Link to="/news" className="see-all-link" style={{ color: accentColor, fontWeight: 800, display: 'flex', alignItems: 'center', gap: '0.5rem', textDecoration: 'none' }}>
+                View All News &amp; Events <ArrowRight size={16} />
+              </Link>
             </div>
-          </section>
-        );
-      })()}
+
+            <div className="climate-news-grid">
+              {climateNews.map((item) => (
+                <motion.div 
+                  key={item.id || item.slug}
+                  className="climate-news-card"
+                  initial={{ opacity: 0, y: 20 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true }}
+                >
+                  <div className="news-img-wrapper">
+                    <img src={item.img || item.featured_image_url || '/placeholder.jpg'} alt={item.featured_image_alt || item.title} />
+                    <span className="news-badge" style={{ backgroundColor: accentColor }}>{item.category || item.type || 'CLIMATE'}</span>
+                  </div>
+                  <div className="news-card-content">
+                    <div className="news-date">
+                      <Calendar size={14} />
+                      {item.date}
+                    </div>
+                    <h3 className="news-card-title">{item.title}</h3>
+                    <p className="news-card-excerpt">{item.excerpt}</p>
+                    <Link to={item.redirectUrl || `/news/${item.slug || item.id}`} className="read-more-link" style={{ color: accentColor }}>
+                      Read Full Story <ArrowRight size={14} />
+                    </Link>
+                  </div>
+                </motion.div>
+              ))}
+            </div>
+          </div>
+        </section>
+      )}
 
       {/* Climate & Environment Reports & Documents Section */}
       {(() => {

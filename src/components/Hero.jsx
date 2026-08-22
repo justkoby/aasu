@@ -1,12 +1,35 @@
 import React, { useState, useEffect } from 'react';
-import { ChevronLeft, ChevronRight } from 'lucide-react';
+import { ChevronLeft, ChevronRight, Calendar, ArrowRight } from 'lucide-react';
 import { motion, AnimatePresence } from 'framer-motion';
+import { Link } from 'react-router-dom';
+import { useHeroPosts } from '../hooks/useContent';
+
+const STATIC_HEADER_SLIDES = [
+  { image: '/header-1.jpg', id: 'static-1', title: 'All-Africa Students Union', excerpt: 'Empowering African Students Across the Continent' },
+  { image: '/header-2.jpg', id: 'static-2', title: 'Unity, Leadership & Excellence', excerpt: 'Building the Future of African Education and Rights' },
+];
 
 const Hero = () => {
-  const slides = [
-    { image: '/header-1.jpg', id: 1 },
-    { image: '/header-2.jpg', id: 2 },
-  ];
+  const { data: heroPosts, loading, error } = useHeroPosts();
+
+  let slides = STATIC_HEADER_SLIDES;
+
+  if (!loading) {
+    if (error) {
+      console.warn("[AASU Web Hero] Using static fallback slides due to Supabase error:", error.message);
+      slides = STATIC_HEADER_SLIDES;
+    } else if (heroPosts && heroPosts.length > 0) {
+      slides = heroPosts.map(post => ({
+        id: post.id,
+        image: post.img || post.featured_image_url || '/header-1.jpg',
+        title: post.title,
+        excerpt: post.excerpt,
+        date: post.date,
+        link: post.redirectUrl || `/news/${post.slug || post.id}`,
+        alt: post.featured_image_alt || post.title
+      }));
+    }
+  }
 
   const [currentSlide, setCurrentSlide] = useState(0);
   const [direction, setDirection] = useState(0);
@@ -22,9 +45,10 @@ const Hero = () => {
   };
 
   useEffect(() => {
-    const timer = setInterval(nextSlide, 5000);
+    if (slides.length <= 1) return;
+    const timer = setInterval(nextSlide, 6000);
     return () => clearInterval(timer);
-  }, []);
+  }, [slides.length]);
 
   const variants = {
     enter: (direction) => ({
@@ -54,6 +78,8 @@ const Hero = () => {
     })
   };
 
+  const activeSlide = slides[currentSlide] || slides[0];
+
   return (
     <section className="hero">
       <div className="hero-carousel">
@@ -66,38 +92,68 @@ const Hero = () => {
             animate="center"
             exit="exit"
             className="slide"
-            style={{ backgroundImage: `url(${slides[currentSlide].image})` }}
+            style={{ backgroundImage: `url(${activeSlide.image})` }}
           >
             <div className="carousel-overlay" />
+            
+            {activeSlide.title && (
+              <div className="container slide-content-wrapper">
+                <motion.div 
+                  initial={{ opacity: 0, y: 30 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ delay: 0.3, duration: 0.6 }}
+                  className="slide-card"
+                >
+                  {activeSlide.date && (
+                    <span className="slide-date">
+                      <Calendar size={14} /> {activeSlide.date}
+                    </span>
+                  )}
+                  <h2 className="slide-title">{activeSlide.title}</h2>
+                  {activeSlide.excerpt && (
+                    <p className="slide-excerpt">{activeSlide.excerpt}</p>
+                  )}
+                  {activeSlide.link && (
+                    <Link to={activeSlide.link} className="slide-cta-btn">
+                      Read Full Story <ArrowRight size={16} />
+                    </Link>
+                  )}
+                </motion.div>
+              </div>
+            )}
           </motion.div>
         </AnimatePresence>
 
         {/* Carousel Navigation */}
-        <div className="carousel-nav container">
-          <button className="carousel-arrow prev" onClick={prevSlide}>
-            <ChevronLeft size={24} />
-          </button>
-          <button className="carousel-arrow next" onClick={nextSlide}>
-            <ChevronRight size={24} />
-          </button>
-        </div>
+        {slides.length > 1 && (
+          <div className="carousel-nav container">
+            <button className="carousel-arrow prev" onClick={prevSlide} aria-label="Previous Slide">
+              <ChevronLeft size={24} />
+            </button>
+            <button className="carousel-arrow next" onClick={nextSlide} aria-label="Next Slide">
+              <ChevronRight size={24} />
+            </button>
+          </div>
+        )}
 
         {/* Carousel Indicators */}
-        <div className="carousel-indicators">
-          {slides.map((_, i) => (
-            <div
-              key={i}
-              className={`indicator ${i === currentSlide ? 'active' : ''}`}
-              onClick={() => {
-                setDirection(i > currentSlide ? 1 : -1);
-                setCurrentSlide(i);
-              }}
-            />
-          ))}
-        </div>
+        {slides.length > 1 && (
+          <div className="carousel-indicators">
+            {slides.map((_, i) => (
+              <div
+                key={i}
+                className={`indicator ${i === currentSlide ? 'active' : ''}`}
+                onClick={() => {
+                  setDirection(i > currentSlide ? 1 : -1);
+                  setCurrentSlide(i);
+                }}
+              />
+            ))}
+          </div>
+        )}
       </div>
 
-      {/* Arch Divider (Flipped / Dipping in Center) */}
+      {/* Arch Divider */}
       <div className="curve-divider">
         <svg data-name="Layer 1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 120" preserveAspectRatio="none">
           <path d="M0,0 C200,0 400,120 600,120 C800,120 1000,0 1200,0 V120 H0 Z" fill="#ffffff" opacity="1"></path>
@@ -131,7 +187,82 @@ const Hero = () => {
         .carousel-overlay {
           position: absolute;
           inset: 0;
-          background: linear-gradient(0deg, rgba(0,0,0,0.6) 0%, rgba(0,0,0,0.2) 50%, rgba(0,0,0,0.4) 100%);
+          background: linear-gradient(0deg, rgba(0,0,0,0.7) 0%, rgba(0,0,0,0.3) 50%, rgba(0,0,0,0.5) 100%);
+        }
+
+        .slide-content-wrapper {
+          position: relative;
+          z-index: 5;
+          width: 100%;
+          margin-top: 60px;
+        }
+
+        .slide-card {
+          max-width: 680px;
+          color: white;
+          padding: 2.5rem;
+          background: rgba(15, 23, 42, 0.45);
+          backdrop-filter: blur(12px);
+          border-radius: 16px;
+          border: 1px solid rgba(255, 255, 255, 0.15);
+          box-shadow: 0 20px 50px rgba(0, 0, 0, 0.3);
+        }
+
+        .slide-date {
+          display: inline-flex;
+          align-items: center;
+          gap: 0.4rem;
+          font-size: 0.85rem;
+          font-weight: 700;
+          color: #fbbf24;
+          text-transform: uppercase;
+          letter-spacing: 1px;
+          margin-bottom: 0.75rem;
+        }
+
+        .slide-title {
+          font-family: var(--font-headings);
+          font-size: 2.5rem;
+          font-weight: 900;
+          line-height: 1.15;
+          margin-bottom: 1rem;
+          color: #ffffff;
+          display: -webkit-box;
+          -webkit-line-clamp: 2;
+          -webkit-box-orient: vertical;
+          overflow: hidden;
+        }
+
+        .slide-excerpt {
+          font-size: 1.05rem;
+          color: rgba(255, 255, 255, 0.9);
+          line-height: 1.6;
+          margin-bottom: 1.75rem;
+          display: -webkit-box;
+          -webkit-line-clamp: 2;
+          -webkit-box-orient: vertical;
+          overflow: hidden;
+        }
+
+        .slide-cta-btn {
+          display: inline-flex;
+          align-items: center;
+          gap: 0.5rem;
+          padding: 0.85rem 1.75rem;
+          background: var(--primary-red, #cb3631);
+          color: white;
+          font-weight: 800;
+          font-size: 0.9rem;
+          border-radius: 50px;
+          text-decoration: none;
+          transition: all 0.3s ease;
+          box-shadow: 0 4px 15px rgba(203, 54, 49, 0.4);
+        }
+
+        .slide-cta-btn:hover {
+          background: #a0201c;
+          transform: translateY(-2px);
+          box-shadow: 0 8px 25px rgba(203, 54, 49, 0.6);
         }
 
         .carousel-nav {
@@ -149,11 +280,11 @@ const Hero = () => {
 
         .carousel-arrow {
           pointer-events: auto;
-          background: rgba(255, 255, 255, 0.1);
-          border: 1px solid rgba(255, 255, 255, 0.2);
+          background: rgba(255, 255, 255, 0.15);
+          border: 1px solid rgba(255, 255, 255, 0.3);
           color: white;
-          width: 60px;
-          height: 60px;
+          width: 54px;
+          height: 54px;
           border-radius: 50%;
           display: flex;
           align-items: center;
@@ -171,27 +302,27 @@ const Hero = () => {
 
         .carousel-indicators {
           position: absolute;
-          bottom: 150px;
+          bottom: 140px;
           left: 50%;
           transform: translateX(-50%);
           display: flex;
-          gap: 1rem;
+          gap: 0.75rem;
           z-index: 10;
         }
 
         .indicator {
-          width: 12px;
-          height: 12px;
+          width: 10px;
+          height: 10px;
           border-radius: 50%;
-          background: rgba(255,255,255,0.3);
+          background: rgba(255,255,255,0.4);
           cursor: pointer;
           transition: all 0.3s ease;
-          border: 1px solid rgba(255,255,255,0.1);
+          border: 1px solid rgba(255,255,255,0.2);
         }
 
         .indicator.active {
           background: var(--primary-red);
-          width: 30px;
+          width: 28px;
           border-radius: 6px;
         }
 
@@ -213,12 +344,10 @@ const Hero = () => {
         }
 
         @media (max-width: 768px) {
-          .carousel-nav {
-            padding: 0 1.5rem;
-          }
-          .curve-divider svg {
-            height: 60px;
-          }
+          .slide-title { font-size: 1.75rem; }
+          .slide-card { padding: 1.5rem; margin: 0 1rem; }
+          .carousel-nav { padding: 0 1rem; }
+          .curve-divider svg { height: 60px; }
         }
       `}} />
     </section>

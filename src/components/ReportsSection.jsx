@@ -1,32 +1,44 @@
-import React from 'react';
+import React, { useMemo } from 'react';
 import { motion } from 'framer-motion';
 import { ArrowRight } from 'lucide-react';
 import { Link } from 'react-router-dom';
 import { newsEventsData } from '../data/newsEventsData';
 import { reportsData } from '../data/reportsData';
+import { usePublishedPressReleases } from '../hooks/useContent';
 
 const ReportsSection = () => {
-  // Get latest 2 statements (Press Releases)
-  const latestStatements = newsEventsData
-    .filter(item => item.type === 'Press Release' || item.id.includes('statement') || item.id.includes('nels-spring'))
-    .sort((a, b) => new Date(b.date) - new Date(a.date))
-    .slice(0, 2);
+  const { data: dbStatements, loading, error } = usePublishedPressReleases({ limit: 4 });
 
-  // Get latest 2 reports
-  const latestReports = reportsData
-    .sort((a, b) => parseInt(b.year) - parseInt(a.year))
-    .slice(0, 2);
+  const latestStatements = useMemo(() => {
+    if (error || dbStatements === null) {
+      if (error) {
+        console.warn("[AASU Web ReportsSection] Using static fallback data due to Supabase error:", error.message);
+      }
+      return newsEventsData
+        .filter(item => item.type === 'Press Release' || item.id.includes('statement') || item.id.includes('nels-spring'))
+        .sort((a, b) => new Date(b.date) - new Date(a.date))
+        .slice(0, 2);
+    }
+    return dbStatements.slice(0, 2);
+  }, [dbStatements, error]);
+
+  // Get latest 2 reports from static reportsData
+  const latestReports = useMemo(() => {
+    return [...reportsData]
+      .sort((a, b) => parseInt(b.year) - parseInt(a.year))
+      .slice(0, 2);
+  }, []);
 
   // Combine them: 2 statements first, then 2 reports
   const combinedItems = [
     ...latestStatements.map(s => ({
-      id: s.id,
+      id: s.id || s.slug,
       type: 'statement',
-      tags: ['Statement', s.category],
+      tags: ['Statement', s.category || s.pressReleaseCategory || 'Official'],
       title: s.title,
-      date: `Updated on ${new Date(s.date).toLocaleDateString('en-US', { month: 'short', day: 'numeric', year: 'numeric' })}`,
-      img: s.img,
-      link: `/news/${s.id}`
+      date: `Updated on ${s.date}`,
+      img: s.img || s.featured_image_url || '/placeholder.jpg',
+      link: s.redirectUrl || `/news/${s.slug || s.id}`
     })),
     ...latestReports.map(r => ({
       id: r.id,
@@ -35,56 +47,66 @@ const ReportsSection = () => {
       title: r.title,
       date: `Released in ${r.year}`,
       img: r.thumbnail || '/report-thumb-placeholder.jpg',
-      link: '/reports' // Reports usually open in the reports hub
+      link: '/reports'
     }))
   ];
-
-  const reports = combinedItems;
 
   return (
     <section className="reports-section">
       <div className="container">
         <div className="reports-header">
-          <h2 className="reports-main-title">Reports & Statements</h2>
+          <h2 className="reports-main-title">Reports &amp; Statements</h2>
           <Link to="/reports" className="reports-view-all">
             View Statements <ArrowRight size={16} />
           </Link>
         </div>
 
-        <div className="reports-grid">
-          {reports.map((report, i) => (
-            <Link 
-              to={report.link} 
-              key={i} 
-              className="report-card"
-              whileHover={{ y: -8 }}
-              transition={{ type: "spring", stiffness: 300, damping: 20 }}
-            >
-              <div className="report-media">
-                {report.img && report.img !== 'placeholder' ? (
-                  <div 
-                    className="report-image" 
-                    style={{ backgroundImage: `url('${report.img}')` }}
-                  ></div>
-                ) : (
-                  <div className="report-placeholder">
-                    <span>{report.type.toUpperCase()}</span>
-                  </div>
-                )}
-              </div>
-              
-              <div className="report-content">
-                <div className="report-tags">
-                  {report.tags.map((tag, idx) => (
-                    <span key={idx} className="report-tag">{tag}</span>
-                  ))}
+        {loading ? (
+          <div className="reports-grid">
+            {[1, 2, 3, 4].map(n => (
+              <div key={n} className="report-card" style={{ opacity: 0.6 }}>
+                <div className="report-media" style={{ background: '#222' }} />
+                <div className="report-content">
+                  <div style={{ height: '14px', width: '60px', background: '#333' }} />
+                  <div style={{ height: '22px', width: '100%', background: '#333' }} />
                 </div>
-                <h4 className="report-title">{report.title}</h4>
-                <span className="report-date">{report.date}</span>
               </div>
-            </Link>
-          ))}
-        </div>
+            ))}
+          </div>
+        ) : (
+          <div className="reports-grid">
+            {combinedItems.map((report, i) => (
+              <Link 
+                to={report.link} 
+                key={report.id || i} 
+                className="report-card"
+              >
+                <div className="report-media">
+                  {report.img && report.img !== 'placeholder' ? (
+                    <div 
+                      className="report-image" 
+                      style={{ backgroundImage: `url('${report.img}')` }}
+                    ></div>
+                  ) : (
+                    <div className="report-placeholder">
+                      <span>{report.type.toUpperCase()}</span>
+                    </div>
+                  )}
+                </div>
+                
+                <div className="report-content">
+                  <div className="report-tags">
+                    {report.tags.map((tag, idx) => (
+                      <span key={idx} className="report-tag">{tag}</span>
+                    ))}
+                  </div>
+                  <h4 className="report-title">{report.title}</h4>
+                  <span className="report-date">{report.date}</span>
+                </div>
+              </Link>
+            ))}
+          </div>
+        )}
       </div>
 
       <style dangerouslySetInnerHTML={{ __html: `
@@ -236,10 +258,10 @@ const ReportsSection = () => {
             gap: 1.5rem;
             padding: 0 1rem 1rem;
             margin: 0 -1rem;
-            scrollbar-width: none; /* Hide scrollbar for Firefox */
+            scrollbar-width: none;
           }
           .reports-grid::-webkit-scrollbar {
-            display: none; /* Hide scrollbar for Chrome/Safari */
+            display: none;
           }
           .report-card {
             min-width: 280px;

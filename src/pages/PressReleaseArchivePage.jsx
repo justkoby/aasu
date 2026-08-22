@@ -1,27 +1,40 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useMemo } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Link } from 'react-router-dom';
-import { Filter, RotateCcw, ChevronRight, ChevronLeft, Calendar, FileText, Share2, Facebook, Twitter, Linkedin, Link as LinkIcon } from 'lucide-react';
+import { Filter, RotateCcw, ChevronRight, ChevronLeft, Calendar, FileText, Share2 } from 'lucide-react';
 import { newsEventsData } from '../data/newsEventsData';
+import { usePublishedPressReleases } from '../hooks/useContent';
 import SEO from '../components/SEO';
 
 const PressReleaseArchivePage = () => {
-  // We only show Press Releases
-  const pressReleases = newsEventsData
-    .filter(item => item.type === 'Press Release')
-    .sort((a, b) => new Date(b.date) - new Date(a.date));
+  const { data: dbReleases, loading, error } = usePublishedPressReleases();
 
-  const [filteredData, setFilteredData] = useState(pressReleases);
+  const pressReleases = useMemo(() => {
+    if (error || dbReleases === null) {
+      if (error) {
+        console.warn("[AASU Web PressReleaseArchivePage] Using static fallback data due to Supabase error:", error.message);
+      }
+      return newsEventsData
+        .filter(item => item.type === 'Press Release' || item.type === 'readout')
+        .sort((a, b) => new Date(b.date) - new Date(a.date));
+    }
+    return dbReleases;
+  }, [dbReleases, error]);
+
+  const [filteredData, setFilteredData] = useState([]);
   const [activeYear, setActiveYear] = useState('All');
   const [activeCategory, setActiveCategory] = useState('All');
-  
-  // Pagination State
   const [currentPage, setCurrentPage] = useState(1);
   const itemsPerPage = 9;
 
   useEffect(() => {
     window.scrollTo(0, 0);
   }, []);
+
+  useEffect(() => {
+    setFilteredData(pressReleases);
+    setCurrentPage(1);
+  }, [pressReleases]);
 
   const years = ['All', '2026', '2025', '2024'];
   const categories = ['All', 'Statements', 'Communiqués', 'Press Releases', 'Congratulations', 'Condolences', 'Advocacy'];
@@ -32,7 +45,7 @@ const PressReleaseArchivePage = () => {
     // Filter by Year
     if (activeYear !== 'All') {
       result = result.filter(item => {
-        const itemYear = new Date(item.date).getFullYear().toString();
+        const itemYear = new Date(item.published_at || item.raw_date || item.date).getFullYear().toString();
         return itemYear === activeYear;
       });
     }
@@ -40,13 +53,13 @@ const PressReleaseArchivePage = () => {
     // Filter by Category
     if (activeCategory !== 'All') {
       result = result.filter(item => {
-        // Match pressReleaseCategory
-        return item.pressReleaseCategory === activeCategory;
+        const prCat = item.pressReleaseCategory || item.category || "";
+        return prCat.toLowerCase() === activeCategory.toLowerCase();
       });
     }
     
     setFilteredData(result);
-    setCurrentPage(1); // Reset to first page
+    setCurrentPage(1);
   };
 
   const handleReset = () => {
@@ -56,7 +69,6 @@ const PressReleaseArchivePage = () => {
     setCurrentPage(1);
   };
 
-  // Pagination Logic
   const indexOfLastItem = currentPage * itemsPerPage;
   const indexOfFirstItem = indexOfLastItem - itemsPerPage;
   const currentItems = filteredData.slice(indexOfFirstItem, indexOfLastItem);
@@ -70,7 +82,7 @@ const PressReleaseArchivePage = () => {
   const handleShare = (e, item) => {
     e.preventDefault();
     e.stopPropagation();
-    const fullUrl = `${window.location.origin}/news/${item.id}`;
+    const fullUrl = `${window.location.origin}/news/${item.slug || item.id}`;
     if (navigator.share) {
       navigator.share({
         title: item.title,
@@ -124,60 +136,74 @@ const PressReleaseArchivePage = () => {
           </div>
         </section>
 
-        {/* Press Releases Grid */}
-        <div className="archive-results-grid">
-          <AnimatePresence mode='popLayout'>
-            {currentItems.map((item, idx) => (
-              <Link 
-                key={item.id}
-                to={`/news/${item.id}`}
-                className="archive-card-link"
-              >
-                <motion.div 
-                  layout
-                  initial={{ opacity: 0, scale: 0.95 }}
-                  animate={{ opacity: 1, scale: 1 }}
-                  exit={{ opacity: 0, scale: 0.95 }}
-                  transition={{ duration: 0.3, delay: (idx % itemsPerPage) * 0.05 }}
-                  className="archive-item-card"
-                >
-                  <div className="card-media">
-                    <img src={item.img} alt={item.title} />
-                    <span className="type-badge">
-                      {item.pressReleaseCategory || 'Statement'}
-                    </span>
-                  </div>
-                  <div className="card-info">
-                    <div className="card-meta-row">
-                      <div className="card-meta">
-                        <Calendar size={14} />
-                        <span>{new Date(item.date).toLocaleDateString('en-GB', { day: 'numeric', month: 'long', year: 'numeric' })}</span>
-                      </div>
-                      {item.refNumber && (
-                        <div className="card-ref-badge">
-                          {item.refNumber}
-                        </div>
-                      )}
-                    </div>
-                    <h3 className="card-title">{item.title}</h3>
-                    <p className="card-excerpt">{item.excerpt}</p>
-                    <div className="card-footer-actions">
-                      <div className="read-more">
-                        READ STATEMENT <ChevronRight size={16} />
-                      </div>
-                      <button className="btn-share-icon" onClick={(e) => handleShare(e, item)} title="Share Statement">
-                        <Share2 size={16} />
-                      </button>
-                    </div>
-                  </div>
-                </motion.div>
-              </Link>
+        {loading ? (
+          <div className="archive-results-grid">
+            {[1, 2, 3, 4, 5, 6].map(n => (
+              <div key={n} className="archive-item-card skeleton-card">
+                <div className="card-media" style={{ background: '#e2e8f0' }} />
+                <div className="card-info">
+                  <div style={{ height: '16px', width: '40%', background: '#e2e8f0' }} />
+                  <div style={{ height: '24px', width: '90%', background: '#e2e8f0' }} />
+                  <div style={{ height: '16px', width: '100%', background: '#e2e8f0' }} />
+                </div>
+              </div>
             ))}
-          </AnimatePresence>
-        </div>
+          </div>
+        ) : (
+          <div className="archive-results-grid">
+            <AnimatePresence mode='popLayout'>
+              {currentItems.map((item, idx) => (
+                <Link 
+                  key={item.id || item.slug}
+                  to={item.redirectUrl || `/news/${item.slug || item.id}`}
+                  className="archive-card-link"
+                >
+                  <motion.div 
+                    layout
+                    initial={{ opacity: 0, scale: 0.95 }}
+                    animate={{ opacity: 1, scale: 1 }}
+                    exit={{ opacity: 0, scale: 0.95 }}
+                    transition={{ duration: 0.3, delay: (idx % itemsPerPage) * 0.05 }}
+                    className="archive-item-card"
+                  >
+                    <div className="card-media">
+                      <img src={item.img || item.featured_image_url || '/placeholder.jpg'} alt={item.featured_image_alt || item.title} />
+                      <span className="type-badge">
+                        {item.pressReleaseCategory || item.category || 'Statement'}
+                      </span>
+                    </div>
+                    <div className="card-info">
+                      <div className="card-meta-row">
+                        <div className="card-meta">
+                          <Calendar size={14} />
+                          <span>{item.date}</span>
+                        </div>
+                        {item.refNumber && (
+                          <div className="card-ref-badge">
+                            {item.refNumber}
+                          </div>
+                        )}
+                      </div>
+                      <h3 className="card-title">{item.title}</h3>
+                      <p className="card-excerpt">{item.excerpt}</p>
+                      <div className="card-footer-actions">
+                        <div className="read-more">
+                          READ STATEMENT <ChevronRight size={16} />
+                        </div>
+                        <button className="btn-share-icon" onClick={(e) => handleShare(e, item)} title="Share Statement">
+                          <Share2 size={16} />
+                        </button>
+                      </div>
+                    </div>
+                  </motion.div>
+                </Link>
+              ))}
+            </AnimatePresence>
+          </div>
+        )}
 
         {/* Pagination UI */}
-        {totalPages > 1 && (
+        {!loading && totalPages > 1 && (
           <div className="pagination">
             <button 
               onClick={() => paginate(currentPage - 1)} 
@@ -207,7 +233,7 @@ const PressReleaseArchivePage = () => {
           </div>
         )}
 
-        {filteredData.length === 0 && (
+        {!loading && filteredData.length === 0 && (
           <div className="no-results">
             <p>No press releases found matching your selected filters.</p>
             <button onClick={handleReset} className="btn-reset">Clear Filters</button>
@@ -249,7 +275,6 @@ const PressReleaseArchivePage = () => {
           background: var(--primary-red);
         }
 
-        /* ── FILTERS ────────────────────────── */
         .archive-filters-wrapper {
           display: grid;
           grid-template-columns: repeat(2, 1fr) auto;
@@ -334,7 +359,6 @@ const PressReleaseArchivePage = () => {
           transform: translateY(-2px);
         }
 
-        /* ── GRID ────────────────────────────── */
         .archive-card-link {
           text-decoration: none;
           color: inherit;
@@ -520,7 +544,6 @@ const PressReleaseArchivePage = () => {
           .filter-actions { grid-column: span 1; flex-direction: column; }
         }
 
-        /* ── PAGINATION ─────────────────────── */
         .pagination {
           display: flex;
           justify-content: center;

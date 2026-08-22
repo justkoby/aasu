@@ -1,18 +1,36 @@
-import React, { useState, useEffect, useCallback } from 'react';
-import { useNavigate } from 'react-router-dom';
-import { Link } from 'react-router-dom';
+import React, { useState, useEffect, useCallback, useMemo } from 'react';
+import { useNavigate, Link } from 'react-router-dom';
 import { newsEventsData, CONTENT_TYPES, isEventEnded } from '../data/newsEventsData';
+import { usePublishedEvents } from '../hooks/useContent';
 import { ChevronRight, ChevronLeft } from 'lucide-react';
 
 const EventsSection = () => {
   const navigate = useNavigate();
+  const { data: dbEvents, loading, error } = usePublishedEvents();
 
-  const allEvents = newsEventsData
-    .filter(item => item.type === CONTENT_TYPES.EVENT)
-    .sort((a, b) => new Date(b.date) - new Date(a.date))
-    .slice(0, 9); // max 9 = 3 pages of 3
+  const allEvents = useMemo(() => {
+    let source = [];
+    if (error || dbEvents === null) {
+      if (error) {
+        console.warn("[AASU Web EventsSection] Using static fallback data due to Supabase error:", error.message);
+      }
+      source = newsEventsData.filter(item => item.type === CONTENT_TYPES.EVENT);
+    } else {
+      source = dbEvents;
+    }
 
-  const totalPages = Math.ceil(allEvents.length / 3);
+    // Separate upcoming vs ended events
+    const upcoming = source.filter(ev => !isEventEnded(ev.eventDate || ev.date));
+    const ended = source.filter(ev => isEventEnded(ev.eventDate || ev.date));
+
+    // Upcoming first (chronological), then ended (recent first)
+    upcoming.sort((a, b) => new Date(a.eventDate || a.date) - new Date(b.eventDate || b.date));
+    ended.sort((a, b) => new Date(b.eventDate || b.date) - new Date(a.eventDate || a.date));
+
+    return [...upcoming, ...ended].slice(0, 9); // max 9 = 3 pages of 3
+  }, [dbEvents, error]);
+
+  const totalPages = Math.max(1, Math.ceil(allEvents.length / 3));
   const [page, setPage] = useState(0);
   const [isTransitioning, setIsTransitioning] = useState(false);
 
@@ -32,75 +50,96 @@ const EventsSection = () => {
   };
 
   useEffect(() => {
+    if (totalPages <= 1) return;
     const timer = setInterval(nextPage, 6000);
     return () => clearInterval(timer);
-  }, [nextPage]);
+  }, [nextPage, totalPages]);
 
   return (
     <section className="events-section">
       <div className="container">
         <div className="section-header-flex">
           <h2 className="section-title">Events &amp; <span className="text-red">Activities</span></h2>
-          <div className="carousel-controls">
-            <button onClick={prevPage} className="control-btn" aria-label="Previous"><ChevronLeft size={20} /></button>
-            <button onClick={nextPage} className="control-btn" aria-label="Next"><ChevronRight size={20} /></button>
-          </div>
+          {totalPages > 1 && (
+            <div className="carousel-controls">
+              <button onClick={prevPage} className="control-btn" aria-label="Previous"><ChevronLeft size={20} /></button>
+              <button onClick={nextPage} className="control-btn" aria-label="Next"><ChevronRight size={20} /></button>
+            </div>
+          )}
         </div>
         <div className="title-underline"></div>
 
         {/* Carousel viewport */}
         <div className="ev-carousel-viewport">
-          {/* Sliding track */}
-          <div
-            className="ev-carousel-track"
-            style={{ transform: `translateX(-${page * 100}%)` }}
-          >
-            {Array.from({ length: totalPages }).map((_, pageIdx) => (
-              <div className="ev-carousel-page" key={pageIdx}>
-                {allEvents.slice(pageIdx * 3, pageIdx * 3 + 3).map((ev) => {
-                  const ended = isEventEnded(ev.date);
-                  return (
-                    <div
-                      key={ev.id}
-                      className={`event-card ${ended ? 'ended' : ''}`}
-                      onClick={() => navigate(`/events/${ev.id}`)}
-                      role="link"
-                      tabIndex={0}
-                      onKeyDown={(e) => e.key === 'Enter' && navigate(`/events/${ev.id}`)}
-                    >
+          {loading ? (
+            <div className="ev-carousel-page">
+              {[1, 2, 3].map(n => (
+                <div key={n} className="event-card skeleton-card">
+                  <div className="event-content" style={{ bottom: '2rem' }}>
+                    <div style={{ height: '20px', width: '80px', background: 'rgba(255,255,255,0.2)', marginBottom: '10px' }} />
+                    <div style={{ height: '30px', width: '90%', background: 'rgba(255,255,255,0.3)' }} />
+                  </div>
+                </div>
+              ))}
+            </div>
+          ) : (
+            <div
+              className="ev-carousel-track"
+              style={{ transform: `translateX(-${page * 100}%)` }}
+            >
+              {Array.from({ length: totalPages }).map((_, pageIdx) => (
+                <div className="ev-carousel-page" key={pageIdx}>
+                  {allEvents.slice(pageIdx * 3, pageIdx * 3 + 3).map((ev) => {
+                    const ended = isEventEnded(ev.eventDate || ev.date);
+                    return (
                       <div
-                        className="event-bg"
-                        style={{ backgroundImage: `url('${ev.img}')` }}
-                      />
-                      <div className="event-overlay" />
-                      <div className="event-content">
-                        <span className="event-badge">
-                          {new Date(ev.date).toLocaleDateString('en-GB', { day: 'numeric', month: 'short', year: 'numeric' })}
-                        </span>
-                        <h3 className="event-title-card">{ev.title}</h3>
-                        {ended && <span className="event-ended-tag">EVENT ENDED</span>}
-                        <div className="event-view-link">
-                          Read More <ChevronRight size={14} />
+                        key={ev.id || ev.slug}
+                        className={`event-card ${ended ? 'ended' : ''}`}
+                        onClick={() => navigate(ev.redirectUrl || `/news/${ev.slug || ev.id}`)}
+                        role="link"
+                        tabIndex={0}
+                        onKeyDown={(e) => e.key === 'Enter' && navigate(ev.redirectUrl || `/news/${ev.slug || ev.id}`)}
+                      >
+                        <div
+                          className="event-bg"
+                          style={{ backgroundImage: `url('${ev.img || ev.featured_image_url || '/placeholder.jpg'}')` }}
+                        />
+                        <div className="event-overlay" />
+                        <div className="event-content">
+                          <span className="event-badge">
+                            {ev.eventDate || ev.date}
+                          </span>
+                          <h3 className="event-title-card">{ev.title}</h3>
+                          {ended ? (
+                            <span className="event-ended-tag">EVENT ENDED</span>
+                          ) : (
+                            <span className="event-upcoming-tag">UPCOMING EVENT</span>
+                          )}
+                          <div className="event-view-link">
+                            Read More <ChevronRight size={14} />
+                          </div>
                         </div>
                       </div>
-                    </div>
-                  );
-                })}
-              </div>
-            ))}
-          </div>
+                    );
+                  })}
+                </div>
+              ))}
+            </div>
+          )}
         </div>
 
         {/* Dots */}
-        <div className="carousel-dots">
-          {Array.from({ length: totalPages }).map((_, i) => (
-            <span
-              key={i}
-              className={`dot ${page === i ? 'active' : ''}`}
-              onClick={() => goToPage(i)}
-            />
-          ))}
-        </div>
+        {totalPages > 1 && (
+          <div className="carousel-dots">
+            {Array.from({ length: totalPages }).map((_, i) => (
+              <span
+                key={i}
+                className={`dot ${page === i ? 'active' : ''}`}
+                onClick={() => goToPage(i)}
+              />
+            ))}
+          </div>
+        )}
 
         <div className="text-center mt-5">
           <Link to="/events" className="btn-see-all">Explore All Events</Link>
@@ -162,7 +201,6 @@ const EventsSection = () => {
           margin-bottom: 3rem;
         }
 
-        /* ── CAROUSEL CORE ──────────────────── */
         .ev-carousel-viewport {
           overflow: hidden;
           width: 100%;
@@ -186,7 +224,6 @@ const EventsSection = () => {
           align-items: start;
         }
 
-        /* ── EVENT CARD ──────────────────────── */
         .event-card {
           position: relative;
           height: 400px;
@@ -194,6 +231,10 @@ const EventsSection = () => {
           overflow: hidden;
           cursor: pointer;
           box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+        }
+
+        .event-card.skeleton-card {
+          background: #1e293b;
         }
 
         .event-bg {
@@ -255,6 +296,16 @@ const EventsSection = () => {
           letter-spacing: 1px;
         }
 
+        .event-upcoming-tag {
+          background: #15803d;
+          color: white;
+          font-size: 0.68rem;
+          font-weight: 900;
+          padding: 0.2rem 0.6rem;
+          letter-spacing: 1px;
+          border-radius: 2px;
+        }
+
         .event-view-link {
           color: white;
           font-weight: 800;
@@ -279,7 +330,6 @@ const EventsSection = () => {
           opacity: 0.75;
         }
 
-        /* ── DOTS ────────────────────────────── */
         .carousel-dots {
           display: flex;
           justify-content: center;

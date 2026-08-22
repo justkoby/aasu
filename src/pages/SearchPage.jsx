@@ -3,9 +3,15 @@ import { useSearchParams, Link } from 'react-router-dom';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Search, ArrowRight, X, SlidersHorizontal } from 'lucide-react';
 import searchData from '../data/searchData';
+import { useSearchPosts } from '../hooks/useContent';
 import SEO from '../components/SEO';
 
 const CATEGORY_COLORS = {
+  'News': '#E11D48',
+  'Press Release': '#8B0000',
+  'Readout': '#4B0082',
+  'Event': '#16A34A',
+  'Blog': '#D97706',
   'Who We Are': '#2563EB',
   'What We Do': '#16A34A',
   'Student Voices': '#D97706',
@@ -22,26 +28,52 @@ const SearchPage = () => {
 
   const query = searchParams.get('q') || '';
 
+  const filters = useMemo(() => ({
+    category: activeCategory
+  }), [activeCategory]);
+
+  const { data: dbResults, loading, error } = useSearchPosts(query, filters, 300);
+
   useEffect(() => {
     window.scrollTo(0, 0);
     setInputValue(query);
   }, [query]);
 
-  const categories = useMemo(() => {
-    return ['All', ...new Set(searchData.map(item => item.category))];
-  }, []);
-
-  const results = useMemo(() => {
+  const sourceData = useMemo(() => {
     if (!query.trim()) return [];
-    const lower = query.toLowerCase().trim();
-    return searchData.filter(item => {
-      const inTitle = item.title.toLowerCase().includes(lower);
-      const inDesc = item.description.toLowerCase().includes(lower);
-      const inKeywords = item.keywords.some(k => k.includes(lower));
-      const matchesCategory = activeCategory === 'All' || item.category === activeCategory;
-      return (inTitle || inDesc || inKeywords) && matchesCategory;
-    });
-  }, [query, activeCategory]);
+
+    if (error || dbResults === null) {
+      if (error) {
+        console.warn("[AASU Web SearchPage] Using static fallback search data due to Supabase error:", error.message);
+      }
+      const lower = query.toLowerCase().trim();
+      return searchData.filter(item => {
+        const inTitle = item.title.toLowerCase().includes(lower);
+        const inDesc = item.description.toLowerCase().includes(lower);
+        const inKeywords = (item.keywords || []).some(k => k.toLowerCase().includes(lower));
+        const matchesCategory = activeCategory === 'All' || item.category === activeCategory;
+        return (inTitle || inDesc || inKeywords) && matchesCategory;
+      }).map(item => ({
+        id: item.id,
+        title: item.title,
+        description: item.description,
+        category: item.category,
+        path: item.path
+      }));
+    }
+
+    return dbResults.map(p => ({
+      id: p.id,
+      title: p.title,
+      description: p.excerpt || p.content || '',
+      category: p.type ? p.type.toUpperCase() : 'NEWS',
+      path: p.redirectUrl || `/news/${p.slug || p.id}`
+    }));
+  }, [query, dbResults, error, activeCategory]);
+
+  const categories = useMemo(() => {
+    return ['All', 'News', 'Press Release', 'Event', 'Readout', 'Blog'];
+  }, []);
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -57,7 +89,7 @@ const SearchPage = () => {
   };
 
   const highlightText = (text, query) => {
-    if (!query.trim()) return text;
+    if (!text || !query.trim()) return text;
     const regex = new RegExp(`(${query.replace(/[.*+?^${}()|[\]\\]/g, '\\$&')})`, 'gi');
     const parts = text.split(regex);
     return parts.map((part, i) =>
@@ -83,7 +115,7 @@ const SearchPage = () => {
               {query ? `Results for "${query}"` : 'Search AASU'}
             </h1>
             <p className="search-hero-subtitle">
-              Search across all pages, topics, and resources on the AASU website.
+              Search across all published news, events, statements, and resources on the AASU website.
             </p>
 
             <form onSubmit={handleSubmit} className="search-form">
@@ -92,8 +124,13 @@ const SearchPage = () => {
                 <input
                   type="text"
                   value={inputValue}
-                  onChange={e => setInputValue(e.target.value)}
-                  placeholder="Search for pages, topics, people..."
+                  onChange={e => {
+                    setInputValue(e.target.value);
+                    if (e.target.value.trim()) {
+                      setSearchParams({ q: e.target.value.trim() }, { replace: true });
+                    }
+                  }}
+                  placeholder="Search for news, events, statements..."
                   className="search-form-input"
                   autoFocus
                 />
@@ -155,9 +192,9 @@ const SearchPage = () => {
                   <Search size={60} strokeWidth={1} />
                 </div>
                 <h2>What are you looking for?</h2>
-                <p>Type a keyword above to search across all pages and content on the AASU website.</p>
+                <p>Type a keyword above to search across all published articles, events, and statements.</p>
                 <div className="suggestion-chips">
-                  {['Executive Committee', 'Education', 'Membership', 'Women Leadership', 'History', 'Contact'].map(s => (
+                  {['ACQF', 'Summit', 'Climate', 'Education', 'Gender', 'Congress'].map(s => (
                     <button key={s} className="suggestion-chip" onClick={() => {
                       setInputValue(s);
                       setSearchParams({ q: s });
@@ -167,7 +204,19 @@ const SearchPage = () => {
               </motion.div>
             )}
 
-            {query && results.length === 0 && (
+            {loading && (
+              <div className="results-list">
+                {[1, 2, 3].map(n => (
+                  <div key={n} className="result-card skeleton-card">
+                    <div style={{ height: '20px', width: '100px', background: '#e2e8f0', marginBottom: '10px' }} />
+                    <div style={{ height: '28px', width: '80%', background: '#e2e8f0', marginBottom: '10px' }} />
+                    <div style={{ height: '16px', width: '100%', background: '#e2e8f0' }} />
+                  </div>
+                ))}
+              </div>
+            )}
+
+            {!loading && query && sourceData.length === 0 && (
               <motion.div
                 className="empty-state"
                 initial={{ opacity: 0 }}
@@ -177,9 +226,9 @@ const SearchPage = () => {
                   <Search size={60} strokeWidth={1} />
                 </div>
                 <h2>No results found</h2>
-                <p>We couldn't find anything matching <strong>"{query}"</strong>. Try a different keyword or browse a category below.</p>
+                <p>We couldn't find anything matching <strong>"{query}"</strong>. Try a different keyword or clear your filters.</p>
                 <div className="suggestion-chips">
-                  {['Education', 'Membership', 'Contact', 'History'].map(s => (
+                  {['Education', 'Climate', 'ACQF', 'Youth'].map(s => (
                     <button key={s} className="suggestion-chip" onClick={() => {
                       setInputValue(s);
                       setSearchParams({ q: s });
@@ -189,16 +238,16 @@ const SearchPage = () => {
               </motion.div>
             )}
 
-            {query && results.length > 0 && (
+            {!loading && query && sourceData.length > 0 && (
               <>
                 <p className="results-count">
-                  Showing <strong>{results.length}</strong> result{results.length !== 1 ? 's' : ''} for <strong>"{query}"</strong>
+                  Showing <strong>{sourceData.length}</strong> result{sourceData.length !== 1 ? 's' : ''} for <strong>"{query}"</strong>
                   {activeCategory !== 'All' && <> in <strong>{activeCategory}</strong></>}
                 </p>
 
                 <AnimatePresence>
                   <div className="results-list">
-                    {results.map((result, idx) => (
+                    {sourceData.map((result, idx) => (
                       <motion.div
                         key={result.id}
                         className="result-card"
@@ -216,7 +265,7 @@ const SearchPage = () => {
                           {highlightText(result.description, query)}
                         </p>
                         <Link to={result.path} className="result-link">
-                          Visit Page <ArrowRight size={16} />
+                          View Details <ArrowRight size={16} />
                         </Link>
                       </motion.div>
                     ))}
@@ -234,10 +283,9 @@ const SearchPage = () => {
           min-height: 100vh;
         }
 
-        /* Hero */
         .search-hero {
           background: linear-gradient(135deg, #111 0%, #1e1e1e 100%);
-          min-height: 600px;
+          min-height: 500px;
           display: flex;
           align-items: center;
           justify-content: flex-start;
@@ -260,7 +308,6 @@ const SearchPage = () => {
           margin-bottom: 2rem;
         }
 
-        /* Search Form */
         .search-form {
           display: flex;
           gap: 1rem;
@@ -335,7 +382,6 @@ const SearchPage = () => {
           transform: translateY(-1px);
         }
 
-        /* Results Layout */
         .search-results-section {
           padding: 60px 0 100px;
         }
@@ -347,7 +393,6 @@ const SearchPage = () => {
           align-items: flex-start;
         }
 
-        /* Sidebar */
         .search-sidebar {
           background: white;
           border-radius: 12px;
@@ -410,13 +455,12 @@ const SearchPage = () => {
         }
 
         .category-dot {
-          width: 10px;
+          width: 100px;
           height: 10px;
           border-radius: 50%;
           flex-shrink: 0;
         }
 
-        /* Results */
         .search-results-main {
           min-height: 400px;
         }
@@ -505,7 +549,6 @@ const SearchPage = () => {
           padding: 0 2px;
         }
 
-        /* Empty State */
         .empty-state {
           text-align: center;
           padding: 4rem 2rem;
@@ -561,7 +604,6 @@ const SearchPage = () => {
           background: rgba(203, 54, 49, 0.04);
         }
 
-        /* Responsive  */
         @media (max-width: 900px) {
           .search-layout {
             grid-template-columns: 1fr;

@@ -1,29 +1,43 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useMemo } from 'react';
 import { motion } from 'framer-motion';
 import { useNavigate } from 'react-router-dom';
-import { Calendar, Clock, ExternalLink, ChevronRight } from 'lucide-react';
+import { Calendar, Clock, ExternalLink, ChevronRight, MapPin } from 'lucide-react';
 import { newsEventsData, CONTENT_TYPES, isEventEnded } from '../data/newsEventsData';
+import { usePublishedEvents } from '../hooks/useContent';
 import SEO from '../components/SEO';
 
 const EventsPage = () => {
   const navigate = useNavigate();
+  const { data: dbEvents, loading, error } = usePublishedEvents();
 
   useEffect(() => {
     window.scrollTo(0, 0);
   }, []);
 
-  const allEvents = newsEventsData.filter(item => item.type === CONTENT_TYPES.EVENT);
-  
-  const upcomingEvents = allEvents
-    .filter(ev => !isEventEnded(ev.date))
-    .sort((a, b) => new Date(a.date) - new Date(b.date));
+  const sourceEvents = useMemo(() => {
+    if (error || dbEvents === null) {
+      if (error) {
+        console.warn("[AASU Web EventsPage] Using static fallback data due to Supabase error:", error.message);
+      }
+      return newsEventsData.filter(item => item.type === CONTENT_TYPES.EVENT);
+    }
+    return dbEvents;
+  }, [dbEvents, error]);
 
-  const pastEvents = allEvents
-    .filter(ev => isEventEnded(ev.date))
-    .sort((a, b) => new Date(b.date) - new Date(a.date));
+  const upcomingEvents = useMemo(() => {
+    return sourceEvents
+      .filter(ev => !isEventEnded(ev.eventDate || ev.date))
+      .sort((a, b) => new Date(a.eventDate || a.date) - new Date(b.eventDate || b.date));
+  }, [sourceEvents]);
+
+  const pastEvents = useMemo(() => {
+    return sourceEvents
+      .filter(ev => isEventEnded(ev.eventDate || ev.date))
+      .sort((a, b) => new Date(b.eventDate || b.date) - new Date(a.eventDate || a.date));
+  }, [sourceEvents]);
 
   const EventCard = ({ event }) => {
-    const ended = isEventEnded(event.date);
+    const ended = isEventEnded(event.eventDate || event.date);
 
     return (
       <motion.div 
@@ -31,11 +45,11 @@ const EventsPage = () => {
         initial={{ opacity: 0, y: 20 }}
         whileInView={{ opacity: 1, y: 0 }}
         viewport={{ once: true }}
-        onClick={() => navigate(`/events/${event.id}`)}
+        onClick={() => navigate(event.redirectUrl || `/news/${event.slug || event.id}`)}
         style={{ cursor: 'pointer' }}
       >
         <div className="event-img-box">
-          <img src={event.img} alt={event.title} />
+          <img src={event.img || event.featured_image_url || '/placeholder.jpg'} alt={event.featured_image_alt || event.title} />
           {ended && (
             <div className="ended-overlay">
               <span className="ended-label">EVENT HAS ENDED</span>
@@ -44,7 +58,7 @@ const EventsPage = () => {
         </div>
         <div className="event-info-box">
           <div className="event-top-meta">
-            <span className="event-cat">{event.category}</span>
+            <span className="event-cat">{event.category || 'EVENT'}</span>
             <div className={`status-pill ${ended ? 'status-ended' : 'status-upcoming'}`}>
               {ended ? 'Ended' : 'Upcoming'}
             </div>
@@ -54,12 +68,18 @@ const EventsPage = () => {
           <div className="event-details-list">
             <div className="detail-item">
               <Calendar size={18} />
-              <span>{new Date(event.date).toLocaleDateString('en-GB', { weekday: 'long', day: 'numeric', month: 'long', year: 'numeric' })}</span>
+              <span>{event.eventDate || event.date}</span>
             </div>
-            {event.time && (
+            {(event.eventTime || event.time) && (
               <div className="detail-item">
                 <Clock size={18} />
-                <span>{event.time}</span>
+                <span>{event.eventTime || event.time}</span>
+              </div>
+            )}
+            {(event.eventLocation || event.platform) && (
+              <div className="detail-item">
+                <MapPin size={18} />
+                <span>{event.eventLocation || event.platform}</span>
               </div>
             )}
           </div>
@@ -67,9 +87,9 @@ const EventsPage = () => {
           <p className="event-excerpt">{event.excerpt}</p>
 
           <div className="event-footer">
-            {!ended && event.link && (
+            {!ended && (event.registrationUrl || event.link) && (
               <a 
-                href={event.link} 
+                href={event.registrationUrl || event.link} 
                 target="_blank" 
                 rel="noopener noreferrer" 
                 className="btn-register"
@@ -78,10 +98,10 @@ const EventsPage = () => {
                 Register Here <ExternalLink size={16} />
               </a>
             )}
-            {ended && (
+            {(ended || (!event.registrationUrl && !event.link)) && (
               <button 
                 className="btn-register secondary"
-                onClick={(e) => { e.stopPropagation(); navigate(`/events/${event.id}`); }}
+                onClick={(e) => { e.stopPropagation(); navigate(event.redirectUrl || `/news/${event.slug || event.id}`); }}
               >
                 View Details <ChevronRight size={16} />
               </button>
@@ -108,27 +128,50 @@ const EventsPage = () => {
       </div>
 
       <div className="container events-body">
-        {/* Upcoming Section */}
-        <section className="events-section-block">
-          <h2 className="section-type-title">Upcoming <span className="text-red">Events</span></h2>
-          {upcomingEvents.length > 0 ? (
-            <div className="events-vertical-list">
-              {upcomingEvents.map(ev => <EventCard key={ev.id} event={ev} />)}
-            </div>
-          ) : (
-            <div className="empty-events">
-              <p>No upcoming events currently scheduled. Check back soon!</p>
-            </div>
-          )}
-        </section>
-
-        {/* Past Section */}
-        <section className="events-section-block mt-100">
-          <h2 className="section-type-title">Past <span className="text-red">Events</span></h2>
+        {loading ? (
           <div className="events-vertical-list">
-            {pastEvents.map(ev => <EventCard key={ev.id} event={ev} />)}
+            {[1, 2].map(n => (
+              <div key={n} className="event-page-card skeleton-card">
+                <div className="event-img-box" style={{ background: '#e2e8f0' }} />
+                <div className="event-info-box">
+                  <div style={{ height: '20px', width: '100px', background: '#e2e8f0' }} />
+                  <div style={{ height: '36px', width: '80%', background: '#e2e8f0' }} />
+                  <div style={{ height: '20px', width: '60%', background: '#e2e8f0' }} />
+                </div>
+              </div>
+            ))}
           </div>
-        </section>
+        ) : (
+          <>
+            {/* Upcoming Section */}
+            <section className="events-section-block">
+              <h2 className="section-type-title">Upcoming <span className="text-red">Events</span></h2>
+              {upcomingEvents.length > 0 ? (
+                <div className="events-vertical-list">
+                  {upcomingEvents.map(ev => <EventCard key={ev.id || ev.slug} event={ev} />)}
+                </div>
+              ) : (
+                <div className="empty-events">
+                  <p>No upcoming events currently scheduled. Check back soon!</p>
+                </div>
+              )}
+            </section>
+
+            {/* Past Section */}
+            <section className="events-section-block mt-100">
+              <h2 className="section-type-title">Past <span className="text-red">Events</span></h2>
+              {pastEvents.length > 0 ? (
+                <div className="events-vertical-list">
+                  {pastEvents.map(ev => <EventCard key={ev.id || ev.slug} event={ev} />)}
+                </div>
+              ) : (
+                <div className="empty-events">
+                  <p>No past events recorded.</p>
+                </div>
+              )}
+            </section>
+          </>
+        )}
       </div>
 
       <style dangerouslySetInnerHTML={{ __html: `
