@@ -1,25 +1,34 @@
-import React, { useState, useEffect } from 'react';
-import { ChevronLeft, ChevronRight } from 'lucide-react';
-import { newsEventsData } from '../data/newsEventsData';
+import React, { useState, useEffect } from "react";
+import { ChevronLeft, ChevronRight } from "lucide-react";
+import { newsEventsData } from "../data/newsEventsData";
+import { useLatestNews } from "../hooks/useContent";
 
 const TopBar = () => {
   const [isScrolled, setIsScrolled] = useState(false);
+  const { data: dbNews, loading, error } = useLatestNews(3);
 
-  // Get the latest 3 news/events sorted by date
-  const latestNews = [...newsEventsData]
-    .sort((a, b) => new Date(b.date) - new Date(a.date))
-    .slice(0, 3);
+  let latestNews = [];
+  if (error || dbNews === null) {
+    if (error) {
+      console.warn("[AASU Web TopBar] Using static fallback data due to Supabase error:", error.message);
+    }
+    latestNews = [...newsEventsData]
+      .sort((a, b) => new Date(b.date) - new Date(a.date))
+      .slice(0, 3);
+  } else {
+    latestNews = dbNews;
+  }
 
   useEffect(() => {
     const handleScroll = () => {
       setIsScrolled(window.scrollY > 50);
     };
-    window.addEventListener('scroll', handleScroll);
-    return () => window.removeEventListener('scroll', handleScroll);
+    window.addEventListener("scroll", handleScroll);
+    return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
   return (
-    <div className={`top-bar ${isScrolled ? 'hidden' : ''}`}>
+    <div className={`top-bar ${isScrolled ? "hidden" : ""}`}>
       <div className="container top-bar-content">
         <div className="updates-section">
           <div className="updates-label-container">
@@ -28,22 +37,31 @@ const TopBar = () => {
             </span>
           </div>
           <div className="marquee-outer">
-            <div className="marquee-inner">
-              {latestNews.map((news, idx) => (
-                <React.Fragment key={news.id}>
-                  <p>{news.title.toUpperCase()}</p>
-                  {idx < latestNews.length - 1 && <p> | </p>}
-                </React.Fragment>
-              ))}
-              {/* Duplicate for seamless loop if needed, but marquee animation here uses translateX(-50%) which implies doubling for seamlessness */}
-              <p> | </p>
-              {latestNews.map((news, idx) => (
-                <React.Fragment key={`${news.id}-dup`}>
-                  <p>{news.title.toUpperCase()}</p>
-                  {idx < latestNews.length - 1 && <p> | </p>}
-                </React.Fragment>
-              ))}
-            </div>
+            {loading ? (
+              <div className="marquee-inner">
+                <p>LOADING LATEST UPDATES...</p>
+              </div>
+            ) : latestNews.length === 0 ? (
+              <div className="marquee-inner">
+                <p>ALL-AFRICA STUDENTS UNION (AASU) — OFFICIAL UPDATES HUB</p>
+              </div>
+            ) : (
+              <div className="marquee-inner">
+                {latestNews.map((news, idx) => (
+                  <React.Fragment key={news.id || idx}>
+                    <p>{(news.title || "").toUpperCase()}</p>
+                    {idx < latestNews.length - 1 && <p> | </p>}
+                  </React.Fragment>
+                ))}
+                <p> | </p>
+                {latestNews.map((news, idx) => (
+                  <React.Fragment key={`${news.id || idx}-dup`}>
+                    <p>{(news.title || "").toUpperCase()}</p>
+                    {idx < latestNews.length - 1 && <p> | </p>}
+                  </React.Fragment>
+                ))}
+              </div>
+            )}
           </div>
           <div className="marquee-nav">
             <ChevronLeft size={16} className="cursor-pointer hover:text-red-500 transition-colors" />
@@ -147,3 +165,4 @@ const TopBar = () => {
 };
 
 export default TopBar;
+

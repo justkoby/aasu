@@ -1,15 +1,25 @@
-import React, { useState, useEffect, useCallback } from 'react';
-import { Link } from 'react-router-dom';
-import { newsEventsData } from '../data/newsEventsData';
-import { ChevronRight, ChevronLeft } from 'lucide-react';
+import React, { useState, useEffect, useCallback } from "react";
+import { Link } from "react-router-dom";
+import { newsEventsData } from "../data/newsEventsData";
+import { usePublishedPosts } from "../hooks/useContent";
+import { ChevronRight, ChevronLeft } from "lucide-react";
 
 const NewsSection = () => {
-  // Show all items (news + events) sorted by date
-  const allItems = newsEventsData
-    .sort((a, b) => new Date(b.date) - new Date(a.date))
-    .slice(0, 9); // max 9 items = 3 pages of 3
+  const { data: dbPosts, loading, error } = usePublishedPosts({ limit: 9 });
 
-  const totalPages = Math.ceil(allItems.length / 3);
+  let allItems = [];
+  if (error || dbPosts === null) {
+    if (error) {
+      console.warn("[AASU Web NewsSection] Using static fallback data due to Supabase error:", error.message);
+    }
+    allItems = [...newsEventsData]
+      .sort((a, b) => new Date(b.date) - new Date(a.date))
+      .slice(0, 9);
+  } else {
+    allItems = dbPosts;
+  }
+
+  const totalPages = Math.max(1, Math.ceil(allItems.length / 3));
   const [page, setPage] = useState(0);
   const [isTransitioning, setIsTransitioning] = useState(false);
 
@@ -29,73 +39,95 @@ const NewsSection = () => {
   };
 
   useEffect(() => {
+    if (allItems.length <= 3) return;
     const timer = setInterval(nextPage, 5000);
     return () => clearInterval(timer);
-  }, [nextPage]);
+  }, [nextPage, allItems.length]);
 
   return (
     <section className="news-section">
       <div className="container">
         <div className="section-header-flex">
           <h2 className="section-title">Latest <span className="highlight-red">News</span></h2>
-          <div className="carousel-controls">
-            <button onClick={prevPage} className="control-btn" aria-label="Previous"><ChevronLeft size={20} /></button>
-            <button onClick={nextPage} className="control-btn" aria-label="Next"><ChevronRight size={20} /></button>
-          </div>
+          {totalPages > 1 && (
+            <div className="carousel-controls">
+              <button onClick={prevPage} className="control-btn" aria-label="Previous"><ChevronLeft size={20} /></button>
+              <button onClick={nextPage} className="control-btn" aria-label="Next"><ChevronRight size={20} /></button>
+            </div>
+          )}
         </div>
         <div className="title-underline"></div>
 
-        {/* Carousel viewport — clips overflow */}
-        <div className="news-carousel-viewport">
-          {/* Track — slides left/right via transform */}
-          <div
-            className="news-carousel-track"
-            style={{ transform: `translateX(-${page * 100}%)` }}
-          >
-            {/* Render pages as groups of 3 */}
-            {Array.from({ length: totalPages }).map((_, pageIdx) => (
-              <div className="news-carousel-page" key={pageIdx}>
-                {allItems.slice(pageIdx * 3, pageIdx * 3 + 3).map((item) => (
-                  <Link
-                    key={item.id}
-                    to={item.redirectUrl || `/news/${item.id}`}
-                    className="news-card-link"
-                  >
-                    <div className="news-card">
-                      <div className="news-img-wrapper">
-                        <img src={item.img} alt={item.title} className="news-img" loading="lazy" />
-                        <span className={`news-badge ${item.type?.toLowerCase().replace(' ', '-')}`}>
-                          {item.type}
-                        </span>
-                      </div>
-                      <div className="news-content">
-                        <span className="news-date">
-                          {new Date(item.date).toLocaleDateString('en-GB', { day: 'numeric', month: 'short', year: 'numeric' })}
-                        </span>
-                        <h4 className="news-title">{item.title}</h4>
-                        <p className="news-excerpt">{item.excerpt}</p>
-                        <div className="news-read-more-link">
-                          Read More <ChevronRight size={14} />
-                        </div>
-                      </div>
-                    </div>
-                  </Link>
-                ))}
+        {loading ? (
+          <div className="news-carousel-page skeleton-grid">
+            {[1, 2, 3].map((n) => (
+              <div key={n} className="news-card skeleton-card">
+                <div className="skeleton-img"></div>
+                <div className="skeleton-text">
+                  <div className="skeleton-line short"></div>
+                  <div className="skeleton-line title"></div>
+                  <div className="skeleton-line"></div>
+                </div>
               </div>
             ))}
           </div>
-        </div>
+        ) : allItems.length === 0 ? (
+          <div className="empty-news-state">
+            <p>No published news articles available at the moment.</p>
+          </div>
+        ) : (
+          <>
+            <div className="news-carousel-viewport">
+              <div
+                className="news-carousel-track"
+                style={{ transform: `translateX(-${page * 100}%)` }}
+              >
+                {Array.from({ length: totalPages }).map((_, pageIdx) => (
+                  <div className="news-carousel-page" key={pageIdx}>
+                    {allItems.slice(pageIdx * 3, pageIdx * 3 + 3).map((item) => (
+                      <Link
+                        key={item.id || item.slug}
+                        to={item.redirectUrl || `/news/${item.slug || item.id}`}
+                        className="news-card-link"
+                      >
+                        <div className="news-card">
+                          <div className="news-img-wrapper">
+                            <img src={item.img} alt={item.featured_image_alt || item.title} className="news-img" loading="lazy" />
+                            <span className={`news-badge ${(item.type || "news").toLowerCase().replace(" ", "-")}`}>
+                              {item.type || "NEWS"}
+                            </span>
+                          </div>
+                          <div className="news-content">
+                            <span className="news-date">
+                              {item.date}
+                            </span>
+                            <h4 className="news-title">{item.title}</h4>
+                            <p className="news-excerpt">{item.excerpt}</p>
+                            <div className="news-read-more-link">
+                              Read More <ChevronRight size={14} />
+                            </div>
+                          </div>
+                        </div>
+                      </Link>
+                    ))}
+                  </div>
+                ))}
+              </div>
+            </div>
 
-        {/* Dots */}
-        <div className="carousel-dots">
-          {Array.from({ length: totalPages }).map((_, i) => (
-            <span
-              key={i}
-              className={`dot ${page === i ? 'active' : ''}`}
-              onClick={() => goToPage(i)}
-            />
-          ))}
-        </div>
+            {totalPages > 1 && (
+              <div className="carousel-dots">
+                {Array.from({ length: totalPages }).map((_, i) => (
+                  <span
+                    key={i}
+                    className={`dot ${page === i ? "active" : ""}`}
+                    onClick={() => goToPage(i)}
+                  />
+                ))}
+              </div>
+            )}
+          </>
+        )}
 
         <div className="text-center mt-4">
           <Link to="/news" className="btn-see-all">Explore All News</Link>
@@ -158,7 +190,6 @@ const NewsSection = () => {
           margin-bottom: 3rem;
         }
 
-        /* ── CAROUSEL CORE ──────────────────── */
         .news-carousel-viewport {
           overflow: hidden;
           width: 100%;
@@ -182,7 +213,47 @@ const NewsSection = () => {
           align-items: start;
         }
 
-        /* ── CARD ────────────────────────────── */
+        .empty-news-state {
+          text-align: center;
+          padding: 3rem;
+          background: #f8fafc;
+          border-radius: 12px;
+          color: #64748b;
+          font-weight: 600;
+        }
+
+        .skeleton-card {
+          height: 380px;
+          background: #f1f5f9;
+          animation: pulse 1.5s infinite ease-in-out;
+        }
+
+        .skeleton-img {
+          height: 210px;
+          background: #cbd5e1;
+        }
+
+        .skeleton-text {
+          padding: 1.5rem;
+          display: flex;
+          flex-direction: column;
+          gap: 0.75rem;
+        }
+
+        .skeleton-line {
+          height: 14px;
+          background: #cbd5e1;
+          border-radius: 4px;
+        }
+
+        .skeleton-line.short { width: 40%; }
+        .skeleton-line.title { width: 85%; height: 20px; }
+
+        @keyframes pulse {
+          0%, 100% { opacity: 1; }
+          50% { opacity: 0.5; }
+        }
+
         .news-card-link {
           text-decoration: none;
           color: inherit;
@@ -295,7 +366,6 @@ const NewsSection = () => {
           gap: 0.7rem;
         }
 
-        /* ── DOTS ────────────────────────────── */
         .carousel-dots {
           display: flex;
           justify-content: center;
@@ -351,3 +421,4 @@ const NewsSection = () => {
 };
 
 export default NewsSection;
+

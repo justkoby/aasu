@@ -1,18 +1,28 @@
-import React, { useState, useEffect } from 'react';
-import { motion, AnimatePresence } from 'framer-motion';
-import { Link } from 'react-router-dom';
-import { Filter, RotateCcw, ChevronRight, ChevronLeft, Calendar } from 'lucide-react';
-import { newsEventsData, CONTENT_TYPES } from '../data/newsEventsData';
-import SEO from '../components/SEO';
+import React, { useState, useEffect, useMemo } from "react";
+import { motion, AnimatePresence } from "framer-motion";
+import { Link } from "react-router-dom";
+import { Filter, RotateCcw, ChevronRight, ChevronLeft, Calendar } from "lucide-react";
+import { newsEventsData, CONTENT_TYPES } from "../data/newsEventsData";
+import { usePublishedPosts } from "../hooks/useContent";
+import SEO from "../components/SEO";
 
 const NewsPage = () => {
-  const sortedData = [...newsEventsData].sort((a, b) => new Date(b.date) - new Date(a.date));
-  const [filteredData, setFilteredData] = useState(sortedData);
-  const [activeTheme, setActiveTheme] = useState('All');
-  const [activeType, setActiveType] = useState('All');
-  const [activeRegion, setActiveRegion] = useState('All');
-  
-  // Pagination State
+  const { data: dbPosts, loading, error } = usePublishedPosts();
+
+  const sourceData = useMemo(() => {
+    if (error || dbPosts === null) {
+      if (error) {
+        console.warn("[AASU Web NewsPage] Using static fallback data due to Supabase error:", error.message);
+      }
+      return [...newsEventsData].sort((a, b) => new Date(b.date) - new Date(a.date));
+    }
+    return dbPosts;
+  }, [dbPosts, error]);
+
+  const [filteredData, setFilteredData] = useState([]);
+  const [activeTheme, setActiveTheme] = useState("All");
+  const [activeType, setActiveType] = useState("All");
+  const [activeRegion, setActiveRegion] = useState("All");
   const [currentPage, setCurrentPage] = useState(1);
   const itemsPerPage = 9;
 
@@ -20,30 +30,42 @@ const NewsPage = () => {
     window.scrollTo(0, 0);
   }, []);
 
-  const themes = ['All', 'Education & Students Rights', 'Climate Action & Environmental Sustainability', 'Gender Advocacy', 'Capacity Building', 'Policy & Advocacy'];
-  const types = ['All', ...Object.values(CONTENT_TYPES)];
-  const regions = ['All', 'North Africa', 'East Africa', 'West Africa', 'Central Africa', 'Southern Africa', 'International'];
+  useEffect(() => {
+    setFilteredData(sourceData);
+    setCurrentPage(1);
+  }, [sourceData]);
+
+  const themes = ["All", "Education & Students Rights", "Climate Action & Environmental Sustainability", "Gender Advocacy", "Capacity Building", "Policy & Advocacy"];
+  const types = ["All", ...Object.values(CONTENT_TYPES)];
+  const regions = ["All", "North Africa", "East Africa", "West Africa", "Central Africa", "Southern Africa", "International"];
 
   const handleApply = () => {
-    let result = sortedData;
-    if (activeTheme !== 'All') result = result.filter(item => item.category === activeTheme);
-    if (activeType !== 'All') result = result.filter(item => item.type === activeType);
-    if (activeRegion !== 'All' && activeRegion !== 'International') {
-        // Placeholder filter logic for region
+    let result = sourceData;
+    if (activeTheme !== "All") {
+      result = result.filter(item =>
+        item.category === activeTheme ||
+        item.thematicFocus === activeTheme ||
+        (Array.isArray(item.categories) && item.categories.includes(activeTheme))
+      );
+    }
+    if (activeType !== "All") {
+      result = result.filter(item => (item.type || "").toLowerCase() === activeType.toLowerCase());
+    }
+    if (activeRegion !== "All" && activeRegion !== "International") {
+      result = result.filter(item => item.regionalFocus === activeRegion || !item.regionalFocus);
     }
     setFilteredData(result);
-    setCurrentPage(1); // Reset to first page on filter
-  };
-
-  const handleReset = () => {
-    setActiveTheme('All');
-    setActiveType('All');
-    setActiveRegion('All');
-    setFilteredData(sortedData);
     setCurrentPage(1);
   };
 
-  // Pagination Logic
+  const handleReset = () => {
+    setActiveTheme("All");
+    setActiveType("All");
+    setActiveRegion("All");
+    setFilteredData(sourceData);
+    setCurrentPage(1);
+  };
+
   const indexOfLastItem = currentPage * itemsPerPage;
   const indexOfFirstItem = indexOfLastItem - itemsPerPage;
   const currentItems = filteredData.slice(indexOfFirstItem, indexOfLastItem);
@@ -51,7 +73,7 @@ const NewsPage = () => {
 
   const paginate = (pageNumber) => {
     setCurrentPage(pageNumber);
-    window.scrollTo({ top: 400, behavior: 'smooth' });
+    window.scrollTo({ top: 400, behavior: "smooth" });
   };
 
   return (
@@ -70,7 +92,6 @@ const NewsPage = () => {
       </div>
 
       <div className="container">
-        {/* Filters Section - AU Style */}
         <section className="filters-wrapper">
           <div className="filter-group">
             <label>Select a theme</label>
@@ -103,48 +124,61 @@ const NewsPage = () => {
           </div>
         </section>
 
-        {/* Content Grid */}
-        <div className="news-results-grid">
-          <AnimatePresence mode='popLayout'>
-            {currentItems.map((item, idx) => (
-              <Link 
-                key={item.id}
-                to={item.redirectUrl || `/news/${item.id}`}
-                className="news-card-link"
-              >
-                <motion.div 
-                  layout
-                  initial={{ opacity: 0, scale: 0.9 }}
-                  animate={{ opacity: 1, scale: 1 }}
-                  exit={{ opacity: 0, scale: 0.9 }}
-                  transition={{ duration: 0.3, delay: (idx % itemsPerPage) * 0.05 }}
-                  className="news-item-card"
-                >
-                  <div className="card-media">
-                    <img src={item.img} alt={item.title} />
-                    <span className={`type-badge ${item.type.toLowerCase().replace(' ', '-')}`}>
-                      {item.type}
-                    </span>
-                  </div>
-                  <div className="card-info">
-                    <h3 className="card-title">{item.title}</h3>
-                    <div className="card-meta">
-                      <Calendar size={14} />
-                      <span>{new Date(item.date).toLocaleDateString('en-GB', { day: 'numeric', month: 'long', year: 'numeric' })}</span>
-                    </div>
-                    <p className="card-excerpt">{item.excerpt}</p>
-                    <div className="read-more">
-                      READ MORE <ChevronRight size={16} />
-                    </div>
-                  </div>
-                </motion.div>
-              </Link>
+        {loading ? (
+          <div className="news-results-grid">
+            {[1, 2, 3, 4, 5, 6].map((n) => (
+              <div key={n} className="news-item-card skeleton-card">
+                <div className="card-media skeleton-img"></div>
+                <div className="card-info">
+                  <div className="skeleton-line short"></div>
+                  <div className="skeleton-line title"></div>
+                  <div className="skeleton-line"></div>
+                </div>
+              </div>
             ))}
-          </AnimatePresence>
-        </div>
+          </div>
+        ) : (
+          <div className="news-results-grid">
+            <AnimatePresence mode="popLayout">
+              {currentItems.map((item, idx) => (
+                <Link 
+                  key={item.id || item.slug}
+                  to={item.redirectUrl || `/news/${item.slug || item.id}`}
+                  className="news-card-link"
+                >
+                  <motion.div 
+                    layout
+                    initial={{ opacity: 0, scale: 0.9 }}
+                    animate={{ opacity: 1, scale: 1 }}
+                    exit={{ opacity: 0, scale: 0.9 }}
+                    transition={{ duration: 0.3, delay: (idx % itemsPerPage) * 0.05 }}
+                    className="news-item-card"
+                  >
+                    <div className="card-media">
+                      <img src={item.img} alt={item.featured_image_alt || item.title} />
+                      <span className={`type-badge ${(item.type || "news").toLowerCase().replace(" ", "-")}`}>
+                        {item.type || "NEWS"}
+                      </span>
+                    </div>
+                    <div className="card-info">
+                      <h3 className="card-title">{item.title}</h3>
+                      <div className="card-meta">
+                        <Calendar size={14} />
+                        <span>{item.date}</span>
+                      </div>
+                      <p className="card-excerpt">{item.excerpt}</p>
+                      <div className="read-more">
+                        READ MORE <ChevronRight size={16} />
+                      </div>
+                    </div>
+                  </motion.div>
+                </Link>
+              ))}
+            </AnimatePresence>
+          </div>
+        )}
 
-        {/* Pagination UI */}
-        {totalPages > 1 && (
+        {!loading && totalPages > 1 && (
           <div className="pagination">
             <button 
               onClick={() => paginate(currentPage - 1)} 
@@ -158,7 +192,7 @@ const NewsPage = () => {
               <button
                 key={number}
                 onClick={() => paginate(number)}
-                className={`page-btn ${currentPage === number ? 'active' : ''}`}
+                className={`page-btn ${currentPage === number ? "active" : ""}`}
               >
                 {number}
               </button>
@@ -174,14 +208,13 @@ const NewsPage = () => {
           </div>
         )}
 
-        {filteredData.length === 0 && (
+        {!loading && filteredData.length === 0 && (
           <div className="no-results">
             <p>No content matches your selected filters.</p>
             <button onClick={handleReset} className="btn-reset">Clear Filters</button>
           </div>
         )}
       </div>
-
 
       <style dangerouslySetInnerHTML={{ __html: `
         .news-page {
@@ -217,7 +250,6 @@ const NewsPage = () => {
           background: var(--primary-red);
         }
 
-        /* ── FILTERS ────────────────────────── */
         .filters-wrapper {
           display: grid;
           grid-template-columns: repeat(3, 1fr) auto;
@@ -278,7 +310,7 @@ const NewsPage = () => {
         }
 
         .btn-apply {
-          background: #1a4d2e; /* From AU reference */
+          background: #1a4d2e;
           color: white;
           border: none;
         }
@@ -299,7 +331,6 @@ const NewsPage = () => {
           transform: translateY(-2px);
         }
 
-        /* ── GRID ────────────────────────────── */
         .news-card-link {
           text-decoration: none;
           color: inherit;
@@ -443,7 +474,6 @@ const NewsPage = () => {
           .filter-actions { grid-column: span 1; flex-direction: column; }
         }
 
-        /* ── PAGINATION ─────────────────────── */
         .pagination {
           display: flex;
           justify-content: center;
@@ -493,3 +523,4 @@ const NewsPage = () => {
 };
 
 export default NewsPage;
+

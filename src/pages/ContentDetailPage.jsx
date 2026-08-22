@@ -1,21 +1,31 @@
-import React, { useState, useEffect } from 'react';
-import { useParams, useNavigate, Link } from 'react-router-dom';
-import { motion, AnimatePresence } from 'framer-motion';
-import { Calendar, Tag, ChevronLeft, ChevronRight, Clock, MapPin, ExternalLink, Share2, Facebook, Twitter, Linkedin, Link as LinkIcon, FileText, Download } from 'lucide-react';
-import { newsEventsData, isEventEnded } from '../data/newsEventsData';
-
-import SEO from '../components/SEO';
+import React, { useState, useEffect } from "react";
+import { useParams, useNavigate, Link } from "react-router-dom";
+import { motion, AnimatePresence } from "framer-motion";
+import { Calendar, Tag, ChevronLeft, ChevronRight, Clock, MapPin, ExternalLink, Share2, Facebook, Twitter, Linkedin, Link as LinkIcon, FileText, Download } from "lucide-react";
+import { newsEventsData, isEventEnded } from "../data/newsEventsData";
+import { usePublishedPost } from "../hooks/useContent";
+import SEO from "../components/SEO";
 
 const ContentDetailPage = () => {
   const { id } = useParams();
   const navigate = useNavigate();
-  
-  const content = newsEventsData.find(item => item.id === id);
+
+  const { data: dbPost, loading, error } = usePublishedPost(id);
+
+  let content = dbPost;
+  if (!loading && (!content || error)) {
+    const staticItem = newsEventsData.find(item => item.id === id);
+    if (staticItem) {
+      if (error) {
+        console.warn("[AASU Web ContentDetailPage] Using static fallback data due to Supabase error:", error.message);
+      }
+      content = staticItem;
+    }
+  }
 
   const [lightboxOpen, setLightboxOpen] = useState(false);
   const [activeImgIndex, setActiveImgIndex] = useState(0);
 
-  // Combine cover image and additional images, removing duplicates
   const allImages = content 
     ? Array.from(new Set([content.img, ...(content.images || [])])).filter(Boolean)
     : [];
@@ -23,7 +33,7 @@ const ContentDetailPage = () => {
   const renderTextWithLinks = (text) => {
     if (!text) return null;
     const urlRegex = /(https?:\/\/[^\s]+)/g;
-    return text.split('\n').map((para, i) => {
+    return text.split("\n").map((para, i) => {
       if (!para.trim()) return <br key={i} />;
       const parts = para.split(urlRegex);
       return (
@@ -52,49 +62,54 @@ const ContentDetailPage = () => {
   useEffect(() => {
     if (!lightboxOpen) return;
     const handleKeyDown = (e) => {
-      if (e.key === 'Escape') setLightboxOpen(false);
-      else if (e.key === 'ArrowRight') {
+      if (e.key === "Escape") setLightboxOpen(false);
+      else if (e.key === "ArrowRight") {
         setActiveImgIndex(prev => (prev + 1) % allImages.length);
-      } else if (e.key === 'ArrowLeft') {
+      } else if (e.key === "ArrowLeft") {
         setActiveImgIndex(prev => (prev - 1 + allImages.length) % allImages.length);
       }
     };
-    window.addEventListener('keydown', handleKeyDown);
-    return () => window.removeEventListener('keydown', handleKeyDown);
+    window.addEventListener("keydown", handleKeyDown);
+    return () => window.removeEventListener("keydown", handleKeyDown);
   }, [lightboxOpen, allImages.length]);
 
   useEffect(() => {
     window.scrollTo(0, 0);
-    if (!content) {
-      // Small delay then redirect if not found
-      const timer = setTimeout(() => navigate('/news'), 3000);
+    if (!loading && !content) {
+      const timer = setTimeout(() => navigate("/news"), 3000);
       return () => clearTimeout(timer);
     }
 
-    // Redirect if a link override is specified (e.g., for special landing pages)
-    if (content.linkOverride) {
+    if (content && content.linkOverride) {
       navigate(content.linkOverride, { replace: true });
     }
-  }, [id, content, navigate]);
+  }, [id, content, loading, navigate]);
+
+  if (loading) {
+    return (
+      <div className="container" style={{ padding: "200px 0", textAlign: "center" }}>
+        <h2>Loading content...</h2>
+      </div>
+    );
+  }
 
   if (!content) {
     return (
-      <div className="container" style={{ padding: '200px 0', textAlign: 'center' }}>
+      <div className="container" style={{ padding: "200px 0", textAlign: "center" }}>
         <h2>Content not found</h2>
         <p>Redirecting you to the news hub...</p>
       </div>
     );
   }
 
-  const ended = content.date ? isEventEnded(content.date) : false;
+  const ended = content.eventDate ? isEventEnded(content.eventDate) : (content.date ? isEventEnded(content.date) : false);
 
   const currentIndex = newsEventsData.findIndex(item => item.id === content.id);
   const nextArticle = currentIndex > 0 ? newsEventsData[currentIndex - 1] : null;
   const prevArticle = currentIndex < newsEventsData.length - 1 ? newsEventsData[currentIndex + 1] : null;
 
-  // Query related press releases if this is a press release
   const relatedReleases = newsEventsData
-    .filter(item => item.type === 'Press Release' && item.id !== content.id)
+    .filter(item => (item.type || "").toLowerCase().includes("press") && item.id !== content.id)
     .sort((a, b) => new Date(b.date) - new Date(a.date))
     .slice(0, 3);
 
@@ -136,13 +151,15 @@ const ContentDetailPage = () => {
   return (
     <div className="content-detail-page">
       <SEO 
-        title={content.title} 
-        description={content.excerpt || content.description?.substring(0, 160)} 
+        title={content.seoTitle || content.title} 
+        description={content.seoDescription || content.excerpt || (content.content ? content.content.substring(0, 160) : "")} 
+        image={content.img}
+        url={`https://aasuonline.org/news/${content.slug || content.id}`}
       />
       <div className="detail-header-spacer">
         <div className="container">
           <p className="detail-section-label">
-            {content.type === 'Event' ? 'Events' : content.type === 'Press Release' ? 'Press Release' : 'News'}
+            {(content.type || "").toLowerCase().includes("event") ? "Events" : (content.type || "").toLowerCase().includes("press") ? "Press Release" : "News"}
           </p>
         </div>
       </div>
@@ -164,16 +181,16 @@ const ContentDetailPage = () => {
             animate={{ opacity: 1, y: 0 }}
           >
             <div className="article-meta">
-              <span className={`detail-badge ${content.type?.toLowerCase().replace(' ', '-')}`}>
-                {content.type}
+              <span className={`detail-badge ${(content.type || "news").toLowerCase().replace(" ", "-")}`}>
+                {content.type || "NEWS"}
               </span>
               <span className="detail-date">
                 <Calendar size={16} /> 
-                {new Date(content.date).toLocaleDateString('en-GB', { day: 'numeric', month: 'long', year: 'numeric' })}
+                {content.date}
               </span>
-              {content.category && (
+              {(content.category || (content.categories && content.categories[0])) && (
                 <span className="detail-cat">
-                  <Tag size={16} /> {content.category}
+                  <Tag size={16} /> {content.category || content.categories[0]}
                 </span>
               )}
               {content.refNumber && (
@@ -193,7 +210,7 @@ const ContentDetailPage = () => {
           >
             <img 
               src={content.img} 
-              alt={content.title} 
+              alt={content.featured_image_alt || content.title} 
               className="detail-main-img clickable-img" 
               onClick={() => {
                 const idx = allImages.indexOf(content.img);
@@ -203,12 +220,11 @@ const ContentDetailPage = () => {
                 }
               }}
             />
-            {content.type === 'Event' && ended && (
+            {(content.type || "").toLowerCase().includes("event") && ended && (
               <div className="status-overlay">EVENT HAS ENDED</div>
             )}
           </motion.div>
 
-          {/* Additional Images Gallery */}
           {content.images && content.images.length > 0 && (
             <div className="additional-images-grid">
               {content.images.map((img, idx) => {
@@ -235,9 +251,9 @@ const ContentDetailPage = () => {
             </div>
           )}
 
-          <div className={`article-body ${content.type !== 'Event' ? 'full-width-body' : ''}`}>
+          <div className={`article-body ${(content.type || "").toLowerCase().includes("event") ? "" : "full-width-body"}`}>
               <div className="article-main-text">
-                {renderTextWithLinks(content.description)}
+                {renderTextWithLinks(content.content || content.description)}
 
                 {content.documents && content.documents.length > 0 && (
                   <div className="article-documents-section">
@@ -246,13 +262,13 @@ const ContentDetailPage = () => {
                       {content.documents.map((doc, idx) => (
                         <div key={idx} className="doc-card">
                           <div className="doc-thumbnail-wrapper">
-                            <img src={doc.thumbnail} alt={doc.title} className="doc-thumbnail" />
+                            <img src={doc.thumbnail || "/placeholder-doc.jpg"} alt={doc.title} className="doc-thumbnail" />
                           </div>
                           <div className="doc-content">
                             <h4 className="doc-title">{doc.title}</h4>
                             <div className="doc-actions">
                               <a 
-                                href={doc.fileUrl} 
+                                href={doc.fileUrl || doc.url} 
                                 target="_blank" 
                                 rel="noopener noreferrer" 
                                 className="doc-btn primary"
@@ -267,7 +283,7 @@ const ContentDetailPage = () => {
                                   rel="noopener noreferrer" 
                                   className="doc-btn secondary"
                                 >
-                                  <ExternalLink size={16} /> View on ACQF Portal
+                                  <ExternalLink size={16} /> View Portal
                                 </a>
                               )}
                             </div>
@@ -278,12 +294,10 @@ const ContentDetailPage = () => {
                   </div>
                 )}
 
-                {/* Share Box for News (Non-Event) */}
-                {content.type !== 'Event' && renderShareButtons()}
+                {!(content.type || "").toLowerCase().includes("event") && renderShareButtons()}
               </div>
 
-             {/* Sidebar Info for Events */}
-             {content.type === 'Event' && (
+             {(content.type || "").toLowerCase().includes("event") && (
                <div className="article-sidebar">
                   <div className="sidebar-card">
                     <h3>Event Details</h3>
@@ -291,29 +305,29 @@ const ContentDetailPage = () => {
                       <Calendar size={20} />
                       <div>
                         <strong>Date</strong>
-                        <p>{new Date(content.date).toLocaleDateString('en-GB', { weekday: 'long', day: 'numeric', month: 'long', year: 'numeric' })}</p>
+                        <p>{content.eventDate || content.date}</p>
                       </div>
                     </div>
-                    {content.time && (
+                    {(content.eventTime || content.time) && (
                       <div className="sidebar-detail">
                         <Clock size={20} />
                         <div>
                           <strong>Time</strong>
-                          <p>{content.time}</p>
+                          <p>{content.eventTime || content.time}</p>
                         </div>
                       </div>
                     )}
-                    {content.platform && (
+                    {(content.eventLocation || content.platform) && (
                       <div className="sidebar-detail">
                         <MapPin size={20} />
                         <div>
                           <strong>Location</strong>
-                          <p>{content.platform}</p>
+                          <p>{content.eventLocation || content.platform}</p>
                         </div>
                       </div>
                     )}
-                    {!ended && content.link && (
-                      <a href={content.link} target="_blank" rel="noopener noreferrer" className="sidebar-btn">
+                    {!ended && (content.registrationUrl || content.link) && (
+                      <a href={content.registrationUrl || content.link} target="_blank" rel="noopener noreferrer" className="sidebar-btn">
                         Register Now <ExternalLink size={18} />
                       </a>
                     )}
@@ -328,7 +342,6 @@ const ContentDetailPage = () => {
           </div>
         </article>
 
-        {/* Navigation Section */}
         <div className="article-navigation">
           {prevArticle ? (
             <Link to={`/news/${prevArticle.id}`} className="article-nav-link prev">
@@ -345,8 +358,7 @@ const ContentDetailPage = () => {
           ) : <div className="article-nav-placeholder" />}
         </div>
 
-        {/* Related Press Releases Section */}
-        {content.type === 'Press Release' && relatedReleases.length > 0 && (
+        {(content.type || "").toLowerCase().includes("press") && relatedReleases.length > 0 && (
           <section className="related-releases-section">
             <h2 className="related-title">Related <span className="highlight-red">Press Releases</span></h2>
             <div className="title-underline"></div>
@@ -360,7 +372,7 @@ const ContentDetailPage = () => {
                     </div>
                     <div className="related-info">
                       <div className="related-meta">
-                        <span className="related-date">{new Date(rel.date).toLocaleDateString('en-GB', { day: 'numeric', month: 'short', year: 'numeric' })}</span>
+                        <span className="related-date">{new Date(rel.date).toLocaleDateString("en-GB", { day: "numeric", month: "short", year: "numeric" })}</span>
                         {rel.refNumber && <span className="related-ref">{rel.refNumber}</span>}
                       </div>
                       <h3 className="related-card-title">{rel.title}</h3>
@@ -508,7 +520,6 @@ const ContentDetailPage = () => {
           align-items: start;
         }
 
-        /* If not an event, take full width */
         .article-body.full-width-body {
           grid-template-columns: 1fr;
           max-width: 800px;
@@ -536,7 +547,6 @@ const ContentDetailPage = () => {
           margin-bottom: 1.5rem;
         }
 
-        /* ── DOCUMENTS SECTION ──────────────── */
         .article-documents-section {
           margin: 3rem 0;
           padding: 2rem;
@@ -657,7 +667,6 @@ const ContentDetailPage = () => {
           }
         }
 
-        /* ── GALLERY ────────────────────────── */
         .additional-images-grid {
           display: grid;
           grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
@@ -683,7 +692,6 @@ const ContentDetailPage = () => {
           transform: scale(1.05);
         }
 
-        /* ── SIDEBAR ─────────────────────────── */
         .sidebar-card {
           background: white;
           padding: 2.5rem;
@@ -740,7 +748,6 @@ const ContentDetailPage = () => {
           border-radius: 8px;
         }
 
-        /* ── PREMIUM SHARE BOX ────────────────── */
         .share-box-premium {
           margin-top: 4rem;
           padding-top: 2rem;
@@ -785,7 +792,6 @@ const ContentDetailPage = () => {
         .share-btn.copy-link { background: #2d2d2d; }
         .share-btn.copy-link:hover { background: #cb3631; transform: translateY(-3px); }
 
-        /* ── RELATED RELEASES ─────────────────── */
         .related-releases-section {
           margin-top: 6rem;
           border-top: 1px solid #eee;
@@ -798,380 +804,10 @@ const ContentDetailPage = () => {
           color: #111;
           margin-bottom: 0.5rem;
         }
-
-        .related-grid {
-          display: grid;
-          grid-template-columns: repeat(3, 1fr);
-          gap: 2.5rem;
-          margin-top: 2.5rem;
-        }
-
-        .related-card-link {
-          text-decoration: none;
-          color: inherit;
-        }
-
-        .related-card {
-          background: white;
-          border-radius: 12px;
-          overflow: hidden;
-          box-shadow: 0 4px 20px rgba(0,0,0,0.05);
-          display: flex;
-          flex-direction: column;
-          height: 100%;
-          transition: transform 0.3s ease, box-shadow 0.3s ease;
-        }
-
-        .related-card-link:hover .related-card {
-          transform: translateY(-8px);
-          box-shadow: 0 15px 30px rgba(0,0,0,0.1);
-        }
-
-        .related-media {
-          position: relative;
-          height: 180px;
-          overflow: hidden;
-        }
-
-        .related-media img {
-          width: 100%;
-          height: 100%;
-          object-fit: cover;
-        }
-
-        .related-badge {
-          position: absolute;
-          top: 1rem;
-          left: 1rem;
-          background: #8B0000;
-          color: white;
-          padding: 0.3rem 0.8rem;
-          font-size: 0.65rem;
-          font-weight: 800;
-          border-radius: 3px;
-        }
-
-        .related-info {
-          padding: 1.5rem;
-          display: flex;
-          flex-direction: column;
-          gap: 0.75rem;
-          flex-grow: 1;
-        }
-
-        .related-meta {
-          display: flex;
-          justify-content: space-between;
-          font-size: 0.8rem;
-          color: #999;
-          font-weight: 600;
-        }
-
-        .related-card-title {
-          font-size: 1.1rem;
-          font-weight: 800;
-          color: #222;
-          line-height: 1.4;
-          display: -webkit-box;
-          -webkit-line-clamp: 2;
-          -webkit-box-orient: vertical;
-          overflow: hidden;
-        }
-
-        .related-excerpt {
-          font-size: 0.9rem;
-          color: #666;
-          line-height: 1.5;
-          display: -webkit-box;
-          -webkit-line-clamp: 2;
-          -webkit-box-orient: vertical;
-          overflow: hidden;
-          margin: 0;
-        }
-
-        /* ── NAVIGATION ──────────────────────── */
-        .article-navigation {
-          display: grid;
-          grid-template-columns: 1fr 1fr;
-          gap: 2rem;
-          margin-top: 4rem;
-          padding-top: 2rem;
-          border-top: 1px solid #eee;
-        }
-
-        .article-nav-link {
-          display: flex;
-          flex-direction: column;
-          text-decoration: none;
-          padding: 1.5rem;
-          background: #fafafa;
-          border: 1px solid #eee;
-          border-radius: 8px;
-          transition: all 0.3s ease;
-          white-space: normal;
-        }
-
-        .article-nav-link:hover {
-          background: #fff;
-          border-color: var(--primary-red);
-          transform: translateY(-3px);
-          box-shadow: 0 10px 20px rgba(0,0,0,0.05);
-        }
-
-        .article-nav-link.next {
-          align-items: flex-end;
-          text-align: right;
-        }
-
-        .article-nav-label {
-          font-size: 0.75rem;
-          font-weight: 800;
-          color: #888;
-          margin-bottom: 0.5rem;
-          letter-spacing: 1px;
-        }
-
-        .article-nav-title {
-          font-size: 0.95rem;
-          font-weight: 700;
-          color: #222;
-          line-height: 1.45;
-          display: -webkit-box;
-          -webkit-line-clamp: 2;
-          -webkit-box-orient: vertical;
-          overflow: hidden;
-          white-space: normal;
-        }
-
-        .article-nav-title:hover {
-          color: var(--primary-red);
-        }
-
-        .article-nav-placeholder {
-          visibility: hidden;
-        }
-
-        @media (max-width: 900px) {
-          .article-body { grid-template-columns: 1fr; }
-          .article-title { font-size: 2.2rem; }
-          .article-image-container { height: 300px; }
-          .article-sidebar { order: -1; margin-bottom: 2rem; }
-          .sidebar-card { position: static; }
-          .related-grid { grid-template-columns: 1fr; }
-        }
-
-        /* Clickable Images cursor */
-        .clickable-img {
-          cursor: pointer;
-          transition: transform 0.3s ease, box-shadow 0.3s ease;
-        }
-        .clickable-img:hover {
-          transform: translateY(-2px);
-          box-shadow: 0 10px 20px rgba(0,0,0,0.15);
-        }
-
-        /* Lightbox Overlay */
-        .lightbox-overlay {
-          position: fixed;
-          top: 0;
-          left: 0;
-          right: 0;
-          bottom: 0;
-          background: rgba(0, 0, 0, 0.85);
-          backdrop-filter: blur(8px);
-          z-index: 9999;
-          display: flex;
-          align-items: center;
-          justify-content: center;
-          user-select: none;
-        }
-
-        /* Lightbox Navigation Buttons */
-        .lightbox-nav {
-          position: absolute;
-          top: 50%;
-          transform: translateY(-50%);
-          background: rgba(255, 255, 255, 0.1);
-          border: 1px solid rgba(255, 255, 255, 0.2);
-          color: white;
-          border-radius: 50%;
-          width: 56px;
-          height: 56px;
-          display: flex;
-          align-items: center;
-          justify-content: center;
-          cursor: pointer;
-          transition: all 0.2s ease;
-          z-index: 10001;
-        }
-        .lightbox-nav:hover {
-          background: rgba(255, 255, 255, 0.25);
-          transform: translateY(-50%) scale(1.1);
-        }
-        .lightbox-nav.prev {
-          left: 2rem;
-        }
-        .lightbox-nav.next {
-          right: 2rem;
-        }
-
-        /* Close Button */
-        .lightbox-close {
-          position: absolute;
-          top: 2rem;
-          right: 2rem;
-          background: rgba(255, 255, 255, 0.1);
-          border: 1px solid rgba(255, 255, 255, 0.2);
-          color: white;
-          width: 48px;
-          height: 48px;
-          border-radius: 50%;
-          display: flex;
-          align-items: center;
-          justify-content: center;
-          cursor: pointer;
-          transition: all 0.2s ease;
-          z-index: 10002;
-        }
-        .lightbox-close:hover {
-          background: rgba(255, 255, 255, 0.25);
-          transform: scale(1.1);
-        }
-        .close-icon {
-          font-size: 24px;
-          line-height: 1;
-        }
-
-        /* Lightbox Content & Image */
-        .lightbox-content {
-          position: relative;
-          max-width: 80%;
-          max-height: 80%;
-          display: flex;
-          flex-direction: column;
-          align-items: center;
-          justify-content: center;
-        }
-        .lightbox-image {
-          max-width: 100%;
-          max-height: 85vh;
-          object-fit: contain;
-          border-radius: 8px;
-          box-shadow: 0 20px 40px rgba(0, 0, 0, 0.5);
-          border: 1px solid rgba(255, 255, 255, 0.1);
-        }
-
-        /* Lightbox Counter */
-        .lightbox-counter {
-          color: rgba(255, 255, 255, 0.7);
-          font-size: 0.9rem;
-          margin-top: 1rem;
-          background: rgba(0, 0, 0, 0.4);
-          padding: 4px 12px;
-          border-radius: 20px;
-          border: 1px solid rgba(255, 255, 255, 0.1);
-          font-weight: 500;
-        }
-
-        @media (max-width: 768px) {
-          .lightbox-nav {
-            width: 44px;
-            height: 44px;
-          }
-          .lightbox-nav.prev {
-            left: 0.5rem;
-          }
-          .lightbox-nav.next {
-            right: 0.5rem;
-          }
-          .lightbox-close {
-            top: 1rem;
-            right: 1rem;
-            width: 40px;
-            height: 40px;
-          }
-          .lightbox-content {
-            max-width: 95%;
-          }
-        }
       `}} />
-
-      <AnimatePresence>
-        {lightboxOpen && allImages.length > 0 && (
-          <motion.div 
-            className="lightbox-overlay"
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            exit={{ opacity: 0 }}
-            onClick={() => setLightboxOpen(false)}
-          >
-            {/* Close Button */}
-            <button 
-              className="lightbox-close" 
-              onClick={(e) => {
-                e.stopPropagation();
-                setLightboxOpen(false);
-              }}
-              aria-label="Close lightbox"
-            >
-              <span className="close-icon">&times;</span>
-            </button>
-
-            {/* Left Control */}
-            {allImages.length > 1 && (
-              <button 
-                className="lightbox-nav prev" 
-                onClick={(e) => {
-                  e.stopPropagation();
-                  setActiveImgIndex((prev) => (prev - 1 + allImages.length) % allImages.length);
-                }}
-                aria-label="Previous image"
-              >
-                <ChevronLeft size={36} />
-              </button>
-            )}
-
-            {/* Lightbox Content */}
-            <motion.div 
-              className="lightbox-content"
-              onClick={(e) => e.stopPropagation()}
-              initial={{ scale: 0.9, opacity: 0 }}
-              animate={{ scale: 1, opacity: 1 }}
-              exit={{ scale: 0.9, opacity: 0 }}
-              transition={{ type: "spring", damping: 25, stiffness: 200 }}
-            >
-              <img 
-                src={allImages[activeImgIndex]} 
-                alt={`${content.title} full screen ${activeImgIndex + 1}`} 
-                className="lightbox-image"
-              />
-              
-              {/* Image Counter */}
-              {allImages.length > 1 && (
-                <div className="lightbox-counter">
-                  {activeImgIndex + 1} / {allImages.length}
-                </div>
-              )}
-            </motion.div>
-
-            {/* Right Control */}
-            {allImages.length > 1 && (
-              <button 
-                className="lightbox-nav next" 
-                onClick={(e) => {
-                  e.stopPropagation();
-                  setActiveImgIndex((prev) => (prev + 1) % allImages.length);
-                }}
-                aria-label="Next image"
-              >
-                <ChevronRight size={36} />
-              </button>
-            )}
-          </motion.div>
-        )}
-      </AnimatePresence>
     </div>
   );
 };
 
 export default ContentDetailPage;
+

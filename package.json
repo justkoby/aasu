@@ -7,10 +7,14 @@
     "dev": "vite",
     "sitemap": "node scripts/generate-sitemap.js",
     "build": "node scripts/generate-sitemap.js && vite build",
+    "migrate:content:dry": "node scripts/migrate-hardcoded-content.mjs --dry-run",
+    "migrate:content": "node scripts/migrate-hardcoded-content.mjs",
+    "migrate:content:verify": "node scripts/migrate-hardcoded-content.mjs --verify",
     "lint": "eslint .",
     "preview": "vite preview"
   },
   "dependencies": {
+    "@supabase/supabase-js": "^2.112.3",
     "clsx": "^2.1.1",
     "framer-motion": "^11.11.9",
     "groq-sdk": "^1.3.0",
