@@ -1096,7 +1096,7 @@ const searchData = [
     description: "A comprehensive toolkit designed to guide the greening of skills and qualifications in Africa, fostering sustainable development and green employability.",
     path: "/reports",
     category: "Resources",
-    keywords: ["toolkit", "greening skills", "qualifications", "africa", "sustainability", "skills development", "green employability", "report"]
+    keywords: ["toolkit", "greening skills", "qualifications", "africa", "sustainability", "skills development", "green employability", "climate action", "environmental sustainability", "report"]
   },
   {
     id: 133,
@@ -1104,15 +1104,15 @@ const searchData = [
     description: "A collection of outstanding practices and success stories in greening skills and qualifications across African educational systems.",
     path: "/reports",
     category: "Resources",
-    keywords: ["book of good practices", "greening skills", "qualifications", "success stories", "educational systems", "report"]
+    keywords: ["book of good practices", "greening skills", "qualifications", "success stories", "educational systems", "climate action", "environmental sustainability", "report"]
   },
   {
     id: 134,
-    title: "Greening Skills and Qualifications in Africa  User’s Engagement",
+    title: "Greening Skills and Qualifications in Africa User’s Engagement",
     description: "Engagement and implementation guidelines for stakeholders involved in greening skills and qualifications in Africa.",
     path: "/reports",
     category: "Resources",
-    keywords: ["users engagement", "stakeholders", "greening skills", "qualifications", "guidelines", "report"]
+    keywords: ["users engagement", "stakeholders", "greening skills", "qualifications", "guidelines", "climate action", "environmental sustainability", "report"]
   },
   {
     id: 135,
