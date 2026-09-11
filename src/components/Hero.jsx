@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useCallback } from 'react';
 import { ChevronLeft, ChevronRight, Calendar, ArrowRight } from 'lucide-react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Link } from 'react-router-dom';
@@ -34,21 +34,34 @@ const Hero = () => {
   const [currentSlide, setCurrentSlide] = useState(0);
   const [direction, setDirection] = useState(0);
 
-  const nextSlide = () => {
+  const nextSlide = useCallback(() => {
     setDirection(1);
     setCurrentSlide((prev) => (prev + 1) % slides.length);
-  };
+  }, [slides.length]);
 
-  const prevSlide = () => {
+  const prevSlide = useCallback(() => {
     setDirection(-1);
     setCurrentSlide((prev) => (prev - 1 + slides.length) % slides.length);
-  };
+  }, [slides.length]);
 
   useEffect(() => {
     if (slides.length <= 1) return;
     const timer = setInterval(nextSlide, 6000);
     return () => clearInterval(timer);
-  }, [slides.length]);
+  }, [slides.length, nextSlide]);
+
+  useEffect(() => {
+    if (slides.length <= 1) return;
+    const handleKeyDown = (e) => {
+      if (e.key === 'ArrowLeft') {
+        prevSlide();
+      } else if (e.key === 'ArrowRight') {
+        nextSlide();
+      }
+    };
+    window.addEventListener('keydown', handleKeyDown);
+    return () => window.removeEventListener('keydown', handleKeyDown);
+  }, [slides.length, prevSlide, nextSlide]);
 
   const variants = {
     enter: (direction) => ({
@@ -124,9 +137,9 @@ const Hero = () => {
           </motion.div>
         </AnimatePresence>
 
-        {/* Carousel Navigation */}
+        {/* Carousel Navigation Layer */}
         {slides.length > 1 && (
-          <div className="carousel-nav container">
+          <div className="carousel-nav">
             <button className="carousel-arrow prev" onClick={prevSlide} aria-label="Previous Slide">
               <ChevronLeft size={24} />
             </button>
@@ -267,24 +280,21 @@ const Hero = () => {
 
         .carousel-nav {
           position: absolute;
-          top: 55%;
-          left: 50%;
-          transform: translate(-50%, -50%);
-          width: 100%;
-          display: flex;
-          justify-content: space-between;
-          padding: 0 4rem;
+          inset: 0;
           pointer-events: none;
-          z-index: 10;
+          z-index: 15;
         }
 
         .carousel-arrow {
+          position: absolute;
+          top: 50%;
+          transform: translateY(-50%);
           pointer-events: auto;
           background: rgba(255, 255, 255, 0.15);
           border: 1px solid rgba(255, 255, 255, 0.3);
           color: white;
-          width: 54px;
-          height: 54px;
+          width: 52px;
+          height: 52px;
           border-radius: 50%;
           display: flex;
           align-items: center;
@@ -294,10 +304,18 @@ const Hero = () => {
           backdrop-filter: blur(8px);
         }
 
+        .carousel-arrow.prev {
+          left: clamp(12px, 3vw, 48px);
+        }
+
+        .carousel-arrow.next {
+          right: clamp(12px, 3vw, 48px);
+        }
+
         .carousel-arrow:hover {
           background: var(--primary-red);
           border-color: var(--primary-red);
-          transform: scale(1.1);
+          transform: translateY(-50%) scale(1.1);
         }
 
         .carousel-indicators {
@@ -345,9 +363,32 @@ const Hero = () => {
 
         @media (max-width: 768px) {
           .slide-title { font-size: 1.75rem; }
-          .slide-card { padding: 1.5rem; margin: 0 1rem; }
-          .carousel-nav { padding: 0 1rem; }
+          .slide-card { padding: 1.5rem; margin: 0 0.5rem; }
           .curve-divider svg { height: 60px; }
+
+          .carousel-arrow {
+            width: 40px;
+            height: 40px;
+            top: auto;
+            bottom: 128px;
+            transform: none;
+          }
+
+          .carousel-arrow.prev {
+            left: 12px;
+          }
+
+          .carousel-arrow.next {
+            right: 12px;
+          }
+
+          .carousel-arrow:hover {
+            transform: scale(1.1);
+          }
+
+          .carousel-indicators {
+            bottom: 138px;
+          }
         }
       `}} />
     </section>
@@ -355,3 +396,4 @@ const Hero = () => {
 };
 
 export default Hero;
+

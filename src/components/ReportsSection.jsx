@@ -22,14 +22,14 @@ const ReportsSection = () => {
     return dbStatements.slice(0, 2);
   }, [dbStatements, error]);
 
-  // Get latest 2 reports from static reportsData
+  // Get latest 3 reports from static reportsData
   const latestReports = useMemo(() => {
     return [...reportsData]
       .sort((a, b) => parseInt(b.year) - parseInt(a.year))
-      .slice(0, 2);
+      .slice(0, 3);
   }, []);
 
-  // Combine them: 2 statements first, then 2 reports
+  // Combine them: statements first, then reports
   const combinedItems = [
     ...latestStatements.map(s => ({
       id: s.id || s.slug,
@@ -63,7 +63,7 @@ const ReportsSection = () => {
 
         {loading ? (
           <div className="reports-grid">
-            {[1, 2, 3, 4].map(n => (
+            {[1, 2, 3, 4, 5].map(n => (
               <div key={n} className="report-card" style={{ opacity: 0.6 }}>
                 <div className="report-media" style={{ background: '#222' }} />
                 <div className="report-content">
@@ -148,8 +148,15 @@ const ReportsSection = () => {
 
         .reports-grid {
           display: grid;
-          grid-template-columns: repeat(4, 1fr);
+          grid-template-columns: repeat(auto-fit, minmax(215px, 1fr));
           gap: 1.5rem;
+        }
+
+        @media (min-width: 1200px) {
+          .reports-grid {
+            grid-template-columns: repeat(5, 1fr);
+            gap: 1.5rem;
+          }
         }
 
         .report-card {
